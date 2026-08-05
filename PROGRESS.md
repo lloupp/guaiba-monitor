@@ -3,7 +3,7 @@
 ## Skill de referência: `guaiba-flood-monitor-builder`
 TODAS as fases devem seguir a skill `guaiba-flood-monitor-builder` (carregada no cron).
 
-## Status: Fase 1 concluída — próxima fase pendente (Fase 2)
+## Status: Fase 2 concluída — próxima fase pendente (Fase 3)
 
 ## Fases
 
@@ -21,7 +21,7 @@ TODAS as fases devem seguir a skill `guaiba-flood-monitor-builder` (carregada no
 - IPH-UFRGS telemetria ❌ — 404
 - Nível do Guaíba: sem endpoint JSON público direto. Usar dados de exemplo marcados como "simulação/offline" para MVP.
 
-### Fase 2 — Layout e Dashboard [PENDENTE]
+### Fase 2 — Layout e Dashboard [CONCLUÍDO — 2026-08-05]
 - Header com título e indicador de nível atual
 - Cards por região (POA, Canoas, Guaíba, região)
 - Segmentos de cota e legenda de cores
