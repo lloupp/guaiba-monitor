@@ -3,13 +3,101 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Monitor de nível do rio Guaíba e riscos de desastres naturais em Porto Alegre, Canoas e Guaíba.">
   <title>Guaiba Monitor — Nível do Rio e Desastres</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div id="app">
-    <p>App em construção...</p>
+    <!-- Loader -->
+    <div id="loader" class="loader-overlay">
+      <div class="spinner"></div>
+      <p>Carregando Guaiba Monitor...</p>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-top">
+        <div class="header-title">
+          <span class="logo" role="img" aria-label="rio">🌊</span>
+          <h1>Guaiba Monitor</h1>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema claro/escuro">
+          <span id="theme-icon" class="theme-icon">☀️</span>
+        </button>
+      </div>
+      <p class="subtitle">Nível do rio Guaíba e riscos de desastres — Porto Alegre, Canoas e Guaíba</p>
+    </header>
+
+    <main class="main-content">
+      <!-- Indicador de nível atual -->
+      <section class="level-indicator card" id="level-indicator">
+        <div class="level-badge-row">
+          <span class="level-badge" id="level-badge">--</span>
+          <span class="offline-badge" id="level-source">--</span>
+        </div>
+        <div class="level-value">
+          <span class="level-meters" id="level-meters">--</span>
+          <span class="level-unit">m</span>
+        </div>
+        <div class="level-cota">
+          <span>Transbordo: <strong id="cota-transbordo">-- m</strong></span>
+          <span>Registro Maio/2024: <strong>5.30 m</strong></span>
+        </div>
+        <div class="level-trend" id="level-trend">
+          <span class="trend-icon">→</span>
+          <span>Carregando...</span>
+        </div>
+      </section>
+
+      <!-- Segmentos de cota (legenda de cores) -->
+      <section class="cota-legend">
+        <div class="cota-segment">
+          <div class="segment-bar badge-normal"></div>
+          <div class="segment-label"><span>0 — 1.50 m</span><span>Normal</span></div>
+        </div>
+        <div class="cota-segment">
+          <div class="segment-bar badge-atencao"></div>
+          <div class="segment-label"><span>1.50 — 2.00 m</span><span>Atenção</span></div>
+        </div>
+        <div class="cota-segment">
+          <div class="segment-bar badge-inundacao"></div>
+          <div class="segment-label"><span>2.00 — 2.50 m</span><span>Inundação</span></div>
+        </div>
+        <div class="cota-segment">
+          <div class="segment-bar badge-severa"></div>
+          <div class="segment-label"><span>2.50 — 3.00 m</span><span>Severa</span></div>
+        </div>
+        <div class="cota-segment">
+          <div class="segment-bar badge-critica"></div>
+          <div class="segment-label"><span>3.00 m+</span><span>Crítica</span></div>
+        </div>
+      </section>
+
+      <!-- Placeholder: gráfico de linha do tempo (Fase 4) -->
+      <section class="graph-placeholder card" id="graph-placeholder">
+        <h2>Linha do Tempo do Nível do Guaíba</h2>
+        <div class="placeholder-content">
+          <p>📊 O gráfico de histórico do nível (Canvas) será implementado na Fase 4.</p>
+        </div>
+      </section>
+
+      <!-- Cards por região -->
+      <section class="regions">
+        <h2 class="section-title">Risco por Região</h2>
+        <div class="region-grid" id="region-grid">
+          <!-- Preenchido dinamicamente por app.js -->
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p class="footer-source">Fonte: <span id="data-source">dados simulados (simulação/offline) para MVP</span></p>
+      <p class="footer-update">Última atualização: <span id="last-update">--:--</span></p>
+    </footer>
   </div>
+
   <script type="module" src="js/app.js"></script>
 </body>
 </html>
