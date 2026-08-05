@@ -1,0 +1,40 @@
+{
+  "stations": [
+    {
+      "id": "poa-cais-maua",
+      "location": "Porto Alegre",
+      "name": "Cais Mauá — Guaíba",
+      "source": "IPH-UFRGS",
+      "notes": "Principal régua de referência do centro de POA"
+    },
+    {
+      "id": "poa-gasometro",
+      "location": "Porto Alegre",
+      "name": "Usina do Gasômetro — Guaíba",
+      "source": "MetSul / CPRM",
+      "notes": "Ponto de coleta da zona Centro-Sul"
+    },
+    {
+      "id": "canoas",
+      "location": "Canoas",
+      "name": "Canoas — margem do Guaíba",
+      "source": "CPRM",
+      "notes": "Vulnerável a transbordo nas áreas baixas/ribeirinhas"
+    },
+    {
+      "id": "guaiba-cidade",
+      "location": "Guaíba",
+      "name": "Guaíba cidade — margem do rio",
+      "source": "CPRM",
+      "notes": "Cidade-sede que dá nome ao rio"
+    }
+  ],
+  "thresholds": {
+    "atencao": 1.5,
+    "inundacao": 2.0,
+    "severa": 2.5,
+    "critica": 3.0,
+    "referencia_mai2024": 5.3
+  },
+  "notes": "Cotas aproximadas. CONFIRMAR cotas oficiais na Fase 1 (CPRM/Defesa Civil RS). Não usar como base oficial sem validação."
+}
