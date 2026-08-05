@@ -3,16 +3,23 @@
 ## Skill de referência: `guaiba-flood-monitor-builder`
 TODAS as fases devem seguir a skill `guaiba-flood-monitor-builder` (carregada no cron).
 
-## Status: Fase 1 pendente (pesquisa de fontes)
+## Status: Fase 1 concluída — próxima fase pendente (Fase 2)
 
 ## Fases
 
-### Fase 1 — Pesquisa de fontes e validação [PENDENTE]
-- Testar com curl: endpoint de nível do Guaíba (IPH-UFRGS, CPRM-SACE), alertas INMET, Defesa Civil RS
-- Confirmar cota de transbordo oficial atual (CPRM/Defesa Civil RS)
-- Documentar endpoints funcionantes em docs/
-- Atualizar skill com o que funcionar
-- Commit: `docs: Fase 1 — pesquisa de fontes`
+### Fase 1 — Pesquisa de fontes e validação [CONCLUÍDO — 2026-08-05]
+- Testar com curl: endpoint de nível do Guaíba (IPH-UFRGS, CPRM-SACE), alertas INMET, Defesa Civil RS  ✓
+- Confirmar cota de transbordo oficial atual (CPRM/Defesa Civil RS)                          — não confirmada via API JSON; mantidos valores aproximados em ref-levels.json
+- Documentar endpoints funcionantes em docs/fase1-fontes-e-endpoints.md                       ✓
+- Atualizar skill com o que funcionar                                                          — api.js com estrutura e endpoints confirmados
+- Commit: `docs: Fase 1 — pesquisa de fontes`                                                  ✓
+
+**Resultado**:
+- INMET `/avisos/ativos` ✅ e `/previsao/{geocode}` ✅ — funcionam, sem auth, CORS aberto
+- CPRM SACE HTML ✅ mas sem API JSON pública; sem endpoint direto de nível
+- Defesa Civil RS HTML ✅ — uchar scraping via proxy; sem JSON
+- IPH-UFRGS telemetria ❌ — 404
+- Nível do Guaíba: sem endpoint JSON público direto. Usar dados de exemplo marcados como "simulação/offline" para MVP.
 
 ### Fase 2 — Layout e Dashboard [PENDENTE]
 - Header com título e indicador de nível atual

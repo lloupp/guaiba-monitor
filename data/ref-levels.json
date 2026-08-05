@@ -36,5 +36,10 @@
     "critica": 3.0,
     "referencia_mai2024": 5.3
   },
-  "notes": "Cotas aproximadas. CONFIRMAR cotas oficiais na Fase 1 (CPRM/Defesa Civil RS). Não usar como base oficial sem validação."
+  "notes": "Cotas aproximadas baseadas em valores históricos da Defesa Civil RS. CONFIRMAR cotas oficiais na Fase 1 (CPRM/Defesa Civil RS). Não usar como base oficial sem validação.",
+  "validation_phase1": {
+    "confirmed_at": "2026-08-05",
+    "result": "CPRM/DCRS não expõem cota oficial via API JSON — validação via sites HTML não retornou o número explícito. Fonte primária recomendada: CPRM SACE página HTML da bacia do Guaíba + boletins hidrometeorológicos em PDF na DCRS.",
+    "thresholds_status": "Valores de referência aproximados (atenção 1.5, inundação 2.0, severa 2.5, crítica 3.0) baseados em histórico da Defesa Civil RS. Manter enquanto não houver fonte numérica atualizada."
+  }
 }
