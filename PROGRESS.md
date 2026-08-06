@@ -42,11 +42,14 @@ TODAS as fases devem seguir a skill `guaiba-flood-monitor-builder` (carregada no
 |- Re-render responsivo (resize + toggle de tema) ✓
 |- Commit: `feat: nível e gráfico (Canvas + histórico localStorage)` ✓
 
-### Fase 5 — Riscos por região e tipo [PENDENTE]
-- Matriz de risco: ciclone bomba, vendaval, granizo, deslizamento, enchente
-- Cards por região com nível de risco
-- Texto de orientação correspondente
-- Commit: `feat: riscos por região`
+### Fase 5 — Riscos por região e tipo [CONCLUÍDO — 2026-08-06]
+||- Matriz de risco: ciclone bomba, vendaval, granizo, deslizamento, enchente ✓
+||- Cards por região com nível de risco geral (badge derivado da matriz) ✓
+||- Texto de orientação correspondente (por região + tipo de desastre) ✓
+||- Matriz de risco (região × tipo de desastre) em tabela com badges coloridos ✓
+||- Derivação automática: enchente/alagamento/ressaca do nível do rio; vendaval/granizo de alertas INMET; deslizamento do risco de chuva ✓
+||- Dados sample (simulação/offline) e derivação real — mesma arquitetura da Fase 3 ✓
+||- Commit: `feat: riscos por região e tipo (Fase 5) — matriz de risco região×desastre + orientações` ✓
 
 ### Fase 6 — Alertas e notificações [PENDENTE]
 - Lista de alertas ativos (INMET/Defesa Civil)
