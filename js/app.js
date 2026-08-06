@@ -483,6 +483,109 @@ function renderAlerts() {
   });
 }
 
+// === Checklist de preparação (Fase 7) ===
+
+/**
+ * Carrega o estado dos checkboxes do localStorage (prefixo gm_).
+ * @returns {Object} mapa de data-key → boolean
+ */
+function loadChecklistState() {
+  return loadFromStorage('checklist', {});
+}
+
+/**
+ * Salva o estado dos checkboxes no localStorage (prefixo gm_).
+ * @param {Object} state — mapa de data-key → boolean
+ */
+function saveChecklistState(state) {
+  saveToStorage('checklist', state);
+}
+
+/**
+ * Renderiza o checklist de preparação: aplica estados salvos nos checkboxes,
+ * atualiza a barra de progresso e registra listeners para persistir.
+ */
+function renderPreparationChecklist() {
+  const checkboxes = document.querySelectorAll('.checklist input[type="checkbox"]');
+  if (checkboxes.length === 0) return;
+
+  const saved = loadChecklistState();
+  let checked = 0;
+  const total = checkboxes.length;
+
+  checkboxes.forEach(cb => {
+    const key = cb.getAttribute('data-key');
+    const isChecked = !!saved[key];
+    cb.checked = isChecked;
+    if (isChecked) checked++;
+
+    // Aplica estilo do label (line-through) imediatamente
+    const label = cb.closest('.checklist-item');
+    if (label) {
+      label.classList.toggle('checked-state', isChecked);
+    }
+
+    cb.removeEventListener('change', onChecklistChange);
+    cb.addEventListener('change', onChecklistChange);
+  });
+
+  updateProgress(checked, total);
+}
+
+/**
+ * Handler para change nos checkboxes do checklist.
+ * Persiste no localStorage e atualiza a barra de progresso.
+ * @param {Event} e
+ */
+function onChecklistChange(e) {
+  const cb = e.target;
+  const key = cb.getAttribute('data-key');
+  if (!key) return;
+
+  const saved = loadChecklistState();
+  saved[key] = cb.checked;
+  saveChecklistState(saved);
+
+  const total = document.querySelectorAll('.checklist input[type="checkbox"]').length;
+  const checked = document.querySelectorAll('.checklist input[type="checkbox"]:checked').length;
+  updateProgress(checked, total);
+
+  // Feedback toast ao marcar/desmarcar
+  const label = cb.closest('.checklist-item');
+  if (label) label.classList.toggle('checked-state', cb.checked);
+  if (checked === total) {
+    showToast('Parabéns — checklist completo! 🎉', { type: 'success', duration: 3000 });
+  }
+}
+
+/**
+ * Atualiza a barra de progresso do checklist.
+ * @param {number} checked
+ * @param {number} total
+ */
+function updateProgress(checked, total) {
+  const textEl = document.getElementById('prep-progress-text');
+  const barEl = document.getElementById('prep-progress-bar');
+  if (textEl) textEl.textContent = `${checked}/${total} itens concluídos`;
+  const pct = total > 0 ? (checked / total) * 100 : 0;
+  if (barEl) {
+    barEl.style.width = `${pct}%`;
+    barEl.classList.toggle('full', pct === 100);
+  }
+}
+
+/**
+ * Aplica animações de entrada escalonadas (stagger) nos cards principais.
+ * Executado uma vez após o primeiro render.
+ */
+function applyEntryAnimations() {
+  const sections = document.querySelectorAll('.level-indicator, .cota-legend, .level-graph, .regions, .risk-matrix-section, .alerts-section, .preparation-section');
+  sections.forEach((el, i) => {
+    el.style.animationDelay = `${0.05 + i * 0.08}s`;
+    el.classList.add('animate-fadeInUp');
+  });
+}
+
 // === Eventos ===
 function handleThemeToggle() {
   state.theme = state.theme === 'dark' ? 'light' : 'dark';
@@ -506,6 +609,8 @@ async function init() {
   renderRegions();
   renderRiskMatrix();
   renderAlerts();
+  renderPreparationChecklist();
+  applyEntryAnimations();
   updateTimestamp();
   updateDataSource();
   fadeOutLoader();

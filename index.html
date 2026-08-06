@@ -123,6 +123,39 @@
     </section>
     </main>
 
+    <!-- Checklist de preparação (Fase 7) -->
+    <section class="preparation-section card" id="preparation-section">
+      <h2 class="section-title">Checklist de Preparação — Enchente</h2>
+      <p class="preparation-subtitle">Itens essenciais do kit de emergência e rotas de fuga para a região do Guaíba. Marque os itens já disponíveis — seu progresso é salvo no navegador.</p>
+      <div class="preparation-grid">
+        <div class="preparation-card" id="prep-kit">
+          <h3 class="preparation-card-title">🎒 Kit Emergência (72h)</h3>
+          <ul class="checklist" data-checklist="kit">
+            <li><label class="checklist-item"><input type="checkbox" data-key="kit.agua"> Água (3 dias — 3 L/pessoa/dia)</label></li>
+            <li><label class="checklist-item"><input type="checkbox" data-key="kit.alfac"> Alimentos não perecíveis (72h)</label></li>
+            <li><label class="checklist-item"><input type="checkbox" data-key="kit.med"> Remédios do dia a dia + extras</label></li>
+            <li><label class="checklist-item"><input type="checkbox" data-key="kit.luz"> Lanterna + baterias</label></li>
+            <li><label class="checklist-item"><input type="checkbox" data-key="kit.radio"> Rádio AM/FM a pilha</label></li>
+            <li><label class="checklist-item"><input type="checkbox" data-key="kit.cel"> Carregador de celular portátil</label></li>
+            <li><label class="checklist-item"><input type="checkbox" data-key="kit.doc"> Documentos pessoais (original + cópia)</label></li>
+            <li><label class="checklist-item"><input type="checkbox" data-key="kit.din"> Dinheiro em espécie (pequenas cédulas)</label></li>
+          </ul>
+        </div>
+        <div class="preparation-card" id="prep-evacuation">
+          <h3 class="preparation-card-title">🗺️ Rotas de Fuga</h3>
+          <ul class="checklist" data-checklist="routes">
+            <li><label class="checklist-item"><input type="checkbox" data-key="routes.poa"> POA: Cais Mauá → Alto do Jamantaco (ponto alto)</label></li>
+            <li><label class="checklist-item"><input type="checkbox" data-key="canoas"> Canoas: Av. Getúlio → Serra dos Antos (ponto alto)</label></li>
+            <li><label class="checklist-item"><input type="checkbox" data-key="guaiba"> Guaíba: Centro → Serra do Mar (ponto alto)</label></li>
+          </ul>
+        </div>
+      </div>
+      <div class="preparation-progress">
+        <span class="progress-text" id="prep-progress-text">0/11 itens concluídos</span>
+        <div class="progress-bar"><div class="progress-fill" id="prep-progress-bar"></div></div>
+      </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
       <p class="footer-source">Fonte: <span id="data-source">dados simulados (simulação/offline) para MVP</span></p>

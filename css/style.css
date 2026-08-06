@@ -878,6 +878,184 @@ body {
   transform: scale(1.1);
 }
 
+/* ===== Animações de entrada (Fase 7) ===== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stagger: delay escalonado para animação sequencial de cards */
+.animate-stagger> * {
+  animation: fadeInUp 0.45s ease-out both;
+}
+.animate-stagger> *:nth-child(1) { animation-delay: 0.05s; }
+.animate-stagger> *:nth-child(2) { animation-delay: 0.10s; }
+.animate-stagger> *:nth-child(3) { animation-delay: 0.15s; }
+.animate-stagger> *:nth-child(4) { animation-delay: 0.20s; }
+.animate-stagger> *:nth-child(5) { animation-delay: 0.25s; }
+.animate-stagger> *:nth-child(6) { animation-delay: 0.30s; }
+.animate-stagger> *:nth-child(7) { animation-delay: 0.35s; }
+.animate-stagger> *:nth-child(8) { animation-delay: 0.40s; }
+.animate-stagger> *:nth-child(9) { animation-delay: 0.45s; }
+.animate-stagger> *:nth-child(10) { animation-delay: 0.50s; }
+.animate-stagger> *:nth-child(11) { animation-delay: 0.55s; }
+.animate-stagger> *:nth-child(12) { animation-delay: 0.60s; }
+.animate-stagger> *:nth-child(n+13) { animation-delay: 0.65s; }
+
+/* Smooth scroll global */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Animação de entrada para cards (aplicada via JS) */
+.animate-fadeInUp {
+  animation: fadeInUp 0.5s ease-out both;
+}
+
+/* Item do checklist marcado */
+.checklist-item.checked-state label {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+/* Tema transition mais suave */
+body, .card, .region-card, .alert-card {
+  transition: var(--transition);
+}
+
+/* ===== Checklist de preparação (Fase 7) ===== */
+.preparation-section {
+  padding: 28px 24px;
+  margin-bottom: 24px;
+}
+
+.preparation-section h2 {
+  margin-bottom: 6px;
+}
+
+.preparation-subtitle {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 22px;
+  text-align: center;
+}
+
+.preparation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 22px;
+}
+
+.preparation-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.preparation-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  border-color: var(--water);
+}
+
+.preparation-card-title {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.preparation-card-title:before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 20px;
+  background: var(--water);
+  border-radius: 2px;
+}
+
+.checklist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.checklist-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--text-primary);
+  line-height: 1.5;
+  transition: var(--transition);
+  padding: 6px 0;
+}
+
+.checklist-item:hover {
+  color: var(--water);
+}
+
+.checklist-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--water);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.checklist-item input[type="checkbox"]:checked + span {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.preparation-progress {
+  margin-top: 8px;
+}
+
+.progress-text {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  display: block;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--water), var(--green));
+  border-radius: 4px;
+  width: 0%;
+  transition: width 0.5s ease;
+}
+
+.progress-fill.full {
+  background: linear-gradient(90deg, var(--green), var(--water));
+}
+
+/* ===== Responsividade mobile (Fase 7 polimento) ===== */
 @media (max-width: 640px) {
   .toast-container {
     bottom: 16px;
@@ -888,5 +1066,39 @@ body {
   .risk-table thead th { padding: 8px 6px; }
   .risk-table tbody td { padding: 8px 6px; }
   .risk-badge { font-size: 9px; padding: 3px 8px; }
+
+  .preparation-grid {
+    grid-template-columns: 1fr;
+  }
+  .main-content { padding: 20px 16px; }
+  .cota-legend {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .cota-segment { min-width: 130px; }
+  .level-cota {
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 12px;
+  }
+  .level-value .level-meters {
+    font-size: 48px;
+  }
+  .checklist-item {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header { padding: 16px 14px 12px; }
+  .header h1 { font-size: 18px; }
+  .main-content { padding: 16px 12px; }
+  .level-indicator { padding: 24px 12px; }
+  .level-graph { padding: 20px 12px; }
+  .preparation-section { padding: 22px 16px; }
+  .alerts-section { padding: 20px 16px; }
+  .risk-matrix-section { padding: 20px 16px; }
+  .region-grid { grid-template-columns: 1fr; }
+  .cota-legend { padding: 10px 14px; }
 }
 
