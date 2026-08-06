@@ -72,9 +72,12 @@ TODAS as fases devem seguir a skill `guaiba-flood-monitor-builder` (carregada no
 |- Validação: node -c em todos os JS ✓, JSON válido ✓, IDs HTML↔JS conferidos ✓
 |- Commit: `feat: polimento (Fase 7) — checklist preparação, animações de entrada, responsividade mobile` ✓
 
-### Fase 8 — Deploy GitHub Pages [PENDENTE]
-- Configurar Pages, verificar, atualizar README
-- Commit: `deploy: GitHub Pages`
+### Fase 8 — Deploy GitHub Pages [CONCLUÍDO — 2026-08-06]
+|- Pages habilitado via GitHub API (`POST repos/.../pages`, `build_type: legacy`, source: `master`/`/`) ✓
+|- `.nojekyll` na raiz para impedir processamento Jekyll ✓
+|- Live: https://lloupp.github.io/guaiba-monitor/ ✓
+|- README.md atualizado com seção Deploy + badge + URL ✓
+|- Commit: `deploy: GitHub Pages` ✓
 
 ## Regras do cron
 1. Ler PROGRESS.md
