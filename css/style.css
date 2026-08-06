@@ -429,3 +429,182 @@ body {
   .level-indicator { padding: 26px 16px; }
   .level-graph { padding: 24px 16px; }
 }
+
+/* ===== Região: resumo de risco (Fase 5) ===== */
+.region-risk-summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  flex-wrap: wrap;
+}
+
+.region-risk-label {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.region-risk-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
+.region-risk-cause {
+  color: var(--text-secondary);
+  font-size: 10px;
+  font-style: italic;
+}
+
+/* ===== Matriz de risco (Fase 5) ===== */
+.risk-matrix-section {
+  padding: 24px 20px;
+  margin-bottom: 24px;
+}
+
+.risk-matrix-section h2 {
+  margin-bottom: 6px;
+}
+
+.risk-matrix-subtitle {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 18px;
+  line-height: 1.5;
+}
+
+.risk-matrix-wrap {
+  overflow-x: auto;
+  margin-bottom: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-hover);
+}
+
+.risk-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  min-width: 720px;
+}
+
+.risk-table thead th {
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  padding: 10px 8px;
+  border-bottom: 2px solid var(--border);
+  white-space: nowrap;
+}
+
+.risk-table thead th:first-child {
+  text-align: left;
+}
+
+.risk-table tbody td {
+  padding: 10px 8px;
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+
+.risk-region-cell {
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.risk-blank {
+  color: var(--text-secondary);
+  opacity: 0.3;
+}
+
+.risk-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 10px;
+  white-space: nowrap;
+  min-width: 60px;
+}
+
+/* Cores de risco nas células da matriz */
+.risk-cell[data-risk="normal"]    { background: rgba(34, 197, 94, 0.08); }
+.risk-cell[data-risk="atencao"]   { background: rgba(245, 158, 11, 0.08); }
+.risk-cell[data-risk="inundacao"] { background: rgba(249, 113, 22, 0.08); }
+.risk-cell[data-risk="severa"]    { background: rgba(220, 38, 38, 0.08); }
+.risk-cell[data-risk="critica"]   { background: rgba(220, 38, 38, 0.12); }
+
+/* ===== Orientação por região ===== */
+.orientation-block {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 12px;
+}
+
+.orientation-block:last-child {
+  margin-bottom: 0;
+}
+
+.orientation-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.orientation-region {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.orientation-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 12px;
+}
+
+.orientation-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.orientation-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.orientation-disaster {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.orientation-text {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+  .risk-table { font-size: 12px; min-width: 600px; }
+  .risk-table thead th { padding: 8px 6px; }
+  .risk-table tbody td { padding: 8px 6px; }
+  .risk-badge { font-size: 9px; padding: 3px 8px; }
+}
+

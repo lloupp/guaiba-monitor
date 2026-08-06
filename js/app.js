@@ -6,6 +6,17 @@
 import { formatMeters, formatDate, saveToStorage, loadFromStorage, generateId } from './utils.js';
 import { fetchAll, sampleLevels, sampleAlerts } from './api.js';
 import { appendLevelReading, getLevelHistory, renderLevelChart } from './levels.js';
+import {
+  DISASTER_TYPES,
+  DISASTER_ORDER,
+  buildRegionRisks,
+  sampleRegionRisks,
+  getRegionOverallRisk,
+  getRisksByRegion,
+  formatRiskLevel,
+  riskRank,
+  getOrientation,
+} from './risks.js';
 
 // === Dados de exemplo — SIMULAÇÃO/OFFLINE ===
 // Fase 1 documentou que não há endpoint JSON público para o nível do Guaíba.
@@ -26,10 +37,12 @@ const state = {
   regions: [],
   alerts: [],
   weather: [],
+  riskMatrix: [],
   dataSources: {
     level: 'simulação/offline',
     alerts: 'simulação/offline',
-    weather: 'simulação/offline'
+    weather: 'simulação/offline',
+    risks: 'simulação/offline',
   },
   theme: loadFromStorage('settings.theme', 'dark'),
   loading: true
@@ -128,6 +141,14 @@ async function loadData() {
       ? (state.weather.every(w => w.source === 'simulação/offline') ? 'simulação/offline' : 'INMET')
       : 'simulação/offline';
 
+    // === Fase 5: Matriz de riscos (região × tipo de desastre) ===
+    state.riskMatrix = buildRegionRisks(
+      state.regions, state.alerts, state.weather, state.level, state.dataSources
+    );
+    state.dataSources.risks = state.riskMatrix.every(r => r.source === 'simulação/offline')
+      ? 'simulação/offline'
+      : 'derivado (nível + INMET)';
+
     // Salva no localStorage (com prefixo gm_)
     saveToStorage('levels', stations);
     saveToStorage('alerts', state.alerts);
@@ -143,6 +164,9 @@ async function loadData() {
     state.level = fallback.find(s => s.station === 'poa-cais-maua') || fallback[0];
     state.regions = fallback.map(levelToRegion);
     state.alerts = sampleAlerts();
+    // === Fase 5: Matriz de riscos (simulação/offline) ===
+    state.riskMatrix = sampleRegionRisks();
+    state.dataSources.risks = 'simulação/offline';
   } finally {
     state.loading = false;
     // Registra a leitura atual no histórico (para o gráfico da Fase 4)
@@ -207,6 +231,8 @@ function renderChart() {
 
 /**
  * Renderiza os cards de risco por região.
+ * Fase 5: integra a matriz de riscos (região × desastre) — adiciona
+ * um badge de risco geral derivado da matriz ao lado do nível.
  */
 function renderRegions() {
   const grid = document.getElementById('region-grid');
@@ -215,6 +241,10 @@ function renderRegions() {
   state.regions.forEach(region => {
     const status = getLevelStatus(region.levelMeters);
     const trend = getTrendInfo(region.trend);
+    const overall = getRegionOverallRisk(state.riskMatrix, region.name);
+    const overallBadge = overall
+      ? `<span class="region-risk-badge badge-${formatRiskLevel(overall.riskLevel).badgeClass}">${formatRiskLevel(overall.riskLevel).icon} ${formatRiskLevel(overall.riskLevel).label}</span>`
+      : '';
 
     const card = document.createElement('div');
     card.className = 'region-card';
@@ -228,6 +258,11 @@ function renderRegions() {
       <div class="region-trend">
         <span class="trend-icon">${trend.icon}</span>
         <span>${trend.text}</span>
+      </div>
+      <div class="region-risk-summary">
+        <span class="region-risk-label">Risco geral:</span>
+        ${overallBadge || '<span class="region-risk-badge badge-normal">🟢 Normal</span>'}
+        ${overall ? `<span class="region-risk-cause">(${DISASTER_TYPES[overall.disasterType]?.label || overall.disasterType})</span>` : ''}
       </div>
       <p class="region-note">${region.note}</p>
     `;
@@ -280,6 +315,93 @@ function fadeOutLoader() {
   }, 400);
 }
 
+/**
+ * Renderiza a matriz de risco (região × tipo de desastre).
+ * Fase 5: tabela com badges de risco colorido + texto de orientação.
+ */
+function renderRiskMatrix() {
+  const container = document.getElementById('risk-matrix');
+  if (!container) return;
+
+  // Determina regiões únicas (mantém ordem de state.regions)
+  const regionNames = state.regions.map(r => r.name);
+
+  // === Tabela da matriz ===
+  const table = document.createElement('table');
+  table.className = 'risk-table';
+  table.innerHTML = '';
+
+  // Header
+  const thead = document.createElement('thead');
+  thead.innerHTML = `
+    <tr>
+      <th>Região</th>
+      ${DISASTER_ORDER.map(key => `<th>${DISASTER_TYPES[key].icon} ${DISASTER_TYPES[key].label}</th>`).join('')}
+    </tr>
+  `;
+  table.appendChild(thead);
+
+  // Body — uma linha por região
+  const tbody = document.createElement('tbody');
+  regionNames.forEach(regionName => {
+    const risks = getRisksByRegion(state.riskMatrix, regionName);
+    const row = document.createElement('tr');
+    row.innerHTML = `<td class="risk-region-cell">${regionName}</td>`;
+
+    DISASTER_ORDER.forEach(disasterKey => {
+      const risk = risks.find(r => r.disasterType === disasterKey);
+      if (!risk) {
+        row.innerHTML += `<td class="risk-blank">—</td>`;
+      } else {
+        const fmt = formatRiskLevel(risk.riskLevel);
+        row.innerHTML += `
+          <td class="risk-cell" data-risk="${fmt.css}">
+            <span class="risk-badge badge-${fmt.badgeClass}">${fmt.label}</span>
+          </td>
+        `;
+      }
+    });
+    tbody.appendChild(row);
+  });
+  table.appendChild(tbody);
+  container.innerHTML = '';
+  container.appendChild(table);
+
+  // === Texto de orientação por região ===
+  const orientationEl = document.getElementById('risk-orientation');
+  if (!orientationEl) return;
+
+  orientationEl.innerHTML = '';
+  regionNames.forEach(regionName => {
+    const risks = getRisksByRegion(state.riskMatrix, regionName);
+    const overall = getRegionOverallRisk(state.riskMatrix, regionName);
+    const block = document.createElement('div');
+    block.className = 'orientation-block';
+    const overallFmt = overall ? formatRiskLevel(overall.riskLevel) : formatRiskLevel('baixo');
+    block.innerHTML = `
+      <div class="orientation-header">
+        <span class="orientation-region">${regionName}</span>
+        <span class="orientation-badge badge-${overallFmt.badgeClass}">${overallFmt.icon} ${overallFmt.label}</span>
+      </div>
+      <div class="orientation-content">
+        ${risks
+          .filter(r => riskRank(r.riskLevel) > 0)  // só riscos acima de "baixo"
+          .sort((a, b) => riskRank(b.riskLevel) - riskRank(a.riskLevel))
+          .map(r => {
+            const fmt = formatRiskLevel(r.riskLevel);
+            return `
+              <div class="orientation-item">
+                <span class="orientation-disaster">${DISASTER_TYPES[r.disasterType]?.icon || '⚠️'} ${DISASTER_TYPES[r.disasterType]?.label || r.disasterType}</span>
+                <span class="orientation-text">${getOrientation(r.disasterType, r.riskLevel)}</span>
+              </div>
+            `;
+          }).join('')}
+      </div>
+    `;
+    orientationEl.appendChild(block);
+  });
+}
+
 // === Eventos ===
 function handleThemeToggle() {
   state.theme = state.theme === 'dark' ? 'light' : 'dark';
@@ -301,14 +423,18 @@ async function init() {
   renderLevelIndicator();
   renderChart();
   renderRegions();
+  renderRiskMatrix();
   updateTimestamp();
   updateDataSource();
   fadeOutLoader();
 
   document.getElementById('theme-toggle').addEventListener('click', handleThemeToggle);
 
-  // Redesenha o gráfico responsivamente
-  window.addEventListener('resize', () => renderChart());
+  // Redesenha o gráfico e matriz responsivamente
+  window.addEventListener('resize', () => {
+    renderChart();
+    renderRiskMatrix();
+  });
 }
 
 init();
