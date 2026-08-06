@@ -1,14 +1,15 @@
 // app.js — Lógica principal do Guaiba Monitor
-// Fase 2: Layout e Dashboard
+// Fase 2 + Fase 3: Layout e Dashboard + Coleta de dados
 //
-// Importa utilitários de utils.js. Os módulos levels.js, risks.js e alerts.js
-// são carregados dinamicamente quando implementados (Fases 4–6).
+// app.js é o entry point único (index.html carrega apenas este módulo).
+// Importa utils.js e api.js via import.
 import { formatMeters, formatDate, saveToStorage, loadFromStorage, generateId } from './utils.js';
+import { fetchAll, sampleLevels, sampleAlerts } from './api.js';
 
 // === Dados de exemplo — SIMULAÇÃO/OFFLINE ===
 // Fase 1 documentou que não há endpoint JSON público para o nível do Guaíba.
 // Estes dados são MARCADADOS como "simulação/offline" e NUNCA apresentados como reais.
-// Quando Fase 3 conectar uma fonte JSON real, api.js fornecerá os dados reais.
+// Quando api.js conecta uma fonte real, ela fornece os dados reais.
 
 const THRESHOLDS = {
   atencao: 1.5,
@@ -18,47 +19,19 @@ const THRESHOLDS = {
   referencia_mai2024: 5.3
 };
 
-// Dado de nível atual (simulação)
-const SAMPLE_LEVEL = {
-  id: generateId(),
-  station: 'poa-cais-maua',
-  location: 'Porto Alegre',
-  levelMeters: 2.13,
-  trend: 'subindo',
-  recordedAt: new Date().toISOString(),
-  source: 'simulação/offline'
-};
-
-// Dados de risco por região (simulação)
-const SAMPLE_REGIONS = [
-  {
-    id: 'poa',
-    name: 'Porto Alegre',
-    levelMeters: 2.13,
-    trend: 'subindo',
-    note: 'Áreas baixas do centro e zona sul em risco. Evite passar em vias alagadas.'
-  },
-  {
-    id: 'canoas',
-    name: 'Canoas',
-    levelMeters: 1.82,
-    trend: 'estavel',
-    note: 'Margens do Guaíba sob vigilância. Monitorar atualizações.'
-  },
-  {
-    id: 'guaiba',
-    name: 'Guaíba',
-    levelMeters: 1.45,
-    trend: 'descendo',
-    note: 'Nível estável, abaixo do limite de atenção (1.50 m).'
-  }
-];
-
 // === Estado da aplicação ===
 const state = {
-  level: SAMPLE_LEVEL,
-  regions: SAMPLE_REGIONS,
-  theme: loadFromStorage('settings.theme', 'dark')
+  level: null,
+  regions: [],
+  alerts: [],
+  weather: [],
+  dataSources: {
+    level: 'simulação/offline',
+    alerts: 'simulação/offline',
+    weather: 'simulação/offline'
+  },
+  theme: loadFromStorage('settings.theme', 'dark'),
+  loading: true
 };
 
 // === Funções de classificação ===
@@ -88,6 +61,90 @@ function getTrendInfo(trend) {
     estavel:  { icon: '→', text: 'Estável' }
   };
   return map[trend] || map.estavel;
+}
+
+/**
+ * Gera orientação por região baseada no nível.
+ */
+function getRegionNote(levelMeters, location) {
+  const l = parseFloat(levelMeters);
+  if (l >= THRESHOLDS.critica) return `Nível CRÍTICO em ${location}. Evacuação emergencial imediata. Afastar-se de margens e vias alagadas.`;
+  if (l >= THRESHOLDS.severa)  return `${location} em nível severo (${levelMeters.toFixed(2)} m). Risco de inundações avançadas. Redobre atenção.`;
+  if (l >= THRESHOLDS.inundacao) return `${location} acima da cota de inundação (${levelMeters.toFixed(2)} m). Áreas baixas em risco. Monitore atualizações.`;
+  if (l >= THRESHOLDS.atencao) return `${location} no limite de atenção (${levelMeters.toFixed(2)} m). Vigiar evolução.`;
+  return `${location} com nível normal (${levelMeters.toFixed(2)} m). Monitorar periodicamente.`;
+}
+
+/**
+ * Converte uma leitura de nível (LevelReading) para o formato de card de região.
+ */
+function levelToRegion(levelReading) {
+  return {
+    id: levelReading.station,
+    name: levelReading.location,
+    levelMeters: levelReading.levelMeters,
+    trend: levelReading.trend,
+    note: getRegionNote(levelReading.levelMeters, levelReading.location),
+    source: levelReading.source
+  };
+}
+
+// === Carregamento de dados ===
+
+/**
+ * Carrega todos os dados via api.js.
+ * Usa fallback (sample) quando APIs não respondem.
+ * Atualiza o state e re-renderiza.
+ */
+async function loadData() {
+  try {
+    const data = await fetchAll();
+
+    // Nível do Guaíba (sempre simulação para MVP, mas arquitetura pronta)
+    const stations = data.level.stations || sampleLevels();
+    state.dataSources.level = data.level.source;
+    // O nível atual mostra a estação principal (POA Cais Mauá)
+    const mainStation = stations.find(s => s.station === 'poa-cais-maua') || stations[0];
+    state.level = mainStation;
+
+    // Regiões: converte todas as estações para cards de região
+    state.regions = stations.map(levelToRegion);
+
+    // Alertas: INMET + DCRS reais, com fallback sample
+    if (data.alerts.length > 0) {
+      state.alerts = data.alerts;
+      state.dataSources.alerts = data.alerts.every(a => a.source === 'simulação/offline')
+        ? 'simulação/offline'
+        : data.alerts.find(a => a.source !== 'simulação/offline')?.source || 'simulação/offline';
+    } else {
+      state.alerts = sampleAlerts();
+      state.dataSources.alerts = 'simulação/offline (fallback — sem alertas reais)';
+    }
+
+    // Clima
+    state.weather = data.weather || [];
+    state.dataSources.weather = state.weather.length > 0
+      ? (state.weather.every(w => w.source === 'simulação/offline') ? 'simulação/offline' : 'INMET')
+      : 'simulação/offline';
+
+    // Salva no localStorage (com prefixo gm_)
+    saveToStorage('levels', stations);
+    saveToStorage('alerts', state.alerts);
+    saveToStorage('weather', state.weather);
+    saveToStorage('data_sources', state.dataSources);
+
+  } catch (err) {
+    console.error('[app] Erro ao carregar dados — usando fallback:', err.message);
+    state.dataSources.level = 'simulação/offline (erro coleta)';
+    state.dataSources.alerts = 'simulação/offline (erro coleta)';
+    state.dataSources.weather = 'simulação/offline (erro coleta)';
+    const fallback = sampleLevels();
+    state.level = fallback.find(s => s.station === 'poa-cais-maua') || fallback[0];
+    state.regions = fallback.map(levelToRegion);
+    state.alerts = sampleAlerts();
+  } finally {
+    state.loading = false;
+  }
 }
 
 // === Renderização ===
@@ -171,6 +228,16 @@ function updateTimestamp() {
 }
 
 /**
+ * Atualiza o indicador de fonte de dados no footer.
+ */
+function updateDataSource() {
+  const sources = Object.entries(state.dataSources)
+    .filter(([_, v]) => v && !v.includes('erro'))
+    .map(([k, v]) => `${k}: ${v}`);
+  document.getElementById('data-source').textContent = sources.join(' | ') || 'dados simulados (simulação/offline) para MVP';
+}
+
+/**
  * Remove o loader após o conteúdo estar pronto.
  */
 function fadeOutLoader() {
@@ -191,12 +258,17 @@ function handleThemeToggle() {
 }
 
 // === Inicialização ===
-function init() {
+async function init() {
   applyTheme();
   renderThemeIcon();
+
+  // Carrega dados via API (com fallback para sample)
+  await loadData();
+
   renderLevelIndicator();
   renderRegions();
   updateTimestamp();
+  updateDataSource();
   fadeOutLoader();
 
   document.getElementById('theme-toggle').addEventListener('click', handleThemeToggle);
