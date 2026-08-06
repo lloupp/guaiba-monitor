@@ -3,7 +3,7 @@
 ## Skill de referência: `guaiba-flood-monitor-builder`
 TODAS as fases devem seguir a skill `guaiba-flood-monitor-builder` (carregada no cron).
 
-## Status: Fase 6 concluída — próxima fase pendente (Fase 7)
+## Status: Fase 7 concluída — próxima fase pendente (Fase 8)
 
 ## Fases
 
@@ -62,11 +62,15 @@ TODAS as fases devem seguir a skill `guaiba-flood-monitor-builder` (carregada no
 ||- Toast de sucesso ao ajustar limiar ✓
 ||- Commit: `feat: alertas e notificações (Fase 6) — lista de alertas + toasts de threshold` ✓
 
-### Fase 7 — Polimento [PENDENTE]
-- Animações, responsividade mobile
-- Checklist de preparação
-- Validação
-- Commit: `feat: polimento`
+### Fase 7 — Polimento [CONCLUÍDO — 2026-08-06]
+|- Animações de entrada escalonadas (fadeInUp + stagger nos cards) ✓
+|- Checklist de preparação: kit emergência (8 itens) + rotas de fuga (3 itens) ✓
+|- Persistência do checklist no localStorage (gm_checklist) ✓
+|- Barra de progresso visual (11 itens) com toast de conclusão ✓
+|- Responsividade mobile refinada (480px + 640px) ✓
+|- Smooth scroll + transições de tema suaves ✓
+|- Validação: node -c em todos os JS ✓, JSON válido ✓, IDs HTML↔JS conferidos ✓
+|- Commit: `feat: polimento (Fase 7) — checklist preparação, animações de entrada, responsividade mobile` ✓
 
 ### Fase 8 — Deploy GitHub Pages [PENDENTE]
 - Configurar Pages, verificar, atualizar README
