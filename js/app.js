@@ -1,8 +1,8 @@
 // app.js — Lógica principal do Guaiba Monitor
-// Fase 2 + Fase 3: Layout e Dashboard + Coleta de dados
+// Fase 2 + Fase 3 + Fase 5 + Fase 6: Layout/Dashboard + Coleta + Riscos + Alertas
 //
 // app.js é o entry point único (index.html carrega apenas este módulo).
-// Importa utils.js e api.js via import.
+// Importa utils.js, api.js, levels.js, risks.js e alerts.js via import.
 import { formatMeters, formatDate, saveToStorage, loadFromStorage, generateId } from './utils.js';
 import { fetchAll, sampleLevels, sampleAlerts } from './api.js';
 import { appendLevelReading, getLevelHistory, renderLevelChart } from './levels.js';
@@ -17,6 +17,13 @@ import {
   riskRank,
   getOrientation,
 } from './risks.js';
+import {
+  formatAlertSeverity,
+  sortAlertsBySeverity,
+  formatAlertForDisplay,
+  showToast,
+  checkLevelThreshold,
+} from './alerts.js';
 
 // === Dados de exemplo — SIMULAÇÃO/OFFLINE ===
 // Fase 1 documentou que não há endpoint JSON público para o nível do Guaíba.
@@ -38,6 +45,7 @@ const state = {
   alerts: [],
   weather: [],
   riskMatrix: [],
+  alertThreshold: loadFromStorage('settings.alertThreshold', THRESHOLDS.atencao),
   dataSources: {
     level: 'simulação/offline',
     alerts: 'simulação/offline',
@@ -172,7 +180,11 @@ async function loadData() {
     // Registra a leitura atual no histórico (para o gráfico da Fase 4)
     if (state.level) {
       appendLevelReading(state.level);
+      // Fase 6: verifica limiar e mostra toast se houver escalada de risco
+      checkLevelThreshold(state.level, state.alertThreshold);
     }
+    // Persiste alertas no localStorage (prefixo gm_)
+    saveToStorage('alerts', state.alerts);
   }
 }
 
@@ -402,6 +414,75 @@ function renderRiskMatrix() {
   });
 }
 
+/**
+ * Renderiza a lista de alertas ativos.
+ * Fase 6: ordena por gravidade (mais grave primeiro), exibe como cards
+ * coloridos com badge de severidade. Mostra estado vazio quando não há alertas.
+ */
+function renderAlerts() {
+  const listEl = document.getElementById('alerts-list');
+  const emptyEl = document.getElementById('alerts-empty');
+  if (!listEl || !emptyEl) return;
+
+  const sorted = sortAlertsBySeverity(state.alerts);
+
+  listEl.innerHTML = '';
+
+  if (sorted.length === 0) {
+    listEl.style.display = 'none';
+    emptyEl.style.display = 'block';
+    return;
+  }
+
+  listEl.style.display = 'flex';
+  emptyEl.style.display = 'none';
+
+  sorted.forEach(alert => {
+    const display = formatAlertForDisplay(alert);
+    const sev = display.severityInfo;
+    const regionsText = display.regions.length > 0
+      ? display.regions.join(', ')
+      : 'Todas as regiões';
+
+    const instructionsHtml = display.instructions && display.instructions.length > 0
+      ? `
+        <div class="alert-card-instructions">
+          <strong>Orientações:</strong>
+          <ul>${display.instructions.map(i => `<li>${i}</li>`).join('')}</ul>
+        </div>
+      `
+      : '';
+
+    const card = document.createElement('div');
+    card.className = `alert-card alert-card--${sev.css}`;
+    card.setAttribute('data-alert-id', display.id);
+
+    card.innerHTML = `
+      <div class="alert-card-header">
+        <div class="alert-card-title">
+          <span class="alert-icon">${sev.icon}</span>
+          ${display.title}
+        </div>
+        <div class="alert-card-meta">
+          <span class="alert-card-type">${display.type}</span>
+          <span class="alert-card-badge badge-${sev.badgeClass}">${sev.label}</span>
+        </div>
+      </div>
+      <div class="alert-card-message">${display.message}</div>
+      <div class="alert-card-source">
+        <span class="alert-source-loc">📍 ${regionsText}</span>
+        <span class="alert-pipe">•</span>
+        <span class="alert-source-name">${display.source}</span>
+        <span class="alert-pipe">•</span>
+        <span class="alert-time">${formatDate(display.issuedAt)}</span>
+      </div>
+      ${instructionsHtml}
+    `;
+
+    listEl.appendChild(card);
+  });
+}
+
 // === Eventos ===
 function handleThemeToggle() {
   state.theme = state.theme === 'dark' ? 'light' : 'dark';
@@ -424,11 +505,28 @@ async function init() {
   renderChart();
   renderRegions();
   renderRiskMatrix();
+  renderAlerts();
   updateTimestamp();
   updateDataSource();
   fadeOutLoader();
 
   document.getElementById('theme-toggle').addEventListener('click', handleThemeToggle);
+
+  // Fase 6: listener para o limiar de alerta configurável pelo usuário
+  const thresholdInput = document.getElementById('alert-threshold-input');
+  if (thresholdInput) {
+    thresholdInput.value = String(state.alertThreshold);
+    thresholdInput.addEventListener('change', (e) => {
+      const val = parseFloat(e.target.value);
+      if (!isNaN(val) && val >= 0) {
+        state.alertThreshold = val;
+        saveToStorage('settings.alertThreshold', val);
+        showToast(`Limiar de alerta ajustado para ${formatMeters(val)}.`, { type: 'success', duration: 3000 });
+      } else {
+        thresholdInput.value = String(state.alertThreshold);
+      }
+    });
+  }
 
   // Redesenha o gráfico e matriz responsivamente
   window.addEventListener('resize', () => {

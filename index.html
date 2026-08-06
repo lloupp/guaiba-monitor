@@ -102,6 +102,25 @@
         <!-- Texto de orientação por região -->
         <div class="risk-orientation" id="risk-orientation"></div>
       </section>
+
+    <!-- Alertas ativos (Fase 6) -->
+    <section class="alerts-section card" id="alerts-section">
+      <div class="alerts-header">
+        <h2 class="section-title">Alertas Ativos</h2>
+        <div class="alert-threshold-control">
+          <label for="alert-threshold-input">Limiar de alerta:</label>
+          <input type="number" id="alert-threshold-input" min="0" max="6" step="0.1" value="1.5">
+          <span class="threshold-unit">m</span>
+        </div>
+      </div>
+      <p class="alerts-subtitle">Alertas meteorológicos (INMET) e da Defesa Civil RS. Alertas acima são ordenados por gravidade.</p>
+      <div class="alerts-list" id="alerts-list">
+        <!-- Preenchido dinamicamente por app.js (renderAlerts) -->
+      </div>
+      <div class="alerts-empty" id="alerts-empty">
+        <span>✅ Nenhum alerta ativo no momento.</span>
+      </div>
+    </section>
     </main>
 
     <!-- Footer -->

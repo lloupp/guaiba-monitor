@@ -3,7 +3,7 @@
 ## Skill de referência: `guaiba-flood-monitor-builder`
 TODAS as fases devem seguir a skill `guaiba-flood-monitor-builder` (carregada no cron).
 
-## Status: Fase 3 concluída — próxima fase pendente (Fase 4)
+## Status: Fase 6 concluída — próxima fase pendente (Fase 7)
 
 ## Fases
 
@@ -51,11 +51,16 @@ TODAS as fases devem seguir a skill `guaiba-flood-monitor-builder` (carregada no
 ||- Dados sample (simulação/offline) e derivação real — mesma arquitetura da Fase 3 ✓
 ||- Commit: `feat: riscos por região e tipo (Fase 5) — matriz de risco região×desastre + orientações` ✓
 
-### Fase 6 — Alertas e notificações [PENDENTE]
-- Lista de alertas ativos (INMET/Defesa Civil)
-- Severidade colorida (amarelo/laranja/vermelho)
-- Aviso toast quando nível cruza limiar do usuário
-- Commit: `feat: alertas e notificações`
+### Fase 6 — Alertas e notificações [CONCLUÍDO — 2026-08-06]
+||- Lista de alertas ativos (INMET/Defesa Civil) ✓
+||- Severidade colorida (amarelo/laranja/vermelho) ✓
+||- Aviso toast quando nível cruza limiar do usuário ✓
+||- Ordenação por gravidade (mais grave primeiro) ✓
+||- Estado vazio quando não há alertas ✓
+||- Limiar configurável pelo usuário (input + localStorage gm_settings.alertThreshold) ✓
+||- Toast de escalada de risco (normal→atenção→inundação→severa→crítica) ✓
+||- Toast de sucesso ao ajustar limiar ✓
+||- Commit: `feat: alertas e notificações (Fase 6) — lista de alertas + toasts de threshold` ✓
 
 ### Fase 7 — Polimento [PENDENTE]
 - Animações, responsividade mobile
