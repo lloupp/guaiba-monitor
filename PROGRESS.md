@@ -3,7 +3,7 @@
 ## Skill de referência: `guaiba-flood-monitor-builder`
 TODAS as fases devem seguir a skill `guaiba-flood-monitor-builder` (carregada no cron).
 
-## Status: Fase 2 concluída — próxima fase pendente (Fase 3)
+## Status: Fase 3 concluída — próxima fase pendente (Fase 4)
 
 ## Fases
 
@@ -28,11 +28,11 @@ TODAS as fases devem seguir a skill `guaiba-flood-monitor-builder` (carregada no
 - CSS responsivo, tema escuro
 - Commit: `feat: layout e dashboard`
 
-### Fase 3 — Coleta de dados (API) [PENDENTE]
-- Implementar js/api.js: fetch nível + alertas
-- Fallback: dados de exemplo quando offline
-- Política de retry e timeout
-- Commit: `feat: coleta de dados`
+### Fase 3 — Coleta de dados (API) [CONCLUÍDO — 2026-08-06]
+|- Implementar js/api.js: fetch nível + alertas ✓
+|- Fallback: dados de exemplo quando offline ✓
+|- Política de retry e timeout ✓
+|- Commit: `feat: coleta de dados (api.js + integração no app.js)` ✓
 
 ### Fase 4 — Nível e Gráfico [PENDENTE]
 - Nível atual + cota de referência
