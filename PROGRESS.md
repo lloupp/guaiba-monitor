@@ -34,11 +34,13 @@ TODAS as fases devem seguir a skill `guaiba-flood-monitor-builder` (carregada no
 |- Política de retry e timeout ✓
 |- Commit: `feat: coleta de dados (api.js + integração no app.js)` ✓
 
-### Fase 4 — Nível e Gráfico [PENDENTE]
-- Nível atual + cota de referência
-- Gráfico de linha/área em Canvas com linha de transbordo
-- Histórico persistido em localStorage
-- Commit: `feat: nível e gráfico`
+### Fase 4 — Nível e Gráfico [CONCLUÍDO — 2026-08-06]
+|- Nível atual + cota de referência ✓ (já existia em app.js, integrado ao gráfico)
+|- Gráfico de linha/área em Canvas com linha de transbordo ✓
+|- Histórico persistido em localStorage (gm_levels_history) ✓
+|- Deduplicação por estação + minuto, cap de 50 leituras por estação ✓
+|- Re-render responsivo (resize + toggle de tema) ✓
+|- Commit: `feat: nível e gráfico (Canvas + histórico localStorage)` ✓
 
 ### Fase 5 — Riscos por região e tipo [PENDENTE]
 - Matriz de risco: ciclone bomba, vendaval, granizo, deslizamento, enchente
