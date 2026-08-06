@@ -288,29 +288,41 @@ body {
   color: var(--text-primary);
 }
 
-/* ===== Gráfico (placeholder) ===== */
-.graph-placeholder {
+/* ===== Gráfico de nível (Fase 4) ===== */
+.level-graph {
   text-align: center;
-  padding: 32px 20px;
+  padding: 24px 20px;
   margin-bottom: 24px;
 }
 
-.graph-placeholder h2 {
+.level-graph h2 {
   font-size: 16px;
   font-weight: 600;
   color: var(--text-secondary);
   margin-bottom: 14px;
 }
 
-.placeholder-content {
-  padding: 28px 16px;
-  border: 2px dashed var(--border);
+.graph-canvas-wrap {
+  background: var(--bg-hover);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
-  color: var(--text-secondary);
+  overflow: hidden;
+  margin-bottom: 12px;
 }
 
-.placeholder-content p {
-  font-size: 14px;
+.graph-canvas-wrap canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.graph-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--text-secondary);
+  padding: 0 4px;
 }
 
 /* ===== Regiões ===== */
@@ -415,5 +427,5 @@ body {
   .cota-segment { min-width: 140px; }
   .region-grid { grid-template-columns: 1fr; }
   .level-indicator { padding: 26px 16px; }
-  .graph-placeholder { padding: 24px 16px; }
+  .level-graph { padding: 24px 16px; }
 }

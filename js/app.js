@@ -5,6 +5,7 @@
 // Importa utils.js e api.js via import.
 import { formatMeters, formatDate, saveToStorage, loadFromStorage, generateId } from './utils.js';
 import { fetchAll, sampleLevels, sampleAlerts } from './api.js';
+import { appendLevelReading, getLevelHistory, renderLevelChart } from './levels.js';
 
 // === Dados de exemplo — SIMULAÇÃO/OFFLINE ===
 // Fase 1 documentou que não há endpoint JSON público para o nível do Guaíba.
@@ -144,6 +145,10 @@ async function loadData() {
     state.alerts = sampleAlerts();
   } finally {
     state.loading = false;
+    // Registra a leitura atual no histórico (para o gráfico da Fase 4)
+    if (state.level) {
+      appendLevelReading(state.level);
+    }
   }
 }
 
@@ -172,6 +177,32 @@ function renderLevelIndicator() {
 
   const trendEl = document.getElementById('level-trend');
   trendEl.innerHTML = `<span class="trend-icon">${trend.icon}</span><span>${trend.text} há 2h</span>`;
+}
+
+/**
+ * Renderiza o gráfico de histórico do nível em Canvas.
+ * Usa o histórico persistido em localStorage (localStorage gm_levels_history).
+ */
+function renderChart() {
+  const canvas = document.getElementById('level-canvas');
+  if (!canvas) return;
+
+  const history = getLevelHistory(state.level.station);
+  const threshold = THRESHOLDS.inundacao;
+
+  renderLevelChart(canvas, history, threshold);
+
+  // Atualiza metadados abaixo do gráfico
+  const countEl = document.getElementById('graph-count');
+  const sourceEl = document.getElementById('graph-source');
+  if (countEl) {
+    countEl.textContent = history.length > 0
+      ? `${history.length} leitura(s) — última: ${formatDate(history[history.length - 1].recordedAt)}`
+      : 'Sem histórico';
+  }
+  if (sourceEl) {
+    sourceEl.textContent = state.dataSources.level;
+  }
 }
 
 /**
@@ -255,6 +286,8 @@ function handleThemeToggle() {
   applyTheme();
   renderThemeIcon();
   saveToStorage('settings.theme', state.theme);
+  // Re-renderiza o gráfico com as cores do novo tema
+  renderChart();
 }
 
 // === Inicialização ===
@@ -266,12 +299,16 @@ async function init() {
   await loadData();
 
   renderLevelIndicator();
+  renderChart();
   renderRegions();
   updateTimestamp();
   updateDataSource();
   fadeOutLoader();
 
   document.getElementById('theme-toggle').addEventListener('click', handleThemeToggle);
+
+  // Redesenha o gráfico responsivamente
+  window.addEventListener('resize', () => renderChart());
 }
 
 init();
