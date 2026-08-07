@@ -29,6 +29,21 @@ export function formatDate(dateString) {
 }
 
 export function riskColor(level) {
-  const map = { baixo: 'var(--green)', moderado: 'var(--yellow)', alto: 'var(--red)', critico: '#dc2626' };
+  const map = { baixo: 'var(--green)', moderado: 'var(--yellow)', alto: 'var(--red)', critico: 'var(--red)' };
   return map[level] || 'var(--text-secondary)';
+}
+
+/**
+ * Escapa caracteres HTML para evitar injeção (XSS) ao injetar dados
+ * externos (INMET/DCRS) via innerHTML.
+ * @param {*} value
+ * @returns {string}
+ */
+export function escapeHtml(value) {
+  return String(value == null ? '' : value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }

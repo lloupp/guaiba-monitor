@@ -1,6 +1,7 @@
 // api.js — Coleta de dados (IPH/CPRM/INMET/Defesa Civil)
 // Fase 3: Coleta de dados (API)
 //
+import { generateId } from './utils.js';
 // Endpoints validados (ver docs/fase1-fontes-e-endpoints.md):
 //   ✓ INMET  /avisos/ativos        — JSON, CORS aberto, sem auth
 //   ✓ INMET  /previsao/{geocode}   — JSON, CORS aberto, sem auth (ex: 4314902=POA)

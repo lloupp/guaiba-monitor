@@ -149,20 +149,10 @@ function renderLevelChart(canvas, readings, threshold) {
   const rawMax = Math.max(...values, threshold);
   const yBot = Math.max(0, Math.floor(rawMin - 0.5));
   const yTop = Math.ceil(rawMax + 0.5);
-  const yRange = yTop - yBot;
-  // Garante altura mínima de escala
-  const yFinalBot = yBot;
-  const yFinalTop = yTop;
-  const yFinalRange = yFinalTop - yFinalBot;
+  const yFinalRange = yTop - yBot;
 
   /** @param {number} v */
-  const yToPixel = (v) => pad.top + plotH - ((v - yFinalBot) / yFinalRange) * plotH;
-
-  if (readings.length === 1) {
-    // Escala x única
-    const xMid = pad.left + plotW / 2;
-    const yMid = yToPixel(readings[0].levelMeters);
-  }
+  const yToPixel = (v) => pad.top + plotH - ((v - yBot) / yFinalRange) * plotH;
 
   // --- Gridlines horizontais + rótulos Y ---
   ctx.strokeStyle = colors.grid;
@@ -171,7 +161,7 @@ function renderLevelChart(canvas, readings, threshold) {
   ctx.textAlign = 'right';
   const gridSteps = 5;
   for (let i = 0; i <= gridSteps; i++) {
-    const val = yFinalBot + (yFinalRange * i / gridSteps);
+    const val = yBot + (yFinalRange * i / gridSteps);
     const y = yToPixel(val);
     ctx.beginPath();
     ctx.moveTo(pad.left, y);
@@ -213,8 +203,8 @@ function renderLevelChart(canvas, readings, threshold) {
     ctx.lineTo(x, y);
   }
   // Fecha a área na base
-  ctx.lineTo(pad.left + plotW, yToPixel(yFinalBot));
-  ctx.lineTo(pad.left, yToPixel(yFinalBot));
+  ctx.lineTo(pad.left + plotW, yToPixel(yBot));
+  ctx.lineTo(pad.left, yToPixel(yBot));
   ctx.closePath();
   ctx.fillStyle = colors.area;
   ctx.fill();

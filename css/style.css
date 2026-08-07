@@ -542,6 +542,18 @@ body {
 .risk-cell[data-risk="severa"]    { background: rgba(220, 38, 38, 0.08); }
 .risk-cell[data-risk="critica"]   { background: rgba(220, 38, 38, 0.12); }
 
+/* Células clicáveis da matriz (Fase 5 — detalhes de orientação) */
+.risk-cell {
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.risk-cell:hover,
+.risk-cell:focus-visible {
+  transform: scale(1.04);
+  box-shadow: 0 0 0 2px var(--accent);
+  outline: none;
+}
+
 /* ===== Orientação por região ===== */
 .orientation-block {
   background: var(--bg-card);
@@ -599,6 +611,19 @@ body {
   font-size: 12px;
   color: var(--text-secondary);
   line-height: 1.5;
+}
+
+/* Destaque ao clicar em uma célula da matriz (Fase 5) */
+.orientation-block.highlight {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+.orientation-item.highlight .orientation-disaster {
+  color: var(--accent);
+}
+.orientation-item.highlight .orientation-text {
+  color: var(--text-primary);
+  background-color: rgba(var(--accent-rgb, 14, 165, 233), 0.08);
 }
 
 /* ===== Alertas ativos (Fase 6) ===== */
@@ -789,6 +814,40 @@ body {
   padding: 24px;
   font-size: 14px;
   color: var(--text-secondary);
+}
+
+/* Alerta de exemplo/simulado deve ficar claramente distinto (Fase 6) */
+.alert-card--simulated {
+  opacity: 0.75;
+  border-style: dashed;
+}
+.alert-sim-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2px 10px;
+  margin-bottom: 8px;
+  background: var(--bg);
+}
+.alerts-divider {
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin: 8px 0 4px;
+  padding-bottom: 4px;
+  border-bottom: 1px dashed var(--border);
+}
+
+/* Aviso de dados desatualizados (refresh automático) */
+.footer-source.stale,
+.footer-update.stale {
+  color: var(--red);
+  font-weight: 700;
 }
 
 /* Badges para alertas */

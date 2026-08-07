@@ -12,6 +12,7 @@
 // (entry point no browser). O módulo não executa código no import.
 
 import { saveToStorage, loadFromStorage, formatMeters } from './utils.js';
+import { THRESHOLDS } from './config.js';
 
 // === Severidade de alertas (esquema do projeto) ===
 const ALERT_SEVERITY = {
@@ -24,13 +25,8 @@ const ALERT_SEVERITY = {
 // Rank para ordenação (maior = mais grave)
 const SEVERITY_RANK = { info: 0, atencao: 1, perigo: 2, emergencia: 3 };
 
-// === Thresholds do nível (espelha app.js / data/ref-levels.json) ===
-const LEVEL_THRESHOLDS = {
-  atencao: 1.5,
-  inundacao: 2.0,
-  severa: 2.5,
-  critica: 3.0,
-};
+// Thresholds do nível (fonte única: config.js ← data/ref-levels.json)
+const LEVEL_THRESHOLDS = THRESHOLDS;
 
 // Ordem de gravidade do nível (índice maior = mais grave)
 const LEVEL_RANK_ORDER = ['normal', 'atencao', 'inundacao', 'severa', 'critica'];
@@ -42,6 +38,15 @@ const LEVEL_STATUS_LABELS = {
   inundacao: 'INUNDAÇÃO',
   severa: 'SEVERA',
   critica: 'CRÍTICA',
+};
+
+// Classe de badge CSS por status (a mesma chave do status)
+const LEVEL_STATUS_CSS = {
+  normal: 'normal',
+  atencao: 'atencao',
+  inundacao: 'inundacao',
+  severa: 'severa',
+  critica: 'critica',
 };
 
 /**
@@ -56,6 +61,20 @@ function getLevelStatus(levelMeters) {
   if (l >= LEVEL_THRESHOLDS.inundacao) return 'inundacao';
   if (l >= LEVEL_THRESHOLDS.atencao) return 'atencao';
   return 'normal';
+}
+
+/**
+ * Labels + classe css de um status de nível, prontos para renderização.
+ * @param {number} levelMeters
+ * @returns {{status: string, label: string, css: string}}
+ */
+function getLevelStatusInfo(levelMeters) {
+  const status = getLevelStatus(levelMeters);
+  return {
+    status,
+    label: LEVEL_STATUS_LABELS[status],
+    css: LEVEL_STATUS_CSS[status],
+  };
 }
 
 /**
@@ -265,7 +284,9 @@ export {
   LEVEL_THRESHOLDS,
   LEVEL_RANK_ORDER,
   LEVEL_STATUS_LABELS,
+  LEVEL_STATUS_CSS,
   getLevelStatus,
+  getLevelStatusInfo,
   formatAlertSeverity,
   severityRank,
   sortAlertsBySeverity,

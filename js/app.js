@@ -3,9 +3,10 @@
 //
 // app.js é o entry point único (index.html carrega apenas este módulo).
 // Importa utils.js, api.js, levels.js, risks.js e alerts.js via import.
-import { formatMeters, formatDate, saveToStorage, loadFromStorage, generateId } from './utils.js';
+import { formatMeters, formatDate, saveToStorage, loadFromStorage, escapeHtml } from './utils.js';
 import { fetchAll, sampleLevels, sampleAlerts } from './api.js';
 import { appendLevelReading, getLevelHistory, renderLevelChart } from './levels.js';
+import { THRESHOLDS, loadConfig } from './config.js';
 import {
   DISASTER_TYPES,
   DISASTER_ORDER,
@@ -18,11 +19,11 @@ import {
   getOrientation,
 } from './risks.js';
 import {
-  formatAlertSeverity,
   sortAlertsBySeverity,
   formatAlertForDisplay,
   showToast,
   checkLevelThreshold,
+  getLevelStatusInfo,
 } from './alerts.js';
 
 // === Dados de exemplo — SIMULAÇÃO/OFFLINE ===
@@ -30,13 +31,8 @@ import {
 // Estes dados são MARCADADOS como "simulação/offline" e NUNCA apresentados como reais.
 // Quando api.js conecta uma fonte real, ela fornece os dados reais.
 
-const THRESHOLDS = {
-  atencao: 1.5,
-  inundacao: 2.0,
-  severa: 2.5,
-  critica: 3.0,
-  referencia_mai2024: 5.3
-};
+// Intervalo de atualização automática dos dados (5 minutos)
+const REFRESH_INTERVAL_MS = 5 * 60 * 1000;
 
 // === Estado da aplicação ===
 const state = {
@@ -53,24 +49,11 @@ const state = {
     risks: 'simulação/offline',
   },
   theme: loadFromStorage('settings.theme', 'dark'),
-  loading: true
+  loading: true,
+  lastFetch: null
 };
 
 // === Funções de classificação ===
-
-/**
- * Classifica o nível do rio em categorias de risco.
- * @param {number} levelMeters — nível em metros
- * @returns {{label: string, css: string}}
- */
-function getLevelStatus(levelMeters) {
-  const l = parseFloat(levelMeters);
-  if (l >= THRESHOLDS.critica) return { label: 'CRÍTICA', css: 'critica' };
-  if (l >= THRESHOLDS.severa)  return { label: 'SEVERA',   css: 'severa' };
-  if (l >= THRESHOLDS.inundacao) return { label: 'INUNDAÇÃO', css: 'inundacao' };
-  if (l >= THRESHOLDS.atencao) return { label: 'ATENÇÃO',   css: 'atencao' };
-  return { label: 'NORMAL',    css: 'normal' };
-}
 
 /**
  * Mapeia tendência para ícone e texto.
@@ -91,10 +74,10 @@ function getTrendInfo(trend) {
 function getRegionNote(levelMeters, location) {
   const l = parseFloat(levelMeters);
   if (l >= THRESHOLDS.critica) return `Nível CRÍTICO em ${location}. Evacuação emergencial imediata. Afastar-se de margens e vias alagadas.`;
-  if (l >= THRESHOLDS.severa)  return `${location} em nível severo (${levelMeters.toFixed(2)} m). Risco de inundações avançadas. Redobre atenção.`;
-  if (l >= THRESHOLDS.inundacao) return `${location} acima da cota de inundação (${levelMeters.toFixed(2)} m). Áreas baixas em risco. Monitore atualizações.`;
-  if (l >= THRESHOLDS.atencao) return `${location} no limite de atenção (${levelMeters.toFixed(2)} m). Vigiar evolução.`;
-  return `${location} com nível normal (${levelMeters.toFixed(2)} m). Monitorar periodicamente.`;
+  if (l >= THRESHOLDS.severa)  return `${location} em nível severo (${formatMeters(levelMeters)}). Risco de inundações avançadas. Redobre atenção.`;
+  if (l >= THRESHOLDS.inundacao) return `${location} acima da cota de inundação (${formatMeters(levelMeters)}). Áreas baixas em risco. Monitore atualizações.`;
+  if (l >= THRESHOLDS.atencao) return `${location} no limite de atenção (${formatMeters(levelMeters)}). Vigiar evolução.`;
+  return `${location} com nível normal (${formatMeters(levelMeters)}). Monitorar periodicamente.`;
 }
 
 /**
@@ -177,6 +160,7 @@ async function loadData() {
     state.dataSources.risks = 'simulação/offline';
   } finally {
     state.loading = false;
+    state.lastFetch = new Date();
     // Registra a leitura atual no histórico (para o gráfico da Fase 4)
     if (state.level) {
       appendLevelReading(state.level);
@@ -195,7 +179,7 @@ async function loadData() {
  */
 function renderLevelIndicator() {
   const level = state.level;
-  const status = getLevelStatus(level.levelMeters);
+  const status = getLevelStatusInfo(level.levelMeters);
   const trend = getTrendInfo(level.trend);
 
   const badge = document.getElementById('level-badge');
@@ -212,7 +196,22 @@ function renderLevelIndicator() {
   cota.textContent = `${THRESHOLDS.inundacao.toFixed(2)} m`;
 
   const trendEl = document.getElementById('level-trend');
-  trendEl.innerHTML = `<span class="trend-icon">${trend.icon}</span><span>${trend.text} há 2h</span>`;
+  trendEl.innerHTML = `<span class="trend-icon">${trend.icon}</span><span>${trend.text} ${relativeTime(level.recordedAt)}</span>`;
+}
+
+/**
+ * Texto relativo de tempo decorrido desde o registro da leitura.
+ * @param {string} iso — timestamp ISO da leitura
+ * @returns {string} ex.: "há 2h", "há 5min"
+ */
+function relativeTime(iso) {
+  if (!iso) return 'agora';
+  const diffMs = Date.now() - new Date(iso).getTime();
+  if (diffMs < 60 * 1000) return 'agora';
+  const mins = Math.round(diffMs / 60000);
+  if (mins < 60) return `há ${mins}min`;
+  const hrs = Math.floor(mins / 60);
+  return `há ${hrs}h`;
 }
 
 /**
@@ -251,19 +250,18 @@ function renderRegions() {
   grid.innerHTML = '';
 
   state.regions.forEach(region => {
-    const status = getLevelStatus(region.levelMeters);
+    const status = getLevelStatusInfo(region.levelMeters);
     const trend = getTrendInfo(region.trend);
     const overall = getRegionOverallRisk(state.riskMatrix, region.name);
-    const overallBadge = overall
-      ? `<span class="region-risk-badge badge-${formatRiskLevel(overall.riskLevel).badgeClass}">${formatRiskLevel(overall.riskLevel).icon} ${formatRiskLevel(overall.riskLevel).label}</span>`
-      : '';
+    const overallFmt = overall ? formatRiskLevel(overall.riskLevel) : null;
+    const riskCause = overall ? (DISASTER_TYPES[overall.disasterType]?.label || overall.disasterType) : '';
 
     const card = document.createElement('div');
     card.className = 'region-card';
     card.dataset.region = region.id;
     card.innerHTML = `
       <div class="region-header">
-        <span class="region-name">${region.name}</span>
+        <span class="region-name">${escapeHtml(region.name)}</span>
         <span class="region-risk badge-${status.css}">${status.label}</span>
       </div>
       <div class="region-level">${formatMeters(region.levelMeters)}</div>
@@ -273,10 +271,9 @@ function renderRegions() {
       </div>
       <div class="region-risk-summary">
         <span class="region-risk-label">Risco geral:</span>
-        ${overallBadge || '<span class="region-risk-badge badge-normal">🟢 Normal</span>'}
-        ${overall ? `<span class="region-risk-cause">(${DISASTER_TYPES[overall.disasterType]?.label || overall.disasterType})</span>` : ''}
+        ${overallFmt ? `<span class="region-risk-badge badge-${overallFmt.badgeClass}">${overallFmt.icon} ${overallFmt.label}</span><span class="region-risk-cause">(${escapeHtml(riskCause)})</span>` : '<span class="region-risk-badge badge-normal">🟢 Normal</span>'}
       </div>
-      <p class="region-note">${region.note}</p>
+      <p class="region-note">${escapeHtml(region.note)}</p>
     `;
     grid.appendChild(card);
   });
@@ -299,10 +296,16 @@ function applyTheme() {
 
 /**
  * Atualiza o timestamp da última atualização no footer.
+ * Torna o parágrafo "stale" se os dados não são atualizados há muito tempo.
  */
 function updateTimestamp() {
   const now = new Date();
-  document.getElementById('last-update').textContent = formatDate(now.toISOString());
+  const el = document.getElementById('last-update');
+  el.textContent = formatDate(now.toISOString());
+
+  const stale = state.lastFetch && (now.getTime() - state.lastFetch.getTime()) > REFRESH_INTERVAL_MS * 2;
+  const para = el.closest('p');
+  if (para) para.classList.toggle('stale', !!stale);
 }
 
 /**
@@ -330,6 +333,7 @@ function fadeOutLoader() {
 /**
  * Renderiza a matriz de risco (região × tipo de desastre).
  * Fase 5: tabela com badges de risco colorido + texto de orientação.
+ * Cada célula é clicável e leva à orientação correspondente na seção abaixo.
  */
 function renderRiskMatrix() {
   const container = document.getElementById('risk-matrix');
@@ -341,16 +345,19 @@ function renderRiskMatrix() {
   // === Tabela da matriz ===
   const table = document.createElement('table');
   table.className = 'risk-table';
-  table.innerHTML = '';
 
   // Header
   const thead = document.createElement('thead');
-  thead.innerHTML = `
-    <tr>
-      <th>Região</th>
-      ${DISASTER_ORDER.map(key => `<th>${DISASTER_TYPES[key].icon} ${DISASTER_TYPES[key].label}</th>`).join('')}
-    </tr>
-  `;
+  const headRow = document.createElement('tr');
+  const regionTh = document.createElement('th');
+  regionTh.textContent = 'Região';
+  headRow.appendChild(regionTh);
+  DISASTER_ORDER.forEach(key => {
+    const th = document.createElement('th');
+    th.textContent = `${DISASTER_TYPES[key].icon} ${DISASTER_TYPES[key].label}`;
+    headRow.appendChild(th);
+  });
+  thead.appendChild(headRow);
   table.appendChild(thead);
 
   // Body — uma linha por região
@@ -358,20 +365,33 @@ function renderRiskMatrix() {
   regionNames.forEach(regionName => {
     const risks = getRisksByRegion(state.riskMatrix, regionName);
     const row = document.createElement('tr');
-    row.innerHTML = `<td class="risk-region-cell">${regionName}</td>`;
+
+    const regionCell = document.createElement('td');
+    regionCell.className = 'risk-region-cell';
+    regionCell.textContent = regionName;
+    row.appendChild(regionCell);
 
     DISASTER_ORDER.forEach(disasterKey => {
+      const cell = document.createElement('td');
       const risk = risks.find(r => r.disasterType === disasterKey);
       if (!risk) {
-        row.innerHTML += `<td class="risk-blank">—</td>`;
+        cell.className = 'risk-blank';
+        cell.textContent = '—';
       } else {
         const fmt = formatRiskLevel(risk.riskLevel);
-        row.innerHTML += `
-          <td class="risk-cell" data-risk="${fmt.css}">
-            <span class="risk-badge badge-${fmt.badgeClass}">${fmt.label}</span>
-          </td>
-        `;
+        cell.className = 'risk-cell';
+        cell.dataset.risk = fmt.css;
+        cell.dataset.region = regionName;
+        cell.dataset.disaster = disasterKey;
+        cell.tabIndex = 0;
+        cell.setAttribute('role', 'button');
+        cell.setAttribute('aria-label', `${regionName} — ${DISASTER_TYPES[disasterKey].label}: ${fmt.label}`);
+        const badge = document.createElement('span');
+        badge.className = `risk-badge badge-${fmt.badgeClass}`;
+        badge.textContent = fmt.label;
+        cell.appendChild(badge);
       }
+      row.appendChild(cell);
     });
     tbody.appendChild(row);
   });
@@ -387,31 +407,93 @@ function renderRiskMatrix() {
   regionNames.forEach(regionName => {
     const risks = getRisksByRegion(state.riskMatrix, regionName);
     const overall = getRegionOverallRisk(state.riskMatrix, regionName);
+    const overallFmt = overall ? formatRiskLevel(overall.riskLevel) : formatRiskLevel('baixo');
     const block = document.createElement('div');
     block.className = 'orientation-block';
-    const overallFmt = overall ? formatRiskLevel(overall.riskLevel) : formatRiskLevel('baixo');
-    block.innerHTML = `
-      <div class="orientation-header">
-        <span class="orientation-region">${regionName}</span>
-        <span class="orientation-badge badge-${overallFmt.badgeClass}">${overallFmt.icon} ${overallFmt.label}</span>
-      </div>
-      <div class="orientation-content">
-        ${risks
-          .filter(r => riskRank(r.riskLevel) > 0)  // só riscos acima de "baixo"
-          .sort((a, b) => riskRank(b.riskLevel) - riskRank(a.riskLevel))
-          .map(r => {
-            const fmt = formatRiskLevel(r.riskLevel);
-            return `
-              <div class="orientation-item">
-                <span class="orientation-disaster">${DISASTER_TYPES[r.disasterType]?.icon || '⚠️'} ${DISASTER_TYPES[r.disasterType]?.label || r.disasterType}</span>
-                <span class="orientation-text">${getOrientation(r.disasterType, r.riskLevel)}</span>
-              </div>
-            `;
-          }).join('')}
-      </div>
-    `;
+    block.dataset.region = regionName;
+
+    const header = document.createElement('div');
+    header.className = 'orientation-header';
+    const regionSpan = document.createElement('span');
+    regionSpan.className = 'orientation-region';
+    regionSpan.textContent = regionName;
+    const badgeSpan = document.createElement('span');
+    badgeSpan.className = `orientation-badge badge-${overallFmt.badgeClass}`;
+    badgeSpan.textContent = `${overallFmt.icon} ${overallFmt.label}`;
+    header.appendChild(regionSpan);
+    header.appendChild(badgeSpan);
+    block.appendChild(header);
+
+    const content = document.createElement('div');
+    content.className = 'orientation-content';
+    risks
+      .filter(r => riskRank(r.riskLevel) > 0)  // só riscos acima de "baixo"
+      .sort((a, b) => riskRank(b.riskLevel) - riskRank(a.riskLevel))
+      .forEach(r => {
+        const item = document.createElement('div');
+        item.className = 'orientation-item';
+        item.dataset.disaster = r.disasterType;
+
+        const disasterSpan = document.createElement('span');
+        disasterSpan.className = 'orientation-disaster';
+        disasterSpan.textContent = `${DISASTER_TYPES[r.disasterType]?.icon || '⚠️'} ${DISASTER_TYPES[r.disasterType]?.label || r.disasterType}`;
+
+        const textSpan = document.createElement('span');
+        textSpan.className = 'orientation-text';
+        textSpan.textContent = getOrientation(r.disasterType, r.riskLevel);
+
+        item.appendChild(disasterSpan);
+        item.appendChild(textSpan);
+        content.appendChild(item);
+      });
+    block.appendChild(content);
     orientationEl.appendChild(block);
   });
+
+  // === Clique/teclado nas células → destaca a orientação correspondente ===
+  table.addEventListener('click', onRiskCellActivate);
+  table.addEventListener('keydown', (e) => {
+    if ((e.key === 'Enter' || e.key === ' ') && e.target.classList.contains('risk-cell')) {
+      e.preventDefault();
+      onRiskCellActivate(e);
+    }
+  });
+}
+
+/**
+ * Move o foco para a orientação do desastre/região clicados na matriz.
+ * @param {Event} e
+ */
+function onRiskCellActivate(e) {
+  const cell = e.target.closest('.risk-cell');
+  if (!cell) return;
+  const region = cell.dataset.region;
+  const disaster = cell.dataset.disaster;
+
+  const orientationEl = document.getElementById('risk-orientation');
+  if (!orientationEl) return;
+
+  // Remove destaques anteriores
+  orientationEl.querySelectorAll('.orientation-item.highlight, .orientation-block.highlight')
+    .forEach(el => el.classList.remove('highlight'));
+
+  const block = orientationEl.querySelector(`.orientation-block[data-region="${CSS.escape(region)}"]`);
+  if (block) {
+    block.classList.add('highlight');
+    const item = block.querySelector(`.orientation-item[data-disaster="${CSS.escape(disaster)}"]`);
+    if (item) item.classList.add('highlight');
+    block.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+}
+
+/**
+ * Indica se um alerta é simulado/offline (não é um alerta oficial ativo).
+ * @param {{source?: string}} alert
+ * @returns {boolean}
+ */
+function isSimulated(alert) {
+  const s = String(alert?.source || '').toLowerCase();
+  return s.includes('simulação') || s.includes('offline') || s.includes('fallback');
 }
 
 /**
@@ -425,6 +507,8 @@ function renderAlerts() {
   if (!listEl || !emptyEl) return;
 
   const sorted = sortAlertsBySeverity(state.alerts);
+  const real = sorted.filter(a => !isSimulated(a));
+  const simulated = sorted.filter(a => isSimulated(a));
 
   listEl.innerHTML = '';
 
@@ -437,7 +521,7 @@ function renderAlerts() {
   listEl.style.display = 'flex';
   emptyEl.style.display = 'none';
 
-  sorted.forEach(alert => {
+  const appendCard = (alert, isFake) => {
     const display = formatAlertForDisplay(alert);
     const sev = display.severityInfo;
     const regionsText = display.regions.length > 0
@@ -448,31 +532,36 @@ function renderAlerts() {
       ? `
         <div class="alert-card-instructions">
           <strong>Orientações:</strong>
-          <ul>${display.instructions.map(i => `<li>${i}</li>`).join('')}</ul>
+          <ul>${display.instructions.map(i => `<li>${escapeHtml(i)}</li>`).join('')}</ul>
         </div>
       `
       : '';
 
     const card = document.createElement('div');
-    card.className = `alert-card alert-card--${sev.css}`;
+    card.className = `alert-card alert-card--${sev.css}${isFake ? ' alert-card--simulated' : ''}`;
     card.setAttribute('data-alert-id', display.id);
+
+    const simBadge = isFake
+      ? '<span class="alert-sim-badge" title="Dados de exemplo — não são alertas oficiais ativos">📊 simulação</span>'
+      : '';
 
     card.innerHTML = `
       <div class="alert-card-header">
         <div class="alert-card-title">
           <span class="alert-icon">${sev.icon}</span>
-          ${display.title}
+          ${escapeHtml(display.title)}
         </div>
         <div class="alert-card-meta">
-          <span class="alert-card-type">${display.type}</span>
+          <span class="alert-card-type">${escapeHtml(display.type)}</span>
           <span class="alert-card-badge badge-${sev.badgeClass}">${sev.label}</span>
         </div>
       </div>
-      <div class="alert-card-message">${display.message}</div>
+      ${simBadge}
+      <div class="alert-card-message">${escapeHtml(display.message)}</div>
       <div class="alert-card-source">
-        <span class="alert-source-loc">📍 ${regionsText}</span>
+        <span class="alert-source-loc">📍 ${escapeHtml(regionsText)}</span>
         <span class="alert-pipe">•</span>
-        <span class="alert-source-name">${display.source}</span>
+        <span class="alert-source-name">${escapeHtml(display.source)}</span>
         <span class="alert-pipe">•</span>
         <span class="alert-time">${formatDate(display.issuedAt)}</span>
       </div>
@@ -480,7 +569,17 @@ function renderAlerts() {
     `;
 
     listEl.appendChild(card);
-  });
+  };
+
+  // Alertas reais primeiro, simulados depois (sempre marcados)
+  real.forEach(a => appendCard(a, false));
+  if (simulated.length > 0) {
+    const divider = document.createElement('div');
+    divider.className = 'alerts-divider';
+    divider.textContent = `⬇ ${simulated.length} alerta(s) de exemplo (simulação/offline)`;
+    listEl.appendChild(divider);
+    simulated.forEach(a => appendCard(a, true));
+  }
 }
 
 // === Checklist de preparação (Fase 7) ===
@@ -596,23 +695,30 @@ function handleThemeToggle() {
   renderChart();
 }
 
-// === Inicialização ===
-async function init() {
-  applyTheme();
-  renderThemeIcon();
-
-  // Carrega dados via API (com fallback para sample)
-  await loadData();
-
+// === Renderização conjunta (usada no init e no refresh automático) ===
+function renderAll() {
   renderLevelIndicator();
   renderChart();
   renderRegions();
   renderRiskMatrix();
   renderAlerts();
   renderPreparationChecklist();
-  applyEntryAnimations();
   updateTimestamp();
   updateDataSource();
+}
+
+// === Inicialização ===
+async function init() {
+  applyTheme();
+  renderThemeIcon();
+
+  // Carrega thresholds/estações de data/ref-levels.json (fonte única)
+  await loadConfig();
+
+  // Carrega dados via API (com fallback para sample)
+  await loadData();
+  renderAll();
+  applyEntryAnimations();
   fadeOutLoader();
 
   document.getElementById('theme-toggle').addEventListener('click', handleThemeToggle);
@@ -638,6 +744,12 @@ async function init() {
     renderChart();
     renderRiskMatrix();
   });
+
+  // Atualização periódica dos dados (5 min)
+  setInterval(async () => {
+    await loadData();
+    renderAll();
+  }, REFRESH_INTERVAL_MS);
 }
 
 init();

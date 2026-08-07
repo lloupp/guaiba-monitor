@@ -1,0 +1,15 @@
+{
+  "name": "guaiba-monitor",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Monitor do nível do rio Guaíba e riscos de desastres naturais — Porto Alegre, Canoas e Guaíba",
+  "scripts": {
+    "test": "node --test 'test/*.test.js'",
+    "lint": "eslint js/",
+    "serve": "npx serve ."
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0"
+  }
+}

@@ -6,7 +6,8 @@
 // Quando sem dados reais (simulação/offline), os riscos são derivados dos
 // dados de exemplo — sempre marcados como "simulação/offline".
 
-import { formatMeters } from './utils.js';
+import { THRESHOLDS } from './config.js';
+import { sampleLevels, sampleAlerts } from './api.js';
 
 // === Tipos de desastre monitorados ===
 const DISASTER_TYPES = {
@@ -16,7 +17,7 @@ const DISASTER_TYPES = {
     shortLabel: 'Ench',
   },
   ciclone_bomba: {
-    label: 'Ciclone Bomba d\'Água',
+    label: "Ciclone Bomba d'Água",
     icon: '🌀',
     shortLabel: 'CicB',
   },
@@ -50,13 +51,7 @@ const DISASTER_TYPES = {
 // Ordem de exibição (enchente sempre primeiro — risco principal do Guaíba)
 const DISASTER_ORDER = ['enchente', 'ciclone_bomba', 'alagamento', 'vendaval', 'granizo', 'deslizamento', 'ressaca'];
 
-// Thresholds (mirror ref-levels.json / app.js)
-const THRESHOLDS = {
-  atencao: 1.5,
-  inundacao: 2.0,
-  severa: 2.5,
-  critica: 3.0,
-};
+// Thresholds (fonte única: config.js ← data/ref-levels.json)
 
 // Níveis de risco
 const RISK_LEVELS = {
@@ -131,7 +126,7 @@ function getDrainageRisk(levelMeters, trend) {
  * @param {Array} weather — previsão do tempo
  * @returns {{riskLevel: string, alertCode: string, description: string}}
  */
-function getCycloneBombRisk(levelMeters, trend, weather) {
+function getCycloneBombRisk(levelMeters, trend, _weather) {
   const l = parseFloat(levelMeters);
   // Se já acima de atenção e subindo → risco moderado
   if (l >= THRESHOLDS.inundacao && trend === 'subindo') {
@@ -229,7 +224,7 @@ const ORIENTATIONS = {
     baixo: 'Nível dentro do normal. Monitore o nível do rio periodicamente.',
     moderado: 'Acima de atenção. Evite áreas ribeirinhas e baixas. Monitore atualizações.',
     alto: 'Nível severo. Evacue áreas de baixa elevação às margens do rio. Não tente atravessar vias alagadas.',
-    critico: 'TRANSTBORDO GRAVE. Evacuação emergencial imediata nas áreas de risco às margens. Afastar-se de corredores d\'água.',
+    critico: 'TRANSBORDO GRAVE. Evacuação emergencial imediata nas áreas de risco às margens. Afastar-se de corredores d\'água.',
   },
   ciclone_bomba: {
     baixo: 'Sem condições para ciclone bomba. Mantenha-se informado sobre previsão de chuva.',
@@ -246,14 +241,14 @@ const ORIENTATIONS = {
   vendaval: {
     baixo: 'Sem vendaval significativo. Mantenha-se informado.',
     moderado: 'Vendaval previsto. Amarre objetos soltos e evite áreas expostas.',
-    alto: 'Vendaval forte. Àbrite em ambiente fechado e evite sair.',
-    critico: 'Vendaval severa. Permança em ambiente fechado e afaste-se de janelas.',
+    alto: 'Vendaval forte. Abrigue-se em ambiente fechado e evite sair.',
+    critico: 'Vendaval severo. Permaneça em ambiente fechado e afaste-se de janelas.',
   },
   granizo: {
     baixo: 'Sem granizo reportado.',
     moderado: 'Granizo possível. Proteja veículos e evite áreas abertas.',
     alto: 'Granizo forte. Abrigue-se em local fechado e evite janelas.',
-    critico: 'Granizo severo. Abrigo imediato. Risco de escoragamento em telhados.',
+    critico: 'Granizo severo. Abrigo imediato. Risco de escorregamento em telhados.',
   },
   deslizamento: {
     baixo: 'Sem risco significativo de deslizamento.',
@@ -447,41 +442,23 @@ function buildRegionRisks(regions, alerts, weather, level, dataSources) {
 
 /**
  * Dados de exemplo (SIMULAÇÃO/OFFLINE) — sempre marcados como tal.
- * Gerado a partir de sample levels + sample alerts do app.js.
+ * Reutiliza os mesmos sample levels/alerts/weather do api.js e deriva a
+ * matriz pela mesma função buildRegionRisks (fonte única de derivação),
+ * garantindo consistência entre simulação e dados reais.
  * @returns {RegionRisk[]}
  */
 function sampleRegionRisks() {
-  // Usa os mesmos sample levels/alerts do api.js para consistência
-  // Nível POA: 2.13m subindo | Canoas: 1.82m estável | Guaíba: 1.45m descendo
-  // Alertas: Vendaval perigo (todas regiões), Chuva atencao (POA)
-  const now = new Date().toISOString();
-  const matrix = [];
-
-  const regionData = [
-    { id: 'poa', name: 'Porto Alegre', level: 2.13, trend: 'subindo' },
-    { id: 'canoas', name: 'Canoas', level: 1.82, trend: 'estavel' },
-    { id: 'guaiba', name: 'Guaíba', level: 1.45, trend: 'descendo' },
-  ];
-
-  regionData.forEach(r => {
-    const flood = getFloodRisk(r.level);
-    const drainage = getDrainageRisk(r.level, r.trend);
-    const ciclo = getCycloneBombRisk(r.level, r.trend, []);
-
-    matrix.push({ id: `sample-${r.id}-enchente`, region: r.name, disasterType: 'enchente', riskLevel: flood.riskLevel, description: flood.description, alertCode: flood.alertCode, updatedAt: now, source: 'simulação/offline' });
-    matrix.push({ id: `sample-${r.id}-alagamento`, region: r.name, disasterType: 'alagamento', riskLevel: drainage.riskLevel, description: drainage.description, alertCode: drainage.alertCode, updatedAt: now, source: 'simulação/offline' });
-    matrix.push({ id: `sample-${r.id}-ciclone_bomba`, region: r.name, disasterType: 'ciclone_bomba', riskLevel: ciclo.riskLevel, description: ciclo.description, alertCode: ciclo.alertCode, updatedAt: now, source: 'simulação/offline' });
-    matrix.push({ id: `sample-${r.id}-ressaca`, region: r.name, disasterType: 'ressaca', riskLevel: getWorryRisk(r.level, r.trend).riskLevel, description: getWorryRisk(r.level, r.trend).description, alertCode: getWorryRisk(r.level, r.trend).alertCode, updatedAt: now, source: 'simulação/offline' });
-    // Vendaval: alerta ativo em todas as regiões (sample)
-    matrix.push({ id: `sample-${r.id}-vendaval`, region: r.name, disasterType: 'vendaval', riskLevel: 'alto', description: getOrientation('vendaval', 'alto'), alertCode: 'laranja', updatedAt: now, source: 'simulação/offline' });
-    // Granizo: sem alerta
-    matrix.push({ id: `sample-${r.id}-granizo`, region: r.name, disasterType: 'granizo', riskLevel: 'baixo', description: getOrientation('granizo', 'baixo'), alertCode: 'verde', updatedAt: now, source: 'simulação/offline' });
-    // Deslizamento: derivado de ciclone_bomba
-    const landslide = getLandslideRisk(ciclo.riskLevel);
-    matrix.push({ id: `sample-${r.id}-deslizamento`, region: r.name, disasterType: 'deslizamento', riskLevel: landslide.riskLevel, description: landslide.description, alertCode: landslide.alertCode, updatedAt: now, source: 'simulação/offline' });
-  });
-
-  return matrix;
+  const levels = sampleLevels();
+  const alerts = sampleAlerts();
+  const regions = levels.map(l => ({
+    id: l.station,
+    name: l.location,
+    levelMeters: l.levelMeters,
+    trend: l.trend,
+    source: l.source,
+  }));
+  const ds = { level: 'simulação', alerts: 'simulação' };
+  return buildRegionRisks(regions, alerts, [], levels[0], ds);
 }
 
 /**

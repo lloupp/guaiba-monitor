@@ -58,6 +58,15 @@ Como é um site estático puro (sem build step), basta abrir `index.html` no nav
 npx serve .   # ou python3 -m http.server 8080
 ```
 
+### Qualidade / testes
+
+Testes das funções puras (node:test, sem dependências de browser) e lint:
+```bash
+npm install     # instala eslint (dev)
+npm test        # roda os testes em test/
+npm run lint    # eslint em js/
+```
+
 ## Licença
 
 MIT
