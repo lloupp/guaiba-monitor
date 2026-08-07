@@ -14,6 +14,8 @@
   --blue: #3b82f6;
   --purple: #8b5cf6;
   --water: #0ea5e9;
+  --accent: #0ea5e9;
+  --link: #60a5fa;
   --radius: 12px;
   --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   --transition: all 0.3s ease;
@@ -34,6 +36,8 @@
   --blue: #2563eb;
   --purple: #7c3aed;
   --water: #0287ce;
+  --accent: #0287ce;
+  --link: #2563eb;
   --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
@@ -849,6 +853,69 @@ body {
   color: var(--red);
   font-weight: 700;
 }
+
+/* ===== El Niño / La Niña (Fase 8) ===== */
+.elnino-section {
+  padding: 24px 20px;
+  margin-bottom: 24px;
+}
+.elnino-section .section-title {
+  margin-top: 0;
+}
+.elnino-subtitle {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 14px;
+}
+.elnino-status {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.elnino-status .badge-normal,
+.elnino-status .badge-atencao,
+.elnino-status .badge-inundacao {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 14px;
+  width: fit-content;
+}
+.elnino-state { font-size: 15px; }
+.elnino-ssta { opacity: 0.9; font-weight: 600; }
+.elnino-impact {
+  font-size: 13px;
+  color: var(--text-primary);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  margin: 0;
+}
+.elnino-map {
+  height: 320px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  z-index: 0;
+}
+.elnino-nodata {
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+.elnino-map .leaflet-container {
+  background: var(--bg-card);
+  font-family: inherit;
+}
+.elnino-map .leaflet-container a {
+  color: var(--link);
+}
+
 
 /* Badges para alertas */
 .badge-info       { background: rgba(59, 130, 246, 0.15);  color: var(--blue);   border: 1px solid var(--blue); }

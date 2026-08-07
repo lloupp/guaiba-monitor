@@ -165,31 +165,30 @@ function sampleWeather() {
 
 /**
  * Busca nível do Guaíba.
- * Não há endpoint JSON público (ver Fase 1) — retorna dados de exemplo marcados
- * como "simulação/offline" para o MVP. A estrutura está pronta para plugar
- * uma fonte real quando disponível.
+ * Fonte preferida: data/realtime.json (coletado pelo GitHub Actions, nível
+ * real). Sem dado real, retorna dados de exemplo marcados como
+ * "simulação/offline" — nunca apresentados como reais.
  * @returns {Promise<{stations: LevelReading[], source: string}>}
  */
 async function fetchLevelGuaiba() {
-  // Tenta endpoints reais (todos retornam 404/null na Fase 1)
-  const realSources = [
-    () => fetchWithRetry('https://www.ufrgs.br/iph/telemetria/'),
-    () => fetchWithRetry(ENDPOINTS.cprmSace),
-  ];
-
-  for (const attempt of realSources) {
-    const data = await attempt();
-    if (data) {
-      // Se conseguirmos HTML, tenta parsear — mas SACE não expõe JSON programável
-      if (typeof data === 'string' && data.includes('bguaiba')) {
-        // Nível não extractable do HTML do SACE sem parsing visível
-        console.info('[api] SACE HTML retornado, mas sem endpoint JSON de nível — usando fallback.');
-        break;
-      }
-    }
+  const rt = await fetchRealtime();
+  if (rt && rt.level && rt.level.levelMeters != null && isFresh(rt.collectedAt)) {
+    const l = rt.level;
+    return {
+      stations: [{
+        id: l.station || 'poa-cais-maua',
+        station: l.station || 'poa-cais-maua',
+        location: l.location || 'Porto Alegre',
+        levelMeters: parseFloat(l.levelMeters),
+        trend: l.trend || 'estavel',
+        recordedAt: l.recordedAt || rt.collectedAt,
+        source: l.source || 'SACE/SGB',
+      }],
+      source: l.source || 'SACE/SGB',
+    };
   }
 
-  // Sempre fallback para sample (marcado como simulação)
+  // Fallback para sample (marcado como simulação)
   const levels = sampleLevels();
   return { stations: levels, source: 'simulação/offline' };
 }
@@ -281,85 +280,88 @@ async function fetchINMETPrevisao(geocode = GEOCODES.portoAlegre) {
 }
 
 /**
- * Busca alertas da Defesa Civil RS via proxy CORS (api.allorigins.win).
- * Sem proxy, o browser é bloqueado por CORS. Fallback para sample.
+ * Busca alertas reais da Defesa Civil RS a partir de data/realtime.json
+ * (coletado pelo GitHub Actions via RSS). NUNCA mistura alertas de exemplo
+ * nesta lista: sem dados reais, retorna lista vazia (estado válido).
  * @returns {Promise<{alerts: Alert[], source: string}>}
  */
 async function fetchDCRSAlertas() {
-  const proxyUrl = ENDPOINTS.dcrsProxy + encodeURIComponent(ENDPOINTS.dcrsAlertas);
-  const html = await fetchWithRetry(proxyUrl);
-
-  if (!html || typeof html !== 'string') {
-    console.warn('[api] DCRS alertas não disponíveis (proxy falhou) — fallback para sample.');
-    // DCRS sem dados reais — mergeia com alertas INMET que já podem ter vindo
-    return { alerts: sampleAlerts(), source: 'simulação/offline (fallback DCRS)' };
-  }
-
-  // Parse HTML simples para extrair texto de alertas
-  const alerts = parseDCRSAlerts(html);
+  const rt = await fetchRealtime();
+  const alerts = (rt && Array.isArray(rt.dcrsAlerts) && isFresh(rt.collectedAt))
+    ? rt.dcrsAlerts
+    : [];
   if (alerts.length === 0) {
-    // HTML carregado, mas sem alertas parseáveis
-    return { alerts: [], source: 'Defesa Civil RS (scraping)' };
+    return { alerts: [], source: 'Defesa Civil RS (sem dados no momento)' };
   }
-  return { alerts, source: 'Defesa Civil RS (scraping via proxy)' };
+  return { alerts, source: 'Defesa Civil RS (RSS)' };
 }
 
-/** Parser minimal de HTML da DCRS — extrai títulos e descrições de alertas */
-function parseDCRSAlerts(html) {
-  const alerts = [];
-  try {
-    const doc = new DOMParser().parseFromString(html, 'text/html');
-    // Busca por elementos que contenham "alerta" ou "aviso"
-    const items = doc.querySelectorAll('h3, h4, .alerta, .aviso, li');
-    items.forEach(el => {
-      const text = el.textContent.trim();
-      if (text.length > 10 && (text.toLowerCase().includes('alerta') || text.toLowerCase().includes('aviso'))) {
-        const severity = text.toLowerCase().includes('perigo') ? 'perigo'
-          : text.toLowerCase().includes('vermelho') || text.toLowerCase().includes('crític') ? 'critico'
-          : text.toLowerCase().includes('laranja') || text.toLowerCase().includes('sever') ? 'severa'
-          : 'atencao';
-        alerts.push({
-          id: `dcrs-${Date.now()}-${alerts.length}`,
-          type: 'Defesa Civil',
-          severity,
-          title: text.substring(0, 80),
-          message: text,
-          regions: ['Rio Grande do Sul'],
-          issuedAt: new Date().toISOString(),
-          source: 'Defesa Civil RS',
-        });
-      }
-    });
-  } catch (err) {
-    console.warn('[api] Erro ao parsear HTML da DCRS:', err.message);
-  }
-  return alerts;
+// === Dados coletados pelo GitHub Actions (data/realtime.json, data/elnino.json) ===
+
+// Idade máxima dos dados coletados (server) antes de serem considerados obsoletos
+const MAX_COLLECTED_AGE_MS = 6 * 60 * 60 * 1000; // 6 horas
+
+let realtimeCache = null;
+let elninoCache = null;
+
+/** Verifica se um timestamp ISO é recente. @param {string} iso @returns {boolean} */
+function isFresh(iso) {
+  if (!iso) return false;
+  const age = Date.now() - new Date(iso).getTime();
+  return !Number.isNaN(age) && age >= 0 && age < MAX_COLLECTED_AGE_MS;
+}
+
+/**
+ * Lê data/realtime.json (nível + alertas DCRS coletados no servidor).
+ * Mesma origem → sem CORS. Faz cache por sessão.
+ * @returns {Promise<object|null>}
+ */
+async function fetchRealtime(force = false) {
+  if (realtimeCache && !force) return realtimeCache;
+  realtimeCache = await fetchWithRetry('data/realtime.json');
+  return realtimeCache;
+}
+
+/**
+ * Lê data/elnino.json (anomalias de SST NOOA coletadas no servidor).
+ * @returns {Promise<object|null>}
+ */
+async function fetchElnino(force = false) {
+  if (elninoCache && !force) return elninoCache;
+  elninoCache = await fetchWithRetry('data/elnino.json');
+  return elninoCache;
 }
 
 // === Orquestrador ===
 
 /**
  * Coleta todos os dados disponíveis, com fallback graceful.
- * Nível: sempre simulação (sem endpoint real).
- * Alertas: INMET (real) + DCRS (proxy) + sample (fallback).
- * @returns {Promise<{level: {stations, source}, alerts: Alert[], weather: WeatherForecast[], lastFetch: string}>}
+ * Alertas reais: INMET (client) + Defesa Civil RS (realtime.json).
+ * Alertas simulados (sample) só aparecem quando não há dado real algum.
+ * @returns {Promise<{level, alerts, weather, elnino, lastFetch}>}
  */
 async function fetchAll() {
-  const [levelResult, inmetAlerts, dcrsAlerts, weather] = await Promise.allSettled([
+  const [levelResult, inmetAlerts, dcrsAlerts, weather, elnino] = await Promise.allSettled([
     fetchLevelGuaiba(),
     fetchINMETAlertas(),
     fetchDCRSAlertas(),
     fetchINMETPrevisao(),
+    fetchElnino(),
   ]);
 
   const level = levelResult.status === 'fulfilled'
     ? levelResult.value
     : { stations: sampleLevels(), source: 'simulação/offline (erro coleta)' };
 
-  const alerts = [
-    ...(inmetAlerts.status === 'fulfilled' ? inmetAlerts.value.alerts : sampleAlerts()),
-    ...(dcrsAlerts.status === 'fulfilled' ? dcrsAlerts.value.alerts : []),
-  ];
+  const inmetReal = inmetAlerts.status === 'fulfilled'
+    ? inmetAlerts.value.alerts.filter(a => !isSimulatedAlert(a))
+    : [];
+  const dcrsReal = dcrsAlerts.status === 'fulfilled' ? dcrsAlerts.value.alerts : [];
+
+  // Só usa simulados (sample) quando NENHUMA fonte real de alerta respondeu.
+  const alerts = (inmetReal.length + dcrsReal.length) > 0
+    ? [...inmetReal, ...dcrsReal]
+    : sampleAlerts();
 
   const weatherData = weather.status === 'fulfilled'
     ? weather.value.weather
@@ -369,8 +371,15 @@ async function fetchAll() {
     level,
     alerts,
     weather: weatherData,
+    elnino: elnino.status === 'fulfilled' ? elnino.value : null,
     lastFetch: new Date().toISOString(),
   };
+}
+
+/** Indica se um alerta é simulado/offline (não oficial). @param {object} a */
+function isSimulatedAlert(a) {
+  const s = String(a?.source || '').toLowerCase();
+  return s.includes('simulação') || s.includes('offline') || s.includes('fallback');
 }
 
 // === Exports ===
@@ -386,7 +395,10 @@ export {
   fetchINMETAlertas,
   fetchINMETPrevisao,
   fetchDCRSAlertas,
+  fetchRealtime,
+  fetchElnino,
   fetchAll,
+  isFresh,
   sampleLevels,
   sampleAlerts,
   sampleWeather,

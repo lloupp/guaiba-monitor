@@ -1,0 +1,45 @@
+# Coleta automática de dados reais (rodada no servidor, sem CORS)
+#
+# Coleta fontes que o navegador não consegue acessar diretamente e grava em
+# JSONs dentro do repo (data/realtime.json e data/elnino.json). O site estático
+# lê esses arquivos de mesma origem. Um push em master também republica o
+# GitHub Pages com os dados atualizados.
+
+name: coletar-dados-reais
+
+on:
+  schedule:
+    # A cada 30 minutos. Ajuste a frequência para equilibrar frescor x redeploys.
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Coletar dados reais
+        run: node scripts/collect.js
+
+      - name: Commit JSONs atualizados
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/realtime.json data/elnino.json
+          if git diff --cached --quiet; then
+            echo "Sem mudanças — nada a commitar."
+          else
+            git commit -m "data: coleta automática de alertas DCRS e El Niño (NOAA)"
+            git push origin HEAD:${{ github.ref_name }}
+            echo "Dados atualizados e publicados."
+          fi

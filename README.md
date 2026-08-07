@@ -12,17 +12,19 @@ Monitor web do nível do rio **Guaíba** e riscos de desastres naturais em **Por
 - 🗺️ **Riscos por região** — Porto Alegre, Canoas, Guaíba e região
 - 🌪️ **Tipos de risco** — enchente, ciclone bomba, vendaval, granizo, deslizamento, alagamento
 - 📋 **Checklist de preparação** — kit emergência, rotas de fuga
+- 🌊 **Mapa El Niño / La Niña** — anomalias de SST das regiões Niño (NOAA CPC) no Pacífico
 - 💾 **Offline** — histórico salvo no navegador (localStorage)
 - 📱 **Responsivo** — celular, tablet e desktop
 
 ## Fontes de dados
 
-- **IPH-UFRGS / CPRM-SACE** — nível do Guaíba
-- **INMET** — alertas meteorológicos
-- **Defesa Civil RS** — avisos oficiais
+- **IPH-UFRGS / CPRM-SACE** — nível do Guaíba *(sem endpoint JSON público; simulação marcada)*
+- **INMET** — alertas meteorológicos (tempo real, direto no navegador)
+- **Defesa Civil RS** — avisos oficiais (RSS, coletado via GitHub Actions)
+- **NOAA CPC** — anomalias de SST das regiões Niño (El Niño/La Niña, via GitHub Actions)
 - **MetSul** — meteorologia regional
 
-> ⚠️ A Fase 1 valida os endpoints reais. Até lá, dados podem usar fallback de exemplo (sempre marcados como simulação).
+> ⚠️ O nível do Guaíba usa fallback de exemplo (sempre marcado como **simulação/offline**) enquanto não existir fonte JSON pública estável. Alertas reais (INMET + Defesa Civil) e El Niño vêm de fontes reais.
 
 ## Tech Stack
 
@@ -58,13 +60,25 @@ Como é um site estático puro (sem build step), basta abrir `index.html` no nav
 npx serve .   # ou python3 -m http.server 8080
 ```
 
+### Dados reais (coleta automática)
+
+Um **workflow do GitHub Actions** (`.github/workflows/collect.yml`) roda a cada
+30 min no servidor (sem CORS) e faz a coleta de fontes que o navegador não
+consegue acessar diretamente, gravando em `data/realtime.json` (alertas da
+Defesa Civil RS) e `data/elnino.json` (El Niño/La Niña do NOAA). O site estático
+lê esses JSONs de mesma origem. Para processar manualmente:
+
+```bash
+npm run collect   # node scripts/collect.js
+```
+
 ### Qualidade / testes
 
 Testes das funções puras (node:test, sem dependências de browser) e lint:
 ```bash
 npm install     # instala eslint (dev)
 npm test        # roda os testes em test/
-npm run lint    # eslint em js/
+npm run lint    # eslint em js/ e scripts/
 ```
 
 ## Licença

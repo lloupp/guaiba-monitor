@@ -7,6 +7,7 @@ import { formatMeters, formatDate, saveToStorage, loadFromStorage, escapeHtml } 
 import { fetchAll, sampleLevels, sampleAlerts } from './api.js';
 import { appendLevelReading, getLevelHistory, renderLevelChart } from './levels.js';
 import { THRESHOLDS, loadConfig } from './config.js';
+import { renderElNinoMap, renderElNinoStatus } from './elnino.js';
 import {
   DISASTER_TYPES,
   DISASTER_ORDER,
@@ -40,6 +41,7 @@ const state = {
   regions: [],
   alerts: [],
   weather: [],
+  elnino: null,
   riskMatrix: [],
   alertThreshold: loadFromStorage('settings.alertThreshold', THRESHOLDS.atencao),
   dataSources: {
@@ -47,6 +49,7 @@ const state = {
     alerts: 'simulação/offline',
     weather: 'simulação/offline',
     risks: 'simulação/offline',
+    elnino: 'sem dados',
   },
   theme: loadFromStorage('settings.theme', 'dark'),
   loading: true,
@@ -132,6 +135,12 @@ async function loadData() {
       ? (state.weather.every(w => w.source === 'simulação/offline') ? 'simulação/offline' : 'INMET')
       : 'simulação/offline';
 
+    // El Niño / La Niña (coletado via GitHub Actions → data/elnino.json)
+    state.elnino = data.elnino || null;
+    state.dataSources.elnino = state.elnino
+      ? `${state.elnino.state} (${state.elnino.source || 'NOAA'})`
+      : 'sem dados';
+
     // === Fase 5: Matriz de riscos (região × tipo de desastre) ===
     state.riskMatrix = buildRegionRisks(
       state.regions, state.alerts, state.weather, state.level, state.dataSources
@@ -151,6 +160,8 @@ async function loadData() {
     state.dataSources.level = 'simulação/offline (erro coleta)';
     state.dataSources.alerts = 'simulação/offline (erro coleta)';
     state.dataSources.weather = 'simulação/offline (erro coleta)';
+    state.dataSources.elnino = 'sem dados (erro coleta)';
+    state.elnino = null;
     const fallback = sampleLevels();
     state.level = fallback.find(s => s.station === 'poa-cais-maua') || fallback[0];
     state.regions = fallback.map(levelToRegion);
@@ -691,17 +702,41 @@ function handleThemeToggle() {
   applyTheme();
   renderThemeIcon();
   saveToStorage('settings.theme', state.theme);
-  // Re-renderiza o gráfico com as cores do novo tema
+  // Re-renderiza o gráfico e o mapa El Niño com as cores do novo tema
   renderChart();
+  renderElNino();
 }
 
 // === Renderização conjunta (usada no init e no refresh automático) ===
+/**
+ * Renderiza a seção El Niño / La Niña: badge de estado ENSO + mapa das
+ * regiões Niño. Se a lib Leaflet não carregou, mostra apenas o status.
+ */
+function renderElNino() {
+  const mapEl = document.getElementById('elnino-map');
+  const statusEl = document.getElementById('elnino-status');
+  if (!statusEl) return;
+
+  if (!state.elnino) {
+    statusEl.innerHTML = '<p class="elnino-nodata">Dados de El Niño/La Niña indisponíveis no momento.</p>';
+    if (mapEl) mapEl.innerHTML = '';
+    return;
+  }
+
+  renderElNinoStatus(statusEl, state.elnino);
+  if (mapEl) {
+    mapEl.innerHTML = '';
+    renderElNinoMap(mapEl, state.elnino, state.theme === 'dark');
+  }
+}
+
 function renderAll() {
   renderLevelIndicator();
   renderChart();
   renderRegions();
   renderRiskMatrix();
   renderAlerts();
+  renderElNino();
   renderPreparationChecklist();
   updateTimestamp();
   updateDataSource();
@@ -739,10 +774,11 @@ async function init() {
     });
   }
 
-  // Redesenha o gráfico e matriz responsivamente
+  // Redesenha o gráfico, matriz e mapa El Niño responsivamente
   window.addEventListener('resize', () => {
     renderChart();
     renderRiskMatrix();
+    renderElNino();
   });
 
   // Atualização periódica dos dados (5 min)

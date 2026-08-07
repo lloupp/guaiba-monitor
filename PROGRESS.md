@@ -79,6 +79,18 @@ TODAS as fases devem seguir a skill `guaiba-flood-monitor-builder` (carregada no
 |- README.md atualizado com seção Deploy + badge + URL ✓
 |- Commit: `deploy: GitHub Pages` ✓
 
+### Fase 9 — Dados reais (GitHub Actions) + Mapa El Niño [CONCLUÍDO — 2026-08-07]
+|- Coletor server-side scripts/collect.js (sem CORS) ✓
+|  - Defesa Civil RS: RSS real (defesacivil.rs.gov.br/rss) → data/realtime.json ✓
+|  - El Niño/La Niña: NOAA CPC wksst9120.for → data/elnino.json ✓
+|  - Nível do Guaíba: sem fonte JSON pública estável (SACE DWR com sessão) → mantido simulação marcada ✓
+|- GitHub Actions .github/workflows/collect.yml (cron 30min + workflow_dispatch) ✓
+|- NUNCA misturar alertas simulados com reais (simulados só em 100% offline) ✓
+|- Mapa El Niño: js/elnino.js (Leaflet via CDN) — regiões Niño 1+2, 3, 3.4, 4 coloridas pela anomalia +
+|  badge de estado ENSO e nota de impacto no Sul ✓
+|- index.html + css integrados; testes 26 passando; lint limpo ✓
+|- Commit: `data: dados reais + mapa El Niño` (single) ✓
+
 ## Regras do cron
 1. Ler PROGRESS.md
 2. Implementar fase completa

@@ -1,0 +1,24 @@
+{
+  "collectedAt": "2026-08-07T04:08:20.825Z",
+  "week": "14JAN2026",
+  "regions": {
+    "nino12": {
+      "sst": 24.2,
+      "ssta": -0.2
+    },
+    "nino3": {
+      "sst": 25.1,
+      "ssta": -0.4
+    },
+    "nino34": {
+      "sst": 25.9,
+      "ssta": -0.6
+    },
+    "nino4": {
+      "sst": 28,
+      "ssta": -0.1
+    }
+  },
+  "state": "La Niña",
+  "source": "NOAA CPC"
+}

@@ -1,0 +1,137 @@
+{
+  "collectedAt": "2026-08-07T04:08:20.826Z",
+  "level": null,
+  "dcrsAlerts": [
+    {
+      "id": "dcrs-y03jxh",
+      "type": "Defesa Civil",
+      "severity": "atencao",
+      "title": "Defesa Civil alerta: condição de ATENÇÃO para rajadas de vento devem atuar na região Sul, Litoral Sul e Litoral Médio",
+      "message": "Defesa Civil alerta: condição de ATENÇÃO para rajadas de vento devem atuar na região Sul, Litoral Sul e Litoral Médio no decorrer da madrugada desta sexta-feira. Risco MODERADO de alagamentos e destelhamento. Válido até às 6h do dia 7 de agosto. Evite áreas de risco. Emergência ligue 190/193....",
+      "regions": [
+        "Litoral"
+      ],
+      "issuedAt": "2026-08-06T23:23:00Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-atencao-para-rajadas-de-vento-devem-atuar-na-regiao-sul-litoral-sul-e-litoral-medio",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-5ih362",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam na região de Paim Filho e Barracão, com tempestade c/ vento.",
+      "message": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam na região de Paim Filho e Barracão, com tempestade c/ vento. Válido até 1h15 do dia 7 de agosto. Evite áreas de risco. Emergência ligue 190/193. \n Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-06T22:33:05Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-instabilidades-atuam-na-regiao-de-paim-filho-e-barracao-com-tempestade-c-vento",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-14gromt",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam na região de Lagoa Vermelha e Vacaria, com tempestade c/ vento",
+      "message": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam na região de Lagoa Vermelha e Vacaria, com tempestade c/ vento. Válido até 1h do dia 7 de agosto. Evite áreas de risco. Emergência ligue 190/193. \n Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-06T22:11:55Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-instabilidades-atuam-na-regiao-de-lagoa-vermelha-e-vacaria-com-tempestade-c-vento",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-15ctq5z",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam na região do Litoral Norte, com tempestade c/ vento e granizo.",
+      "message": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam na região do Litoral Norte, com tempestade c/ vento e granizo. Válido até 00h25 do dia 7 de agosto. Evite áreas de risco. Emergência ligue 190/193. \n Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de...",
+      "regions": [
+        "Litoral"
+      ],
+      "issuedAt": "2026-08-06T21:40:28Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-instabilidades-atuam-na-regiao-do-litoral-norte-com-tempestade-c-vento-e-granizo",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-1ff22i1",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam na região de Erechim",
+      "message": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam na região de Erechim, com tempestade com vento. Risco ALTO de destelhamento. Válido até 00h15 do dia 7 de agosto. Evite áreas de risco. Emergência ligue 190/193.  \n Procure informações junto à Defesa Civil da sua cidade, conheça...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-06T21:32:12Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-instabilidades-atuam-na-regiao-de-erechim",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-x5oq2d",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam na região do Litoral Norte",
+      "message": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam na região do Litoral Norte, com tempestade com vento e granizo. Risco ALTO de destelhamento. Válido até 23h55 do dia 6 de agosto. Evite áreas de risco. Emergência ligue 190/193.  \n Procure informações junto à Defesa Civil da sua...",
+      "regions": [
+        "Litoral"
+      ],
+      "issuedAt": "2026-08-06T21:30:32Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-instabilidades-atuam-na-regiao-do-litoral-norte",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-cwnh56",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para Instabilidades atuam na região de Serra, com tempestade com vento e granizo",
+      "message": "Defesa Civil alerta: condição de ALERTA para Instabilidades atuam na região de Serra, com tempestade com vento e granizo. Válido até 23h50 do dia 6 de agosto. Evite áreas de risco. Emergência ligue 190/193. \n Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de...",
+      "regions": [
+        "Serra"
+      ],
+      "issuedAt": "2026-08-06T21:04:04Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-instabilidades-atuam-na-regiao-de-serra-com-tempestade-com-vento-e-granizo",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-62imec",
+      "type": "Defesa Civil",
+      "severity": "emergencia",
+      "title": "Defesa Civil alerta SEVERO/CELL BROADCAST para Instabilidades atuam na região de Porto Alegre",
+      "message": "Defesa Civil alerta SEVERO/CELL BROADCAST para Instabilidades atuam na região de Porto Alegre, com tempestades c/ rajadas de vento superiores a 90 km/h. Válido até 21h10 de 6 de agosto. Risco MUITO ALTO de alagamentos e cheias em arroios/rios pequenos. Mantenha-se seguro. Emergência ligue...",
+      "regions": [
+        "Porto Alegre"
+      ],
+      "issuedAt": "2026-08-06T21:00:13Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-severo-cell-broadcast-para-instabilidades-atuam-na-regiao-de-porto-alegre",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-1f68f9w",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam na região de Tapejara",
+      "message": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam na região de Tapejara, com tempestade com vento e granizo. Risco ALTO de destelhamento. Válido até 23h40 do dia 6 de agosto. Evite áreas de risco. Emergência ligue 190/193.  \n Procure informações junto à Defesa Civil da sua...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-06T20:55:53Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-instabilidades-atuam-na-regiao-de-tapejara",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-9ranbp",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam em áreas do Litoral Médio",
+      "message": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam em áreas do Litoral Médio, com tempestade com vento e granizo. Risco ALTO de destelhamento. Válido até 22h15 do dia 6 de agosto. Evite áreas de risco. Emergência ligue 190/193.  \n Procure informações junto à Defesa Civil da sua...",
+      "regions": [
+        "Litoral"
+      ],
+      "issuedAt": "2026-08-06T20:20:36Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-instabilidades-atuam-em-areas-do-litoral-medio",
+      "source": "Defesa Civil RS"
+    }
+  ],
+  "sources": "Defesa Civil RS (RSS)"
+}
