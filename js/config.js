@@ -10,11 +10,17 @@
 //   import { THRESHOLDS, STATIONS, loadConfig } from './config.js';
 
 export const THRESHOLDS = {
-  atencao: 1.5,
-  inundacao: 2.0,
-  severa: 2.5,
-  critica: 3.0,
-  referencia_mai2024: 5.3,
+  // Cotas oficiais pós-2024 (validado via nivelguaiba.com.br / ANA-SGB)
+  // Estação Usina do Gasômetro (ANA 87450020): cota de inundação 2.60m
+  // Estação Cais Mauá C6 (ANA 87450004): cota de inundação 3.00m
+  // Usamos a régua do Gasômetro (2.60m) como referência principal.
+  atencao: 1.56,       // 60% da cota de inundação → status "alerta" no nivelguaiba
+  inundacao: 2.60,     // Cota de inundação oficial (Gasômetro)
+  severa: 3.50,        // Inundação severa
+  critica: 4.50,       // Crítica (maio/2024 chegou a 5.30m)
+  referencia_mai2024: 5.30,
+  cota_gasometro: 2.60,
+  cota_cais_maua: 3.00,
 };
 
 export const STATIONS = [];

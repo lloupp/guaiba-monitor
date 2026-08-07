@@ -1,45 +1,42 @@
 {
   "stations": [
     {
-      "id": "poa-cais-maua",
-      "location": "Porto Alegre",
-      "name": "Cais Mauá — Guaíba",
-      "source": "IPH-UFRGS",
-      "notes": "Principal régua de referência do centro de POA"
+      "id": "DCRS-00054",
+      "location": "Barra do Ribeiro",
+      "name": "Lago Guaíba — Barra do Ribeiro",
+      "notes": "Estação principal do projeto. Mede o nível do Lago Guaíba em tempo quase real.",
+      "source": "Defesa Civil RS (Rede Hidrometeorológica — GraphQL)"
     },
     {
-      "id": "poa-gasometro",
+      "id": "DCRS-00033",
+      "location": "Porto Alegre",
+      "name": "Porto Alegre - Ipanema",
+      "notes": "Estação de fallback em POA (Ipanema).",
+      "source": "Defesa Civil RS (Rede Hidrometeorológica — GraphQL)"
+    },
+    {
+      "id": "87450020",
       "location": "Porto Alegre",
       "name": "Usina do Gasômetro — Guaíba",
-      "source": "MetSul / CPRM",
-      "notes": "Ponto de coleta da zona Centro-Sul"
+      "notes": "Régua oficial do centro de POA. Cota de inundação: 2.60m. Referência do nivelguaiba.com.br.",
+      "source": "ANA / SGB (telemetria)"
     },
     {
-      "id": "canoas",
-      "location": "Canoas",
-      "name": "Canoas — margem do Guaíba",
-      "source": "CPRM",
-      "notes": "Vulnerável a transbordo nas áreas baixas/ribeirinhas"
-    },
-    {
-      "id": "guaiba-cidade",
-      "location": "Guaíba",
-      "name": "Guaíba cidade — margem do rio",
-      "source": "CPRM",
-      "notes": "Cidade-sede que dá nome ao rio"
+      "id": "87450004",
+      "location": "Porto Alegre",
+      "name": "Cais Mauá C6 — Guaíba",
+      "notes": "Régua do Centro Histórico. Cota de inundação: 3.00m. Registrou 3.69m em maio/2024.",
+      "source": "ANA / SGB (telemetria)"
     }
   ],
   "thresholds": {
-    "atencao": 1.5,
-    "inundacao": 2.0,
-    "severa": 2.5,
-    "critica": 3.0,
-    "referencia_mai2024": 5.3
+    "atencao": 1.56,
+    "inundacao": 2.60,
+    "severa": 3.50,
+    "critica": 4.50,
+    "referencia_mai2024": 5.30,
+    "cota_gasometro": 2.60,
+    "cota_cais_maua": 3.00
   },
-  "notes": "Cotas aproximadas baseadas em valores históricos da Defesa Civil RS. CONFIRMAR cotas oficiais na Fase 1 (CPRM/Defesa Civil RS). Não usar como base oficial sem validação.",
-  "validation_phase1": {
-    "confirmed_at": "2026-08-05",
-    "result": "CPRM/DCRS não expõem cota oficial via API JSON — validação via sites HTML não retornou o número explícito. Fonte primária recomendada: CPRM SACE página HTML da bacia do Guaíba + boletins hidrometeorológicos em PDF na DCRS.",
-    "thresholds_status": "Valores de referência aproximados (atenção 1.5, inundação 2.0, severa 2.5, crítica 3.0) baseados em histórico da Defesa Civil RS. Manter enquanto não houver fonte numérica atualizada."
-  }
+  "notes": "Cotas oficiais pós-2024 validadas via nivelguaiba.com.br (consome ANA/SGB telemetria). Estação principal do projeto: DCRS-00054 (Lago Guaíba) via GraphQL da Defesa Civil RS. Cota de inundação de referência: 2.60m (Gasômetro). Maio/2024: pico histórico de 5.30m."
 }
