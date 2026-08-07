@@ -7,7 +7,7 @@ import { formatMeters, formatDate, saveToStorage, loadFromStorage, escapeHtml } 
 import { fetchAll, sampleLevels, sampleAlerts } from './api.js';
 import { appendLevelReading, getLevelHistory, renderLevelChart } from './levels.js';
 import { THRESHOLDS, loadConfig } from './config.js';
-import { renderElNinoMap, renderElNinoStatus } from './elnino.js';
+import { renderElNinoMap, renderElNinoRegions, renderElNinoStatus } from './elnino.js';
 import {
   DISASTER_TYPES,
   DISASTER_ORDER,
@@ -715,11 +715,13 @@ function handleThemeToggle() {
 function renderElNino() {
   const mapEl = document.getElementById('elnino-map');
   const statusEl = document.getElementById('elnino-status');
+  const regionsEl = document.getElementById('elnino-regions');
   if (!statusEl) return;
 
   if (!state.elnino) {
     statusEl.innerHTML = '<p class="elnino-nodata">Dados de El Niño/La Niña indisponíveis no momento.</p>';
     if (mapEl) mapEl.innerHTML = '';
+    if (regionsEl) regionsEl.innerHTML = '';
     return;
   }
 
@@ -727,6 +729,9 @@ function renderElNino() {
   if (mapEl) {
     mapEl.innerHTML = '';
     renderElNinoMap(mapEl, state.elnino, state.theme === 'dark');
+  }
+  if (regionsEl) {
+    renderElNinoRegions(regionsEl, state.elnino);
   }
 }
 

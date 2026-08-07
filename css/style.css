@@ -912,6 +912,101 @@ body {
   background: var(--bg-card);
   font-family: inherit;
 }
+
+/* Labels permanentes no mapa */
+.nino-region-label {
+  pointer-events: none;
+}
+.nino-label-inner {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 0 4px #000, 0 0 2px #000;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+.nino-label-ssta {
+  font-size: 10px;
+  opacity: 0.9;
+}
+
+/* Painel de regiões */
+.elnino-regions {
+  margin-top: 16px;
+}
+.nino-regions-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+.nino-regions-legend {
+  font-size: 11px;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #2563eb, #eab308, #dc2626);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+.nino-regions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+}
+.nino-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.nino-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.nino-card-label {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+.nino-card-ssta {
+  font-size: 14px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.nino-card-ssta.warm { color: #ef4444; }
+.nino-card-ssta.cool { color: #3b82f6; }
+.nino-card-sst {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+.nino-card-bar {
+  height: 6px;
+  background: var(--bg-elevated, #1a1a2e);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 2px;
+}
+.nino-card-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+@media (max-width: 480px) {
+  .nino-regions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 .elnino-map .leaflet-container a {
   color: var(--link);
 }

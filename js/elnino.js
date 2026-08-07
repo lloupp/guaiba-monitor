@@ -114,15 +114,20 @@ function renderElNinoMap(container, elnino, dark = true) {
     try { el._leafletMap.remove(); } catch { /* ignorar */ }
   }
 
-  const map = L.map(el, { zoomControl: true, attributionControl: true }).setView([-2, -170], 2);
+  const map = L.map(el, { zoomControl: true, attributionControl: true, minZoom: 1, maxZoom: 6 }).setView([-2, -150], 3);
 
   const tileUrl = dark
     ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
-    : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
+    : 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
   L.tileLayer(tileUrl, {
     attribution: '&copy; OpenStreetMap &copy; CARTO',
     maxZoom: 6,
     subdomains: 'abcd',
+  }).addTo(map);
+
+  // Linha do equador
+  L.polyline([[-5, -220], [-5, -70]], {
+    color: '#ffffff33', weight: 1, dashArray: '4 6', interactive: false,
   }).addTo(map);
 
   const regions = elnino?.regions || {};
@@ -131,20 +136,88 @@ function renderElNinoMap(container, elnino, dark = true) {
     const data = regions[key];
     const ssta = data ? data.ssta : null;
     const color = anomalyColor(ssta);
+    const isWarm = ssta != null && ssta > 0;
     const rect = L.rectangle(meta.bounds, {
       color: '#ffffff',
-      weight: 1.5,
+      weight: 2,
       fillColor: color,
-      fillOpacity: 0.55,
+      fillOpacity: 0.65,
     });
+    const sstStr = data ? data.sst.toFixed(1) : '—';
+    const sstaStr = ssta != null ? (ssta > 0 ? '+' : '') + ssta.toFixed(2) : '—';
     rect.bindTooltip(
-      `<strong>${meta.label}</strong><br/>SST: ${data ? data.sst.toFixed(1) : '—'}°C<br/>Anomalia: ${ssta != null ? ssta.toFixed(2) : '—'}°C`
+      `<div style="font-size:13px;line-height:1.5">
+        <strong style="font-size:14px">${meta.label}</strong><br/>
+        <span>SST: <strong>${sstStr}°C</strong></span><br/>
+        <span>Anomalia: <strong style="color:${isWarm ? '#ef4444' : '#3b82f6'}">${sstaStr}°C</strong></span>
+      </div>`,
+      { sticky: true, direction: 'top' }
     );
     rect.addTo(map);
+
+    // Label permanente (tooltip fixo no centro)
+    const center = [
+      (meta.bounds[0][0] + meta.bounds[1][0]) / 2,
+      (meta.bounds[0][1] + meta.bounds[1][1]) / 2,
+    ];
+    L.marker(center, {
+      icon: L.divIcon({
+        className: 'nino-region-label',
+        html: `<div class="nino-label-inner">${meta.label}<br/><span class="nino-label-ssta">${sstaStr}°</span></div>`,
+        iconSize: [80, 40],
+        iconAnchor: [40, 20],
+      }),
+      interactive: false,
+    }).addTo(map);
   });
 
   el._leafletMap = map;
   return map;
+}
+
+/**
+ * Renderiza o painel de detalhes por região (SST + anomalia + barra visual).
+ * @param {HTMLElement|string} container
+ * @param {object} elnino
+ */
+function renderElNinoRegions(container, elnino) {
+  const el = typeof container === 'string' ? document.querySelector(container) : container;
+  if (!el) return;
+
+  const regions = elnino?.regions || {};
+  const week = elnino?.week || '—';
+
+  const cards = NINO_ORDER.map(key => {
+    const meta = NINO_REGIONS[key];
+    const data = regions[key];
+    const sst = data ? data.sst : null;
+    const ssta = data ? data.ssta : null;
+    const sstaStr = ssta != null ? (ssta > 0 ? '+' : '') + ssta.toFixed(2) : '—';
+    const sstStr = sst != null ? sst.toFixed(1) : '—';
+    const barWidth = ssta != null ? Math.min(100, Math.abs(ssta) / 2 * 100) : 0;
+    const barColor = anomalyColor(ssta ?? 0);
+    const isWarm = ssta != null && ssta > 0;
+
+    return `
+      <div class="nino-card">
+        <div class="nino-card-header">
+          <span class="nino-card-label">${meta.label}</span>
+          <span class="nino-card-ssta ${isWarm ? 'warm' : 'cool'}">${sstaStr}°C</span>
+        </div>
+        <div class="nino-card-sst">SST: ${sstStr}°C</div>
+        <div class="nino-card-bar">
+          <div class="nino-card-bar-fill" style="width:${barWidth}%;background:${barColor}"></div>
+        </div>
+      </div>`;
+  }).join('');
+
+  el.innerHTML = `
+    <div class="nino-regions-header">
+      <span>Semana: <strong>${week}</strong></span>
+      <span class="nino-regions-legend">Frio 🔵 ───── 🔴 Quente</span>
+    </div>
+    <div class="nino-regions-grid">${cards}</div>
+  `;
 }
 
 /**
@@ -183,6 +256,7 @@ export {
   deriveEnsoState,
   anomalyColor,
   renderElNinoMap,
+  renderElNinoRegions,
   renderElNinoStatus,
 };
 export default {
@@ -190,5 +264,6 @@ export default {
   deriveEnsoState,
   anomalyColor,
   renderElNinoMap,
+  renderElNinoRegions,
   renderElNinoStatus,
 };
