@@ -174,17 +174,26 @@ async function fetchLevelGuaiba() {
   const rt = await fetchRealtime();
   if (rt && rt.level && rt.level.levelMeters != null && isFresh(rt.collectedAt)) {
     const l = rt.level;
+    // Converte trend numérico (taxa de variação m/intervalo) para rótulo legível
+    let trendLabel = 'estavel';
+    if (typeof l.trend === 'number') {
+      if (l.trend > 0.005) trendLabel = 'subindo';
+      else if (l.trend < -0.005) trendLabel = 'descendo';
+    } else if (typeof l.trend === 'string') {
+      trendLabel = l.trend;
+    }
     return {
       stations: [{
-        id: l.station || 'poa-cais-maua',
-        station: l.station || 'poa-cais-maua',
-        location: l.location || 'Porto Alegre',
+        id: l.stationCode || 'guaiba-lago',
+        station: l.stationCode || 'guaiba-lago',
+        location: l.stationName || 'Lago Guaíba',
         levelMeters: parseFloat(l.levelMeters),
-        trend: l.trend || 'estavel',
-        recordedAt: l.recordedAt || rt.collectedAt,
-        source: l.source || 'SACE/SGB',
+        trend: trendLabel,
+        trendValue: typeof l.trend === 'number' ? l.trend : null,
+        recordedAt: l.timestamp || rt.collectedAt,
+        source: l.source || 'Defesa Civil RS',
       }],
-      source: l.source || 'SACE/SGB',
+      source: l.source || 'Defesa Civil RS',
     };
   }
 

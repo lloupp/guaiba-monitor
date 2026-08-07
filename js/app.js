@@ -108,11 +108,11 @@ async function loadData() {
   try {
     const data = await fetchAll();
 
-    // Nível do Guaíba (sempre simulação para MVP, mas arquitetura pronta)
+    // Nível do Guaíba (dados reais via GitHub Actions → data/realtime.json)
     const stations = data.level.stations || sampleLevels();
     state.dataSources.level = data.level.source;
-    // O nível atual mostra a estação principal (POA Cais Mauá)
-    const mainStation = stations.find(s => s.station === 'poa-cais-maua') || stations[0];
+    // Estação principal: a primeira da lista (Lago Guaíba / Ipanema)
+    const mainStation = stations[0];
     state.level = mainStation;
 
     // Regiões: converte todas as estações para cards de região
@@ -163,7 +163,7 @@ async function loadData() {
     state.dataSources.elnino = 'sem dados (erro coleta)';
     state.elnino = null;
     const fallback = sampleLevels();
-    state.level = fallback.find(s => s.station === 'poa-cais-maua') || fallback[0];
+    state.level = fallback[0];
     state.regions = fallback.map(levelToRegion);
     state.alerts = sampleAlerts();
     // === Fase 5: Matriz de riscos (simulação/offline) ===

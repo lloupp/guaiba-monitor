@@ -20,9 +20,18 @@ const ELNINO_FILE = new URL('elnino.json', DATA_DIR);
 
 const DCRS_RSS = 'https://www.defesacivil.rs.gov.br/rss';
 const NOAA_NINO_URL = 'https://www.cpc.ncep.noaa.gov/data/indices/wksst9120.for';
-// Nível do Guaíba: sem endpoint JSON público estável (o SACE é DWR com sessão).
-// Manter null até existir fonte confiável — o site mostra simulação marcada.
-const LEVEL_URL = null; // ex.: 'https://...' quando existir
+
+// GraphQL da Defesa Civil RS — Rede Hidrometeorológica
+// Fonte pública (sem auth) que fornece nível de rio em tempo quase real.
+const DCRS_GRAPHQL_URL = 'https://redehidrometeorologica.defesacivil.rs.gov.br/graphql';
+const DCRS_CLIENT = 'casa-militar-defesa-civil-rs';
+
+// Estação do Lago Guaíba (Barra do Ribeiro) — melhor proxy do nível do Guaíba.
+//fallback: DCRS-00033 (Porto Alegre - Ipanema) se a principal falhar.
+const GUAIBA_STATIONS = [
+  { code: 'DCRS-00054', name: 'Barra do Ribeiro - Lago Guaíba' },
+  { code: 'DCRS-00033', name: 'Porto Alegre - Ipanema' },
+];
 
 const UA = 'GuaibaMonitor/1.0 (coleta automática)';
 
@@ -117,15 +126,73 @@ function extractRegions(text) {
 }
 
 /**
- * Tenta obter o nível atual do Guaíba (fontes confiáveis ainda não disponíveis).
- * @returns {Promise<object|null>}
+ * Consulta o GraphQL da Defesa Civil RS (tags_data) e extrai o nível atual
+ * do Guaíba. Tenta estações em ordem (Lago Guaíba → Ipanema como fallback).
+ * @returns {Promise<object|null>} { levelMeters, trend, stationCode, stationName, timestamp, source }
  */
 export async function collectLevel() {
-  if (!LEVEL_URL) return null;
+  const query = `{
+    tags_data(clients: ["${DCRS_CLIENT}"]) {
+      qualle_meteorologia {
+        codigo timestamp
+        name { prefix general local }
+        data { rio { rio_nivel { value } rio_nivel_tendencia { value } } }
+      }
+    }
+  }`;
+
   try {
-    const html = await fetchText(LEVEL_URL);
-    // TODO: parse da cota quando uma fonte estável for identificada.
-    void html;
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 25000);
+    const res = await fetch(DCRS_GRAPHQL_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'User-Agent': UA },
+      body: JSON.stringify({ query }),
+      signal: controller.signal,
+    });
+    clearTimeout(timer);
+    if (!res.ok) throw new Error(`GraphQL HTTP ${res.status}`);
+    const json = await res.json();
+    if (json.errors) throw new Error(json.errors[0]?.message || 'GraphQL error');
+    if (!json.data?.tags_data?.qualle_meteorologia) return null;
+
+    const stations = json.data.tags_data.qualle_meteorologia;
+    const byCode = {};
+    for (const s of stations) byCode[s.codigo] = s;
+
+    // Tenta cada estação candidata até achar uma com nível válido
+    for (const target of GUAIBA_STATIONS) {
+      const s = byCode[target.code];
+      if (!s) continue;
+      const rio = s.data?.rio;
+      const nivel = rio?.rio_nivel?.value;
+      if (nivel == null || Number.isNaN(nivel)) continue;
+
+      // HEURÍSTICA: o nível reportado por algumas estações pode ter escala
+      // diferente (ex.: 655m quando a estação reporta raw em cm ou em cota
+      // altimétrica). Validamos entre 0 e 30m — valores plausíveis para o
+      // Guaíba. Se estiver fora, tentamos a próxima estação.
+      if (nivel < 0 || nivel > 30) {
+        console.warn(`[collect] ${target.code} nível fora do range plausível: ${nivel} — pulando`);
+        continue;
+      }
+
+      const trend = rio?.rio_nivel_tendencia?.value ?? null;
+      const nameParts = s.name || {};
+      const stationName = [nameParts.general, nameParts.local]
+        .filter(Boolean).join(' ').trim() || target.name;
+
+      return {
+        levelMeters: Math.round(nivel * 100) / 100, // 2 casas decimais
+        trend: trend != null ? Math.round(trend * 10000) / 10000 : null,
+        stationCode: s.codigo,
+        stationName,
+        timestamp: s.timestamp || new Date().toISOString(),
+        source: 'Defesa Civil RS (Rede Hidrometeorológica)',
+      };
+    }
+
+    console.warn('[collect] Nenhuma estação do Guaíba retornou nível válido');
     return null;
   } catch (err) {
     console.warn('[collect] nível indisponível:', err.message);
@@ -180,9 +247,9 @@ async function main() {
 
   await writeJson(REALTIME_FILE, {
     collectedAt: new Date().toISOString(),
-    level, // null até haver fonte confiável
+    level,
     dcrsAlerts,
-    sources: ['Defesa Civil RS (RSS)'] + (level ? ['SACE/SGB'] : []),
+    sources: ['Defesa Civil RS (RSS)', ...(level ? ['Defesa Civil RS (GraphQL — Rede Hidrometeorológica)'] : [])],
   });
 
   if (elnino) await writeJson(ELNINO_FILE, elnino);
