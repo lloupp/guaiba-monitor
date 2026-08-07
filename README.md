@@ -21,9 +21,11 @@ Monitor web do nível do rio **Guaíba** e riscos de desastres naturais em **Por
 
 | Dado | Fonte | Status | Observação |
 |---|---|---|---|
+| **Nível do Guaíba** | [Defesa Civil RS](https://redehidrometeorologica.defesacivil.rs.gov.br/graphql) (GraphQL) | ✅ **Ao vivo** | Estação DCRS-00054 (Barra do Ribeiro - Lago Guaíba). Dados via `tags_data` query, sem auth. Coletado pelo GitHub Actions a cada 30min. |
 | **Alertas meteorológicos** | [INMET](https://apiprevmet3.inmet.gov.br/avisos/ativos) | ✅ **Ao vivo** | JSON, sem auth, CORS aberto. Filtrado para RS. |
 | **Previsão do tempo POA** | [INMET](https://apiprevmet3.inmet.gov.br/previsao/4314902) | ✅ **Ao vivo** | 5 dias, dado por geocode IBGE |
-| **Nível do Guaíba (proxy)** | [SGB-SACE](https://www.sgb.gov.br/sace/sace_nivel/api/dados/cai_108_cota.csv) | ✅ **Ao vivo** | Estação Barca do Caí (Rio Caí, ~50 km de POA). **Não é o Guaíba** — é afluente que correlaciona com o Guaíba em eventos críticos. Marcado claramente no UI. |
+| **Alertas DCRS** | [Defesa Civil RS](https://www.defesacivil.rs.gov.br/rss) (RSS) | ✅ **Ao vivo** | RSS parseado no GitHub Actions, gravado em data/realtime.json |
+| **El Niño/La Niña** | [NOAA CPC](https://www.cpc.ncep.noaa.gov/data/indices/wksst9120.for) | ✅ **Ao vivo** | Anomalias de SST semanais, coletado pelo GitHub Actions |
 | Côta de transbordo | Defesa Civil RS (histórico) | 📏 Aproximada | 1.5 / 2.0 / 2.5 / 3.0 m — valores de referência históricos; CPRM/DCRS não publicam cota numérica oficial via API. |
 
 ### Fontes descartadas (testadas, não funcionais)
