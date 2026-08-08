@@ -5,7 +5,7 @@
 // Importa utils.js, api.js, levels.js, risks.js e alerts.js via import.
 import { formatMeters, formatDate, saveToStorage, loadFromStorage, escapeHtml } from './utils.js';
 import { fetchAll, fetchRealtime, sampleLevels, sampleAlerts } from './api.js';
-import { appendLevelReading, getLevelHistory, renderLevelChart } from './levels.js';
+import { appendLevelReading, getLevelHistory, renderLevelChart, attachChartInteractivity, MAIO_2024_LEVEL } from './levels.js';
 import { THRESHOLDS, loadConfig } from './config.js';
 import { renderElNinoMap, renderElNinoRegions, renderElNinoStatus } from './elnino.js';
 import {
@@ -25,6 +25,9 @@ import {
   showToast,
   checkLevelThreshold,
   getLevelStatusInfo,
+  requestNotificationPermission,
+  disableNotifications,
+  notificationsEnabled,
 } from './alerts.js';
 
 // === Dados de exemplo — SIMULAÇÃO/OFFLINE ===
@@ -43,7 +46,9 @@ const state = {
   weather: [],
   elnino: null,
   publicHistory: null,
+  chartReadings: [],
   riskMatrix: [],
+  selectedStation: loadFromStorage('settings.selectedStation', null),
   alertThreshold: loadFromStorage('settings.alertThreshold', THRESHOLDS.atencao),
   dataSources: {
     level: 'simulação/offline',
@@ -260,8 +265,9 @@ function renderChart() {
       }));
   }
 
-  // Histórico local do navegador
-  const localHistory = getLevelHistory(state.level.station);
+  // Histórico local do navegador (filtrado pela estação selecionada)
+  const stationId = state.selectedStation || state.level.station;
+  const localHistory = getLevelHistory(stationId);
 
   // Mescla: combina públicos + locais, deduplica por minuto
   const stationKey = state.level.station;
@@ -276,7 +282,10 @@ function renderChart() {
     })
     .sort((a, b) => new Date(a.recordedAt) - new Date(b.recordedAt));
 
-  renderLevelChart(canvas, merged, threshold);
+  // Guarda leituras para o callback de interatividade do gráfico
+  state.chartReadings = merged;
+
+  renderLevelChart(canvas, merged, threshold, MAIO_2024_LEVEL);
 
   // Atualiza metadados abaixo do gráfico
   const countEl = document.getElementById('graph-count');
@@ -817,6 +826,7 @@ async function checkStaleData() {
 
 function renderAll() {
   renderLevelIndicator();
+  populateStationSelector();
   renderChart();
   renderRegions();
   renderRiskMatrix();
@@ -825,6 +835,55 @@ function renderAll() {
   renderPreparationChecklist();
   updateTimestamp();
   updateDataSource();
+}
+
+/**
+ * Popula o seletor de estações com as estações disponíveis.
+ * Fase B.3: múltiplas estações com seletor.
+ */
+function populateStationSelector() {
+  const select = document.getElementById('station-select');
+  if (!select) return;
+  // Limpa opções existentes
+  select.innerHTML = '';
+  // Povoa com as estações do state.regions
+  if (!state.regions || state.regions.length === 0) {
+    select.style.display = 'none';
+    return;
+  }
+  select.style.display = '';
+  state.regions.forEach(r => {
+    const option = document.createElement('option');
+    option.value = r.id;
+    option.textContent = `${r.name} (${formatMeters(r.levelMeters)})`;
+    select.appendChild(option);
+  });
+  // Seleciona a estação atual
+  if (state.selectedStation) {
+    select.value = state.selectedStation;
+  } else if (state.level) {
+    select.value = state.level.station;
+  }
+}
+
+/**
+ * Atualiza o botão de notificações para refletir o estado atual (ativado/desativado).
+ */
+function updateNotificationButton() {
+  const btn = document.getElementById('notification-toggle');
+  if (!btn) return;
+  const icon = btn.querySelector('.notif-icon');
+  const label = btn.querySelector('.notif-label');
+  if (!icon || !label) return;
+  if (notificationsEnabled()) {
+    icon.textContent = '🔔';
+    label.textContent = 'Notificações ativas';
+    btn.classList.add('notif-active');
+  } else {
+    icon.textContent = '🔕';
+    label.textContent = 'Ativar notificações';
+    btn.classList.remove('notif-active');
+  }
 }
 
 // === Inicialização ===
@@ -840,6 +899,12 @@ async function init() {
   renderAll();
   applyEntryAnimations();
   fadeOutLoader();
+
+  // Registra interatividade do gráfico (tooltip, zoom, pan)
+  const canvas = document.getElementById('level-canvas');
+  if (canvas) {
+    attachChartInteractivity(canvas, renderChart, () => state.chartReadings);
+  }
 
   document.getElementById('theme-toggle').addEventListener('click', handleThemeToggle);
 
@@ -859,11 +924,58 @@ async function init() {
     });
   }
 
-  // Redesenha o gráfico, matriz e mapa El Niño responsivamente
+  // Fase B: listener para o botão de notificações nativas
+  updateNotificationButton();
+  const notifBtn = document.getElementById('notification-toggle');
+  if (notifBtn) {
+    notifBtn.addEventListener('click', async () => {
+      if (notificationsEnabled()) {
+        disableNotifications();
+        updateNotificationButton();
+      } else {
+        await requestNotificationPermission();
+        updateNotificationButton();
+      }
+    });
+  }
+
+  // Fase B.3: listener para o seletor de estações
+  const stationSelect = document.getElementById('station-select');
+  if (stationSelect) {
+    stationSelect.addEventListener('change', (e) => {
+      state.selectedStation = e.target.value;
+      saveToStorage('settings.selectedStation', state.selectedStation);
+      // Atualiza o level principal para a estação selecionada
+      const selectedRegion = state.regions.find(r => r.id === state.selectedStation);
+      if (selectedRegion) {
+        // Encontra a leitura original correspondente
+        const allStations = state.regions;
+        const found = allStations.find(r => r.id === state.selectedStation);
+        if (found) {
+          state.level = {
+            station: found.id,
+            location: found.name,
+            levelMeters: found.levelMeters,
+            trend: found.trend,
+            recordedAt: found.recordedAt || new Date().toISOString(),
+            source: found.source || state.dataSources.level,
+          };
+        }
+      }
+      renderChart();
+      renderLevelIndicator();
+    });
+  }
+
+  // Redesenha o gráfico, matriz e mapa El Niño responsivamente (com debounce)
+  let resizeTimer = null;
   window.addEventListener('resize', () => {
-    renderChart();
-    renderRiskMatrix();
-    renderElNino();
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      renderChart();
+      renderRiskMatrix();
+      renderElNino();
+    }, 150);
   });
 
   // Atualização periódica dos dados (5 min)

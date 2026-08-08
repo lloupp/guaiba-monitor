@@ -87,9 +87,15 @@
         </div>
       </section>
 
-      <!-- Gráfico de histórico do nível (Fase 4) -->
+      <!-- Gráfico de histórico do nível (Fase 4 + B) -->
       <section class="level-graph card" id="level-graph">
-        <h2>Linha do Tempo do Nível do Guaíba</h2>
+        <div class="graph-header">
+          <h2>Linha do Tempo do Nível do Guaíba</h2>
+          <div class="station-selector" id="station-selector">
+            <label for="station-select">Estação:</label>
+            <select id="station-select" aria-label="Selecionar estação de monitoramento"></select>
+          </div>
+        </div>
         <div class="graph-canvas-wrap">
           <canvas id="level-canvas" width="800" height="300" aria-label="Gráfico de histórico do nível do rio Guaíba — eixo Y em metros, eixo X no tempo"></canvas>
         </div>
@@ -97,6 +103,7 @@
           <span class="graph-count" id="graph-count">—</span>
           <span class="graph-source" id="graph-source">—</span>
         </div>
+        <p class="graph-hint">💡 Passe o mouse para ver detalhes • Scroll para zoom • Duplo clique para resetar</p>
       </section>
 
       <!-- Cards por região -->
@@ -120,10 +127,16 @@
     <section class="alerts-section card" id="alerts-section">
       <div class="alerts-header">
         <h2 class="section-title">Alertas Ativos</h2>
-        <div class="alert-threshold-control">
-          <label for="alert-threshold-input">Limiar de alerta:</label>
-          <input type="number" id="alert-threshold-input" min="0" max="6" step="0.1" value="1.5">
-          <span class="threshold-unit">m</span>
+        <div class="alert-controls">
+          <div class="alert-threshold-control">
+            <label for="alert-threshold-input">Limiar de alerta:</label>
+            <input type="number" id="alert-threshold-input" min="0" max="6" step="0.1" value="1.5">
+            <span class="threshold-unit">m</span>
+          </div>
+          <button id="notification-toggle" class="notification-toggle" type="button">
+            <span class="notif-icon">🔕</span>
+            <span class="notif-label">Ativar notificações</span>
+          </button>
         </div>
       </div>
       <p class="alerts-subtitle">Alertas meteorológicos (INMET) e da Defesa Civil RS. Alertas acima são ordenados por gravidade.</p>

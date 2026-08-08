@@ -183,16 +183,18 @@ async function fetchLevelGuaiba() {
       trendLabel = l.trend;
     }
     return {
-      stations: [{
-        id: l.stationCode || 'guaiba-lago',
-        station: l.stationCode || 'guaiba-lago',
-        location: l.stationName || 'Lago Guaíba',
-        levelMeters: parseFloat(l.levelMeters),
-        trend: trendLabel,
-        trendValue: typeof l.trend === 'number' ? l.trend : null,
-        recordedAt: l.timestamp || rt.collectedAt,
-        source: l.source || 'Defesa Civil RS',
-      }],
+      stations: (l.allStations || [l]).map(s => ({
+        id: s.stationCode || 'guaiba-lago',
+        station: s.stationCode || 'guaiba-lago',
+        location: s.stationName || 'Lago Guaíba',
+        levelMeters: parseFloat(s.levelMeters),
+        trend: typeof s.trend === 'number'
+          ? (s.trend > 0.005 ? 'subindo' : s.trend < -0.005 ? 'descendo' : 'estavel')
+          : (typeof s.trend === 'string' ? s.trend : 'estavel'),
+        trendValue: typeof s.trend === 'number' ? s.trend : null,
+        recordedAt: s.timestamp || rt.collectedAt,
+        source: s.source || 'Defesa Civil RS',
+      })),
       source: l.source || 'Defesa Civil RS',
     };
   }

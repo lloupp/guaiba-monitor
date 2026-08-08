@@ -28,7 +28,8 @@ const DCRS_GRAPHQL_URL = 'https://redehidrometeorologica.defesacivil.rs.gov.br/g
 const DCRS_CLIENT = 'casa-militar-defesa-civil-rs';
 
 // Estação do Lago Guaíba (Barra do Ribeiro) — melhor proxy do nível do Guaíba.
-//fallback: DCRS-00033 (Porto Alegre - Ipanema) se a principal falhar.
+// Fallback: DCRS-00033 (Porto Alegre - Ipanema) se a principal falhar.
+// Estasções adicionais para o seletor de múltiplas estações (Fase B.3):
 const GUAIBA_STATIONS = [
   { code: 'DCRS-00054', name: 'Barra do Ribeiro - Lago Guaíba' },
   { code: 'DCRS-00033', name: 'Porto Alegre - Ipanema' },
@@ -161,7 +162,10 @@ export async function collectLevel() {
     const byCode = {};
     for (const s of stations) byCode[s.codigo] = s;
 
-    // Tenta cada estação candidata até achar uma com nível válido
+    // Coleta TODAS as estações candidatas com nível válido
+    const allStations = [];
+    let primaryLevel = null;
+
     for (const target of GUAIBA_STATIONS) {
       const s = byCode[target.code];
       if (!s) continue;
@@ -169,10 +173,7 @@ export async function collectLevel() {
       const nivel = rio?.rio_nivel?.value;
       if (nivel == null || Number.isNaN(nivel)) continue;
 
-      // HEURÍSTICA: o nível reportado por algumas estações pode ter escala
-      // diferente (ex.: 655m quando a estação reporta raw em cm ou em cota
-      // altimétrica). Validamos entre 0 e 30m — valores plausíveis para o
-      // Guaíba. Se estiver fora, tentamos a próxima estação.
+      // HEURÍSTICA: Validamos entre 0 e 30m — valores plausíveis para o Guaíba.
       if (nivel < 0 || nivel > 30) {
         console.warn(`[collect] ${target.code} nível fora do range plausível: ${nivel} — pulando`);
         continue;
@@ -183,18 +184,30 @@ export async function collectLevel() {
       const stationName = [nameParts.general, nameParts.local]
         .filter(Boolean).join(' ').trim() || target.name;
 
-      return {
-        levelMeters: Math.round(nivel * 100) / 100, // 2 casas decimais
+      const stationData = {
+        levelMeters: Math.round(nivel * 100) / 100,
         trend: trend != null ? Math.round(trend * 10000) / 10000 : null,
         stationCode: s.codigo,
         stationName,
         timestamp: s.timestamp || new Date().toISOString(),
         source: 'Defesa Civil RS (Rede Hidrometeorológica)',
       };
+
+      allStations.push(stationData);
+
+      // A primeira estação válida é a "principal" (mantém compatibilidade)
+      if (!primaryLevel) {
+        primaryLevel = stationData;
+      }
     }
 
-    console.warn('[collect] Nenhuma estação do Guaíba retornou nível válido');
-    return null;
+    if (allStations.length === 0) {
+      console.warn('[collect] Nenhuma estação do Guaíba retornou nível válido');
+      return null;
+    }
+
+    // Retorna a principal + todas as estações válidas para o seletor
+    return { ...primaryLevel, allStations };
   } catch (err) {
     console.warn('[collect] nível indisponível:', err.message);
     return null;

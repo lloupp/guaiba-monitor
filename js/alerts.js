@@ -275,6 +275,91 @@ function checkLevelThreshold(levelReading, userThreshold) {
 
   // Persiste o status atual para a próxima verificação
   saveToStorage('levels.last_status', currentStatus);
+
+  // Envia notificação nativa do browser se habilitado e houve escalada
+  if (escalated && notificationsEnabled()) {
+    sendLevelNotification(levelReading, currentStatus);
+  }
+}
+
+// === Notificações nativas (Notification API) ===
+
+/**
+ * Verifica se as notificações nativas estão habilitadas pelo usuário.
+ * @returns {boolean}
+ */
+function notificationsEnabled() {
+  return loadFromStorage('settings.notifications', false) &&
+    'Notification' in window &&
+    Notification.permission === 'granted';
+}
+
+/**
+ * Pede permissão do usuário para enviar notificações nativas.
+ * Persiste a preferência em localStorage.
+ * @returns {Promise<boolean>} true se concedida
+ */
+async function requestNotificationPermission() {
+  if (!('Notification' in window)) {
+    showToast('Seu navegador não suporta notificações nativas.', { type: 'warning' });
+    return false;
+  }
+  if (Notification.permission === 'granted') {
+    saveToStorage('settings.notifications', true);
+    showToast('Notificações já estavam ativadas. ✅', { type: 'success' });
+    return true;
+  }
+  if (Notification.permission === 'denied') {
+    showToast('Permissão de notificações foi negada. Habilite nas configurações do navegador.', { type: 'warning' });
+    return false;
+  }
+  const permission = await Notification.requestPermission();
+  const granted = permission === 'granted';
+  saveToStorage('settings.notifications', granted);
+  if (granted) {
+    showToast('Notificações ativadas! Você será avisado quando o nível subir. 🔔', { type: 'success' });
+  } else {
+    showToast('Notificações não ativadas.', { type: 'info' });
+  }
+  return granted;
+}
+
+/**
+ * Desativa as notificações nativas (persiste a preferência).
+ */
+function disableNotifications() {
+  saveToStorage('settings.notifications', false);
+  showToast('Notificações desativadas.', { type: 'info' });
+}
+
+/**
+ * Envia uma notificação nativa do browser sobre o nível do Guaíba.
+ * @param {LevelReading} levelReading
+ * @param {string} status — status atual (atencao, inundacao, etc)
+ */
+function sendLevelNotification(levelReading, status) {
+  if (!notificationsEnabled() || !levelReading) return;
+  const label = LEVEL_STATUS_LABELS[status] || 'ATENÇÃO';
+  const title = `🌊 Guaíba ${label}: ${formatMeters(levelReading.levelMeters)}`;
+  let body = `Nível em ${levelReading.location}.`;
+  if (status === 'critica') body += ' Evacuação emergencial nas áreas de risco.';
+  else if (status === 'severa') body += ' Inundações avançadas em áreas ribeirinhas.';
+  else body += ' Monitore atualizações.';
+
+  try {
+    const n = new Notification(title, {
+      body,
+      icon: 'icons/icon-192.png',
+      tag: 'guaiba-level',
+      requireInteraction: status === 'critica' || status === 'severa',
+    });
+    n.onclick = () => {
+      window.focus();
+      n.close();
+    };
+  } catch (e) {
+    console.warn('[alerts] Notification falhou:', e.message);
+  }
 }
 
 // === Exports ===
@@ -295,4 +380,8 @@ export {
   ensureToastContainer,
   showToast,
   checkLevelThreshold,
+  notificationsEnabled,
+  requestNotificationPermission,
+  disableNotifications,
+  sendLevelNotification,
 };

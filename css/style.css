@@ -358,6 +358,51 @@ body {
   padding: 0 4px;
 }
 
+.graph-hint {
+  font-size: 11px;
+  color: var(--text-secondary);
+  opacity: 0.7;
+  text-align: center;
+  margin: 6px 0 0;
+  padding: 0;
+}
+
+.graph-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.graph-header h2 {
+  margin: 0;
+}
+
+.station-selector {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.station-selector select {
+  background: var(--bg-hover);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-size: 12px;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.station-selector select:focus {
+  outline: 2px solid var(--blue);
+  outline-offset: 1px;
+}
+
 /* ===== Regiões ===== */
 .regions {
   margin-bottom: 24px;
@@ -710,6 +755,42 @@ body {
   font-size: 11px;
   color: var(--text-secondary);
   font-weight: 600;
+}
+
+.alert-controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.notification-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  background: var(--bg-hover);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: var(--transition);
+}
+
+.notification-toggle:hover {
+  background: var(--border);
+  color: var(--text-primary);
+}
+
+.notification-toggle.notif-active {
+  background: rgba(14, 165, 233, 0.15);
+  border-color: rgba(14, 165, 233, 0.4);
+  color: #0ea5e9;
+}
+
+.notification-toggle .notif-icon {
+  font-size: 14px;
 }
 
 .alerts-subtitle {
