@@ -241,7 +241,7 @@ async function writeJson(file, data) {
 /**
  * Atualiza o histórico público de níveis (data/history.json).
  * Adiciona a leitura atual, deduplica por timestamp, e mantém apenas
- * os últimos 7 dias. Este arquivo é versionado no git pelo Actions,
+ * as últimas 24h. Este arquivo é versionado no git pelo Actions,
  * dando a todos os visitantes um histórico real da tendência do nível.
  * @param {object} level — leitura de nível de collectLevel()
  * @param {string} collectedAt — ISO timestamp da coleta atual
@@ -287,10 +287,10 @@ export async function updateHistory(level, collectedAt) {
   // Ordena cronologicamente
   history.readings.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
 
-  // Cap em 7 dias (descarta leituras mais antigas)
-  const sevenDaysAgo = Date.now() - 7 * 24 * 60 * 60 * 1000;
+  // Cap em 24h (descarta leituras mais antigas)
+  const twentyFourHoursAgo = Date.now() - 24 * 60 * 60 * 1000;
   history.readings = history.readings.filter(
-    r => new Date(r.timestamp).getTime() >= sevenDaysAgo
+    r => new Date(r.timestamp).getTime() >= twentyFourHoursAgo
   );
 
   history.collectedAt = collectedAt;

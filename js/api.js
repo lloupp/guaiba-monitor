@@ -345,7 +345,7 @@ async function fetchElnino(force = false) {
 /**
  * Lê data/history.json — histórico público de níveis coletado pelo GitHub
  * Actions a cada 30min. Dá a todos os visitantes um histórico real de até
- * 7 dias da tendência do nível do Guaíba, não apenas o histórico individual
+ * 24h da tendência do nível do Guaíba, não apenas o histórico individual
  * do navegador (localStorage).
  * @returns {Promise<object|null>} { collectedAt, readings: [{timestamp, levelMeters, trend, stationCode, stationName, source}] }
  */
