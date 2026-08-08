@@ -1,11 +1,11 @@
 {
-  "collectedAt": "2026-08-08T21:24:24.324Z",
+  "collectedAt": "2026-08-08T21:54:12.477Z",
   "level": {
     "levelMeters": 1.25,
     "trend": 0,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-08T21:24:09.000+00:00",
+    "timestamp": "2026-08-08T21:54:09.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
@@ -13,7 +13,7 @@
         "trend": 0,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-08T21:24:09.000+00:00",
+        "timestamp": "2026-08-08T21:54:09.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
@@ -21,12 +21,65 @@
         "trend": null,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-08T21:24:11.000+00:00",
+        "timestamp": "2026-08-08T21:54:01.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
-  "dcrsAlerts": [],
+  "dcrsAlerts": [
+    {
+      "id": "dcrs-ag7vdj",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para tempestades com granizo e rajadas de vento que atuam na região dos Vales",
+      "message": "Defesa Civil alerta: condição de ALERTA para tempestades com granizo e rajadas de vento que atuam na região dos Vales. Risco ALTO de destelhamento. Válido até 14h do dia 8 de agosto. Evite áreas de risco. Emergência ligue 190/193. \n Procure informações junto à Defesa Civil da sua cidade, conheça...",
+      "regions": [
+        "Vale"
+      ],
+      "issuedAt": "2026-08-08T12:34:26Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestades-com-granizo-e-rajadas-de-vento-que-atuam-na-regiao-dos-vales",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-1awmxn7",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para tempestades com granizo e rajadas de vento que atuam no Norte",
+      "message": "Defesa Civil alerta: condição de ALERTA para tempestades com granizo e rajadas de vento que atuam no Norte do estado. Risco ALTO de destelhamento. Válido até 14h do dia 8 de agosto. Evite áreas de risco. Emergência ligue 190/193. \n Procure informações junto à Defesa Civil da sua cidade, conheça...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-08T11:52:04Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestades-com-granizo-e-rajadas-de-vento-que-atuam-no-norte",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-1srj7ui",
+      "type": "Defesa Civil",
+      "severity": "atencao",
+      "title": "O Centro de Monitoramento da Defesa Civil do RS atualiza o prognóstico meteorológico para os próximos dias no estado",
+      "message": "O CENTRO DE MONITORAMENTO DA DEFESA CIVIL DO ESTADO ATUALIZA O PROGNÓSTICO METEOROLÓGICO PARA OS PRÓXIMOS DIAS:    Na madrugada e manhã de quinta-feira (6), há risco de tempestades isoladas com queda de granizo em áreas do Norte, Noroeste, Centro, Oeste e Campanha.    Na tarde e noite da...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-05T13:23:14Z",
+      "link": "http://defesacivil.rs.gov.br/o-centro-de-monitoramento-da-defesa-civil-do-rs-atualiza-o-prognostico-hidrologico-para-os-proximos-dias-no-estado-6a7362f57df92",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-1snfeki",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam em áreas próximas de São Miguel das Missões",
+      "message": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam em áreas próximas de São Miguel das Missões, com tempestade com vento e granizo. Risco ALTO de destelhamento. Válido até 22h45 do dia 19 de julho. Evite áreas de risco. Emergência ligue 190/193. \n Procure informações junto à...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-07-19T21:22:00Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-instabilidades-atuam-em-areas-proximas-de-sao-miguel-das-missoes",
+      "source": "Defesa Civil RS"
+    }
+  ],
   "sources": [
     "Defesa Civil RS (RSS)",
     "Defesa Civil RS (GraphQL — Rede Hidrometeorológica)"
