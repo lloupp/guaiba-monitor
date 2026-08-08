@@ -4,7 +4,7 @@
 // app.js é o entry point único (index.html carrega apenas este módulo).
 // Importa utils.js, api.js, levels.js, risks.js e alerts.js via import.
 import { formatMeters, formatDate, saveToStorage, loadFromStorage, escapeHtml } from './utils.js';
-import { fetchAll, sampleLevels, sampleAlerts } from './api.js';
+import { fetchAll, fetchRealtime, sampleLevels, sampleAlerts } from './api.js';
 import { appendLevelReading, getLevelHistory, renderLevelChart } from './levels.js';
 import { THRESHOLDS, loadConfig } from './config.js';
 import { renderElNinoMap, renderElNinoRegions, renderElNinoStatus } from './elnino.js';
@@ -42,6 +42,7 @@ const state = {
   alerts: [],
   weather: [],
   elnino: null,
+  publicHistory: null,
   riskMatrix: [],
   alertThreshold: loadFromStorage('settings.alertThreshold', THRESHOLDS.atencao),
   dataSources: {
@@ -141,6 +142,9 @@ async function loadData() {
       ? `${state.elnino.state} (${state.elnino.source || 'NOAA'})`
       : 'sem dados';
 
+    // Histórico público (coletado via GitHub Actions → data/history.json)
+    state.publicHistory = data.history || null;
+
     // === Fase 5: Matriz de riscos (região × tipo de desastre) ===
     state.riskMatrix = buildRegionRisks(
       state.regions, state.alerts, state.weather, state.level, state.dataSources
@@ -178,6 +182,8 @@ async function loadData() {
       // Fase 6: verifica limiar e mostra toast se houver escalada de risco
       checkLevelThreshold(state.level, state.alertThreshold);
     }
+    // Verifica se os dados do servidor estão desatualizados
+    checkStaleData();
     // Persiste alertas no localStorage (prefixo gm_)
     saveToStorage('alerts', state.alerts);
   }
@@ -227,27 +233,64 @@ function relativeTime(iso) {
 
 /**
  * Renderiza o gráfico de histórico do nível em Canvas.
- * Usa o histórico persistido em localStorage (localStorage gm_levels_history).
+ * Usa o histórico público (data/history.json, 7 dias reais coletados pelo
+ * Actions) quando disponível — mesclado com o localStorage do navegador
+ * para preencher lacunas. Se não há histórico público, usa só o local.
  */
 function renderChart() {
   const canvas = document.getElementById('level-canvas');
   if (!canvas) return;
 
-  const history = getLevelHistory(state.level.station);
   const threshold = THRESHOLDS.inundacao;
 
-  renderLevelChart(canvas, history, threshold);
+  // Histórico público do servidor (data/history.json via Actions)
+  let publicReadings = [];
+  if (state.publicHistory && Array.isArray(state.publicHistory.readings)) {
+    publicReadings = state.publicHistory.readings
+      .filter(r => r && r.levelMeters != null && r.timestamp)
+      .map(r => ({
+        station: r.stationCode || 'public',
+        location: r.stationName || 'Guaíba',
+        levelMeters: parseFloat(r.levelMeters),
+        trend: typeof r.trend === 'number'
+          ? (r.trend > 0.005 ? 'subindo' : r.trend < -0.005 ? 'descendo' : 'estavel')
+          : (r.trend || 'estavel'),
+        recordedAt: r.timestamp,
+        source: r.source || 'Defesa Civil RS',
+      }));
+  }
+
+  // Histórico local do navegador
+  const localHistory = getLevelHistory(state.level.station);
+
+  // Mescla: combina públicos + locais, deduplica por minuto
+  const stationKey = state.level.station;
+  const minuteKey = (iso) => iso ? iso.slice(0, 16) : '';
+  const seen = new Set();
+  const merged = [...publicReadings, ...localHistory]
+    .filter(r => {
+      const key = `${r.station || stationKey}|${minuteKey(r.recordedAt)}`;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    })
+    .sort((a, b) => new Date(a.recordedAt) - new Date(b.recordedAt));
+
+  renderLevelChart(canvas, merged, threshold);
 
   // Atualiza metadados abaixo do gráfico
   const countEl = document.getElementById('graph-count');
   const sourceEl = document.getElementById('graph-source');
   if (countEl) {
-    countEl.textContent = history.length > 0
-      ? `${history.length} leitura(s) — última: ${formatDate(history[history.length - 1].recordedAt)}`
+    const source = publicReadings.length > 0 ? 'público + local' : 'local';
+    countEl.textContent = merged.length > 0
+      ? `${merged.length} leitura(s) — ${source} — última: ${formatDate(merged[merged.length - 1].recordedAt)}`
       : 'Sem histórico';
   }
   if (sourceEl) {
-    sourceEl.textContent = state.dataSources.level;
+    sourceEl.textContent = publicReadings.length > 0
+      ? `${state.dataSources.level} (histórico público: ${publicReadings.length} leituras)`
+      : state.dataSources.level;
   }
 }
 
@@ -735,6 +778,43 @@ function renderElNino() {
   }
 }
 
+/**
+ * Verifica se os dados do servidor (data/realtime.json) estão desatualizados.
+ * Se a coleta foi há mais de 2h, mostra banner de aviso no topo.
+ * Usa o collectedAt do realtime.json para determinar a idade real dos dados.
+ */
+async function checkStaleData() {
+  const banner = document.getElementById('stale-banner');
+  const textEl = document.getElementById('stale-text');
+  if (!banner || !textEl) return;
+
+  const STALE_THRESHOLD_MS = 2 * 60 * 60 * 1000; // 2 horas
+
+  try {
+    const rt = await fetchRealtime(true); // força reload
+    if (!rt || !rt.collectedAt) {
+      banner.style.display = 'flex';
+      textEl.textContent = 'Dados do servidor indisponíveis — usando histórico offline do navegador.';
+      return;
+    }
+
+    const age = Date.now() - new Date(rt.collectedAt).getTime();
+    if (age > STALE_THRESHOLD_MS) {
+      const hrs = Math.floor(age / (60 * 60 * 1000));
+      const mins = Math.floor((age % (60 * 60 * 1000)) / (60 * 1000));
+      const timeStr = hrs > 0 ? `${hrs}h${mins > 0 ? ' ' + mins + 'min' : ''}` : `${mins}min`;
+      banner.style.display = 'flex';
+      textEl.textContent = `Dados desatualizados — última coleta do servidor há ${timeStr}. Verificando novas atualizações...`;
+    } else {
+      banner.style.display = 'none';
+    }
+  } catch {
+    // Se nem o fetch do realtime funcionou, não mostra banner
+    // (pode estar offline — o app usa localStorage como fallback)
+    banner.style.display = 'none';
+  }
+}
+
 function renderAll() {
   renderLevelIndicator();
   renderChart();
@@ -790,6 +870,7 @@ async function init() {
   setInterval(async () => {
     await loadData();
     renderAll();
+    checkStaleData();
   }, REFRESH_INTERVAL_MS);
 }
 

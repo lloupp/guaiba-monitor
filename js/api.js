@@ -312,6 +312,7 @@ const MAX_COLLECTED_AGE_MS = 6 * 60 * 60 * 1000; // 6 horas
 
 let realtimeCache = null;
 let elninoCache = null;
+let historyCache = null;
 
 /** Verifica se um timestamp ISO é recente. @param {string} iso @returns {boolean} */
 function isFresh(iso) {
@@ -341,6 +342,19 @@ async function fetchElnino(force = false) {
   return elninoCache;
 }
 
+/**
+ * Lê data/history.json — histórico público de níveis coletado pelo GitHub
+ * Actions a cada 30min. Dá a todos os visitantes um histórico real de até
+ * 7 dias da tendência do nível do Guaíba, não apenas o histórico individual
+ * do navegador (localStorage).
+ * @returns {Promise<object|null>} { collectedAt, readings: [{timestamp, levelMeters, trend, stationCode, stationName, source}] }
+ */
+async function fetchHistory(force = false) {
+  if (historyCache && !force) return historyCache;
+  historyCache = await fetchWithRetry('data/history.json');
+  return historyCache;
+}
+
 // === Orquestrador ===
 
 /**
@@ -350,12 +364,13 @@ async function fetchElnino(force = false) {
  * @returns {Promise<{level, alerts, weather, elnino, lastFetch}>}
  */
 async function fetchAll() {
-  const [levelResult, inmetAlerts, dcrsAlerts, weather, elnino] = await Promise.allSettled([
+  const [levelResult, inmetAlerts, dcrsAlerts, weather, elnino, history] = await Promise.allSettled([
     fetchLevelGuaiba(),
     fetchINMETAlertas(),
     fetchDCRSAlertas(),
     fetchINMETPrevisao(),
     fetchElnino(),
+    fetchHistory(),
   ]);
 
   const level = levelResult.status === 'fulfilled'
@@ -376,11 +391,14 @@ async function fetchAll() {
     ? weather.value.weather
     : sampleWeather();
 
+  const historyData = history.status === 'fulfilled' ? history.value : null;
+
   return {
     level,
     alerts,
     weather: weatherData,
     elnino: elnino.status === 'fulfilled' ? elnino.value : null,
+    history: historyData,
     lastFetch: new Date().toISOString(),
   };
 }
@@ -406,6 +424,7 @@ export {
   fetchDCRSAlertas,
   fetchRealtime,
   fetchElnino,
+  fetchHistory,
   fetchAll,
   isFresh,
   sampleLevels,

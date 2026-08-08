@@ -1,0 +1,27 @@
+{
+  "name": "Guaiba Monitor",
+  "short_name": "Guaíba",
+  "description": "Monitor do nível do rio Guaíba e riscos de desastres naturais em Porto Alegre e região",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0a0e17",
+  "theme_color": "#0287ce",
+  "lang": "pt-BR",
+  "categories": ["weather", "news", "utilities"],
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
