@@ -1,11 +1,11 @@
 {
-  "collectedAt": "2026-08-08T15:54:27.996Z",
+  "collectedAt": "2026-08-08T16:22:17.594Z",
   "level": {
     "levelMeters": 1.27,
-    "trend": -0.0108,
+    "trend": 0.0008,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-08T15:54:19.000+00:00",
+    "timestamp": "2026-08-08T16:22:09.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)"
   },
   "dcrsAlerts": [
@@ -36,58 +36,6 @@
       "source": "Defesa Civil RS"
     },
     {
-      "id": "dcrs-xp0j19",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para instabilidades que atuam em áreas próximas do Noroeste",
-      "message": "Defesa Civil alerta: condição de ALERTA para instabilidades que atuam em áreas próximas do Noroeste, com tempestade com granizo e vento. Risco ALTO de destelhamento. Válido até às 15h30h do dia 6 de agosto. Evite áreas de risco. Emergência ligue 190/193. \n Procure informações junto à Defesa...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-06T12:45:00Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-instabilidades-que-atuam-em-areas-proximas-do-noroeste",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-spnrsj",
-      "type": "Defesa Civil",
-      "severity": "atencao",
-      "title": "Instabilidades atuam em áreas próximas de Vacaria, com tempestade com granizo e vento",
-      "message": "Instabilidades atuam em áreas próximas de Vacaria, com tempestade com granizo e vento. Válido até 13h35 do dia 6 de agosto. Evite áreas de risco. Emergência ligue 190/193.    Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de Contingência municipais para saber quais os...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-06T11:56:00Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-instabilidades-atuam-em-areas-proximas-de-saperi-6a74903828f94-6a74a06d94b8a",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-oqg4l7",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam em áreas próximas de Muitos Capões",
-      "message": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam em áreas próximas de Muitos Capões, com tempestade com granizo e vento. Risco ALTO de destelhamento e alagamentos. Válido até 13h do dia 6 de agosto. Evite áreas de risco. Emergência ligue 190/193. \n Procure informações junto à...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-06T11:23:29Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-instabilidades-atuam-em-areas-proximas-de-muitos-capoes",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-b8dy0m",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam em áreas próximas de Erechim",
-      "message": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam em áreas próximas de Erechim, com tempestade com granizo e vento. Risco ALTO de destelhamento e alagamentos. Válido até 11h20 do dia 6 de agosto. Evite áreas de risco. Emergência ligue 190/193. \n Procure informações junto à Defesa...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-06T09:41:32Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-instabilidades-atuam-em-areas-proximas-de-erechim",
-      "source": "Defesa Civil RS"
-    },
-    {
       "id": "dcrs-1srj7ui",
       "type": "Defesa Civil",
       "severity": "atencao",
@@ -98,32 +46,6 @@
       ],
       "issuedAt": "2026-08-05T13:23:14Z",
       "link": "http://defesacivil.rs.gov.br/o-centro-de-monitoramento-da-defesa-civil-do-rs-atualiza-o-prognostico-hidrologico-para-os-proximos-dias-no-estado-6a7362f57df92",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-13qs477",
-      "type": "Defesa Civil",
-      "severity": "atencao",
-      "title": "O Centro de Monitoramento da Defesa Civil do RS atualiza o prognóstico hidrológico para os próximos dias no estado.",
-      "message": "O Centro de Monitoramento da Defesa Civil do RS atualiza o prognóstico hidrológico para os próximos dias no estado. A condição hidrológica atual é de níveis entre limiares de inundação e normalidade, com as tendências gerais de estabilidade ou declínio. Destaque para os rios Uruguai, Jacuí e...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-07-26T13:52:38Z",
-      "link": "http://defesacivil.rs.gov.br/o-centro-de-monitoramento-da-defesa-civil-do-rs-atualiza-o-prognostico-hidrologico-para-os-proximos-dias-no-estado",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-6b8jqg",
-      "type": "Defesa Civil",
-      "severity": "atencao",
-      "title": "O Centro de Monitoramento da Defesa Civil do RS atualiza o prognóstico meteorológico para os próximos dias no estado.",
-      "message": "O Centro de Monitoramento da Defesa Civil do RS atualiza o prognóstico meteorológico para os próximos dias no estado. Neste domingo (26), há condição para tempestades isoladas com queda de granizo, rajadas de vento e chuva moderada a pontualmente forte em áreas do Noroeste, Norte, Nordeste,...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-07-26T13:43:16Z",
-      "link": "http://defesacivil.rs.gov.br/o-centro-de-monitoramento-da-defesa-civil-do-rs-atualiza-o-prognostico-meteorologico-para-os-proximos-dias-no-estado",
       "source": "Defesa Civil RS"
     },
     {
