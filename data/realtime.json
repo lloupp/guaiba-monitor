@@ -1,45 +1,32 @@
 {
-  "collectedAt": "2026-08-10T13:52:03.492Z",
+  "collectedAt": "2026-08-10T14:51:39.684Z",
   "level": {
-    "levelMeters": 1.51,
+    "levelMeters": 1.49,
     "trend": -0.0115,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-10T13:51:55.000+00:00",
+    "timestamp": "2026-08-10T14:51:35.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.51,
+        "levelMeters": 1.49,
         "trend": -0.0115,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-10T13:51:55.000+00:00",
+        "timestamp": "2026-08-10T14:51:35.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.52,
+        "levelMeters": 1.48,
         "trend": null,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-10T13:51:55.000+00:00",
+        "timestamp": "2026-08-10T14:51:35.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
   "dcrsAlerts": [
-    {
-      "id": "dcrs-1srj7ui",
-      "type": "Defesa Civil",
-      "severity": "atencao",
-      "title": "O Centro de Monitoramento da Defesa Civil do RS atualiza o prognóstico meteorológico para os próximos dias no estado",
-      "message": "O CENTRO DE MONITORAMENTO DA DEFESA CIVIL DO ESTADO ATUALIZA O PROGNÓSTICO METEOROLÓGICO PARA OS PRÓXIMOS DIAS:    Na madrugada e manhã de quinta-feira (6), há risco de tempestades isoladas com queda de granizo em áreas do Norte, Noroeste, Centro, Oeste e Campanha.    Na tarde e noite da...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-05T13:23:14Z",
-      "link": "http://defesacivil.rs.gov.br/o-centro-de-monitoramento-da-defesa-civil-do-rs-atualiza-o-prognostico-hidrologico-para-os-proximos-dias-no-estado-6a7362f57df92",
-      "source": "Defesa Civil RS"
-    },
     {
       "id": "dcrs-1snfeki",
       "type": "Defesa Civil",
