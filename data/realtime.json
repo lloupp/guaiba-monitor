@@ -1,46 +1,32 @@
 {
-  "collectedAt": "2026-08-10T14:51:39.684Z",
+  "collectedAt": "2026-08-10T15:52:44.572Z",
   "level": {
     "levelMeters": 1.49,
-    "trend": -0.0115,
+    "trend": -0.0031,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-10T14:51:35.000+00:00",
+    "timestamp": "2026-08-10T15:52:25.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
         "levelMeters": 1.49,
-        "trend": -0.0115,
+        "trend": -0.0031,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-10T14:51:35.000+00:00",
+        "timestamp": "2026-08-10T15:52:25.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.48,
+        "levelMeters": 1.47,
         "trend": null,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-10T14:51:35.000+00:00",
+        "timestamp": "2026-08-10T15:52:25.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
-  "dcrsAlerts": [
-    {
-      "id": "dcrs-1snfeki",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam em áreas próximas de São Miguel das Missões",
-      "message": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam em áreas próximas de São Miguel das Missões, com tempestade com vento e granizo. Risco ALTO de destelhamento. Válido até 22h45 do dia 19 de julho. Evite áreas de risco. Emergência ligue 190/193. \n Procure informações junto à...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-07-19T21:22:00Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-instabilidades-atuam-em-areas-proximas-de-sao-miguel-das-missoes",
-      "source": "Defesa Civil RS"
-    }
-  ],
+  "dcrsAlerts": [],
   "sources": [
     "Defesa Civil RS (RSS)",
     "Defesa Civil RS (GraphQL — Rede Hidrometeorológica)"
