@@ -1,58 +1,32 @@
 {
-  "collectedAt": "2026-08-10T10:11:19.856Z",
+  "collectedAt": "2026-08-10T11:29:41.603Z",
   "level": {
-    "levelMeters": 1.48,
-    "trend": 0.0231,
+    "levelMeters": 1.54,
+    "trend": 0.0338,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-10T10:11:14.000+00:00",
+    "timestamp": "2026-08-10T11:29:34.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.48,
-        "trend": 0.0231,
+        "levelMeters": 1.54,
+        "trend": 0.0338,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-10T10:11:14.000+00:00",
+        "timestamp": "2026-08-10T11:29:34.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.41,
+        "levelMeters": 1.47,
         "trend": null,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-10T10:11:15.000+00:00",
+        "timestamp": "2026-08-10T11:29:35.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
   "dcrsAlerts": [
-    {
-      "id": "dcrs-ag7vdj",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para tempestades com granizo e rajadas de vento que atuam na região dos Vales",
-      "message": "Defesa Civil alerta: condição de ALERTA para tempestades com granizo e rajadas de vento que atuam na região dos Vales. Risco ALTO de destelhamento. Válido até 14h do dia 8 de agosto. Evite áreas de risco. Emergência ligue 190/193. \n Procure informações junto à Defesa Civil da sua cidade, conheça...",
-      "regions": [
-        "Vale"
-      ],
-      "issuedAt": "2026-08-08T12:34:26Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestades-com-granizo-e-rajadas-de-vento-que-atuam-na-regiao-dos-vales",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-1awmxn7",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para tempestades com granizo e rajadas de vento que atuam no Norte",
-      "message": "Defesa Civil alerta: condição de ALERTA para tempestades com granizo e rajadas de vento que atuam no Norte do estado. Risco ALTO de destelhamento. Válido até 14h do dia 8 de agosto. Evite áreas de risco. Emergência ligue 190/193. \n Procure informações junto à Defesa Civil da sua cidade, conheça...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-08T11:52:04Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestades-com-granizo-e-rajadas-de-vento-que-atuam-no-norte",
-      "source": "Defesa Civil RS"
-    },
     {
       "id": "dcrs-1srj7ui",
       "type": "Defesa Civil",
