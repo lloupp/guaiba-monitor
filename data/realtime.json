@@ -1,85 +1,32 @@
 {
-  "collectedAt": "2026-08-13T19:33:18.395Z",
+  "collectedAt": "2026-08-13T20:33:07.913Z",
   "level": {
-    "levelMeters": 1.42,
-    "trend": -0.0046,
+    "levelMeters": 1.37,
+    "trend": -0.0069,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-13T19:33:11.000+00:00",
+    "timestamp": "2026-08-13T20:32:51.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.42,
-        "trend": -0.0046,
+        "levelMeters": 1.37,
+        "trend": -0.0069,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-13T19:33:11.000+00:00",
+        "timestamp": "2026-08-13T20:32:51.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.41,
+        "levelMeters": 1.4,
         "trend": null,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-13T19:33:12.000+00:00",
+        "timestamp": "2026-08-13T20:32:52.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
-  "dcrsAlerts": [
-    {
-      "id": "dcrs-1mzgb7e",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento no Nordeste",
-      "message": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento no Nordeste. Risco ALTO de destelhamento. Válido até 11h do dia 13 de agosto. Evite áreas de risco. Emergência ligue 190/193.    Em cumprimento à legislação eleitoral, a seção de comentário das publicações deste perfil...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-13T09:52:14Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestades-com-granizo-e-rajadas-de-vento-que-atuam-na-regiao-dos-val-6a7dbd7a2408c",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-1mzgb7e",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento no Nordeste",
-      "message": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento no Nordeste. Risco ALTO de destelhamento. Válido até 10h do dia 13 de agosto. Evite áreas de risco. Emergência ligue 190/193.    Em cumprimento à legislação eleitoral, a seção de comentário das publicações deste perfil...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-13T09:49:49Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestades-com-granizo-e-rajadas-de-vento-que-atuam-na-regiao-dos-val-6a7dbcebdabc5",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-17888am",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento no Norte",
-      "message": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento no Norte. Risco ALTO de destelhamento. Válido até 11h do dia 13 de agosto. Evite áreas de risco. Emergência ligue 190/193.    Em cumprimento à legislação eleitoral, a seção de comentário das publicações deste perfil...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-13T09:47:17Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestades-com-granizo-e-rajadas-de-vento-que-atuam-na-regiao-dos-val-6a7dbc770d36a",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-1mzgb7e",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento no Nordeste",
-      "message": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento no Nordeste. Risco ALTO de destelhamento. Válido até 11h do dia 13 de agosto. Evite áreas de risco. Emergência ligue 190/193.    Em cumprimento à legislação eleitoral, a seção de comentário das publicações deste perfil...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-13T09:45:33Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestades-com-granizo-e-rajadas-de-vento-que-atuam-na-regiao-dos-val-6a7dbc0560660",
-      "source": "Defesa Civil RS"
-    }
-  ],
+  "dcrsAlerts": [],
   "sources": [
     "Defesa Civil RS (RSS)",
     "Defesa Civil RS (GraphQL — Rede Hidrometeorológica)"
