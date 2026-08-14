@@ -1,32 +1,72 @@
 {
-  "collectedAt": "2026-08-14T21:17:58.343Z",
+  "collectedAt": "2026-08-14T21:47:18.382Z",
   "level": {
-    "levelMeters": 1.36,
+    "levelMeters": 1.34,
     "trend": 0.0062,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-14T21:17:40.000+00:00",
+    "timestamp": "2026-08-14T21:47:10.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.36,
+        "levelMeters": 1.34,
         "trend": 0.0062,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-14T21:17:40.000+00:00",
+        "timestamp": "2026-08-14T21:47:10.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.41,
+        "levelMeters": 1.4,
         "trend": null,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-14T21:17:45.000+00:00",
+        "timestamp": "2026-08-14T21:47:15.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
-  "dcrsAlerts": [],
+  "dcrsAlerts": [
+    {
+      "id": "dcrs-q7omnq",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam em áreas do Norte, com tempestade c/ granizo e vento.",
+      "message": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam em áreas do Norte, com tempestade c/ granizo e vento. Válido até 19h15 do dia 14 de agosto. Evite áreas de risco. Emergência ligue 190/193. \n Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-14T17:24:52Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-instabilidades-atuam-em-areas-do-norte-com-tempestade-c-granizo-e-vento",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-10zpmrr",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: INUNDAÇÃO do rio Jacuí. Risco MUITO ALTO de inundação em Dona Francisca",
+      "message": "Defesa Civil alerta: INUNDAÇÃO do rio Jacuí. Risco MUITO ALTO de inundação em Dona Francisca. Validade até 11h do dia 15 de agosto. Emergência ligue 190/193. \n Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de Contingência municipais para saber quais os riscos e como...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-14T11:23:29Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-inundacao-do-rio-jacui-risco-muito-alto-de-inundacao-em-dona-francisca-6a7f24b34c3f1",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-10zpmrr",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: INUNDAÇÃO do rio Jacuí. Risco MUITO ALTO de inundação em Dona Francisca",
+      "message": "Defesa Civil alerta: INUNDAÇÃO do rio Jacuí. Risco MUITO ALTO de inundação em Dona Francisca. Validade até 11h do dia 14 de agosto. Emergência ligue 190/193. \n Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de Contingência municipais para saber quais os riscos e como...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-13T22:45:12Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-inundacao-do-rio-jacui-risco-muito-alto-de-inundacao-em-dona-francisca",
+      "source": "Defesa Civil RS"
+    }
+  ],
   "sources": [
     "Defesa Civil RS (RSS)",
     "Defesa Civil RS (GraphQL — Rede Hidrometeorológica)"
