@@ -1,11 +1,11 @@
 {
-  "collectedAt": "2026-08-14T10:50:57.624Z",
+  "collectedAt": "2026-08-14T11:38:12.473Z",
   "level": {
     "levelMeters": 1.38,
     "trend": -0.0015,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-14T10:50:40.000+00:00",
+    "timestamp": "2026-08-14T11:38:10.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
@@ -13,20 +13,34 @@
         "trend": -0.0015,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-14T10:50:40.000+00:00",
+        "timestamp": "2026-08-14T11:38:10.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.39,
+        "levelMeters": 1.4,
         "trend": null,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-14T10:50:45.000+00:00",
+        "timestamp": "2026-08-14T11:38:05.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
-  "dcrsAlerts": [],
+  "dcrsAlerts": [
+    {
+      "id": "dcrs-10zpmrr",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: INUNDAÇÃO do rio Jacuí. Risco MUITO ALTO de inundação em Dona Francisca",
+      "message": "Defesa Civil alerta: INUNDAÇÃO do rio Jacuí. Risco MUITO ALTO de inundação em Dona Francisca. Validade até 11h do dia 14 de agosto. Emergência ligue 190/193. \n Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de Contingência municipais para saber quais os riscos e como...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-13T22:45:12Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-inundacao-do-rio-jacui-risco-muito-alto-de-inundacao-em-dona-francisca",
+      "source": "Defesa Civil RS"
+    }
+  ],
   "sources": [
     "Defesa Civil RS (RSS)",
     "Defesa Civil RS (GraphQL — Rede Hidrometeorológica)"
