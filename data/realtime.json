@@ -1,32 +1,45 @@
 {
-  "collectedAt": "2026-08-14T20:02:20.769Z",
+  "collectedAt": "2026-08-14T20:53:46.008Z",
   "level": {
-    "levelMeters": 1.32,
-    "trend": -0.0108,
+    "levelMeters": 1.39,
+    "trend": 0.0023,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-14T20:02:10.000+00:00",
+    "timestamp": "2026-08-14T20:53:40.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.32,
-        "trend": -0.0108,
+        "levelMeters": 1.39,
+        "trend": 0.0023,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-14T20:02:10.000+00:00",
+        "timestamp": "2026-08-14T20:53:40.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.41,
+        "levelMeters": 1.43,
         "trend": null,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-14T20:02:15.000+00:00",
+        "timestamp": "2026-08-14T20:53:35.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
   "dcrsAlerts": [
+    {
+      "id": "dcrs-q7omnq",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam em áreas do Norte, com tempestade c/ granizo e vento.",
+      "message": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam em áreas do Norte, com tempestade c/ granizo e vento. Válido até 19h15 do dia 14 de agosto. Evite áreas de risco. Emergência ligue 190/193. \n Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-14T17:24:52Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-instabilidades-atuam-em-areas-do-norte-com-tempestade-c-granizo-e-vento",
+      "source": "Defesa Civil RS"
+    },
     {
       "id": "dcrs-10zpmrr",
       "type": "Defesa Civil",
