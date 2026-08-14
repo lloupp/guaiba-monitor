@@ -1,98 +1,32 @@
 {
-  "collectedAt": "2026-08-14T09:33:10.486Z",
+  "collectedAt": "2026-08-14T10:50:57.624Z",
   "level": {
-    "levelMeters": 1.39,
-    "trend": 0.0092,
+    "levelMeters": 1.38,
+    "trend": -0.0015,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-14T09:33:00.000+00:00",
+    "timestamp": "2026-08-14T10:50:40.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.39,
-        "trend": 0.0092,
+        "levelMeters": 1.38,
+        "trend": -0.0015,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-14T09:33:00.000+00:00",
+        "timestamp": "2026-08-14T10:50:40.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.41,
+        "levelMeters": 1.39,
         "trend": null,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-14T09:33:05.000+00:00",
+        "timestamp": "2026-08-14T10:50:45.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
-  "dcrsAlerts": [
-    {
-      "id": "dcrs-10zpmrr",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: INUNDAÇÃO do rio Jacuí. Risco MUITO ALTO de inundação em Dona Francisca",
-      "message": "Defesa Civil alerta: INUNDAÇÃO do rio Jacuí. Risco MUITO ALTO de inundação em Dona Francisca. Validade até 11h do dia 14 de agosto. Emergência ligue 190/193. \n Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de Contingência municipais para saber quais os riscos e como...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-13T22:45:12Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-inundacao-do-rio-jacui-risco-muito-alto-de-inundacao-em-dona-francisca",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-1mzgb7e",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento no Nordeste",
-      "message": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento no Nordeste. Risco ALTO de destelhamento. Válido até 11h do dia 13 de agosto. Evite áreas de risco. Emergência ligue 190/193.    Em cumprimento à legislação eleitoral, a seção de comentário das publicações deste perfil...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-13T09:52:14Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestades-com-granizo-e-rajadas-de-vento-que-atuam-na-regiao-dos-val-6a7dbd7a2408c",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-1mzgb7e",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento no Nordeste",
-      "message": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento no Nordeste. Risco ALTO de destelhamento. Válido até 10h do dia 13 de agosto. Evite áreas de risco. Emergência ligue 190/193.    Em cumprimento à legislação eleitoral, a seção de comentário das publicações deste perfil...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-13T09:49:49Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestades-com-granizo-e-rajadas-de-vento-que-atuam-na-regiao-dos-val-6a7dbcebdabc5",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-17888am",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento no Norte",
-      "message": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento no Norte. Risco ALTO de destelhamento. Válido até 11h do dia 13 de agosto. Evite áreas de risco. Emergência ligue 190/193.    Em cumprimento à legislação eleitoral, a seção de comentário das publicações deste perfil...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-13T09:47:17Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestades-com-granizo-e-rajadas-de-vento-que-atuam-na-regiao-dos-val-6a7dbc770d36a",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-1mzgb7e",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento no Nordeste",
-      "message": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento no Nordeste. Risco ALTO de destelhamento. Válido até 11h do dia 13 de agosto. Evite áreas de risco. Emergência ligue 190/193.    Em cumprimento à legislação eleitoral, a seção de comentário das publicações deste perfil...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-13T09:45:33Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestades-com-granizo-e-rajadas-de-vento-que-atuam-na-regiao-dos-val-6a7dbc0560660",
-      "source": "Defesa Civil RS"
-    }
-  ],
+  "dcrsAlerts": [],
   "sources": [
     "Defesa Civil RS (RSS)",
     "Defesa Civil RS (GraphQL — Rede Hidrometeorológica)"
