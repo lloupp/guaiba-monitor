@@ -1,32 +1,45 @@
 {
-  "collectedAt": "2026-08-15T02:09:27.804Z",
+  "collectedAt": "2026-08-15T03:10:12.439Z",
   "level": {
-    "levelMeters": 1.31,
-    "trend": 0.0085,
+    "levelMeters": 1.35,
+    "trend": -0.0108,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-15T02:09:20.000+00:00",
+    "timestamp": "2026-08-15T03:10:00.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.31,
-        "trend": 0.0085,
+        "levelMeters": 1.35,
+        "trend": -0.0108,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-15T02:09:20.000+00:00",
+        "timestamp": "2026-08-15T03:10:00.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.43,
+        "levelMeters": 1.39,
         "trend": null,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-15T02:09:25.000+00:00",
+        "timestamp": "2026-08-15T03:10:05.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
   "dcrsAlerts": [
+    {
+      "id": "dcrs-1weq21w",
+      "type": "Defesa Civil",
+      "severity": "atencao",
+      "title": "Defesa Civil alerta: condição de ATENÇÃO para instabilidades tendem a avançar no decorrer da madrugada no Norte do RS",
+      "message": "Defesa Civil alerta: condição de ATENÇÃO para instabilidades tendem a avançar no decorrer da madrugada no Norte do RS, com tempestade c/ granizo e vento. Risco MODERADO de alagamentos e destelhamento. Válido até às 6h do dia 14 de agosto. Evite áreas de risco. Emergência ligue 190/193. \n Procure...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-14T23:38:20Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-atencao-para-instabilidades-tendem-a-avancar-no-decorrer-da-madrugada-no-norte-do-rs",
+      "source": "Defesa Civil RS"
+    },
     {
       "id": "dcrs-q7omnq",
       "type": "Defesa Civil",
