@@ -1,59 +1,32 @@
 {
-  "collectedAt": "2026-08-17T14:30:53.552Z",
+  "collectedAt": "2026-08-17T15:18:07.141Z",
   "level": {
-    "levelMeters": 1.18,
-    "trend": -0.0108,
+    "levelMeters": 1.19,
+    "trend": -0.0223,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-17T14:30:50.000+00:00",
+    "timestamp": "2026-08-17T15:17:50.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.18,
-        "trend": -0.0108,
+        "levelMeters": 1.19,
+        "trend": -0.0223,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-17T14:30:50.000+00:00",
+        "timestamp": "2026-08-17T15:17:50.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.21,
+        "levelMeters": 1.2,
         "trend": null,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-17T14:30:51.000+00:00",
+        "timestamp": "2026-08-17T15:17:51.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
-  "dcrsAlerts": [
-    {
-      "id": "dcrs-1n1jegz",
-      "type": "Defesa Civil",
-      "severity": "atencao",
-      "title": "Centro de Monitoramento da Defesa Civil Estadual atualiza as condições hidrológica para os próximos dias no RS",
-      "message": "O Centro de Monitoramento da Defesa Civil Estadual atualiza as condições hidrológica para os  O Centro de Monitoramento da Defesa Civil Estadual atualiza as condições hidrológica para os próximos dias no RS.    ALERTA e ATENÇÃO para risco de cheias com extravasamento em arroios e pequenos rios,...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-17T11:18:13Z",
-      "link": "http://defesacivil.rs.gov.br/centro-de-monitoramento-da-defesa-civil-estadual-atualiza-as-condicoes-hidrologica-para-os-proximos-dias-no-rs-6a8317b2947f5",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-15vu16j",
-      "type": "Defesa Civil",
-      "severity": "atencao",
-      "title": "Centro de Monitoramento da Defesa Civil Estadual atualiza as condições meteorológicas para os próximos dias no RS",
-      "message": "O Centro de Monitoramento da Defesa Civil Estadual atualiza as condições meteorológico para os próximos dias no RS.    ALERTA para tempestades com chuva intensa e volumosa, rajadas de vento (podendo passar dos 90 km/h) e queda de granizo (cidades como Uruguaiana, Santana do Livramento,...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-17T11:15:27Z",
-      "link": "http://defesacivil.rs.gov.br/centro-de-monitoramento-da-defesa-civil-estadual-atualiza-as-condicoes-meteorologicas-para-os-proximos-dias-no-rs-6a83173871342",
-      "source": "Defesa Civil RS"
-    }
-  ],
+  "dcrsAlerts": [],
   "sources": [
     "Defesa Civil RS (RSS)",
     "Defesa Civil RS (GraphQL — Rede Hidrometeorológica)"
