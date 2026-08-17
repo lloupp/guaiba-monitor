@@ -1,32 +1,72 @@
 {
-  "collectedAt": "2026-08-17T19:07:06.783Z",
+  "collectedAt": "2026-08-17T19:48:57.668Z",
   "level": {
-    "levelMeters": 1.32,
+    "levelMeters": 1.34,
     "trend": 0.0062,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-17T19:06:51.000+00:00",
+    "timestamp": "2026-08-17T19:48:51.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.32,
+        "levelMeters": 1.34,
         "trend": 0.0062,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-17T19:06:51.000+00:00",
+        "timestamp": "2026-08-17T19:48:51.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.29,
-        "trend": null,
+        "levelMeters": 1.3,
+        "trend": -1.605,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-17T19:06:51.000+00:00",
+        "timestamp": "2026-08-17T19:48:51.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
-  "dcrsAlerts": [],
+  "dcrsAlerts": [
+    {
+      "id": "dcrs-t667ol",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: Alerta LARANJA. Condição de ALERTA para chuva volumosa no Extremo Sul",
+      "message": "Defesa Civil alerta: Alerta LARANJA. Condição de ALERTA para chuva volumosa no Extremo Sul. Risco ALTO de alagamentos. Válido até às 22h do dia 17 de agosto. Evite áreas de riscos. Emergência ligue 190/193.  \n Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-17T16:20:44Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-alerta-laranja-condicao-de-alerta-para-chuva-volumosa-no-extremo-sul",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-1n1jegz",
+      "type": "Defesa Civil",
+      "severity": "atencao",
+      "title": "Centro de Monitoramento da Defesa Civil Estadual atualiza as condições hidrológica para os próximos dias no RS",
+      "message": "O Centro de Monitoramento da Defesa Civil Estadual atualiza as condições hidrológica para os  O Centro de Monitoramento da Defesa Civil Estadual atualiza as condições hidrológica para os próximos dias no RS.    ALERTA e ATENÇÃO para risco de cheias com extravasamento em arroios e pequenos rios,...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-17T11:18:13Z",
+      "link": "http://defesacivil.rs.gov.br/centro-de-monitoramento-da-defesa-civil-estadual-atualiza-as-condicoes-hidrologica-para-os-proximos-dias-no-rs-6a8317b2947f5",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-15vu16j",
+      "type": "Defesa Civil",
+      "severity": "atencao",
+      "title": "Centro de Monitoramento da Defesa Civil Estadual atualiza as condições meteorológicas para os próximos dias no RS",
+      "message": "O Centro de Monitoramento da Defesa Civil Estadual atualiza as condições meteorológico para os próximos dias no RS.    ALERTA para tempestades com chuva intensa e volumosa, rajadas de vento (podendo passar dos 90 km/h) e queda de granizo (cidades como Uruguaiana, Santana do Livramento,...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-17T11:15:27Z",
+      "link": "http://defesacivil.rs.gov.br/centro-de-monitoramento-da-defesa-civil-estadual-atualiza-as-condicoes-meteorologicas-para-os-proximos-dias-no-rs-6a83173871342",
+      "source": "Defesa Civil RS"
+    }
+  ],
   "sources": [
     "Defesa Civil RS (RSS)",
     "Defesa Civil RS (GraphQL — Rede Hidrometeorológica)"
