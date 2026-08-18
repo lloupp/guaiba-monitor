@@ -1,11 +1,11 @@
 {
-  "collectedAt": "2026-08-18T18:24:56.524Z",
+  "collectedAt": "2026-08-18T19:05:56.720Z",
   "level": {
     "levelMeters": 1.24,
     "trend": 0.0023,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-18T18:24:43.000+00:00",
+    "timestamp": "2026-08-18T19:05:53.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
@@ -13,20 +13,72 @@
         "trend": 0.0023,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-18T18:24:43.000+00:00",
+        "timestamp": "2026-08-18T19:05:53.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.21,
+        "levelMeters": 1.2,
         "trend": null,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-18T18:24:51.000+00:00",
+        "timestamp": "2026-08-18T19:05:51.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
   "dcrsAlerts": [
+    {
+      "id": "dcrs-83bldb",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam em áreas próximas de Santiago",
+      "message": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam em áreas próximas de Santiago, com tempestade com vento e granizo. Risco ALTO de destelhamento. Válido até 18h35 do dia 18 de agosto. Evite áreas de risco. Emergência ligue 190/193.    Procure informações junto à Defesa Civil da...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-18T15:49:22Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-instabilidades-atuam-em-areas-proximas-de-santiago",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-83bldb",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam em áreas próximas de Santiago",
+      "message": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam em áreas próximas de Santiago, com tempestade com vento e granizo. Risco ALTO de destelhamento. Válido até 18h35 do dia 18 de agosto. Evite áreas de risco. Emergência ligue 190/193.    Procure informações junto à Defesa Civil da...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-18T15:49:22Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-instabilidades-atuam-em-areas-proximas-de-santiago-6a84ac7043c41",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-zmd2b8",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e rajadas de vento em áreas próximas a Rosário do Sul",
+      "message": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e rajadas de vento atuam em áreas próximas a Rosário do Sul. Risco ALTO de destelhamento. Válido até às 17h15 do dia 18 de agosto. Evite áreas de risco. Emergência ligue 190/193.   Procure informações junto à Defesa Civil da sua...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-18T15:37:51Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestade-com-granizo-e-rajadas-de-vento-em-areas-proximas-a-rosario-do-sul",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-qjkrwo",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: Condição de ALERTA para tempestade com granizo e rajadas de vento em áreas próximas a Santana do Livramento",
+      "message": "Defesa Civil alerta: Condição de ALERTA para tempestade com granizo e rajadas de vento em áreas próximas a Santana do Livramento. Risco ALTO de destelhamento. Válido até às 17h20 do dia 18 de agosto. Evite áreas de riscos. Emergência ligue 190/193.    Procure informações junto à Defesa Civil da...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-18T15:31:24Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-severa-para-tempestades-com-granizo-e-rajadas-de-vento-que-atuam-em-areas-da-regiao-s-6a84a48e721bc",
+      "source": "Defesa Civil RS"
+    },
     {
       "id": "dcrs-1n1jegz",
       "type": "Defesa Civil",
@@ -41,19 +93,6 @@
       "source": "Defesa Civil RS"
     },
     {
-      "id": "dcrs-12h7sg6",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: Condição de ALERTA para tempestade com granizo e vento em áreas próximas de Dom Pedrito e Bagé",
-      "message": "Defesa Civil alerta: Condição de ALERTA para tempestade com granizo e vento em áreas próximas de Dom Pedrito e Bagé. Risco ALTO de destelhamento. Válido até às 15h30 do dia 18 de agosto. Evite áreas de riscos. Emergência ligue 190/193.    Procure informações junto à Defesa Civil da sua cidade,...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-18T12:35:46Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-severa-para-tempestades-com-granizo-e-rajadas-de-vento-que-atuam-em-areas-da-regiao-s-6a847b727ded9",
-      "source": "Defesa Civil RS"
-    },
-    {
       "id": "dcrs-15vu16j",
       "type": "Defesa Civil",
       "severity": "atencao",
@@ -64,19 +103,6 @@
       ],
       "issuedAt": "2026-08-18T12:29:00Z",
       "link": "http://defesacivil.rs.gov.br/centro-de-monitoramento-da-defesa-civil-estadual-atualiza-as-condicoes-meteorologicas-para-os-proximos-dias-no-rs-6a847a60ef130",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-4cez8q",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para tempestades com granizo e rajadas de vento que atuam no Litoral Norte",
-      "message": "Defesa Civil alerta: Instabilidades atuam Litoral Médio. Válido até 14h40 do dia 18 de agosto. Evite áreas de risco. Condição de ALERTA LARANJA para tempestade com vento e granizo. Risco ALTO de destelhamento. Emergência ligue 190/193.    Procure informações junto à Defesa Civil da sua cidade,...",
-      "regions": [
-        "Litoral"
-      ],
-      "issuedAt": "2026-08-18T11:55:00Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-severa-para-tempestades-com-granizo-e-rajadas-de-vento-que-atuam-em-areas-da-regiao-s-6a8471f39696a",
       "source": "Defesa Civil RS"
     },
     {
