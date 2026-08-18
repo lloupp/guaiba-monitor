@@ -1,27 +1,27 @@
 {
-  "collectedAt": "2026-08-18T06:28:44.677Z",
+  "collectedAt": "2026-08-18T07:20:19.240Z",
   "level": {
-    "levelMeters": 1.23,
-    "trend": 0.0092,
+    "levelMeters": 1.16,
+    "trend": -0.0446,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-18T06:28:41.000+00:00",
+    "timestamp": "2026-08-18T07:20:11.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.23,
-        "trend": 0.0092,
+        "levelMeters": 1.16,
+        "trend": -0.0446,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-18T06:28:41.000+00:00",
+        "timestamp": "2026-08-18T07:20:11.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.21,
+        "levelMeters": 1.16,
         "trend": null,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-18T06:28:41.000+00:00",
+        "timestamp": "2026-08-18T07:20:11.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
@@ -38,19 +38,6 @@
       ],
       "issuedAt": "2026-08-18T03:28:32Z",
       "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-severa-para-tempestades-com-granizo-e-rajadas-de-vento-que-atuam-em-areas-da-costa-do-6a83fb912e7b8",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-1rl6be2",
-      "type": "Defesa Civil",
-      "severity": "emergencia",
-      "title": "Defesa Civil alerta: condição SEVERA para tempestades com granizo e rajadas de vento que atuam em áreas da Costa Doce",
-      "message": "Defesa Civil alerta: condição SEVERA para tempestades com granizo e rajadas de vento que atuam em áreas da Costa Doce, próximo a Encruzilhada do Sul. Risco MUITO ALTO de destelhamento. Válido até 4h do dia 18 de agosto. Evite áreas de risco. Emergência ligue 190/193.    Mantenha-se abrigado...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-18T02:11:00Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-severa-para-tempestades-com-granizo-e-rajadas-de-vento-que-atuam-em-areas-da-costa-doce",
       "source": "Defesa Civil RS"
     },
     {
