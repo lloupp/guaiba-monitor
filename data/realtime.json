@@ -1,32 +1,45 @@
 {
-  "collectedAt": "2026-08-18T19:05:56.720Z",
+  "collectedAt": "2026-08-18T19:47:08.005Z",
   "level": {
-    "levelMeters": 1.24,
+    "levelMeters": 1.25,
     "trend": 0.0023,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-18T19:05:53.000+00:00",
+    "timestamp": "2026-08-18T19:47:03.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.24,
+        "levelMeters": 1.25,
         "trend": 0.0023,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-18T19:05:53.000+00:00",
+        "timestamp": "2026-08-18T19:47:03.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.2,
+        "levelMeters": 1.22,
         "trend": null,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-18T19:05:51.000+00:00",
+        "timestamp": "2026-08-18T19:47:01.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
   "dcrsAlerts": [
+    {
+      "id": "dcrs-1t83602",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para instabilidades que atuam em áreas da Campanha",
+      "message": "Defesa Civil alerta: condição de ALERTA para instabilidades que atuam em áreas da Campanha, com tempestade com vento e granizo. Risco ALTO de destelhamento. Válido até 18h55 do dia 18 de agosto. Evite áreas de risco. Emergência ligue 190/193.    Procure informações junto à Defesa Civil da sua...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-18T16:44:39Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-instabilidades-atuam-em-areas-proximas-de-santiago-6a84ac7043c41",
+      "source": "Defesa Civil RS"
+    },
     {
       "id": "dcrs-83bldb",
       "type": "Defesa Civil",
@@ -50,7 +63,7 @@
         "Rio Grande do Sul"
       ],
       "issuedAt": "2026-08-18T15:49:22Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-instabilidades-atuam-em-areas-proximas-de-santiago-6a84ac7043c41",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-instabilidades-atuam-em-areas-proximas-de-santiago-6a84b6a6c8ab4",
       "source": "Defesa Civil RS"
     },
     {
