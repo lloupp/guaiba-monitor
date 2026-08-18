@@ -1,43 +1,69 @@
 {
-  "collectedAt": "2026-08-18T00:44:30.252Z",
+  "collectedAt": "2026-08-18T02:10:58.569Z",
   "level": {
-    "levelMeters": 1.28,
+    "levelMeters": 1.26,
     "trend": -0.0131,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-18T00:44:21.000+00:00",
+    "timestamp": "2026-08-18T02:10:51.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.28,
+        "levelMeters": 1.26,
         "trend": -0.0131,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-18T00:44:21.000+00:00",
+        "timestamp": "2026-08-18T02:10:51.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.27,
+        "levelMeters": 1.25,
         "trend": null,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-18T00:44:21.000+00:00",
+        "timestamp": "2026-08-18T02:10:51.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
   "dcrsAlerts": [
     {
-      "id": "dcrs-t667ol",
+      "id": "dcrs-16zap54",
       "type": "Defesa Civil",
       "severity": "perigo",
-      "title": "Defesa Civil alerta: Alerta LARANJA. Condição de ALERTA para chuva volumosa no Extremo Sul",
-      "message": "Defesa Civil alerta: Alerta LARANJA. Condição de ALERTA para chuva volumosa no Extremo Sul. Risco ALTO de alagamentos. Válido até às 22h do dia 17 de agosto. Evite áreas de riscos. Emergência ligue 190/193.  \n Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de...",
+      "title": "Defesa Civil alerta: condição de ALERTA para chuva volumosa que segue atuando no Extremo Sul do estado",
+      "message": "Defesa Civil alerta: condição de ALERTA para chuva volumosa que segue atuando no Extremo Sul do estado. Risco ALTO de alagamentos. Válido até 6h do dia 18 de agosto. Evite áreas de risco. Emergência ligue 190/193.  \n Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de...",
       "regions": [
         "Rio Grande do Sul"
       ],
-      "issuedAt": "2026-08-17T16:20:44Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-alerta-laranja-condicao-de-alerta-para-chuva-volumosa-no-extremo-sul",
+      "issuedAt": "2026-08-17T22:18:07Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-chuva-volumosa-que-segue-atuando-no-extremo-sul-do-estado",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-16zap54",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para chuva volumosa que segue atuando no Extremo Sul do estado",
+      "message": "Defesa Civil alerta: condição de ALERTA para chuva volumosa que segue atuando no Extremo Sul do estado. Risco ALTO de alagamentos. Válido até 6h do dia 18 de agosto. Evite áreas de risco. Emergência ligue 190/193.  \n Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-17T22:18:07Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-chuva-volumosa-que-segue-atuando-no-extremo-sul-do-estado-6a83be7c17005",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-10g0l40",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para tempestades com granizo e vento que atuam em áreas do Oeste",
+      "message": "Defesa Civil alerta: condição de ALERTA para tempestades com granizo e vento que atuam em áreas do Oeste. Risco ALTO de destelhamento. Válido até 23h do dia 17 de agosto. Evite áreas de risco. Emergência ligue 190/193.  \n Procure informações junto à Defesa Civil da sua cidade, conheça os Planos...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-17T22:16:50Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestades-com-granizo-e-vento-que-atuam-em-areas-do-oeste",
       "source": "Defesa Civil RS"
     },
     {
