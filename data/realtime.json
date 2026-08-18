@@ -1,45 +1,32 @@
 {
-  "collectedAt": "2026-08-18T08:00:35.755Z",
+  "collectedAt": "2026-08-18T09:01:47.568Z",
   "level": {
-    "levelMeters": 1.24,
-    "trend": 0.0354,
+    "levelMeters": 1.29,
+    "trend": 0.0331,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-18T08:00:31.000+00:00",
+    "timestamp": "2026-08-18T09:01:41.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.24,
-        "trend": 0.0354,
+        "levelMeters": 1.29,
+        "trend": 0.0331,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-18T08:00:31.000+00:00",
+        "timestamp": "2026-08-18T09:01:41.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.18,
+        "levelMeters": 1.3,
         "trend": null,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-18T08:00:31.000+00:00",
+        "timestamp": "2026-08-18T09:01:41.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
   "dcrsAlerts": [
-    {
-      "id": "dcrs-1rl6be2",
-      "type": "Defesa Civil",
-      "severity": "emergencia",
-      "title": "Defesa Civil alerta: condição SEVERA para tempestades com granizo e rajadas de vento que atuam em áreas da Costa Doce",
-      "message": "Defesa Civil alerta: condição SEVERA para tempestades com granizo e rajadas de vento que atuam em áreas da Costa Doce. Risco MUITO ALTO de destelhamento. Válido até 5h do dia 18 de agosto. Evite áreas de risco. Emergência ligue 190/193.    Mantenha-se abrigado durante os temporais. Retire...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-18T03:28:32Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-severa-para-tempestades-com-granizo-e-rajadas-de-vento-que-atuam-em-areas-da-costa-do-6a83fb912e7b8",
-      "source": "Defesa Civil RS"
-    },
     {
       "id": "dcrs-svxzy2",
       "type": "Defesa Civil",
