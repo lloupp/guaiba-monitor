@@ -1,32 +1,45 @@
 {
-  "collectedAt": "2026-08-18T14:59:47.086Z",
+  "collectedAt": "2026-08-18T15:35:26.503Z",
   "level": {
-    "levelMeters": 1.27,
-    "trend": -0.0131,
+    "levelMeters": 1.25,
+    "trend": 0.0062,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-18T14:59:41.000+00:00",
+    "timestamp": "2026-08-18T15:35:21.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.27,
-        "trend": -0.0131,
+        "levelMeters": 1.25,
+        "trend": 0.0062,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-18T14:59:41.000+00:00",
+        "timestamp": "2026-08-18T15:35:21.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.24,
+        "levelMeters": 1.22,
         "trend": null,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-18T14:59:41.000+00:00",
+        "timestamp": "2026-08-18T15:35:21.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
   "dcrsAlerts": [
+    {
+      "id": "dcrs-15vu16j",
+      "type": "Defesa Civil",
+      "severity": "atencao",
+      "title": "Centro de Monitoramento da Defesa Civil Estadual atualiza as condições meteorológicas para os próximos dias no RS",
+      "message": "Nesta terça-feira (18/8), há risco de chuva pontualmente forte especialmente em áreas da Campanha e Sul do estado, além de tempestades isoladas, com queda de granizo que pode ser grande, rajadas de vento que podem superar 80 km/h, nas regiões Oeste, Campanha, Costa Doce, Centro e Sul. Na área...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-18T12:29:00Z",
+      "link": "http://defesacivil.rs.gov.br/centro-de-monitoramento-da-defesa-civil-estadual-atualiza-as-condicoes-meteorologicas-para-os-proximos-dias-no-rs-6a847a60ef130",
+      "source": "Defesa Civil RS"
+    },
     {
       "id": "dcrs-172dh5f",
       "type": "Defesa Civil",
@@ -67,16 +80,16 @@
       "source": "Defesa Civil RS"
     },
     {
-      "id": "dcrs-gty730",
+      "id": "dcrs-1dgvr4c",
       "type": "Defesa Civil",
       "severity": "perigo",
-      "title": "Defesa Civil alerta: condição para tempestades com granizo e rajadas de vento que atuam em áreas da região Sul",
-      "message": "Instabilidades atuam em áreas do Sul. Válido até 12h do dia 18 de agosto. Evite áreas de risco. Condição de ALERTA LARANJA para tempestade com vento e granizo. Risco ALTO de destelhamento. Emergência ligue 190/193.    Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de...",
+      "title": "Defesa Civil alerta: condição de ALERTA para tempestades com granizo e rajadas de vento que atuam em áreas próximas de Piratini",
+      "message": "Defesa Civil alerta: Condição de ALERTA para tempestade com granizo e vento em áreas próximas de Piratini. Risco ALTO de destelhamento. Válido até às 13h25do dia 18 de agosto. Evite áreas de riscos. Emergência ligue 190/193.    Procure informações junto à Defesa Civil da sua cidade, conheça os...",
       "regions": [
         "Rio Grande do Sul"
       ],
-      "issuedAt": "2026-08-18T10:12:00Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-severa-para-tempestades-com-granizo-e-rajadas-de-vento-que-atuam-em-areas-da-regiao-s-6a845921e7c56",
+      "issuedAt": "2026-08-18T11:17:00Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-severa-para-tempestades-com-granizo-e-rajadas-de-vento-que-atuam-em-areas-da-regiao-s-6a847b727ded9",
       "source": "Defesa Civil RS"
     },
     {
@@ -103,32 +116,6 @@
       ],
       "issuedAt": "2026-08-18T07:12:33Z",
       "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-inundacao-no-rio-jaguarao-risco-muito-alto-em-jaguarao",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-1n1jegz",
-      "type": "Defesa Civil",
-      "severity": "atencao",
-      "title": "Centro de Monitoramento da Defesa Civil Estadual atualiza as condições hidrológica para os próximos dias no RS",
-      "message": "O Centro de Monitoramento da Defesa Civil Estadual atualiza as condições hidrológica para os  O Centro de Monitoramento da Defesa Civil Estadual atualiza as condições hidrológica para os próximos dias no RS.    ALERTA e ATENÇÃO para risco de cheias com extravasamento em arroios e pequenos rios,...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-17T11:18:13Z",
-      "link": "http://defesacivil.rs.gov.br/centro-de-monitoramento-da-defesa-civil-estadual-atualiza-as-condicoes-hidrologica-para-os-proximos-dias-no-rs-6a8317b2947f5",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-15vu16j",
-      "type": "Defesa Civil",
-      "severity": "atencao",
-      "title": "Centro de Monitoramento da Defesa Civil Estadual atualiza as condições meteorológicas para os próximos dias no RS",
-      "message": "O Centro de Monitoramento da Defesa Civil Estadual atualiza as condições meteorológico para os próximos dias no RS.    ALERTA para tempestades com chuva intensa e volumosa, rajadas de vento (podendo passar dos 90 km/h) e queda de granizo (cidades como Uruguaiana, Santana do Livramento,...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-17T11:15:27Z",
-      "link": "http://defesacivil.rs.gov.br/centro-de-monitoramento-da-defesa-civil-estadual-atualiza-as-condicoes-meteorologicas-para-os-proximos-dias-no-rs-6a83173871342",
       "source": "Defesa Civil RS"
     }
   ],
