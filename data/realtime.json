@@ -1,32 +1,45 @@
 {
-  "collectedAt": "2026-08-18T09:56:14.221Z",
+  "collectedAt": "2026-08-18T10:22:03.852Z",
   "level": {
-    "levelMeters": 1.37,
-    "trend": 0.0377,
+    "levelMeters": 1.36,
+    "trend": 0.03,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-18T09:56:01.000+00:00",
+    "timestamp": "2026-08-18T10:21:51.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.37,
-        "trend": 0.0377,
+        "levelMeters": 1.36,
+        "trend": 0.03,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-18T09:56:01.000+00:00",
+        "timestamp": "2026-08-18T10:21:51.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.31,
+        "levelMeters": 1.32,
         "trend": null,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-18T09:56:01.000+00:00",
+        "timestamp": "2026-08-18T10:22:01.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
   "dcrsAlerts": [
+    {
+      "id": "dcrs-184ln2k",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: INUNDAÇÃO no rio Jaguarão. Risco MUITO ALTO em Jaguarão",
+      "message": "Defesa Civil alerta: INUNDAÇÃO no rio Jaguarão. Risco MUITO ALTO em Jaguarão. Validade até 7h do dia 19 de agosto. Evite áreas inundáveis. Emergência 190/193. \n Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de Contingência municipais para saber quais os riscos e como...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-18T07:12:33Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-inundacao-no-rio-jaguarao-risco-muito-alto-em-jaguarao",
+      "source": "Defesa Civil RS"
+    },
     {
       "id": "dcrs-1n1jegz",
       "type": "Defesa Civil",
