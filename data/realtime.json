@@ -1,27 +1,27 @@
 {
-  "collectedAt": "2026-08-18T11:48:19.671Z",
+  "collectedAt": "2026-08-18T12:28:18.779Z",
   "level": {
-    "levelMeters": 1.35,
-    "trend": 0.0054,
+    "levelMeters": 1.33,
+    "trend": -0.0131,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-18T11:48:11.000+00:00",
+    "timestamp": "2026-08-18T12:28:11.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.35,
-        "trend": 0.0054,
+        "levelMeters": 1.33,
+        "trend": -0.0131,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-18T11:48:11.000+00:00",
+        "timestamp": "2026-08-18T12:28:11.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.34,
+        "levelMeters": 1.32,
         "trend": null,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-18T11:48:11.000+00:00",
+        "timestamp": "2026-08-18T12:28:11.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
@@ -32,11 +32,24 @@
       "type": "Defesa Civil",
       "severity": "emergencia",
       "title": "Defesa Civil alerta: condição SEVERA para tempestades com granizo e rajadas de vento que atuam em áreas da região de Pelotas",
+      "message": "Tempestade com granizo e rajadas de vento atuam em áreas próximas a São Lourenço. Válido até 10h55 do dia 18 de agosto. Evite áreas de risco. Condição de ALERTA para tempestade com vento e granizo. Risco ALTO de destelhamento. Emergência ligue 190/193.    Mantenha-se abrigado durante os...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-18T09:23:22Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-severa-para-tempestades-com-granizo-e-rajadas-de-vento-que-atuam-em-areas-da-regiao-s-6a844e4dbb95b",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-14kuma7",
+      "type": "Defesa Civil",
+      "severity": "emergencia",
+      "title": "Defesa Civil alerta: condição SEVERA para tempestades com granizo e rajadas de vento que atuam em áreas da região de Pelotas",
       "message": "Tempestade com granizo e rajadas de vento atuam em áreas próximas a Pelotas. Válido até 10h05 do dia 18 de agosto. Evite áreas de risco. Condição de ALERTA Laranja para tempestade com vento e granizo. Risco ALTO de destelhamento. Emergência ligue 190/193.    Procure informações junto à Defesa...",
       "regions": [
         "Rio Grande do Sul"
       ],
-      "issuedAt": "2026-08-18T08:43:07Z",
+      "issuedAt": "2026-08-18T08:51:39Z",
       "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-severa-para-tempestades-com-granizo-e-rajadas-de-vento-que-atuam-em-areas-da-regiao-s-6a8443c9b522f",
       "source": "Defesa Civil RS"
     },
