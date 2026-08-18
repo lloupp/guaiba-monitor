@@ -1,32 +1,58 @@
 {
-  "collectedAt": "2026-08-18T11:17:44.585Z",
+  "collectedAt": "2026-08-18T11:48:19.671Z",
   "level": {
-    "levelMeters": 1.37,
+    "levelMeters": 1.35,
     "trend": 0.0054,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-18T11:17:41.000+00:00",
+    "timestamp": "2026-08-18T11:48:11.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.37,
+        "levelMeters": 1.35,
         "trend": 0.0054,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-18T11:17:41.000+00:00",
+        "timestamp": "2026-08-18T11:48:11.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.33,
+        "levelMeters": 1.34,
         "trend": null,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-18T11:17:41.000+00:00",
+        "timestamp": "2026-08-18T11:48:11.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
   "dcrsAlerts": [
+    {
+      "id": "dcrs-14kuma7",
+      "type": "Defesa Civil",
+      "severity": "emergencia",
+      "title": "Defesa Civil alerta: condição SEVERA para tempestades com granizo e rajadas de vento que atuam em áreas da região de Pelotas",
+      "message": "Tempestade com granizo e rajadas de vento atuam em áreas próximas a Pelotas. Válido até 10h05 do dia 18 de agosto. Evite áreas de risco. Condição de ALERTA Laranja para tempestade com vento e granizo. Risco ALTO de destelhamento. Emergência ligue 190/193.    Procure informações junto à Defesa...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-18T08:43:07Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-severa-para-tempestades-com-granizo-e-rajadas-de-vento-que-atuam-em-areas-da-regiao-s-6a8443c9b522f",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-1ey4mlh",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e rajadas de vento próximo a Santana do Livramento",
+      "message": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e rajadas de vento atuam em áreas próximas a Santana do Livramento. Risco ALTO de destelhamento. Válido até às 10h20 do dia 18 de agosto. Evite áreas de risco. Emergência ligue 190/193. \n Procure informações junto à Defesa Civil...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-18T08:25:00Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-temporais-isolados-com-queda-de-granizo-rajadas-de-vento-e-chuva-forte-6a84457c73fbb",
+      "source": "Defesa Civil RS"
+    },
     {
       "id": "dcrs-184ln2k",
       "type": "Defesa Civil",
