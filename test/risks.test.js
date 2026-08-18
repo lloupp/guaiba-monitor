@@ -14,28 +14,34 @@ import {
 import { THRESHOLDS } from '../js/config.js';
 
 test('THRESHOLDS vem de config.js (fonte única) com padrões offline', () => {
-  assert.equal(THRESHOLDS.atencao, 1.5);
-  assert.equal(THRESHOLDS.inundacao, 2.0);
-  assert.equal(THRESHOLDS.critica, 3.0);
+  // Cotas oficiais pós-2024 (Gasômetro) — ver js/config.js / data/ref-levels.json
+  assert.equal(THRESHOLDS.atencao, 1.56);
+  assert.equal(THRESHOLDS.inundacao, 2.60);
+  assert.equal(THRESHOLDS.severa, 3.50);
+  assert.equal(THRESHOLDS.critica, 4.50);
 });
 
 test('getFloodRisk classifica corretamente pelos thresholds', () => {
   assert.equal(getFloodRisk(0.5).riskLevel, 'baixo');
-  assert.equal(getFloodRisk(1.6).riskLevel, 'moderado');
-  assert.equal(getFloodRisk(2.4).riskLevel, 'moderado');
-  assert.equal(getFloodRisk(2.7).riskLevel, 'alto');
-  assert.equal(getFloodRisk(3.1).riskLevel, 'critico');
+  assert.equal(getFloodRisk(1.6).riskLevel, 'moderado');   // ≥ atencao (1.56)
+  assert.equal(getFloodRisk(2.4).riskLevel, 'moderado');   // atencao..inundacao
+  assert.equal(getFloodRisk(2.7).riskLevel, 'moderado');   // ≥ inundacao (2.60)
+  assert.equal(getFloodRisk(3.6).riskLevel, 'alto');       // ≥ severa (3.50)
+  assert.equal(getFloodRisk(4.6).riskLevel, 'critico');    // ≥ critica (4.50)
 });
 
 test('getDrainageRisk considera nível + tendência', () => {
-  assert.equal(getDrainageRisk(2.2, 'estavel').riskLevel, 'moderado');
-  assert.equal(getDrainageRisk(2.2, 'subindo').riskLevel, 'moderado');
-  assert.equal(getDrainageRisk(1.2, 'estavel').riskLevel, 'baixo');
+  assert.equal(getDrainageRisk(1.2, 'estavel').riskLevel, 'baixo');   // < atencao
+  assert.equal(getDrainageRisk(2.2, 'estavel').riskLevel, 'baixo');   // atencao..inundacao (amarelo)
+  assert.equal(getDrainageRisk(2.2, 'subindo').riskLevel, 'baixo');   // ainda abaixo da inundação
+  assert.equal(getDrainageRisk(2.7, 'subindo').riskLevel, 'moderado'); // ≥ inundação + subindo
+  assert.equal(getDrainageRisk(3.6, 'estavel').riskLevel, 'alto');    // ≥ severa
 });
 
 test('getCycloneBombRisk eleva risco em nível subindo', () => {
   assert.equal(getCycloneBombRisk(1.2, 'estavel', []).riskLevel, 'baixo');
-  assert.equal(getCycloneBombRisk(2.2, 'subindo', []).riskLevel, 'moderado');
+  assert.equal(getCycloneBombRisk(2.2, 'subindo', []).riskLevel, 'baixo'); // ≥ atencao mas < inundação
+  assert.equal(getCycloneBombRisk(2.7, 'subindo', []).riskLevel, 'moderado'); // ≥ inundação + subindo
 });
 
 test('sampleRegionRisks cobre todas as regiões e tipos de desastre, marcadas simulação', () => {

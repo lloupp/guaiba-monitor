@@ -1,32 +1,45 @@
 {
-  "collectedAt": "2026-08-18T21:45:12.890Z",
+  "collectedAt": "2026-08-18T22:02:41.799Z",
   "level": {
     "levelMeters": 1.23,
-    "trend": -0.0108,
+    "trend": 0,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-18T21:45:03.000+00:00",
+    "timestamp": "2026-08-18T22:02:33.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
         "levelMeters": 1.23,
-        "trend": -0.0108,
+        "trend": 0,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-18T21:45:03.000+00:00",
+        "timestamp": "2026-08-18T22:02:33.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.21,
+        "levelMeters": 1.2,
         "trend": null,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-18T21:45:10.000+00:00",
+        "timestamp": "2026-08-18T22:01:48.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
   "dcrsAlerts": [
+    {
+      "id": "dcrs-sq18f7",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam em áreas próximas de Canguçu",
+      "message": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam em áreas próximas de  Canguçu,  com tempestade com vento e granizo. Risco ALTO de destelhamento. Válido até 20h30 do dia 18 de agosto. Evite áreas de risco. Emergência ligue 190/193.    Procure informações junto à Defesa Civil da...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-18T18:46:07Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-instabilidades-atuam-em-areas-proximas-de-cangucu",
+      "source": "Defesa Civil RS"
+    },
     {
       "id": "dcrs-oe7pj0",
       "type": "Defesa Civil",
@@ -38,84 +51,6 @@
       ],
       "issuedAt": "2026-08-18T17:44:59Z",
       "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-instabilidades-atuam-em-areas-proximas-de-candiota",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-oe7pj0",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam em áreas próximas de Candiota",
-      "message": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam em áreas próximas de  Candiota,  com tempestade com vento e granizo. Risco ALTO de destelhamento. Válido até 19h35 do dia 18 de agosto. Evite áreas de risco. Emergência ligue 190/193.    Procure informações junto à Defesa Civil...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-18T17:44:59Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-instabilidades-atuam-em-areas-proximas-de-candiota-6a84ced22c91d",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-si7x04",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam em áreas próximas de Cacequi",
-      "message": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam em áreas próximas de  Cacequi,  com tempestade com vento e granizo. Risco ALTO de destelhamento. Válido até 18h35 do dia 18 de agosto. Evite áreas de risco. Emergência ligue 190/193.    Procure informações junto à Defesa Civil da...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-18T16:49:21Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-instabilidades-atuam-em-areas-proximas-de-cacequi",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-1t83602",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para instabilidades que atuam em áreas da Campanha",
-      "message": "Defesa Civil alerta: condição de ALERTA para instabilidades que atuam em áreas da Campanha, com tempestade com vento e granizo. Risco ALTO de destelhamento. Válido até 18h55 do dia 18 de agosto. Evite áreas de risco. Emergência ligue 190/193.    Procure informações junto à Defesa Civil da sua...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-18T16:44:39Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-instabilidades-atuam-em-areas-proximas-de-santiago-6a84ac7043c41",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-83bldb",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam em áreas próximas de Santiago",
-      "message": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam em áreas próximas de Santiago, com tempestade com vento e granizo. Risco ALTO de destelhamento. Válido até 18h35 do dia 18 de agosto. Evite áreas de risco. Emergência ligue 190/193.    Procure informações junto à Defesa Civil da...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-18T15:49:22Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-instabilidades-atuam-em-areas-proximas-de-santiago",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-zmd2b8",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e rajadas de vento em áreas próximas a Rosário do Sul",
-      "message": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e rajadas de vento atuam em áreas próximas a Rosário do Sul. Risco ALTO de destelhamento. Válido até às 17h15 do dia 18 de agosto. Evite áreas de risco. Emergência ligue 190/193.   Procure informações junto à Defesa Civil da sua...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-18T15:37:51Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestade-com-granizo-e-rajadas-de-vento-em-areas-proximas-a-rosario-do-sul",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-qjkrwo",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: Condição de ALERTA para tempestade com granizo e rajadas de vento em áreas próximas a Santana do Livramento",
-      "message": "Defesa Civil alerta: Condição de ALERTA para tempestade com granizo e rajadas de vento em áreas próximas a Santana do Livramento. Risco ALTO de destelhamento. Válido até às 17h20 do dia 18 de agosto. Evite áreas de riscos. Emergência ligue 190/193.    Procure informações junto à Defesa Civil da...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-18T15:31:24Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-severa-para-tempestades-com-granizo-e-rajadas-de-vento-que-atuam-em-areas-da-regiao-s-6a84a48e721bc",
       "source": "Defesa Civil RS"
     },
     {

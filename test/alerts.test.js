@@ -11,18 +11,21 @@ import {
 import { escapeHtml, formatMeters } from '../js/utils.js';
 
 test('getLevelStatus classifica o nível do rio', () => {
+  // Cotas oficiais pós-2024: atencao 1.56 / inundacao 2.60 / severa 3.50 / critica 4.50
   assert.equal(getLevelStatus(0.5), 'normal');
-  assert.equal(getLevelStatus(1.5), 'atencao');
-  assert.equal(getLevelStatus(2.0), 'inundacao');
-  assert.equal(getLevelStatus(2.5), 'severa');
-  assert.equal(getLevelStatus(3.0), 'critica');
+  assert.equal(getLevelStatus(1.50), 'normal');      // < atencao (1.56)
+  assert.equal(getLevelStatus(1.6), 'atencao');
+  assert.equal(getLevelStatus(2.6), 'inundacao');
+  assert.equal(getLevelStatus(3.0), 'inundacao');    // entre inundação (2.60) e severa (3.50)
+  assert.equal(getLevelStatus(3.5), 'severa');
+  assert.equal(getLevelStatus(4.5), 'critica');
 });
 
 test('getLevelStatusInfo expõe label e classe de badge', () => {
   const info = getLevelStatusInfo(3.2);
-  assert.equal(info.status, 'critica');
-  assert.equal(info.label, 'CRÍTICA');
-  assert.equal(info.css, 'critica');
+  assert.equal(info.status, 'inundacao');
+  assert.equal(info.label, 'INUNDAÇÃO');
+  assert.equal(info.css, 'inundacao');
 });
 
 test('severityRank ordena severidade', () => {

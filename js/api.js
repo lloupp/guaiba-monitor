@@ -174,14 +174,6 @@ async function fetchLevelGuaiba() {
   const rt = await fetchRealtime();
   if (rt && rt.level && rt.level.levelMeters != null && isFresh(rt.collectedAt)) {
     const l = rt.level;
-    // Converte trend numérico (taxa de variação m/intervalo) para rótulo legível
-    let trendLabel = 'estavel';
-    if (typeof l.trend === 'number') {
-      if (l.trend > 0.005) trendLabel = 'subindo';
-      else if (l.trend < -0.005) trendLabel = 'descendo';
-    } else if (typeof l.trend === 'string') {
-      trendLabel = l.trend;
-    }
     return {
       stations: (l.allStations || [l]).map(s => ({
         id: s.stationCode || 'guaiba-lago',
