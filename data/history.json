@@ -1,14 +1,6 @@
 {
-  "collectedAt": "2026-08-19T19:47:10.614Z",
+  "collectedAt": "2026-08-19T20:17:31.311Z",
   "readings": [
-    {
-      "timestamp": "2026-08-18T20:13:53.000+00:00",
-      "levelMeters": 1.25,
-      "trend": -0.0108,
-      "stationCode": "DCRS-00054",
-      "stationName": "Barra do Ribeiro - Lago Guaíba",
-      "source": "Defesa Civil RS (Rede Hidrometeorológica)"
-    },
     {
       "timestamp": "2026-08-18T20:46:33.000+00:00",
       "levelMeters": 1.25,
@@ -275,6 +267,14 @@
     },
     {
       "timestamp": "2026-08-19T19:47:03.000+00:00",
+      "levelMeters": 1.31,
+      "trend": 0.0008,
+      "stationCode": "DCRS-00054",
+      "stationName": "Barra do Ribeiro - Lago Guaíba",
+      "source": "Defesa Civil RS (Rede Hidrometeorológica)"
+    },
+    {
+      "timestamp": "2026-08-19T20:17:23.000+00:00",
       "levelMeters": 1.31,
       "trend": 0.0008,
       "stationCode": "DCRS-00054",
