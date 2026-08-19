@@ -1,137 +1,32 @@
 {
-  "collectedAt": "2026-08-19T02:13:37.956Z",
+  "collectedAt": "2026-08-19T03:23:39.698Z",
   "level": {
-    "levelMeters": 1.27,
-    "trend": -0.0054,
+    "levelMeters": 1.31,
+    "trend": 0.01,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-19T02:13:33.000+00:00",
+    "timestamp": "2026-08-19T03:23:23.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.27,
-        "trend": -0.0054,
+        "levelMeters": 1.31,
+        "trend": 0.01,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-19T02:13:33.000+00:00",
+        "timestamp": "2026-08-19T03:23:23.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.26,
+        "levelMeters": 1.24,
         "trend": null,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-19T02:13:26.000+00:00",
+        "timestamp": "2026-08-19T03:23:26.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
-  "dcrsAlerts": [
-    {
-      "id": "dcrs-1xoqgxu",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: INUNDAÇÃO no Santa Maria. Risco MUITO ALTO em Dom Pedrito",
-      "message": "Defesa Civil alerta: INUNDAÇÃO no rio Santa Maria. Risco MUITO ALTO em Dom Pedrito. Validade até 20h do dia 19 de agosto. Evite áreas inundáveis. Emergência 190/193. \n Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de Contingência municipais para saber quais os riscos...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-18T21:07:51Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-inundacao-no-santa-maria-risco-muito-alto-em-dom-pedrito",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-l42pow",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam em áreas próximas de São Lourenço do Sul",
-      "message": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam em áreas próximas de São Lourenço do Sul, com tempestade com vento e granizo. Risco ALTO de destelhamento. Válido até 21h05 do dia 18 de agosto. Evite áreas de risco. Emergência ligue 190/193.    Procure informações junto à...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-18T19:22:06Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-instabilidades-atuam-em-areas-proximas-de-sao-lourenco-do-sul",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-l42pow",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam em áreas próximas de São Lourenço do Sul",
-      "message": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam em áreas próximas de São Lourenço do Sul, com tempestade com vento e granizo. Risco ALTO de destelhamento. Válido até 21h05 do dia 18 de agosto. Evite áreas de risco. Emergência ligue 190/193.    Procure informações junto à...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-18T19:22:06Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-instabilidades-atuam-em-areas-proximas-de-sao-lourenco-do-sul-6a84f47c8b7a4",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-sq18f7",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam em áreas próximas de Canguçu",
-      "message": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam em áreas próximas de  Canguçu,  com tempestade com vento e granizo. Risco ALTO de destelhamento. Válido até 20h30 do dia 18 de agosto. Evite áreas de risco. Emergência ligue 190/193.    Procure informações junto à Defesa Civil da...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-18T18:46:07Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-instabilidades-atuam-em-areas-proximas-de-cangucu",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-oe7pj0",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam em áreas próximas de Candiota",
-      "message": "Defesa Civil alerta: condição de ALERTA para instabilidades atuam em áreas próximas de  Candiota,  com tempestade com vento e granizo. Risco ALTO de destelhamento. Válido até 19h35 do dia 18 de agosto. Evite áreas de risco. Emergência ligue 190/193.    Procure informações junto à Defesa Civil...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-18T17:44:59Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-instabilidades-atuam-em-areas-proximas-de-candiota",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-1n1jegz",
-      "type": "Defesa Civil",
-      "severity": "atencao",
-      "title": "Centro de Monitoramento da Defesa Civil Estadual atualiza as condições hidrológica para os próximos dias no RS",
-      "message": "A condição hidrológica atual é de níveis entre limiares de inundação e normalidade, com as tendências variadas. Os maiores limiares se concentram no Sul do estado, com destaque para o rio Jaguarão que atingiu a cota de inundação na manhã desta terça-feira (18/8).  \n  Em função das chuvas...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-18T12:37:38Z",
-      "link": "http://defesacivil.rs.gov.br/centro-de-monitoramento-da-defesa-civil-estadual-atualiza-as-condicoes-hidrologica-para-os-proximos-dias-no-rs-6a8-6a847b0770291",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-15vu16j",
-      "type": "Defesa Civil",
-      "severity": "atencao",
-      "title": "Centro de Monitoramento da Defesa Civil Estadual atualiza as condições meteorológicas para os próximos dias no RS",
-      "message": "Nesta terça-feira (18/8), há risco de chuva pontualmente forte especialmente em áreas da Campanha e Sul do estado, além de tempestades isoladas, com queda de granizo que pode ser grande, rajadas de vento que podem superar 80 km/h, nas regiões Oeste, Campanha, Costa Doce, Centro e Sul. Na área...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-18T12:29:00Z",
-      "link": "http://defesacivil.rs.gov.br/centro-de-monitoramento-da-defesa-civil-estadual-atualiza-as-condicoes-meteorologicas-para-os-proximos-dias-no-rs-6a847a60ef130",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-184ln2k",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: INUNDAÇÃO no rio Jaguarão. Risco MUITO ALTO em Jaguarão",
-      "message": "Defesa Civil alerta: INUNDAÇÃO no rio Jaguarão. Risco MUITO ALTO em Jaguarão. Validade até 7h do dia 19 de agosto. Evite áreas inundáveis. Emergência 190/193. \n Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de Contingência municipais para saber quais os riscos e como...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-18T07:12:33Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-inundacao-no-rio-jaguarao-risco-muito-alto-em-jaguarao",
-      "source": "Defesa Civil RS"
-    }
-  ],
+  "dcrsAlerts": [],
   "sources": [
     "Defesa Civil RS (RSS)",
     "Defesa Civil RS (GraphQL — Rede Hidrometeorológica)"
