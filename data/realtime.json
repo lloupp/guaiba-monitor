@@ -1,45 +1,32 @@
 {
-  "collectedAt": "2026-08-20T10:58:15.413Z",
+  "collectedAt": "2026-08-20T11:26:17.493Z",
   "level": {
-    "levelMeters": 1.21,
+    "levelMeters": 1.19,
     "trend": -0.01,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-20T10:58:13.000+00:00",
+    "timestamp": "2026-08-20T11:26:13.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.21,
+        "levelMeters": 1.19,
         "trend": -0.01,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-20T10:58:13.000+00:00",
+        "timestamp": "2026-08-20T11:26:13.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.19,
+        "levelMeters": 1.18,
         "trend": null,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-20T10:58:08.000+00:00",
+        "timestamp": "2026-08-20T11:26:08.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
   "dcrsAlerts": [
-    {
-      "id": "dcrs-e5l97n",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para chuva, granizo e rajadas de vento que atuam em áreas da região Sul",
-      "message": "Defesa Civil alerta: condição de ALERTA para chuva, granizo e rajadas de vento que atuam em áreas da região Sul. Risco ALTO de alagamentos. Válido até 8h do dia 20 de agosto. Evite áreas de risco. Emergência ligue 190/193.   Procure informações junto à Defesa Civil da sua cidade, conheça os...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-20T06:36:00Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-chuva-granizo-e-rajadas-de-vento-que-atuam-em-areas-da-regiao-sul",
-      "source": "Defesa Civil RS"
-    },
     {
       "id": "dcrs-1n1jegz",
       "type": "Defesa Civil",
