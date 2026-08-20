@@ -1,19 +1,19 @@
 {
-  "collectedAt": "2026-08-20T20:19:12.986Z",
+  "collectedAt": "2026-08-20T20:53:48.204Z",
   "level": {
-    "levelMeters": 1.13,
+    "levelMeters": 1.15,
     "trend": -0.0018,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-20T20:19:09.000+00:00",
+    "timestamp": "2026-08-20T20:53:39.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.13,
+        "levelMeters": 1.15,
         "trend": -0.0018,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-20T20:19:09.000+00:00",
+        "timestamp": "2026-08-20T20:53:39.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
@@ -21,7 +21,7 @@
         "trend": null,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-20T20:19:03.000+00:00",
+        "timestamp": "2026-08-20T20:53:43.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
