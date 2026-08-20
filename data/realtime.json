@@ -1,11 +1,11 @@
 {
-  "collectedAt": "2026-08-20T13:39:13.960Z",
+  "collectedAt": "2026-08-20T14:27:27.556Z",
   "level": {
     "levelMeters": 1.15,
     "trend": -0.01,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-20T13:39:03.000+00:00",
+    "timestamp": "2026-08-20T14:27:23.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
@@ -13,44 +13,33 @@
         "trend": -0.01,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-20T13:39:03.000+00:00",
+        "timestamp": "2026-08-20T14:27:23.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.14,
+        "levelMeters": 1.12,
         "trend": null,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-20T13:39:08.000+00:00",
+        "timestamp": "2026-08-20T14:27:18.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
   "dcrsAlerts": [
     {
-      "id": "dcrs-c8wwo4",
+      "id": "dcrs-1xuws0k",
       "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para tempestades com granizo e rajadas de vento em áreas próximas de Camaquã",
-      "message": "Defesa Civil alerta: condição de ALERTA para tempestades com granizo e ventos em áreas próximas de Camaquã. Válido até 11h do dia 20 de agosto. Evite áreas de risco. Emergência ligue 190/193.    Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de Contingência municipais...",
+      "severity": "atencao",
+      "title": "Defesa Civil alerta: Condição de ATENÇÃO para rajadas de vento nas próximas horas em algumas regiões do RS",
+      "message": "Defesa Civil alerta: Condição de ATENÇÃO para rajadas de vento nas próximas horas na região Sul, Costa Doce, Região Metropolitana de Porto Alegre, Nordeste e Litoral. Válido até 10h do dia 21 de agosto. Condição de ATENÇÃO para rajadas de vento entre 60 e 80 km/h. Evite áreas de risco....",
       "regions": [
-        "Rio Grande do Sul"
+        "Porto Alegre",
+        "Região Metropolitana",
+        "Litoral"
       ],
-      "issuedAt": "2026-08-20T09:20:14Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestades-com-granizo-e-rajadas-de-vento-atuam-no-norte-e-nordeste-d-6a86f0a808ea2",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-147879n",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para tempestades com granizo e rajadas de vento em áreas próximas de Charqueadas",
-      "message": "Defesa Civil alerta: condição de ALERTA para tempestades com granizo, tempestades e ventos em áreas próximas de Charqueadas. Válido até 10h25 do dia 20 de agosto. Evite áreas de risco. Emergência ligue 190/193.    Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-20T08:53:58Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestades-com-granizo-e-rajadas-de-vento-atuam-no-norte-e-nordeste-d-6a86e9469025e",
+      "issuedAt": "2026-08-20T11:22:00Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-chuva-granizo-e-rajadas-de-vento-que-atuam-em-areas-da-regiao-sul-6a870ccbeeeb6",
       "source": "Defesa Civil RS"
     },
     {
