@@ -1,46 +1,32 @@
 {
-  "collectedAt": "2026-08-21T13:26:49.396Z",
+  "collectedAt": "2026-08-21T14:05:57.082Z",
   "level": {
-    "levelMeters": 1.43,
-    "trend": -0.0408,
+    "levelMeters": 1.46,
+    "trend": 0.0115,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-21T13:26:39.000+00:00",
+    "timestamp": "2026-08-21T14:05:39.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.43,
-        "trend": -0.0408,
+        "levelMeters": 1.46,
+        "trend": 0.0115,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-21T13:26:39.000+00:00",
+        "timestamp": "2026-08-21T14:05:39.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.43,
+        "levelMeters": 1.38,
         "trend": null,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-21T13:26:46.000+00:00",
+        "timestamp": "2026-08-21T14:05:46.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
-  "dcrsAlerts": [
-    {
-      "id": "dcrs-xrf24m",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: INUNDAÇÃO para o rio Quaraí. Risco MUITO ALTO em Quaraí.",
-      "message": "Defesa Civil alerta: INUNDAÇÃO para o rio Quaraí. Risco MUITO ALTO em Quaraí. Validade até 11h do dia 21 de agosto. Emergência ligue 190/193. \n Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de Contingência municipais para saber quais os riscos e como agir em caso de...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-20T23:11:48Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-inundacao-para-o-rio-quarai-risco-muito-alto-em-quarai",
-      "source": "Defesa Civil RS"
-    }
-  ],
+  "dcrsAlerts": [],
   "sources": [
     "Defesa Civil RS (RSS)",
     "Defesa Civil RS (GraphQL — Rede Hidrometeorológica)"
