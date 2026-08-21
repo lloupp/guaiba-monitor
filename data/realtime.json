@@ -1,32 +1,87 @@
 {
-  "collectedAt": "2026-08-21T10:32:32.749Z",
+  "collectedAt": "2026-08-21T11:18:22.312Z",
   "level": {
-    "levelMeters": 1.38,
-    "trend": 0.0223,
+    "levelMeters": 1.42,
+    "trend": 0.0331,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-21T10:32:19.000+00:00",
+    "timestamp": "2026-08-21T11:18:19.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.38,
-        "trend": 0.0223,
+        "levelMeters": 1.42,
+        "trend": 0.0331,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-21T10:32:19.000+00:00",
+        "timestamp": "2026-08-21T11:18:19.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.29,
+        "levelMeters": 1.36,
         "trend": null,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-21T10:32:21.000+00:00",
+        "timestamp": "2026-08-21T11:18:11.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
-  "dcrsAlerts": [],
+  "dcrsAlerts": [
+    {
+      "id": "dcrs-xrf24m",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: INUNDAÇÃO para o rio Quaraí. Risco MUITO ALTO em Quaraí.",
+      "message": "Defesa Civil alerta: INUNDAÇÃO para o rio Quaraí. Risco MUITO ALTO em Quaraí. Validade até 11h do dia 21 de agosto. Emergência ligue 190/193. \n Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de Contingência municipais para saber quais os riscos e como agir em caso de...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-20T23:11:48Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-inundacao-para-o-rio-quarai-risco-muito-alto-em-quarai",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-1xuws0k",
+      "type": "Defesa Civil",
+      "severity": "atencao",
+      "title": "Defesa Civil alerta: Condição de ATENÇÃO para rajadas de vento nas próximas horas em algumas regiões do RS",
+      "message": "Defesa Civil alerta: Condição de ATENÇÃO para rajadas de vento nas próximas horas na região Sul, Costa Doce, Região Metropolitana de Porto Alegre, Nordeste e Litoral. Válido até 10h do dia 21 de agosto. Condição de ATENÇÃO para rajadas de vento entre 60 e 80 km/h. Evite áreas de risco....",
+      "regions": [
+        "Porto Alegre",
+        "Região Metropolitana",
+        "Litoral"
+      ],
+      "issuedAt": "2026-08-20T11:22:00Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-chuva-granizo-e-rajadas-de-vento-que-atuam-em-areas-da-regiao-sul-6a870ccbeeeb6",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-1n1jegz",
+      "type": "Defesa Civil",
+      "severity": "atencao",
+      "title": "Centro de Monitoramento da Defesa Civil Estadual atualiza as condições hidrológica para os próximos dias no RS",
+      "message": "A condição hidrológica atual é de níveis entre limiares de inundação e normalidade, com as tendências variadas. Os maiores limiares se concentram no Sul do estado, com destaque para o rio Jaguarão que atingiu a cota de inundação na manhã desta terça-feira (18/8).  \n  Em função das chuvas...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-18T12:37:38Z",
+      "link": "http://defesacivil.rs.gov.br/centro-de-monitoramento-da-defesa-civil-estadual-atualiza-as-condicoes-hidrologica-para-os-proximos-dias-no-rs-6a8-6a847b0770291",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-15vu16j",
+      "type": "Defesa Civil",
+      "severity": "atencao",
+      "title": "Centro de Monitoramento da Defesa Civil Estadual atualiza as condições meteorológicas para os próximos dias no RS",
+      "message": "Nesta terça-feira (18/8), há risco de chuva pontualmente forte especialmente em áreas da Campanha e Sul do estado, além de tempestades isoladas, com queda de granizo que pode ser grande, rajadas de vento que podem superar 80 km/h, nas regiões Oeste, Campanha, Costa Doce, Centro e Sul. Na área...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-18T12:29:00Z",
+      "link": "http://defesacivil.rs.gov.br/centro-de-monitoramento-da-defesa-civil-estadual-atualiza-as-condicoes-meteorologicas-para-os-proximos-dias-no-rs-6a847a60ef130",
+      "source": "Defesa Civil RS"
+    }
+  ],
   "sources": [
     "Defesa Civil RS (RSS)",
     "Defesa Civil RS (GraphQL — Rede Hidrometeorológica)"
