@@ -1,72 +1,32 @@
 {
-  "collectedAt": "2026-08-23T06:26:29.254Z",
+  "collectedAt": "2026-08-23T07:10:05.577Z",
   "level": {
-    "levelMeters": 1.44,
+    "levelMeters": 1.45,
     "trend": 0.0138,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-23T06:26:22.000+00:00",
+    "timestamp": "2026-08-23T07:09:52.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.44,
+        "levelMeters": 1.45,
         "trend": 0.0138,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-23T06:26:22.000+00:00",
+        "timestamp": "2026-08-23T07:09:52.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.38,
+        "levelMeters": 1.42,
         "trend": 0,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-23T06:26:26.000+00:00",
+        "timestamp": "2026-08-23T07:09:46.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
-  "dcrsAlerts": [
-    {
-      "id": "dcrs-3ho7kj",
-      "type": "Defesa Civil",
-      "severity": "atencao",
-      "title": "O CENTRO DE MONITORAMENTO DA DEFESA CIVIL DO ESTADO ATUALIZA O PROGNÓSTICO HIDROLÓGICO PARA OS PRÓXIMOS DIAS",
-      "message": "A condição hidrológica atual é de níveis entre limiares de inundação e normalidade, com as tendências variadas, destacando os níveis elevados em arroios e rios do Oeste e Sul do estado. Estão acima da cota de inundação os rios Santa Maria (em Dom Pedrito) e o rio Quaraí (em Quaraí).    Em...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-21T12:45:49Z",
-      "link": "http://defesacivil.rs.gov.br/centro-de-monitoramento-da-defesa-civil-estadual-atualiza-as-condicoes-hidrologica-para-os-proximos-dias-no-rs-6a8-6a88723f509b6",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-1cn8a0l",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: ELEVAÇÃO do rio Quaraí. Risco MUITO ALTO de inundação em Quaraí.",
-      "message": "Defesa Civil alerta: ELEVAÇÃO do rio Quaraí. Risco MUITO ALTO de inundação em Quaraí. Validade até 12h do dia 22 de agosto. Emergência ligue 190/193. \n Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de Contingência municipais para saber quais os riscos e como agir em...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-21T12:43:19Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-elevacao-do-rio-quarai-risco-alto-de-inundacao-em-quarai-6a8793046bcc4-6a885df9881b5",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-1wrwyvs",
-      "type": "Defesa Civil",
-      "severity": "atencao",
-      "title": "O CENTRO DE MONITORAMENTO DA DEFESA CIVIL DO ESTADO ATUALIZA O PROGNÓSTICO METEOROLÓGICO PARA OS PRÓXIMOS DIAS",
-      "message": "Uma massa de ar polar atua sobre o Rio Grande do Sul e favorece o frio intenso, com geada na maioria das regiões do estado e mínimas negativas.    No sábado (22), as mínimas variam entre -2°C e 10°C, com geada na maioria das regiões, especialmente no Sul, Campanha, Centro, Serra e Nordeste. As...",
-      "regions": [
-        "Serra"
-      ],
-      "issuedAt": "2026-08-21T11:24:32Z",
-      "link": "http://defesacivil.rs.gov.br/centro-de-monitoramento-da-defesa-civil-estadual-atualiza-as-condicoes-hidrologica-para-os-proximos-dias-no-rs-6a8-6a885ef9b2730",
-      "source": "Defesa Civil RS"
-    }
-  ],
+  "dcrsAlerts": [],
   "sources": [
     "Defesa Civil RS (RSS)",
     "Defesa Civil RS (GraphQL — Rede Hidrometeorológica)"
