@@ -1,0 +1,7 @@
+{
+  "_leia": "Preencha depois de publicar o Worker (worker/README.md). Enquanto subscribeUrl e vapidPublicKey estiverem vazios, o app não oferece push — avisa só com o app aberto, sem quebrar nada. Aqui só entram dados públicos: a URL do Worker e a chave PÚBLICA do VAPID. A chave privada é secret do Cloudflare e nunca vai para o repositório. Opcional: preencha dataUrl com <worker>/data para o app ler as leituras direto do Worker (atualiza a cada 10 min, sem depender do commit do GitHub Actions).",
+  "subscribeUrl": "",
+  "unsubscribeUrl": "",
+  "vapidPublicKey": "",
+  "dataUrl": ""
+}

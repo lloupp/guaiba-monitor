@@ -1,0 +1,31 @@
+# wrangler.toml — Cloudflare Worker do Guaiba Monitor
+#
+# Deploy (ver worker/README.md para o passo a passo completo):
+#   npx wrangler kv namespace create GUAIBA_KV
+#   npx wrangler secret put VAPID_PRIVATE_KEY
+#   npx wrangler deploy
+
+name = "guaiba-monitor"
+main = "src/index.js"
+compatibility_date = "2026-08-01"
+
+# O cron é o coração do push: sem ele, ninguém é avisado de madrugada.
+# 10 minutos casa com a cadência da telemetria da Defesa Civil e mantém o
+# consumo de KV dentro do plano gratuito (~4 writes por execução).
+[triggers]
+crons = ["*/10 * * * *"]
+
+[vars]
+# Origens autorizadas a chamar /subscribe. Vazio = qualquer uma (só para teste).
+ALLOWED_ORIGINS = "https://lloupp.github.io"
+# Cotas por estação, usadas para classificar quem tem régua com cota oficial.
+REF_LEVELS_URL = "https://lloupp.github.io/guaiba-monitor/data/ref-levels.json"
+VAPID_SUBJECT = "mailto:contato@guaiba-monitor"
+# VAPID_PUBLIC_KEY é público (o app também o usa) — preencha após gerar o par.
+VAPID_PUBLIC_KEY = ""
+
+# VAPID_PRIVATE_KEY NÃO vai aqui: é secret (`wrangler secret put`).
+
+[[kv_namespaces]]
+binding = "GUAIBA_KV"
+id = "PREENCHER_COM_O_ID_DO_NAMESPACE"
