@@ -1,0 +1,20 @@
+{
+  "_leia": "Abrigos e pontos de apoio. VAZIO DE PROPÓSITO: em 23/08/2026 não há fonte pública viva (ver README, seção 'Abrigos'). Enquanto 'shelters' estiver vazio, a seção não aparece no app e a orientação exibida é ligar 199. Todo item PRECISA de name, address (ou latitude+longitude), source e verifiedAt — sem isso é descartado na carga, porque mandar alguém para um abrigo inexistente é pior do que não mostrar nada.",
+  "_exemplo": {
+    "name": "Ginásio Municipal X",
+    "address": "Rua Y, 123 — Bairro Z, Município",
+    "latitude": -30.0331,
+    "longitude": -51.23,
+    "municipality": "Porto Alegre",
+    "capacity": 200,
+    "petFriendly": true,
+    "accessible": true,
+    "phone": "51 3000-0000",
+    "source": "Defesa Civil RS / Sedes — plataforma de monitoramento de abrigos",
+    "verifiedAt": "2026-10-15",
+    "notes": "confirmar vagas por telefone antes de ir"
+  },
+  "source": null,
+  "updatedAt": null,
+  "shelters": []
+}
