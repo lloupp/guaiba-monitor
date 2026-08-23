@@ -1,100 +1,68 @@
-# Guaiba Monitor — Plano de Desenvolvimento Incremental
+# Guaiba Monitor — estado do projeto
 
-## Skill de referência: `guaiba-flood-monitor-builder`
-TODAS as fases devem seguir a skill `guaiba-flood-monitor-builder` (carregada no cron).
+## Onde está
 
-## Status: Todas as fases concluídas ✅ — projeto completo (2026-08-06)
+O app é um PWA estático (GitHub Pages, ES modules, sem build) que mostra o
+nível dos rios do RS a partir da telemetria da Defesa Civil, com avisos por Web
+Push quando a estação acompanhada escala de faixa ou entra em alarme oficial.
+
+**Três regras valem mais que qualquer funcionalidade** (todas com teste):
+
+1. o app nunca exibe leitura inventada — sem dado, ele diz que não tem e explica;
+2. cota de uma régua não classifica outra — cada estação tem zero próprio;
+3. o app não inventa destino de fuga, abrigo ou rota.
 
 ## Fases
 
-### Fase 1 — Pesquisa de fontes e validação [CONCLUÍDO — 2026-08-05]
-- Testar com curl: endpoint de nível do Guaíba (IPH-UFRGS, CPRM-SACE), alertas INMET, Defesa Civil RS  ✓
-- Confirmar cota de transbordo oficial atual (CPRM/Defesa Civil RS)                          — não confirmada via API JSON; mantidos valores aproximados em ref-levels.json
-- Documentar endpoints funcionantes em docs/fase1-fontes-e-endpoints.md                       ✓
-- Atualizar skill com o que funcionar                                                          — api.js com estrutura e endpoints confirmados
-- Commit: `docs: Fase 1 — pesquisa de fontes`                                                  ✓
+### Fase 0 — Parar de mostrar dado falso ✅ (2026-08-21)
+- `sampleLevels`/`sampleAlerts` fora de produção → `test/fixtures/`
+- estado vazio honesto, com o motivo (sem conexão / coleta sem nível / erro)
+- rotas de fuga inventadas removidas → telefones oficiais + plano escrito pela pessoa
+- cotas por estação (`data/ref-levels.json`); classificação: cota da régua →
+  alarme oficial da Defesa Civil → "sem referência"
+- `isFresh` passa a bloquear alerta, não a esconder leitura
 
-**Resultado**:
-- INMET `/avisos/ativos` ✅ e `/previsao/{geocode}` ✅ — funcionam, sem auth, CORS aberto
-- CPRM SACE HTML ✅ mas sem API JSON pública; sem endpoint direto de nível
-- Defesa Civil RS HTML ✅ — uchar scraping via proxy; sem JSON
-- IPH-UFRGS telemetria ❌ — 404
-- Nível do Guaíba: sem endpoint JSON público direto. Usar dados de exemplo marcados como "simulação/offline" para MVP.
+### Fase 1 — Todo o RS ✅ (2026-08-21)
+- 130 estações (eram 2), com alarme de inundação, chuva 24h/72h e deslizamento
+- `data/stations.json` (catálogo) + `realtime.json` enxuto (141 KB → 43 KB)
+- bacia inferida por proximidade onde a API não informa (40 → 12 sem bacia)
+- histórico por estação (72 h)
+- estação mais próxima por geolocalização (cálculo no aparelho)
+- alertas localizados por município real e filtrados por região
 
-### Fase 2 — Layout e Dashboard [CONCLUÍDO — 2026-08-05]
-- Header com título e indicador de nível atual
-- Cards por região (POA, Canoas, Guaíba, região)
-- Segmentos de cota e legenda de cores
-- CSS responsivo, tema escuro
-- Commit: `feat: layout e dashboard`
+### Fase 2 — Avisos com o app fechado ✅ (2026-08-22)
+- Cloudflare Worker (`worker/`): `/subscribe`, `/unsubscribe`, `/data/:file`,
+  `/health` e cron de 10 min
+- Web Push (RFC 8291/8292) só com Web Crypto — o `web-push` do Node não roda em
+  Workers; validado decifrando o resultado com biblioteca independente
+- regras de disparo em `js/events.js`, todas testadas
+- **Falta**: publicar o Worker e preencher `data/push-config.json`
 
-### Fase 3 — Coleta de dados (API) [CONCLUÍDO — 2026-08-06]
-|- Implementar js/api.js: fetch nível + alertas ✓
-|- Fallback: dados de exemplo quando offline ✓
-|- Política de retry e timeout ✓
-|- Commit: `feat: coleta de dados (api.js + integração no app.js)` ✓
+### Fase 3 — Feito para o celular ✅ (2026-08-22)
+- Lighthouse mobile: performance 99, acessibilidade 100, boas práticas 100, SEO 100
+- INMET saiu do navegador (760 KB por abertura) para o coletor
+- Leaflet sob demanda; gráfico com toque, pinça e teclado
+- modo emergência (offline, alto contraste); "quanto falta até a minha casa";
+  compartilhar por Web Share; atalhos no manifest
 
-### Fase 4 — Nível e Gráfico [CONCLUÍDO — 2026-08-06]
-|- Nível atual + cota de referência ✓ (já existia em app.js, integrado ao gráfico)
-|- Gráfico de linha/área em Canvas com linha de transbordo ✓
-|- Histórico persistido em localStorage (gm_levels_history) ✓
-|- Deduplicação por estação + minuto, cap de 50 leituras por estação ✓
-|- Re-render responsivo (resize + toggle de tema) ✓
-|- Commit: `feat: nível e gráfico (Canvas + histórico localStorage)` ✓
+### Fase 5 — Não regredir ✅ (2026-08-23)
+- `.github/workflows/ci.yml`: lint, testes, carimbo do SW e JSONs válidos
+- `.github/workflows/monitor-fontes.yml`: verifica as fontes todo dia e abre
+  issue quando alguma cai (`npm run check-sources`)
 
-### Fase 5 — Riscos por região e tipo [CONCLUÍDO — 2026-08-06]
-||- Matriz de risco: ciclone bomba, vendaval, granizo, deslizamento, enchente ✓
-||- Cards por região com nível de risco geral (badge derivado da matriz) ✓
-||- Texto de orientação correspondente (por região + tipo de desastre) ✓
-||- Matriz de risco (região × tipo de desastre) em tabela com badges coloridos ✓
-||- Derivação automática: enchente/alagamento/ressaca do nível do rio; vendaval/granizo de alertas INMET; deslizamento do risco de chuva ✓
-||- Dados sample (simulação/offline) e derivação real — mesma arquitetura da Fase 3 ✓
-||- Commit: `feat: riscos por região e tipo (Fase 5) — matriz de risco região×desastre + orientações` ✓
+### Fase 4 — Abrigos e rotas ⏸ bloqueada na origem
+Não há fonte aberta viva: `api.sos-rs.com` (plataforma de 2024) está fora do ar
+e o portal de dados abertos de Porto Alegre não tem dataset de abrigo nem de
+defesa civil. A fase começa por **conseguir a fonte**, não por programar —
+inventar abrigo repetiria o erro das rotas de fuga removidas na Fase 0.
+Ver a seção "Abrigos" no README para o estado da busca.
 
-### Fase 6 — Alertas e notificações [CONCLUÍDO — 2026-08-06]
-||- Lista de alertas ativos (INMET/Defesa Civil) ✓
-||- Severidade colorida (amarelo/laranja/vermelho) ✓
-||- Aviso toast quando nível cruza limiar do usuário ✓
-||- Ordenação por gravidade (mais grave primeiro) ✓
-||- Estado vazio quando não há alertas ✓
-||- Limiar configurável pelo usuário (input + localStorage gm_settings.alertThreshold) ✓
-||- Toast de escalada de risco (normal→atenção→inundação→severa→crítica) ✓
-||- Toast de sucesso ao ajustar limiar ✓
-||- Commit: `feat: alertas e notificações (Fase 6) — lista de alertas + toasts de threshold` ✓
+## Como verificar
 
-### Fase 7 — Polimento [CONCLUÍDO — 2026-08-06]
-|- Animações de entrada escalonadas (fadeInUp + stagger nos cards) ✓
-|- Checklist de preparação: kit emergência (8 itens) + rotas de fuga (3 itens) ✓
-|- Persistência do checklist no localStorage (gm_checklist) ✓
-|- Barra de progresso visual (11 itens) com toast de conclusão ✓
-|- Responsividade mobile refinada (480px + 640px) ✓
-|- Smooth scroll + transições de tema suaves ✓
-|- Validação: node -c em todos os JS ✓, JSON válido ✓, IDs HTML↔JS conferidos ✓
-|- Commit: `feat: polimento (Fase 7) — checklist preparação, animações de entrada, responsividade mobile` ✓
-
-### Fase 8 — Deploy GitHub Pages [CONCLUÍDO — 2026-08-06]
-|- Pages habilitado via GitHub API (`POST repos/.../pages`, `build_type: legacy`, source: `master`/`/`) ✓
-|- `.nojekyll` na raiz para impedir processamento Jekyll ✓
-|- Live: https://lloupp.github.io/guaiba-monitor/ ✓
-|- README.md atualizado com seção Deploy + badge + URL ✓
-|- Commit: `deploy: GitHub Pages` ✓
-
-### Fase 9 — Dados reais (GitHub Actions) + Mapa El Niño [CONCLUÍDO — 2026-08-07]
-|- Coletor server-side scripts/collect.js (sem CORS) ✓
-|  - Defesa Civil RS: RSS real (defesacivil.rs.gov.br/rss) → data/realtime.json ✓
-|  - El Niño/La Niña: NOAA CPC wksst9120.for → data/elnino.json ✓
-|  - Nível do Guaíba: sem fonte JSON pública estável (SACE DWR com sessão) → mantido simulação marcada ✓
-|- GitHub Actions .github/workflows/collect.yml (cron 30min + workflow_dispatch) ✓
-|- NUNCA misturar alertas simulados com reais (simulados só em 100% offline) ✓
-|- Mapa El Niño: js/elnino.js (Leaflet via CDN) — regiões Niño 1+2, 3, 3.4, 4 coloridas pela anomalia +
-|  badge de estado ENSO e nota de impacto no Sul ✓
-|- index.html + css integrados; testes 26 passando; lint limpo ✓
-|- Commit: `data: dados reais + mapa El Niño` (single) ✓
-
-## Regras do cron
-1. Ler PROGRESS.md
-2. Implementar fase completa
-3. Testar (node -c, HTML, JSON válido, curl endpoints)
-4. Commit + push
-5. Atualizar status
-6. Reportar
+```bash
+npm test              # testes + carimbo do Service Worker
+npm run lint
+npm run check-sources # as fontes externas ainda respondem?
+npm run collect       # coleta real, grava em data/
+npm run stamp-sw      # antes de publicar, sempre
+```

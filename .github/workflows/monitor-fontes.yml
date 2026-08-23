@@ -1,0 +1,61 @@
+# Vigia as fontes externas.
+#
+# O app depende de quatro serviços públicos que já saíram do ar sem aviso. Sem
+# esta verificação, a queda de uma fonte só apareceria quando alguém precisasse
+# do alerta e ele não viesse. O job roda de manhã e abre (ou atualiza) uma
+# issue quando algo está fora.
+
+name: monitorar-fontes
+
+on:
+  schedule:
+    - cron: '0 11 * * *'   # 08h no horário de Brasília
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  verificar-fontes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Checar fontes
+        id: checar
+        run: |
+          node scripts/check-sources.js > relatorio.md 2> erro.log || echo "falhou=sim" >> $GITHUB_OUTPUT
+          cat relatorio.md
+          {
+            echo 'relatorio<<FIM'
+            cat relatorio.md
+            echo 'FIM'
+          } >> $GITHUB_OUTPUT
+
+      - name: Abrir ou atualizar issue quando alguma fonte está fora
+        if: steps.checar.outputs.falhou == 'sim'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const corpo = `${{ steps.checar.outputs.relatorio }}\n\n_Verificado automaticamente por \`.github/workflows/monitor-fontes.yml\`._`;
+            const titulo = 'Fonte de dados fora do ar';
+            const abertas = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo,
+              state: 'open', labels: 'fonte-fora',
+            });
+            if (abertas.data.length > 0) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: abertas.data[0].number, body: corpo,
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner, repo: context.repo.repo,
+                title: titulo, body: corpo, labels: ['fonte-fora'],
+              });
+            }

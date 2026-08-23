@@ -1,0 +1,44 @@
+# Verificação a cada push e pull request.
+#
+# Três coisas que não podem quebrar sem alguém saber:
+#   1. os testes (regras de disparo de alerta, classificação por cota, push);
+#   2. o lint;
+#   3. o carimbo do Service Worker — sem ele, quem já instalou o app continua
+#      na versão antiga, e a correção publicada não chega a ninguém.
+
+name: verificar
+
+on:
+  push:
+    branches: ['**']
+    paths-ignore:
+      - 'data/**'      # commits do coletor não precisam rodar o CI
+      - '**.md'
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Lint
+        run: npx eslint js/ scripts/ worker/
+
+      - name: Testes
+        run: node --test 'test/*.test.js'
+
+      - name: Service Worker carimbado com a versão do shell
+        run: node scripts/stamp-sw.js --check
+
+      - name: JSONs válidos
+        run: |
+          for f in data/*.json; do
+            node -e "JSON.parse(require('fs').readFileSync('$f','utf8'))" || exit 1
+          done
+          echo "todos os JSONs de data/ são válidos"
