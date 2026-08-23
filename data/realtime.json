@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-08-23T12:22:35.753Z",
+  "collectedAt": "2026-08-23T13:08:38.821Z",
   "level": {
     "levelMeters": 1.46,
     "trend": -0.0085,
@@ -17,11 +17,11 @@
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.38,
+        "levelMeters": 1.39,
         "trend": 0,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-23T12:22:26.000+00:00",
+        "timestamp": "2026-08-23T13:08:36.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
