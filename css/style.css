@@ -6,7 +6,8 @@
   --bg-hover: #1a2030;
   --border: #1e2535;
   --text-primary: #e4e7ef;
-  --text-secondary: #8b919e;
+  /* No escuro, #8b919e já passa de 4.5:1 sobre o card. */
+  --text-secondary: #9aa1ae;
   --green: #22c55e;
   --yellow: #f59e0b;
   --orange: #f97316;
@@ -28,7 +29,9 @@
   --bg-hover: #f1f5f9;
   --border: #e2e8f0;
   --text-primary: #0f172a;
-  --text-secondary: #64748b;
+  /* #64748b dava 3.41:1 em texto pequeno sobre o card branco — abaixo do
+     mínimo de 4.5:1 do WCAG AA. */
+  --text-secondary: #4b5563;
   --green: #16a34a;
   --yellow: #ca8a04;
   --orange: #ea580c;
@@ -274,6 +277,8 @@ body {
 .badge-inundacao { background: rgba(249, 113, 22, 0.15); color: var(--orange); border: 1px solid var(--orange); }
 .badge-severa   { background: rgba(220, 38, 38, 0.15);   color: var(--red);    border: 1px solid var(--red); }
 .badge-critica  { background: rgba(220, 38, 38, 0.15);   color: var(--red);    border: 1px solid var(--red); }
+/* Sem base para classificar: régua sem cota oficial e sem alarme publicado. */
+.badge-desconhecido { background: rgba(139, 145, 158, 0.15); color: var(--text-secondary); border: 1px solid var(--text-secondary); }
 
 /* ===== Cotas / legenda ===== */
 .cota-legend {
@@ -359,9 +364,11 @@ body {
 }
 
 .graph-hint {
-  font-size: 11px;
+  /* 11px com opacity 0.7 dava 4:1 — abaixo do mínimo do WCAG AA. A instrução
+     de como usar o gráfico precisa ser legível justamente por quem não é
+     leitor rápido. */
+  font-size: 12px;
   color: var(--text-secondary);
-  opacity: 0.7;
   text-align: center;
   margin: 6px 0 0;
   padding: 0;
@@ -383,9 +390,19 @@ body {
 .station-selector {
   display: flex;
   align-items: center;
+  /* Envolve no celular: com 130 estações o nome é longo e, sem quebrar linha,
+     o botão de localização empurrava o card para fora da tela. */
+  flex-wrap: wrap;
   gap: 6px;
+  min-width: 0;
   font-size: 12px;
   color: var(--text-secondary);
+}
+
+.station-selector select {
+  flex: 1 1 12rem;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .station-selector select {
@@ -600,7 +617,7 @@ body {
 
 .risk-blank {
   color: var(--text-secondary);
-  opacity: 0.3;
+  opacity: 0.55;
 }
 
 .risk-badge {
@@ -930,33 +947,6 @@ body {
   color: var(--text-secondary);
 }
 
-/* Alerta de exemplo/simulado deve ficar claramente distinto (Fase 6) */
-.alert-card--simulated {
-  opacity: 0.75;
-  border-style: dashed;
-}
-.alert-sim-badge {
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--text-secondary);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 2px 10px;
-  margin-bottom: 8px;
-  background: var(--bg);
-}
-.alerts-divider {
-  width: 100%;
-  text-align: center;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text-secondary);
-  margin: 8px 0 4px;
-  padding-bottom: 4px;
-  border-bottom: 1px dashed var(--border);
-}
-
 /* Aviso de dados desatualizados (refresh automático) */
 .footer-source.stale,
 .footer-update.stale {
@@ -997,7 +987,7 @@ body {
   width: fit-content;
 }
 .elnino-state { font-size: 15px; }
-.elnino-ssta { opacity: 0.9; font-weight: 600; }
+.elnino-ssta { font-weight: 700; }  /* sem opacity: ela derrubava o contraste abaixo do mínimo */
 .elnino-impact {
   font-size: 13px;
   color: var(--text-primary);
@@ -1251,8 +1241,10 @@ html {
 
 /* Item do checklist marcado */
 .checklist-item.checked-state label {
+  /* O risco no texto já marca o item; a opacidade fica só como reforço leve,
+     para o item concluído continuar legível. */
   text-decoration: line-through;
-  opacity: 0.6;
+  opacity: 0.75;
 }
 
 /* Tema transition mais suave */
@@ -1352,7 +1344,7 @@ body, .card, .region-card, .alert-card {
 
 .checklist-item input[type="checkbox"]:checked + span {
   text-decoration: line-through;
-  opacity: 0.6;
+  opacity: 0.75;
 }
 
 .preparation-progress {
@@ -1433,3 +1425,610 @@ body, .card, .region-card, .alert-card {
   .cota-legend { padding: 10px 14px; }
 }
 
+
+
+/* ===== Fase 0: estados honestos (sem dado inventado) ===== */
+
+/* Base da classificação, logo abaixo do número */
+.level-basis {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--text-secondary);
+}
+
+.level-indicator--empty .level-meters {
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
+
+.cota-legend-empty,
+.cota-legend-source {
+  width: 100%;
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.region-empty,
+.risk-empty {
+  padding: 1rem;
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  background: var(--bg-hover);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+}
+
+.alerts-source-note {
+  margin: 0.5rem 0 0;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.region-rain {
+  margin-left: auto;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.threshold-help {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* ===== Telefones de emergência ===== */
+.emergency-subtitle,
+.emergency-note {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin: 0 0 0.75rem;
+}
+
+.emergency-note {
+  margin: 0.75rem 0 0;
+}
+
+.emergency-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.75rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.emergency-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+  /* Alvo de toque confortável: alguém com pressa, no escuro, com a mão molhada. */
+  min-height: 72px;
+  padding: 0.75rem;
+  text-decoration: none;
+  background: var(--bg-hover);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+
+.emergency-link:hover,
+.emergency-link:focus-visible {
+  border-color: var(--red);
+  background: rgba(220, 38, 38, 0.08);
+}
+
+.emergency-number {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--red);
+  letter-spacing: 0.02em;
+}
+
+.emergency-name {
+  font-size: 0.8rem;
+  color: var(--text-primary);
+}
+
+/* ===== Plano de saída (escrito pelo usuário) ===== */
+.preparation-card-hint {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin: 0 0 0.75rem;
+}
+
+.safe-point-label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.35rem;
+}
+
+.safe-point-input {
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 0.75rem;
+  font: inherit;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  resize: vertical;
+}
+
+.safe-point-input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+/* ===== Aviso de nova versão do app ===== */
+.update-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  background: rgba(14, 165, 233, 0.12);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+.update-banner[hidden] { display: none; }
+
+.update-button {
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  font: inherit;
+  font-weight: 600;
+  color: var(--bg-primary);
+  background: var(--accent);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.update-button:disabled { opacity: 0.6; cursor: default; }
+
+/* ===== Seletor de estação (130 estações do estado) ===== */
+.locate-button {
+  min-height: 44px;
+  padding: 0.5rem 0.9rem;
+  font: inherit;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  background: var(--bg-hover);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.locate-button:hover:not(:disabled),
+.locate-button:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.locate-button:disabled { opacity: 0.6; cursor: default; }
+
+#station-select {
+  max-width: 100%;
+  min-height: 44px;
+}
+
+/* ===== Alertas de outras regiões (recolhidos) ===== */
+.alerts-other { margin-top: 0.75rem; }
+.alerts-other[hidden] { display: none; }
+
+.alerts-other-details summary {
+  cursor: pointer;
+  padding: 0.6rem 0;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.alerts-other-details summary:hover { color: var(--text-primary); }
+.alerts-other-details[open] summary { margin-bottom: 0.5rem; }
+
+/* A página nunca rola na horizontal: conteúdo largo rola dentro do próprio bloco. */
+html, body { overflow-x: hidden; }
+.graph-header { flex-wrap: wrap; gap: 0.5rem; min-width: 0; }
+.risk-matrix-wrap { overflow-x: auto; }
+
+/* ===== Controle de avisos (push) ===== */
+.notification-control {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.notification-hint {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--text-secondary);
+  max-width: 34ch;
+}
+
+.notification-toggle { min-height: 44px; }
+.notification-toggle:disabled { opacity: 0.6; cursor: default; }
+
+/* Espaço reservado do mapa: evita o pulo de layout quando ele carrega. */
+.elnino-map { min-height: 220px; }
+
+.elnino-map--carregando {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-hover);
+  border-radius: var(--radius);
+}
+
+.elnino-map--carregando::after {
+  content: 'Carregando mapa…';
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* Conteúdo só para leitores de tela (anúncio do valor destacado no gráfico). */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* O gesto de arrastar o gráfico não deve arrastar a página junto. */
+#level-canvas {
+  touch-action: none;
+  cursor: grab;
+}
+
+#level-canvas:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ===== Quanto falta até a minha casa ===== */
+.my-level-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.my-level-status {
+  margin: 0.5rem 0 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+.my-level-status--vazio { color: var(--text-secondary); font-size: 0.9rem; }
+.my-level-status--subindo { color: var(--orange); font-weight: 600; }
+.my-level-status--passou { color: var(--red); font-weight: 700; }
+
+.my-level-config summary {
+  cursor: pointer;
+  padding: 0.5rem 0;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.my-level-help {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin: 0 0 0.75rem;
+}
+
+.my-level-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.my-level-form label { font-size: 0.75rem; color: var(--text-secondary); }
+
+.my-level-form input {
+  min-height: 44px;
+  padding: 0.5rem 0.75rem;
+  font: inherit;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.my-level-actions { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
+
+.my-level-save,
+.my-level-clear,
+.share-button {
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  font: inherit;
+  font-size: 0.85rem;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.my-level-save {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg-primary);
+  font-weight: 600;
+}
+
+.share-button[hidden] { display: none; }
+
+/* ===== Modo emergência ===== */
+.emergency-open {
+  display: block;
+  width: 100%;
+  min-height: 52px;
+  margin-bottom: 0.75rem;
+  padding: 0.75rem 1rem;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #fff;
+  background: #b91c1c;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.emergency-open:hover,
+.emergency-open:focus-visible { background: #991b1b; }
+
+.emergency-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  overflow-y: auto;
+  /* Preto puro e texto branco: legível sob sol, com a tela no mínimo, e
+     gastando menos bateria em telas OLED. */
+  background: #000;
+  color: #fff;
+}
+
+.emergency-screen[hidden] { display: none; }
+body.emergency-open-body { overflow: hidden; }
+
+.emergency-screen-inner {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 1rem 1rem 3rem;
+}
+
+.emergency-screen-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0 1rem;
+}
+
+.emergency-screen-head h2 { font-size: 1.25rem; margin: 0; }
+
+.emergency-close {
+  min-width: 48px;
+  min-height: 48px;
+  font-size: 1.5rem;
+  color: #fff;
+  background: transparent;
+  border: 2px solid #fff;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.emergency-block {
+  padding: 1rem 0;
+  border-top: 2px solid #333;
+}
+
+.emergency-block h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #d4d4d4;
+}
+
+.emergency-level {
+  margin: 0;
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.emergency-level--critica,
+.emergency-level--alarme { color: #ff4d4d; }
+.emergency-level--severa { color: #ff8c42; }
+.emergency-level--inundacao { color: #ffd43b; }
+
+.emergency-level-meta { margin: 0.5rem 0 0; font-size: 1rem; color: #d4d4d4; }
+
+.emergency-action { margin: 0; font-size: 1.25rem; line-height: 1.5; font-weight: 600; }
+
+.emergency-calls {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.emergency-call {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* Alvo grande: mão molhada, pressa, pouca luz. */
+  min-height: 84px;
+  text-decoration: none;
+  color: #fff;
+  background: #7f1d1d;
+  border-radius: var(--radius);
+}
+
+.emergency-call strong { font-size: 2rem; line-height: 1.1; }
+.emergency-call span { font-size: 0.9rem; }
+
+.emergency-plan { margin: 0; font-size: 1.15rem; line-height: 1.5; }
+.emergency-plan--vazio { color: #fbbf24; font-size: 1rem; }
+
+.emergency-kit { margin: 0; padding-left: 1.25rem; font-size: 1.05rem; line-height: 1.7; }
+
+.emergency-foot { margin-top: 1.5rem; font-size: 0.9rem; color: #a3a3a3; }
+
+@media (min-width: 480px) {
+  .emergency-calls { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* ===== Alvos de toque (WCAG 2.5.5): 44px é o mínimo para dedo com pressa ===== */
+summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.alert-threshold-control input,
+#alert-threshold-input {
+  min-height: 44px;
+  padding: 0.4rem 0.6rem;
+}
+
+/* O alvo do checklist é o rótulo inteiro, não o quadradinho. */
+.checklist-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 44px;
+  padding: 0.25rem 0;
+  cursor: pointer;
+}
+
+.checklist-item input[type="checkbox"] {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  accent-color: var(--accent);
+}
+
+/* Foco sempre visível: quem navega por teclado precisa saber onde está. */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Respeita quem pediu menos animação no sistema. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ===== Espaço reservado: o conteúdo não pode pular quando os dados chegam =====
+   Cada seção dinâmica reserva a altura que vai ocupar. Sem isso, a pessoa
+   toca num lugar e o dedo acerta outro, porque a página se reorganizou no
+   instante do toque. */
+.level-indicator { min-height: 230px; }
+.my-level { min-height: 150px; }
+.cota-legend { min-height: 92px; }
+.region-grid { min-height: 220px; }
+.alerts-list:not(:empty) { min-height: 120px; }
+.risk-matrix-wrap { min-height: 180px; }
+
+/* O gráfico tem proporção fixa: o canvas é redesenhado, nunca redimensiona a caixa. */
+.graph-canvas-wrap {
+  aspect-ratio: 16 / 7;
+  min-height: 180px;
+}
+
+#level-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ===== Abrigos (só aparecem com fonte e data de verificação) ===== */
+.shelters[hidden] { display: none; }
+
+.shelters-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin: 0 0 0.75rem;
+}
+
+.shelters-list { display: flex; flex-direction: column; gap: 0.75rem; }
+
+.shelter-card {
+  padding: 0.85rem;
+  background: var(--bg-hover);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.shelter-card--velho { border-style: dashed; }
+
+.shelter-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.shelter-name { font-weight: 600; }
+.shelter-distance { font-size: 0.85rem; color: var(--accent); white-space: nowrap; }
+.shelter-address { margin: 0.35rem 0; font-size: 0.9rem; }
+
+.shelter-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0.5rem 0; }
+
+.shelter-tag {
+  padding: 0.15rem 0.5rem;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+.shelter-phone {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 600;
+  color: var(--link);
+}
+
+.shelter-source {
+  margin: 0.35rem 0 0;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}

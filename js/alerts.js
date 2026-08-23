@@ -38,6 +38,8 @@ const LEVEL_STATUS_LABELS = {
   inundacao: 'INUNDAÇÃO',
   severa: 'SEVERA',
   critica: 'CRÍTICA',
+  alarme: 'ALARME OFICIAL',
+  desconhecido: 'SEM REFERÊNCIA',
 };
 
 // Classe de badge CSS por status (a mesma chave do status)
@@ -47,33 +49,101 @@ const LEVEL_STATUS_CSS = {
   inundacao: 'inundacao',
   severa: 'severa',
   critica: 'critica',
+  alarme: 'critica',
+  desconhecido: 'desconhecido',
 };
 
 /**
- * Classifica o nível do rio em uma categoria de risco.
+ * Classifica o nível do rio em uma categoria de risco, usando as cotas
+ * informadas. Cada régua tem zero próprio: passe SEMPRE as cotas da estação
+ * (config.js#getStationThresholds). O default só existe para a régua de
+ * referência do Guaíba (Gasômetro).
+ *
  * @param {number} levelMeters — nível em metros
+ * @param {object} [thresholds] — {atencao, inundacao, severa, critica}
  * @returns {'normal'|'atencao'|'inundacao'|'severa'|'critica'}
  */
-function getLevelStatus(levelMeters) {
+function getLevelStatus(levelMeters, thresholds = LEVEL_THRESHOLDS) {
+  const t = thresholds || LEVEL_THRESHOLDS;
   const l = parseFloat(levelMeters);
-  if (l >= LEVEL_THRESHOLDS.critica) return 'critica';
-  if (l >= LEVEL_THRESHOLDS.severa) return 'severa';
-  if (l >= LEVEL_THRESHOLDS.inundacao) return 'inundacao';
-  if (l >= LEVEL_THRESHOLDS.atencao) return 'atencao';
+  if (l >= t.critica) return 'critica';
+  if (l >= t.severa) return 'severa';
+  if (l >= t.inundacao) return 'inundacao';
+  if (l >= t.atencao) return 'atencao';
   return 'normal';
 }
 
 /**
  * Labels + classe css de um status de nível, prontos para renderização.
  * @param {number} levelMeters
+ * @param {object} [thresholds] — cotas da estação
  * @returns {{status: string, label: string, css: string}}
  */
-function getLevelStatusInfo(levelMeters) {
-  const status = getLevelStatus(levelMeters);
+function getLevelStatusInfo(levelMeters, thresholds = LEVEL_THRESHOLDS) {
+  const status = getLevelStatus(levelMeters, thresholds);
   return {
     status,
     label: LEVEL_STATUS_LABELS[status],
     css: LEVEL_STATUS_CSS[status],
+  };
+}
+
+/**
+ * Classifica uma leitura sem nunca emprestar cota de outra régua.
+ *
+ * Ordem de decisão:
+ *   1. 'cota'         — a estação tem cota oficial validada → status por faixa;
+ *   2. 'alarme'       — sem cota, mas a rede publica alarme oficial de
+ *                       inundação (DCRS rio_alarmes.inundacao.status):
+ *                       0 = sem alarme, > 0 = alarme oficial ativo;
+ *   3. 'indisponivel' — nada disso: mostra só nível, tendência e variação.
+ *
+ * @param {{levelMeters: number, alarmStatus?: number|null}} reading
+ * @param {object|null} [thresholds] — cotas da estação, ou null
+ * @returns {{kind: string, status: string, label: string, css: string, basis: string}}
+ */
+function classifyReading(reading, thresholds) {
+  if (!reading || reading.levelMeters == null) {
+    return {
+      kind: 'indisponivel',
+      status: 'desconhecido',
+      label: 'SEM LEITURA',
+      css: 'desconhecido',
+      basis: 'Nenhuma leitura disponível para esta estação.',
+    };
+  }
+
+  if (thresholds && thresholds.inundacao != null) {
+    const info = getLevelStatusInfo(reading.levelMeters, thresholds);
+    return {
+      kind: 'cota',
+      status: info.status,
+      label: info.label,
+      css: info.css,
+      basis: `Cota oficial desta régua (inundação em ${thresholds.inundacao.toFixed(2)} m).`,
+    };
+  }
+
+  const alarm = reading.alarmStatus;
+  if (alarm != null && !Number.isNaN(Number(alarm))) {
+    const active = Number(alarm) > 0;
+    return {
+      kind: 'alarme',
+      status: active ? 'alarme' : 'normal',
+      label: active ? 'ALARME OFICIAL' : 'SEM ALARME',
+      css: active ? 'critica' : 'normal',
+      basis: active
+        ? `Alarme de inundação ativo na estação (nível ${alarm} publicado pela Defesa Civil RS).`
+        : 'A Defesa Civil RS não registra alarme de inundação nesta estação.',
+    };
+  }
+
+  return {
+    kind: 'indisponivel',
+    status: 'desconhecido',
+    label: 'SEM REFERÊNCIA',
+    css: 'desconhecido',
+    basis: 'Esta régua não tem cota oficial publicada — acompanhe o número e a variação.',
   };
 }
 
@@ -223,32 +293,39 @@ function showToast(message, options = {}) {
 }
 
 /**
- * Verifica se o nível do rio cruzou um limiar em relação à última leitura
- * armazenada e mostra um toast se houve escalada de risco.
+ * Verifica se a leitura atual escalou de status em relação à anterior e avisa
+ * o usuário. Só avisa quando existe base real de classificação (cota oficial
+ * da própria régua ou alarme oficial da rede) — nunca por cota emprestada.
  *
- * Usa localStorage (prefixo gm_) para lembrar o status anterior entre recargas:
- *   - gm_levels.last_status  — status (normal/atencao/...) da última leitura
- *   - gm_settings.alertThreshold — limiar personalizado do usuário (metros)
+ * Usa localStorage (prefixo gm_) para lembrar o estado entre recargas:
+ *   - gm_levels.last_status      — status da última leitura
+ *   - gm_settings.alertThreshold — limiar em metros definido pelo usuário
  *
- * @param {LevelReading} levelReading — leitura atual do nível
- * @param {number} [userThreshold] — limiar personalizado (opcional; lê de gm_settings se omitido)
+ * @param {object} levelReading — leitura atual ({levelMeters, location, alarmStatus})
+ * @param {number} [userThreshold] — limiar do usuário, em metros (opcional)
+ * @param {object|null} [thresholds] — cotas da estação (config.js#getStationThresholds)
  */
-function checkLevelThreshold(levelReading, userThreshold) {
+function checkLevelThreshold(levelReading, userThreshold, thresholds = null) {
   if (!levelReading || levelReading.levelMeters == null) return;
 
-  const currentStatus = getLevelStatus(levelReading.levelMeters);
+  const classification = classifyReading(levelReading, thresholds);
   const prevStatus = loadFromStorage('levels.last_status', null);
-  const threshold = userThreshold != null
-    ? userThreshold
-    : loadFromStorage('settings.alertThreshold', LEVEL_THRESHOLDS.atencao);
 
+  // Sem base de classificação: registra o estado e não inventa alerta.
+  if (classification.kind === 'indisponivel') {
+    saveToStorage('levels.last_status', classification.status);
+    checkUserThreshold(levelReading, userThreshold);
+    return;
+  }
+
+  const currentStatus = classification.status;
   const prevRank = prevStatus ? LEVEL_RANK_ORDER.indexOf(prevStatus) : -1;
   const currRank = LEVEL_RANK_ORDER.indexOf(currentStatus);
-  const escalated = prevStatus && currRank > prevRank;
+  const escalated = prevStatus && currRank > -1 && prevRank > -1 && currRank > prevRank;
 
   if (escalated) {
-    const label = LEVEL_STATUS_LABELS[currentStatus];
-    let toastMsg = `Nível do Guaíba ${label}: ${formatMeters(levelReading.levelMeters)} (${levelReading.location}).`;
+    const label = LEVEL_STATUS_LABELS[currentStatus] || classification.label;
+    let toastMsg = `Nível ${label}: ${formatMeters(levelReading.levelMeters)} (${levelReading.location}).`;
     if (currentStatus === 'critica') {
       toastMsg += ' Evacuação emergencial nas áreas de risco às margens.';
     } else if (currentStatus === 'severa') {
@@ -257,28 +334,43 @@ function checkLevelThreshold(levelReading, userThreshold) {
       toastMsg += ' Monitore atualizações.';
     }
     showToast(toastMsg, { type: 'danger', duration: 8000 });
+  } else if (classification.kind === 'alarme' && currentStatus === 'alarme' && prevStatus !== 'alarme') {
+    showToast(
+      `Alarme oficial de inundação em ${levelReading.location} — ${formatMeters(levelReading.levelMeters)}. Fonte: Defesa Civil RS.`,
+      { type: 'danger', duration: 8000 }
+    );
   }
 
-  // Toast adicional se cruza o limiar personalizado do usuário
-  if (threshold && levelReading.levelMeters >= threshold && !escalated) {
-    const crossed = !prevStatus || LEVEL_RANK_ORDER.indexOf(getLevelStatus(threshold)) <=
-      (prevStatus ? LEVEL_RANK_ORDER.indexOf(prevStatus) : -1);
-    // Só mostra se o limiar foi recentemente ultrapassado (status atual >= limiar,
-    // mas não era antes) — evita toasts repetidos
-    if (crossed || currentStatus !== prevStatus) {
-      showToast(
-        `Nível atingiu ${formatMeters(levelReading.levelMeters)} — acima do seu limiar de ${formatMeters(threshold)}m (${levelReading.location}).`,
-        { type: 'warning', duration: 6000 }
-      );
-    }
-  }
-
-  // Persiste o status atual para a próxima verificação
   saveToStorage('levels.last_status', currentStatus);
 
-  // Envia notificação nativa do browser se habilitado e houve escalada
-  if (escalated && notificationsEnabled()) {
+  if (!escalated) checkUserThreshold(levelReading, userThreshold);
+
+  if ((escalated || currentStatus === 'alarme') && notificationsEnabled()) {
     sendLevelNotification(levelReading, currentStatus);
+  }
+}
+
+/**
+ * Avisa quando a leitura passa do limiar que o próprio usuário definiu.
+ * Só dispara quando o usuário configurou um limiar — o app não inventa um.
+ * @param {object} levelReading
+ * @param {number} [userThreshold]
+ */
+function checkUserThreshold(levelReading, userThreshold) {
+  const threshold = userThreshold != null
+    ? userThreshold
+    : loadFromStorage('settings.alertThreshold', null);
+  if (threshold == null) return;
+
+  const above = levelReading.levelMeters >= threshold;
+  const wasAbove = loadFromStorage('levels.above_user_threshold', false);
+  saveToStorage('levels.above_user_threshold', above);
+
+  if (above && !wasAbove) {
+    showToast(
+      `Nível atingiu ${formatMeters(levelReading.levelMeters)} — acima do seu limiar de ${formatMeters(threshold)} (${levelReading.location}).`,
+      { type: 'warning', duration: 6000 }
+    );
   }
 }
 
@@ -372,6 +464,7 @@ export {
   LEVEL_STATUS_CSS,
   getLevelStatus,
   getLevelStatusInfo,
+  classifyReading,
   formatAlertSeverity,
   severityRank,
   sortAlertsBySeverity,
@@ -380,6 +473,7 @@ export {
   ensureToastContainer,
   showToast,
   checkLevelThreshold,
+  checkUserThreshold,
   notificationsEnabled,
   requestNotificationPermission,
   disableNotifications,

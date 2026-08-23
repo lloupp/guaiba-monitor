@@ -1,35 +1,10 @@
 {
-  "stations": [
-    {
-      "id": "DCRS-00054",
-      "location": "Barra do Ribeiro",
-      "name": "Lago Guaíba — Barra do Ribeiro",
-      "notes": "Estação principal do projeto. Mede o nível do Lago Guaíba em tempo quase real.",
-      "source": "Defesa Civil RS (Rede Hidrometeorológica — GraphQL)"
-    },
-    {
-      "id": "DCRS-00033",
-      "location": "Porto Alegre",
-      "name": "Porto Alegre - Ipanema",
-      "notes": "Estação de fallback em POA (Ipanema).",
-      "source": "Defesa Civil RS (Rede Hidrometeorológica — GraphQL)"
-    },
-    {
-      "id": "87450020",
-      "location": "Porto Alegre",
-      "name": "Usina do Gasômetro — Guaíba",
-      "notes": "Régua oficial do centro de POA. Cota de inundação: 2.60m. Referência do nivelguaiba.com.br.",
-      "source": "ANA / SGB (telemetria)"
-    },
-    {
-      "id": "87450004",
-      "location": "Porto Alegre",
-      "name": "Cais Mauá C6 — Guaíba",
-      "notes": "Régua do Centro Histórico. Cota de inundação: 3.00m. Registrou 3.69m em maio/2024.",
-      "source": "ANA / SGB (telemetria)"
-    }
-  ],
-  "thresholds": {
+  "notes": "Cotas de referência SÃO POR ESTAÇÃO. Cada régua tem um zero diferente: a cota de inundação do Gasômetro (2.60 m, régua ANA/SGB 87450020) NÃO pode ser aplicada às leituras da rede da Defesa Civil RS (DCRS), que têm zero próprio. Estação sem cota validada é classificada pelo alarme oficial de inundação publicado pela própria DCRS (rio_alarmes.inundacao.status) — nunca por cota emprestada.",
+  "referenceThresholds": {
+    "_appliesTo": "87450020",
+    "_description": "Régua da Usina do Gasômetro (ANA/SGB). Usada como referência histórica na legenda e nas linhas do gráfico do Guaíba — não como classificador de outras estações.",
+    "_source": "nivelguaiba.com.br (consome telemetria ANA/SGB); pico de maio/2024 amplamente noticiado",
+    "_verifiedAt": "2026-08-18",
     "atencao": 1.56,
     "inundacao": 2.60,
     "severa": 3.50,
@@ -38,5 +13,60 @@
     "cota_gasometro": 2.60,
     "cota_cais_maua": 3.00
   },
-  "notes": "Cotas oficiais pós-2024 validadas via nivelguaiba.com.br (consome ANA/SGB telemetria). Estação principal do projeto: DCRS-00054 (Lago Guaíba) via GraphQL da Defesa Civil RS. Cota de inundação de referência: 2.60m (Gasômetro). Maio/2024: pico histórico de 5.30m."
+  "stations": [
+    {
+      "id": "DCRS-00054",
+      "network": "DCRS",
+      "location": "Barra do Ribeiro",
+      "name": "Lago Guaíba — Barra do Ribeiro",
+      "thresholds": null,
+      "statusSource": "dcrs-alarme",
+      "notes": "Estação principal do projeto: mede o nível do Lago Guaíba em tempo quase real. A DCRS não publica cota numérica de inundação para esta régua — a classificação vem do alarme oficial (rio_alarmes.inundacao.status) e da variação do próprio histórico.",
+      "source": "Defesa Civil RS (Rede Hidrometeorológica — GraphQL)"
+    },
+    {
+      "id": "DCRS-00033",
+      "network": "DCRS",
+      "location": "Porto Alegre",
+      "name": "Porto Alegre - Ipanema",
+      "thresholds": null,
+      "statusSource": "dcrs-alarme",
+      "notes": "Estação da DCRS em Porto Alegre (Ipanema). Sem cota numérica publicada — mesma regra da DCRS-00054.",
+      "source": "Defesa Civil RS (Rede Hidrometeorológica — GraphQL)"
+    },
+    {
+      "id": "87450020",
+      "network": "ANA/SGB",
+      "location": "Porto Alegre",
+      "name": "Usina do Gasômetro — Guaíba",
+      "thresholds": {
+        "atencao": 1.56,
+        "inundacao": 2.60,
+        "severa": 3.50,
+        "critica": 4.50
+      },
+      "thresholdsSource": "nivelguaiba.com.br / ANA-SGB",
+      "verifiedAt": "2026-08-18",
+      "dataAvailable": false,
+      "notes": "Régua oficial do centro de POA, cota de inundação 2.60 m. NÃO é coletada hoje: o SACE/SGB respondeu 'Dados insuficientes' para esta estação em 21/08/2026 e o CSV público saiu do ar (404). Mantida como referência histórica.",
+      "source": "ANA / SGB (telemetria)"
+    },
+    {
+      "id": "87450004",
+      "network": "ANA/SGB",
+      "location": "Porto Alegre",
+      "name": "Cais Mauá C6 — Guaíba",
+      "thresholds": {
+        "atencao": 1.80,
+        "inundacao": 3.00,
+        "severa": 3.50,
+        "critica": 4.50
+      },
+      "thresholdsSource": "cota de inundação 3.00 m amplamente referenciada; demais faixas derivadas",
+      "verifiedAt": "2026-08-18",
+      "dataAvailable": false,
+      "notes": "Régua do Centro Histórico, cota de inundação 3.00 m; registrou 3.69 m em maio/2024. Não coletada hoje (sem fonte pública viva).",
+      "source": "ANA / SGB (telemetria)"
+    }
+  ]
 }

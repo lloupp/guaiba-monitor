@@ -22,6 +22,10 @@ const HISTORY_STORAGE_KEY = 'levels_history';
 // Cota de maio/2024 (referência histórica do pico do Guaíba)
 const MAIO_2024_LEVEL = 5.30;
 
+// Margens do gráfico. Uma constante só: desenho e interação precisam concordar,
+// e duplicar esses números fazia o tooltip apontar para o ponto errado.
+const PADDING = { left: 62, right: 26, top: 26, bottom: 54 };
+
 /** @returns {LevelReading[]} histórico completo (todas as estações) */
 function loadHistory() {
   return loadFromStorage(HISTORY_STORAGE_KEY, []);
@@ -99,6 +103,10 @@ function getLevelHistory(stationId) {
 // Estado de zoom/pan por canvas (chaveado por ID do canvas)
 const chartState = new Map();
 
+// AbortController por canvas: permite re-registrar os listeners sem recriar o
+// elemento (e sem perder o que já foi desenhado).
+const chartListeners = new Map();
+
 /**
  * Obtém ou cria o estado de zoom/pan para um canvas.
  * @param {string} canvasId
@@ -114,18 +122,6 @@ function getChartState(canvasId) {
     });
   }
   return chartState.get(canvasId);
-}
-
-/**
- * Reseta o zoom/pan de um canvas.
- * @param {string} canvasId
- */
-function resetChartZoom(canvasId) {
-  const cs = chartState.get(canvasId);
-  if (cs) {
-    cs.zoom = 1;
-    cs.panOffset = 0;
-  }
 }
 
 /**
@@ -155,7 +151,10 @@ function renderLevelChart(canvas, readings, threshold, refLevel) {
 
   const canvasId = canvas.id || 'level-canvas';
   const cs = getChartState(canvasId);
-  const ref = refLevel != null ? refLevel : MAIO_2024_LEVEL;
+  // threshold/ref só são desenhados quando pertencem à MESMA régua exibida.
+  // Réguas sem cota publicada não recebem linha emprestada de outra estação.
+  const hasThreshold = threshold != null && !Number.isNaN(Number(threshold));
+  const ref = refLevel != null && !Number.isNaN(Number(refLevel)) ? refLevel : null;
 
   // Escala para HiDPI
   const dpr = window.devicePixelRatio || 1;
@@ -166,7 +165,7 @@ function renderLevelChart(canvas, readings, threshold, refLevel) {
 
   const width = rect.width;
   const height = rect.height;
-  const pad = { left: 62, right: 26, top: 26, bottom: 54 };
+  const pad = PADDING;
   const plotW = width - pad.left - pad.right;
   const plotH = height - pad.top - pad.bottom;
 
@@ -208,9 +207,10 @@ function renderLevelChart(canvas, readings, threshold, refLevel) {
 
   // --- Eixos e escala Y ---
   const values = readings.map(r => r.levelMeters);
-  // Garante espaço acima e abaixo, e sempre mostra threshold e ref
-  const rawMin = Math.min(...values, threshold);
-  const rawMax = Math.max(...values, threshold, ref);
+  // Garante espaço acima e abaixo, e mostra threshold/ref quando existirem
+  const extras = [hasThreshold ? threshold : null, ref].filter((v) => v != null);
+  const rawMin = Math.min(...values, ...extras);
+  const rawMax = Math.max(...values, ...extras);
   const yBot = Math.max(0, Math.floor(rawMin - 0.5));
   const yTop = Math.ceil(rawMax + 0.5);
   const yFinalRange = yTop - yBot;
@@ -248,39 +248,41 @@ function renderLevelChart(canvas, readings, threshold, refLevel) {
   ctx.lineTo(pad.left + plotW, height - pad.bottom);
   ctx.stroke();
 
-  // --- Linha de transbordo (threshold) ---
-  const thY = yToPixel(threshold);
-  ctx.strokeStyle = colors.threshold;
-  ctx.setLineDash([6, 4]);
-  ctx.lineWidth = 2;
-  ctx.beginPath();
-  ctx.moveTo(pad.left, thY);
-  ctx.lineTo(pad.left + plotW, thY);
-  ctx.stroke();
-  ctx.setLineDash([]);
+  // --- Linha de transbordo (threshold da própria régua) ---
+  if (hasThreshold) {
+    const thY = yToPixel(threshold);
+    ctx.strokeStyle = colors.threshold;
+    ctx.setLineDash([6, 4]);
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(pad.left, thY);
+    ctx.lineTo(pad.left + plotW, thY);
+    ctx.stroke();
+    ctx.setLineDash([]);
 
-  // Rótulo do threshold
-  ctx.fillStyle = colors.threshold;
-  ctx.textAlign = 'left';
-  ctx.font = '11px -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif';
-  ctx.fillText(`Transbordo (${formatMeters(threshold)})`, pad.left + 6, thY - 6);
+    ctx.fillStyle = colors.threshold;
+    ctx.textAlign = 'left';
+    ctx.font = '11px -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif';
+    ctx.fillText(`Transbordo (${formatMeters(threshold)})`, pad.left + 6, thY - 6);
+  }
 
-  // --- Linha de referência maio/2024 (5.30m) ---
-  const refY = yToPixel(ref);
-  ctx.strokeStyle = colors.ref;
-  ctx.setLineDash([3, 3]);
-  ctx.lineWidth = 1.5;
-  ctx.beginPath();
-  ctx.moveTo(pad.left, refY);
-  ctx.lineTo(pad.left + plotW, refY);
-  ctx.stroke();
-  ctx.setLineDash([]);
+  // --- Linha de referência maio/2024 (só na régua a que ela pertence) ---
+  if (ref != null) {
+    const refY = yToPixel(ref);
+    ctx.strokeStyle = colors.ref;
+    ctx.setLineDash([3, 3]);
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(pad.left, refY);
+    ctx.lineTo(pad.left + plotW, refY);
+    ctx.stroke();
+    ctx.setLineDash([]);
 
-  // Rótulo da referência maio/2024
-  ctx.fillStyle = colors.ref;
-  ctx.textAlign = 'right';
-  ctx.font = '10px -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif';
-  ctx.fillText(`Maio/2024 (${ref.toFixed(2)} m)`, pad.left + plotW - 6, refY - 5);
+    ctx.fillStyle = colors.ref;
+    ctx.textAlign = 'right';
+    ctx.font = '10px -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif';
+    ctx.fillText(`Maio/2024 (${ref.toFixed(2)} m)`, pad.left + plotW - 6, refY - 5);
+  }
 
   // --- Área sob a curva ---
   ctx.beginPath();
@@ -441,100 +443,202 @@ function attachChartInteractivity(canvas, onRerender, getReadings) {
   const canvasId = canvas.id || 'level-canvas';
   const cs = getChartState(canvasId);
 
-  // Remove listeners antigos (clone substitui)
-  const newCanvas = canvas.cloneNode(false);
-  canvas.parentNode.replaceChild(newCanvas, canvas);
-  canvas = newCanvas;
+  // Remove listeners de uma chamada anterior sem trocar o elemento.
+  // (Clonar o canvas apagava o gráfico recém-desenhado: no desktop o primeiro
+  // movimento do mouse redesenhava e escondia o problema, mas no celular —
+  // onde não há mousemove — o gráfico ficava em branco para sempre.)
+  const previous = chartListeners.get(canvasId);
+  if (previous) previous.abort();
+  const controller = new AbortController();
+  chartListeners.set(canvasId, controller);
+  const on = (target, type, handler, opts) =>
+    target.addEventListener(type, handler, { ...(opts || {}), signal: controller.signal });
 
-  // --- Mouse move: tooltip ---
-  canvas.addEventListener('mousemove', (e) => {
-    const rect = canvas.getBoundingClientRect();
-    const mx = e.clientX - rect.left;
-    const my = e.clientY - rect.top;
-    cs.mouseX = mx;
-    cs.mouseY = my;
+  // Redesenhar a cada evento de movimento derruba o desempenho no celular:
+  // um pedido de quadro por vez basta, e o resultado é o mesmo na tela.
+  let quadroPedido = false;
+  const redesenhar = () => {
+    if (quadroPedido) return;
+    quadroPedido = true;
+    requestAnimationFrame(() => {
+      quadroPedido = false;
+      onRerender();
+    });
+  };
 
+  /** Ponto mais próximo do X informado (em px do canvas). */
+  const pontoMaisProximo = (x, largura) => {
     const readings = getReadings();
-    if (!readings || readings.length === 0) return;
-
-    // Encontra o ponto mais próximo do mouse no eixo X
-    const pad = { left: 62, right: 26, top: 26, bottom: 54 };
-    const plotW = rect.width - pad.left - pad.right;
+    if (!readings || readings.length === 0) return -1;
+    const plotW = largura - PADDING.left - PADDING.right;
     const zoomedPlotW = plotW * cs.zoom;
-    const totalReadings = readings.length;
+    let melhor = -1;
+    let menorDist = Infinity;
+    for (let i = 0; i < readings.length; i++) {
+      const frac = readings.length === 1 ? 0.5 : i / (readings.length - 1);
+      const px = PADDING.left + frac * zoomedPlotW + cs.panOffset;
+      const dist = Math.abs(x - px);
+      if (dist < menorDist) { menorDist = dist; melhor = i; }
+    }
+    return { indice: melhor, distancia: menorDist };
+  };
 
-    let closestIdx = -1;
-    let closestDist = Infinity;
-    for (let i = 0; i < totalReadings; i++) {
-      const frac = totalReadings === 1 ? 0.5 : i / (totalReadings - 1);
-      const px = pad.left + frac * zoomedPlotW + cs.panOffset;
-      const dist = Math.abs(mx - px);
-      if (dist < closestDist) {
-        closestDist = dist;
-        closestIdx = i;
-      }
+  /** Coordenadas do evento relativas ao canvas. */
+  const posicao = (e) => {
+    const rect = canvas.getBoundingClientRect();
+    return { x: e.clientX - rect.left, y: e.clientY - rect.top, rect };
+  };
+
+  // === Ponteiro: serve para mouse, toque e caneta ===
+
+  const ponteiros = new Map();
+  let arrastando = false;
+  let arrasteInicioX = 0;
+  let panInicial = 0;
+  let distanciaInicial = 0;
+  let zoomInicial = 1;
+
+  on(canvas, 'pointerdown', (e) => {
+    ponteiros.set(e.pointerId, e);
+    canvas.setPointerCapture?.(e.pointerId);
+
+    if (ponteiros.size === 2) {
+      // Dois dedos: pinça para zoom.
+      const [a, b] = [...ponteiros.values()];
+      distanciaInicial = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
+      zoomInicial = cs.zoom;
+      arrastando = false;
+      return;
     }
 
-    // Só mostra tooltip se o mouse está sobre a área do plot e perto de um ponto
-    if (mx >= pad.left && mx <= pad.left + plotW && my >= pad.top && my <= rect.height - pad.bottom) {
-      cs.hoveredIdx = closestDist < 30 ? closestIdx : -1;
-    } else {
-      cs.hoveredIdx = -1;
-    }
+    arrastando = true;
+    arrasteInicioX = e.clientX;
+    panInicial = cs.panOffset;
 
-    onRerender();
+    // No toque, encostar já mostra o valor daquele ponto.
+    if (e.pointerType !== 'mouse') {
+      const { x, rect } = posicao(e);
+      const alvo = pontoMaisProximo(x, rect.width);
+      cs.hoveredIdx = alvo && alvo.distancia < 44 ? alvo.indice : -1;
+      redesenhar();
+    }
   });
 
-  // --- Mouse leave: esconde tooltip ---
-  canvas.addEventListener('mouseleave', () => {
+  on(canvas, 'pointermove', (e) => {
+    if (ponteiros.has(e.pointerId)) ponteiros.set(e.pointerId, e);
+
+    if (ponteiros.size === 2 && distanciaInicial > 0) {
+      const [a, b] = [...ponteiros.values()];
+      const distancia = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
+      cs.zoom = Math.max(1, Math.min(zoomInicial * (distancia / distanciaInicial), 10));
+      redesenhar();
+      return;
+    }
+
+    const { x, y, rect } = posicao(e);
+
+    if (arrastando) {
+      cs.panOffset = panInicial + (e.clientX - arrasteInicioX);
+      // Arrastar com o dedo move o gráfico, não a página.
+      if (e.pointerType !== 'mouse') e.preventDefault();
+      redesenhar();
+      return;
+    }
+
+    if (e.pointerType !== 'mouse') return;
+
+    const plotW = rect.width - PADDING.left - PADDING.right;
+    const dentro = x >= PADDING.left && x <= PADDING.left + plotW &&
+      y >= PADDING.top && y <= rect.height - PADDING.bottom;
+    const alvo = dentro ? pontoMaisProximo(x, rect.width) : null;
+    cs.hoveredIdx = alvo && alvo.distancia < 30 ? alvo.indice : -1;
+    redesenhar();
+  }, { passive: false });
+
+  const soltar = (e) => {
+    ponteiros.delete(e.pointerId);
+    if (ponteiros.size < 2) distanciaInicial = 0;
+    if (ponteiros.size === 0) arrastando = false;
+  };
+  on(canvas, 'pointerup', soltar);
+  on(canvas, 'pointercancel', soltar);
+  on(window, 'pointerup', () => { arrastando = false; });
+
+  on(canvas, 'pointerleave', (e) => {
+    if (e.pointerType !== 'mouse') return;
     cs.hoveredIdx = -1;
-    onRerender();
+    redesenhar();
   });
 
-  // --- Scroll: zoom horizontal ---
-  canvas.addEventListener('wheel', (e) => {
+  // === Scroll: zoom no desktop ===
+  on(canvas, 'wheel', (e) => {
     e.preventDefault();
     const delta = e.deltaY > 0 ? 0.9 : 1.1;
-    const newZoom = Math.max(1, Math.min(cs.zoom * delta, 10));
-    if (newZoom !== cs.zoom) {
+    const oldZoom = cs.zoom;
+    const newZoom = Math.max(1, Math.min(oldZoom * delta, 10));
+    if (newZoom !== oldZoom) {
+      // Ajusta o pan ANTES de trocar o zoom — usando a razão nova/antiga, que
+      // com a ordem anterior era sempre 1 (o zoom já havia sido sobrescrito).
+      cs.panOffset = cs.panOffset * (newZoom / oldZoom);
       cs.zoom = newZoom;
-      // Ajusta pan para manter o mouse sobre o mesmo ponto
-      cs.panOffset = cs.panOffset * (newZoom / cs.zoom);
-      onRerender();
+      redesenhar();
     }
   }, { passive: false });
 
-  // --- Arrastar: pan ---
-  let isDragging = false;
-  let dragStartX = 0;
-  let panStart = 0;
-
-  canvas.addEventListener('mousedown', (e) => {
-    isDragging = true;
-    dragStartX = e.clientX;
-    panStart = cs.panOffset;
-    canvas.style.cursor = 'grabbing';
+  // === Duplo toque/clique: volta ao início ===
+  on(canvas, 'dblclick', () => {
+    cs.zoom = 1;
+    cs.panOffset = 0;
+    cs.hoveredIdx = -1;
+    redesenhar();
   });
 
-  window.addEventListener('mouseup', () => {
-    if (isDragging) {
-      isDragging = false;
-      canvas.style.cursor = 'default';
+  let ultimoToque = 0;
+  on(canvas, 'pointerup', (e) => {
+    if (e.pointerType === 'mouse') return;
+    const agora = Date.now();
+    if (agora - ultimoToque < 300) {
+      cs.zoom = 1;
+      cs.panOffset = 0;
+      cs.hoveredIdx = -1;
+      redesenhar();
+    }
+    ultimoToque = agora;
+  });
+
+  // === Teclado: o gráfico também precisa ser navegável sem ponteiro ===
+  canvas.tabIndex = 0;
+  on(canvas, 'keydown', (e) => {
+    const readings = getReadings() || [];
+    if (readings.length === 0) return;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+      e.preventDefault();
+      const passo = e.key === 'ArrowRight' ? 1 : -1;
+      const atual = cs.hoveredIdx < 0 ? (passo > 0 ? -1 : readings.length) : cs.hoveredIdx;
+      cs.hoveredIdx = Math.max(0, Math.min(readings.length - 1, atual + passo));
+      anunciarLeitura(readings[cs.hoveredIdx]);
+      redesenhar();
+    } else if (e.key === 'Escape') {
+      cs.hoveredIdx = -1;
+      cs.zoom = 1;
+      cs.panOffset = 0;
+      redesenhar();
     }
   });
 
-  window.addEventListener('mousemove', (e) => {
-    if (!isDragging) return;
-    cs.panOffset = panStart + (e.clientX - dragStartX);
-    onRerender();
-  });
+  // Garante que o gráfico esteja desenhado depois de registrar a interação.
+  onRerender();
+}
 
-  // --- Duplo clique: reset zoom/pan ---
-  canvas.addEventListener('dblclick', () => {
-    cs.zoom = 1;
-    cs.panOffset = 0;
-    onRerender();
-  });
+/**
+ * Anuncia a leitura destacada para leitores de tela — o canvas não tem
+ * conteúdo que o TalkBack consiga ler sozinho.
+ * @param {object} reading
+ */
+function anunciarLeitura(reading) {
+  const el = document.getElementById('chart-announcer');
+  if (!el || !reading) return;
+  el.textContent = `${formatMeters(reading.levelMeters)} em ${tooltipTimeLabel(reading.recordedAt)}`;
 }
 
 export {
@@ -547,5 +651,4 @@ export {
   getLevelHistory,
   renderLevelChart,
   attachChartInteractivity,
-  resetChartZoom,
 };

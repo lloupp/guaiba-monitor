@@ -5,14 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Monitor de nível do rio Guaíba e riscos de desastres naturais em Porto Alegre, Canoas e Guaíba.">
   <meta name="theme-color" content="#0287ce">
+  <link rel="icon" href="icons/icon-192.png" type="image/png">
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Guaíba">
   <title>Guaiba Monitor — Nível do Rio e Desastres</title>
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <!-- O Leaflet (~150 KB) é carregado sob demanda por js/leaflet-loader.js:
+       ele serve a uma seção secundária (mapa do El Niño) e não pode atrasar o
+       que a pessoa abriu o app para ver — o nível do rio. -->
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
 </head>
 <body>
   <div id="app">
@@ -33,8 +38,17 @@
           <span id="theme-icon" class="theme-icon">☀️</span>
         </button>
       </div>
-      <p class="subtitle">Nível do rio Guaíba e riscos de desastres — Porto Alegre, Canoas e Guaíba</p>
+      <p class="subtitle">Nível dos rios e riscos de desastre no Rio Grande do Sul — 130 estações da Defesa Civil</p>
     </header>
+
+    <!-- Aviso de nova versão do app (Service Worker) -->
+    <div class="update-banner" id="update-banner" hidden>
+      <span class="update-text">Nova versão disponível.</span>
+      <button type="button" id="update-button" class="update-button">Atualizar agora</button>
+    </div>
+
+    <!-- Modo emergência: tudo que serve sem rede, em uma tela só -->
+    <button type="button" id="emergency-open" class="emergency-open">🆘 Modo emergência</button>
 
     <!-- Banner de dados desatualizados -->
     <div class="stale-banner" id="stale-banner" style="display: none;" role="alert">
@@ -54,46 +68,55 @@
           <span class="level-unit">m</span>
         </div>
         <div class="level-cota">
-          <span>Transbordo: <strong id="cota-transbordo">-- m</strong></span>
-          <span>Registro Maio/2024: <strong>5.30 m</strong></span>
+          <span>Cota de inundação: <strong id="cota-transbordo">--</strong></span>
+          <span id="level-ref-2024" hidden>Pico de maio/2024 (Cais Mauá): <strong>5.30 m</strong></span>
         </div>
         <div class="level-trend" id="level-trend">
           <span class="trend-icon">→</span>
           <span>Carregando...</span>
         </div>
+        <p class="level-basis" id="level-basis"></p>
       </section>
 
-      <!-- Segmentos de cota (legenda de cores) -->
-      <section class="cota-legend">
-        <div class="cota-segment">
-          <div class="segment-bar badge-normal"></div>
-          <div class="segment-label"><span>0 — 1.50 m</span><span>Normal</span></div>
+      <!-- Minha referência nesta régua (quanto falta até a minha casa) -->
+      <section class="my-level card" id="my-level">
+        <div class="my-level-head">
+          <h2 class="section-title">Quanto falta até a minha casa</h2>
+          <button type="button" id="share-button" class="share-button" hidden>Compartilhar situação</button>
         </div>
-        <div class="cota-segment">
-          <div class="segment-bar badge-atencao"></div>
-          <div class="segment-label"><span>1.50 — 2.00 m</span><span>Atenção</span></div>
-        </div>
-        <div class="cota-segment">
-          <div class="segment-bar badge-inundacao"></div>
-          <div class="segment-label"><span>2.00 — 2.50 m</span><span>Inundação</span></div>
-        </div>
-        <div class="cota-segment">
-          <div class="segment-bar badge-severa"></div>
-          <div class="segment-label"><span>2.50 — 3.00 m</span><span>Severa</span></div>
-        </div>
-        <div class="cota-segment">
-          <div class="segment-bar badge-critica"></div>
-          <div class="segment-label"><span>3.00 m+</span><span>Crítica</span></div>
-        </div>
+        <p class="my-level-status" id="my-level-status"></p>
+        <details class="my-level-config" id="my-level-config">
+          <summary>Definir a minha referência</summary>
+          <p class="my-level-help">
+            Anote a marca desta régua no momento em que a água chega ao ponto que
+            te preocupa — a soleira da porta, a esquina, o pátio. Da próxima vez,
+            o app diz quantos centímetros faltam. O valor vale só para a estação
+            exibida e fica salvo neste aparelho.
+          </p>
+          <div class="my-level-form">
+            <label for="my-level-input">Nível na régua (m)</label>
+            <input type="number" id="my-level-input" min="0" max="30" step="0.01" inputmode="decimal" placeholder="ex.: 2,10">
+            <label for="my-level-label">O que é esse ponto</label>
+            <input type="text" id="my-level-label" maxlength="60" placeholder="ex.: água na soleira de casa">
+            <div class="my-level-actions">
+              <button type="button" id="my-level-save" class="my-level-save">Salvar</button>
+              <button type="button" id="my-level-clear" class="my-level-clear">Apagar</button>
+            </div>
+          </div>
+        </details>
       </section>
+
+      <!-- Faixas da régua exibida — preenchidas por app.js (renderCotaLegend) -->
+      <section class="cota-legend" id="cota-legend"></section>
 
       <!-- Gráfico de histórico do nível (Fase 4 + B) -->
       <section class="level-graph card" id="level-graph">
         <div class="graph-header">
-          <h2>Linha do Tempo do Nível do Guaíba</h2>
+          <h2>Linha do tempo do nível</h2>
           <div class="station-selector" id="station-selector">
             <label for="station-select">Estação:</label>
             <select id="station-select" aria-label="Selecionar estação de monitoramento"></select>
+            <button type="button" id="locate-button" class="locate-button">📍 Estação mais próxima</button>
           </div>
         </div>
         <div class="graph-canvas-wrap">
@@ -103,7 +126,8 @@
           <span class="graph-count" id="graph-count">—</span>
           <span class="graph-source" id="graph-source">—</span>
         </div>
-        <p class="graph-hint">💡 Passe o mouse para ver detalhes • Scroll para zoom • Duplo clique para resetar</p>
+        <p class="graph-hint">Toque para ver um valor • dois dedos para aproximar • toque duas vezes para voltar</p>
+        <p class="visually-hidden" id="chart-announcer" role="status" aria-live="polite"></p>
       </section>
 
       <!-- Cards por região -->
@@ -129,23 +153,28 @@
         <h2 class="section-title">Alertas Ativos</h2>
         <div class="alert-controls">
           <div class="alert-threshold-control">
-            <label for="alert-threshold-input">Limiar de alerta:</label>
-            <input type="number" id="alert-threshold-input" min="0" max="6" step="0.1" value="1.5">
+            <label for="alert-threshold-input">Meu aviso pessoal a partir de:</label>
+            <input type="number" id="alert-threshold-input" min="0" max="10" step="0.1" placeholder="ex.: 1,8" aria-describedby="threshold-help">
             <span class="threshold-unit">m</span>
+            <span id="threshold-help" class="threshold-help">na régua exibida acima</span>
           </div>
-          <button id="notification-toggle" class="notification-toggle" type="button">
-            <span class="notif-icon">🔕</span>
-            <span class="notif-label">Ativar notificações</span>
-          </button>
+          <div class="notification-control">
+            <button id="notification-toggle" class="notification-toggle" type="button">
+              <span class="notif-icon">🔕</span>
+              <span class="notif-label">Quero ser avisado</span>
+            </button>
+            <p class="notification-hint" id="notification-hint"></p>
+          </div>
         </div>
       </div>
-      <p class="alerts-subtitle">Alertas meteorológicos (INMET) e da Defesa Civil RS. Alertas acima são ordenados por gravidade.</p>
+      <p class="alerts-subtitle">Alertas oficiais do INMET e da Defesa Civil RS que atingem a sua região, do mais grave para o menos grave.</p>
       <div class="alerts-list" id="alerts-list">
         <!-- Preenchido dinamicamente por app.js (renderAlerts) -->
       </div>
       <div class="alerts-empty" id="alerts-empty">
         <span>✅ Nenhum alerta ativo no momento.</span>
       </div>
+      <div class="alerts-other" id="alerts-other" hidden></div>
     </section>
 
     <!-- El Niño / La Niña (Fase 8) -->
@@ -158,10 +187,30 @@
     </section>
     </main>
 
+    <!-- Abrigos (só aparece quando há fonte com procedência) -->
+    <section class="shelters card" id="shelters-section" hidden>
+      <h2 class="section-title">Abrigos próximos</h2>
+      <p class="shelters-subtitle" id="shelters-subtitle"></p>
+      <div class="shelters-list" id="shelters-list"></div>
+    </section>
+
+    <!-- Contatos oficiais de emergência -->
+    <section class="emergency-contacts card" id="emergency-contacts">
+      <h2 class="section-title">Telefones de emergência</h2>
+      <p class="emergency-subtitle">Funcionam sem internet. Em risco imediato, ligue antes de consultar o app.</p>
+      <ul class="emergency-list">
+        <li><a class="emergency-link" href="tel:199"><span class="emergency-number">199</span><span class="emergency-name">Defesa Civil</span></a></li>
+        <li><a class="emergency-link" href="tel:193"><span class="emergency-number">193</span><span class="emergency-name">Bombeiros</span></a></li>
+        <li><a class="emergency-link" href="tel:192"><span class="emergency-number">192</span><span class="emergency-name">SAMU</span></a></li>
+        <li><a class="emergency-link" href="tel:190"><span class="emergency-number">190</span><span class="emergency-name">Brigada Militar</span></a></li>
+      </ul>
+      <p class="emergency-note" id="shelters-fallback">Para saber o abrigo mais próximo, ligue 199 — a lista muda a cada evento e o app não a inventa.</p>
+    </section>
+
     <!-- Checklist de preparação (Fase 7) -->
     <section class="preparation-section card" id="preparation-section">
       <h2 class="section-title">Checklist de Preparação — Enchente</h2>
-      <p class="preparation-subtitle">Itens essenciais do kit de emergência e rotas de fuga para a região do Guaíba. Marque os itens já disponíveis — seu progresso é salvo no navegador.</p>
+      <p class="preparation-subtitle">O que ter pronto antes da água subir, e o combinado da sua casa. Marque o que já está resolvido — fica salvo neste aparelho.</p>
       <div class="preparation-grid">
         <div class="preparation-card" id="prep-kit">
           <h3 class="preparation-card-title">🎒 Kit Emergência (72h)</h3>
@@ -176,12 +225,15 @@
             <li><label class="checklist-item"><input type="checkbox" data-key="kit.din"> Dinheiro em espécie (pequenas cédulas)</label></li>
           </ul>
         </div>
-        <div class="preparation-card" id="prep-evacuation">
-          <h3 class="preparation-card-title">🗺️ Rotas de Fuga</h3>
-          <ul class="checklist" data-checklist="routes">
-            <li><label class="checklist-item"><input type="checkbox" data-key="routes.poa"> POA: Cais Mauá → Alto do Jamantaco (ponto alto)</label></li>
-            <li><label class="checklist-item"><input type="checkbox" data-key="canoas"> Canoas: Av. Getúlio → Serra dos Antos (ponto alto)</label></li>
-            <li><label class="checklist-item"><input type="checkbox" data-key="guaiba"> Guaíba: Centro → Serra do Mar (ponto alto)</label></li>
+        <div class="preparation-card" id="prep-plan">
+          <h3 class="preparation-card-title">🚪 Meu plano de saída</h3>
+          <p class="preparation-card-hint">O app não sugere destino de fuga — quem conhece o seu bairro é você. Escreva o combinado da sua casa; fica salvo só neste aparelho.</p>
+          <label class="safe-point-label" for="safe-point">Para onde eu vou (ponto alto, casa de parente, abrigo indicado pela Defesa Civil):</label>
+          <textarea id="safe-point" class="safe-point-input" rows="3" placeholder="Ex.: casa da Tia Rosa, rua X, 200 — subir pela av. Y"></textarea>
+          <ul class="checklist" data-checklist="plan">
+            <li><label class="checklist-item"><input type="checkbox" data-key="plan.combinado"> Combinei o ponto de encontro com quem mora comigo</label></li>
+            <li><label class="checklist-item"><input type="checkbox" data-key="plan.contato"> Anotei um contato de fora da cidade para avisar que estamos bem</label></li>
+            <li><label class="checklist-item"><input type="checkbox" data-key="plan.docs"> Sei onde estão documentos, remédios e a coleira/caixa dos animais</label></li>
           </ul>
         </div>
       </div>
@@ -191,21 +243,102 @@
       </div>
     </section>
 
+    <!-- Tela do modo emergência (offline, alto contraste, fonte grande) -->
+    <div class="emergency-screen" id="emergency-screen" hidden role="dialog" aria-modal="true" aria-labelledby="emergency-title">
+      <div class="emergency-screen-inner">
+        <div class="emergency-screen-head">
+          <h2 id="emergency-title">Modo emergência</h2>
+          <button type="button" id="emergency-close" class="emergency-close" aria-label="Fechar modo emergência">✕</button>
+        </div>
+
+        <section class="emergency-block">
+          <p class="emergency-level" id="emergency-level">--</p>
+          <p class="emergency-level-meta" id="emergency-level-meta"></p>
+        </section>
+
+        <section class="emergency-block">
+          <h3>O que fazer agora</h3>
+          <p class="emergency-action" id="emergency-action"></p>
+        </section>
+
+        <section class="emergency-block">
+          <h3>Ligar</h3>
+          <div class="emergency-calls">
+            <a class="emergency-call" href="tel:199"><strong>199</strong><span>Defesa Civil</span></a>
+            <a class="emergency-call" href="tel:193"><strong>193</strong><span>Bombeiros</span></a>
+            <a class="emergency-call" href="tel:192"><strong>192</strong><span>SAMU</span></a>
+            <a class="emergency-call" href="tel:190"><strong>190</strong><span>Brigada</span></a>
+          </div>
+        </section>
+
+        <section class="emergency-block">
+          <h3>Meu plano de saída</h3>
+          <p class="emergency-plan" id="emergency-plan"></p>
+        </section>
+
+        <section class="emergency-block">
+          <h3>Levar</h3>
+          <ul class="emergency-kit" id="emergency-kit"></ul>
+        </section>
+
+        <p class="emergency-foot">Esta tela funciona sem internet, com os últimos dados recebidos.</p>
+      </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
-      <p class="footer-source">Fonte: <span id="data-source">dados simulados (simulação/offline) para MVP</span></p>
+      <p class="footer-source">Fonte: <span id="data-source">carregando fontes…</span></p>
       <p class="footer-update">Última atualização: <span id="last-update">--:--</span></p>
     </footer>
   </div>
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script>
-    // Registra o Service Worker para PWA (instalável + offline)
+    // Registra o Service Worker (PWA instalável + offline) e avisa quando há
+    // versão nova. A troca só acontece quando a pessoa toca em "Atualizar" —
+    // trocar o código no meio do uso confunde e pode perder o que está na tela.
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js')
-          .then(reg => console.log('[sw] registrado:', reg.scope))
-          .catch(err => console.warn('[sw] falha no registro:', err.message));
+        navigator.serviceWorker.register('./sw.js').then((reg) => {
+          const showUpdate = (worker) => {
+            const banner = document.getElementById('update-banner');
+            const button = document.getElementById('update-button');
+            if (!banner || !button) return;
+            banner.hidden = false;
+            button.onclick = () => {
+              button.disabled = true;
+              button.textContent = 'Atualizando…';
+              worker.postMessage({ type: 'SKIP_WAITING' });
+            };
+          };
+
+          if (reg.waiting) showUpdate(reg.waiting);
+
+          reg.addEventListener('updatefound', () => {
+            const installing = reg.installing;
+            if (!installing) return;
+            installing.addEventListener('statechange', () => {
+              // 'installed' com controller ativo = já existe versão rodando
+              if (installing.state === 'installed' && navigator.serviceWorker.controller) {
+                showUpdate(installing);
+              }
+            });
+          });
+
+          // Procura atualização a cada abertura e a cada hora de uso contínuo.
+          reg.update();
+          setInterval(() => reg.update(), 60 * 60 * 1000);
+        }).catch((err) => console.warn('[sw] falha no registro:', err.message));
+
+        // Recarrega só quando o SW TROCA de versão. Na primeira instalação
+        // não havia controller, e recarregar ali é uma volta inútil — que o
+        // Lighthouse ainda conta como redirecionamento.
+        const tinhaControlador = Boolean(navigator.serviceWorker.controller);
+        let reloading = false;
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+          if (reloading || !tinhaControlador) return;
+          reloading = true;
+          window.location.reload();
+        });
       });
     }
   </script>
