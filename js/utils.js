@@ -47,3 +47,51 @@ export function escapeHtml(value) {
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
 }
+
+/**
+ * Minúsculas sem acento — para comparar nomes de lugar vindos de fontes
+ * diferentes ("Guaíba" no RSS, "GUAIBA" no título de um boletim).
+ * @param {string} str
+ * @returns {string}
+ */
+export function normalizePlace(str) {
+  return String(str == null ? '' : str)
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim();
+}
+
+/**
+ * Municípios contidos no nome de uma estação.
+ * "Santo Antônio das Missões/São Borja" → ["Santo Antônio das Missões", "São Borja"]
+ * "Barra do Ribeiro - Lago Guaíba"      → ["Barra do Ribeiro"]
+ * @param {string} stationName
+ * @returns {string[]}
+ */
+export function placesFromStationName(stationName) {
+  const base = String(stationName || '')
+    .replace(/\([^)]*\)/g, ' ')                                  // "(H)", "(Auxiliar)"
+    .replace(/\s*-\s*(rio|arroio|lago|centro|barragem)\b.*/i, ' '); // sufixo do corpo d'água
+  return base
+    .split(/[/,]/)
+    .map((p) => p.replace(/\s+/g, ' ').trim())
+    .filter((p) => p.length >= 4);
+}
+
+/**
+ * Distância em km entre dois pontos (haversine).
+ * As distâncias aqui são de dezenas a centenas de km, onde a aproximação
+ * plana já erraria o suficiente para escolher a estação errada.
+ * @param {number} lat1 @param {number} lon1 @param {number} lat2 @param {number} lon2
+ * @returns {number}
+ */
+export function haversineKm(lat1, lon1, lat2, lon2) {
+  const toRad = (deg) => (deg * Math.PI) / 180;
+  const R = 6371;
+  const dLat = toRad(lat2 - lat1);
+  const dLon = toRad(lon2 - lon1);
+  const a = Math.sin(dLat / 2) ** 2 +
+    Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(a));
+}

@@ -9,7 +9,10 @@ name: coletar-dados-reais
 
 on:
   schedule:
-    # A cada 30 minutos. Ajuste a frequência para equilibrar frescor x redeploys.
+    # A cada 30 minutos. Cada coleta gera um commit (~48/dia): o realtime.json
+    # agora cobre as 130 estações do estado, então aumentar a frequência aqui
+    # infla o repositório. A cadência menor (10 min) vem com o Worker + KV, que
+    # guarda o histórico fora do git.
     - cron: '*/30 * * * *'
   workflow_dispatch:
 
@@ -31,11 +34,16 @@ jobs:
       - name: Coletar dados reais
         run: node scripts/collect.js
 
+      - name: Conferir versão do Service Worker
+        # Se o shell mudou e o sw.js não foi carimbado, quem já instalou o app
+        # não recebe a atualização. Falhar aqui é melhor do que descobrir depois.
+        run: node scripts/stamp-sw.js --check
+
       - name: Commit JSONs atualizados
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/realtime.json data/elnino.json data/history.json
+          git add data/realtime.json data/elnino.json data/history.json data/stations.json
           if git diff --cached --quiet; then
             echo "Sem mudanças — nada a commitar."
           else

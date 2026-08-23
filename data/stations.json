@@ -1,0 +1,1047 @@
+{
+  "collectedAt": "2026-08-23T16:58:35.700Z",
+  "count": 130,
+  "stations": [
+    {
+      "code": "DCRS-00001",
+      "name": "Igrejinha",
+      "basin": "RS - Sinos",
+      "latitude": -29.5743,
+      "longitude": -50.7961,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00002",
+      "name": "Nova Hartz",
+      "basin": "RS - Sinos",
+      "latitude": -29.5934,
+      "longitude": -50.903,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00003",
+      "name": "Araricá / Sapiranga / Taquara",
+      "basin": "RS - Sinos",
+      "latitude": -29.6911,
+      "longitude": -50.9418,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00004",
+      "name": "Três Coroas",
+      "basin": "RS - Sinos",
+      "latitude": -29.4699,
+      "longitude": -50.7595,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00005",
+      "name": "Rolante - Rio Mascarada",
+      "basin": "RS - Sinos",
+      "latitude": -29.5824,
+      "longitude": -50.4698,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00006",
+      "name": "Rolante - Centro",
+      "basin": "RS - Sinos",
+      "latitude": -29.6652,
+      "longitude": -50.582,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00007",
+      "name": "Protásio Alves - Ipê",
+      "basin": "RS - Rio Taquari-Antas",
+      "latitude": -28.7385,
+      "longitude": -51.4259,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00008",
+      "name": "Nova Roma - Farroupilha",
+      "basin": "RS - Rio Taquari-Antas",
+      "latitude": -29.0575,
+      "longitude": -51.3961,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00009",
+      "name": "Imigrante",
+      "basin": "RS - Rio Taquari-Antas",
+      "latitude": -29.3495,
+      "longitude": -51.771,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00010",
+      "name": "Teutonia",
+      "basin": "RS - Rio Taquari-Antas",
+      "latitude": -29.4603,
+      "longitude": -51.7684,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00011",
+      "name": "Travesseiro - Pouso Novo",
+      "basin": "RS - Rio Taquari-Antas",
+      "latitude": -29.2145,
+      "longitude": -52.1595,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00012",
+      "name": "Montenegro",
+      "basin": "RS - Rio Caí",
+      "latitude": -29.697,
+      "longitude": -51.4601,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00013",
+      "name": "Putinga",
+      "basin": "RS - Rio Taquari-Antas",
+      "latitude": -29.0003,
+      "longitude": -52.1603,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00014",
+      "name": "Barão de Cotegipe",
+      "basin": "RS - Rio Passo Fundo",
+      "latitude": -27.6243,
+      "longitude": -52.3841,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00015",
+      "name": "Getúlio Vargas",
+      "basin": "RS - Rios Apuaê – Inhandava",
+      "latitude": -27.8804,
+      "longitude": -52.2323,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00016",
+      "name": "Passo Fundo",
+      "basin": "RS - Rio Passo Fundo",
+      "latitude": -28.247,
+      "longitude": -52.3713,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00017",
+      "name": "Marau",
+      "basin": "RS - Rio Taquari-Antas",
+      "latitude": -28.4568,
+      "longitude": -52.1892,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00018",
+      "name": "União da Serra",
+      "basin": "RS - Rio Taquari-Antas",
+      "latitude": -28.7196,
+      "longitude": -52.083,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00019",
+      "name": "Sarandi",
+      "basin": "RS - Rio da Várzea",
+      "latitude": -27.9374,
+      "longitude": -52.9195,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00020",
+      "name": "Rodeio Bonito",
+      "basin": "RS - Rio da Várzea",
+      "latitude": -27.4988,
+      "longitude": -53.1602,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00021",
+      "name": "Coronel Bicaco",
+      "basin": "RS - Rios Turvo – Santa Rosa – Santo Cristo",
+      "latitude": -27.7169,
+      "longitude": -53.7136,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00022",
+      "name": "Santa Rosa - Pessegueirinho",
+      "basin": "RS - Rios Turvo – Santa Rosa – Santo Cristo",
+      "latitude": -27.8638,
+      "longitude": -54.4868,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00023",
+      "name": "Panambi",
+      "basin": "RS - Rio Ijuí",
+      "latitude": -28.3013,
+      "longitude": -53.5033,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00024",
+      "name": "Ibirubá",
+      "basin": "RS - Alto Jacuí",
+      "latitude": -28.621,
+      "longitude": -53.0896,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00025",
+      "name": "Caraá",
+      "basin": "RS - Sinos",
+      "latitude": -29.7692,
+      "longitude": -50.3573,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00026",
+      "name": "Nova Palma",
+      "basin": "RS - Baixo Jacuí",
+      "latitude": -29.4762,
+      "longitude": -53.4793,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00027",
+      "name": "Santa Maria - Arroio Cadena",
+      "basin": "RS - Rios Vacacaí - Vacacaí Mirim",
+      "latitude": -29.7001,
+      "longitude": -53.8356,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00028",
+      "name": "Rio Pardo - Rio Jacuí",
+      "basin": "RS - Baixo Jacuí",
+      "latitude": -29.9933,
+      "longitude": -52.3814,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00029",
+      "name": "Sinimbu",
+      "basin": "RS - Rio Pardo",
+      "latitude": -29.5335,
+      "longitude": -52.5196,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00030",
+      "name": "Cerro Branco/Candelária",
+      "basin": "RS - Baixo Jacuí",
+      "latitude": -29.6695,
+      "longitude": -52.9317,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00031",
+      "name": "Montenegro/Nova Santa Rita",
+      "basin": "RS - Rio Caí",
+      "latitude": -29.82265,
+      "longitude": -51.35007,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00032",
+      "name": "Charqueadas",
+      "basin": "RS - Baixo Jacuí",
+      "latitude": -29.9478,
+      "longitude": -51.6174,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00033",
+      "name": "Porto Alegre - Ipanema",
+      "basin": "RS - Lago Guaíba",
+      "latitude": -30.1419,
+      "longitude": -51.2271,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00034",
+      "name": "Mata",
+      "basin": "RS - Rio Ibicuí",
+      "latitude": -29.5641,
+      "longitude": -54.4525,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00035",
+      "name": "Jaguari",
+      "basin": "RS - Rio Ibicuí",
+      "latitude": -29.4993,
+      "longitude": -54.6887,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00036",
+      "name": "São Francisco de Assis",
+      "basin": "RS - Rio Ibicuí",
+      "latitude": -29.5473,
+      "longitude": -55.1364,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00037",
+      "name": "Mostardas",
+      "basin": "RS - Litoral Médio",
+      "latitude": -31.0206,
+      "longitude": -50.9671,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00038",
+      "name": "Rio Grande",
+      "basin": "RS - Lagoa Mirim e do Canal São Gonçalo",
+      "latitude": -32.0275,
+      "longitude": -52.1021,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00039",
+      "name": "Pelotas - Colônia Z3",
+      "basin": "RS - Lagoa Mirim e do Canal São Gonçalo",
+      "latitude": -31.7023,
+      "longitude": -52.1566,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00040",
+      "name": "São Loureço do Sul - Arroio São Lourenço",
+      "basin": "RS - Rio Camaquã",
+      "latitude": -31.30449,
+      "longitude": -52.09385,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00041",
+      "name": "Bagé",
+      "basin": "RS - Rio Negro",
+      "latitude": -31.3296,
+      "longitude": -54.0939,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00042",
+      "name": "Piratini - Cerrito",
+      "basin": "RS - Lagoa Mirim e do Canal São Gonçalo",
+      "latitude": -31.7192,
+      "longitude": -52.901,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00043",
+      "name": "Três Forquilhas - Rio Pedras Brancas",
+      "basin": "RS - Rio Tramandaí",
+      "latitude": -29.4319,
+      "longitude": -50.1119,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00044",
+      "name": "Viamão - Itapuã",
+      "basin": "RS - Lago Guaíba",
+      "latitude": -30.2826,
+      "longitude": -51.0213,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00045",
+      "name": "São Lourenço do Sul",
+      "basin": "RS - Rio Camaquã",
+      "latitude": -31.3774,
+      "longitude": -51.9599,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00046",
+      "name": "Picada Café",
+      "basin": "RS - Rio Caí",
+      "latitude": -29.462,
+      "longitude": -51.1404,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00047",
+      "name": "Maquiné - Rio Água Parada",
+      "basin": "RS - Rio Tramandaí",
+      "latitude": -29.675,
+      "longitude": -50.1993,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00048",
+      "name": "Morrinhos do Sul",
+      "basin": "RS - Mampituba",
+      "latitude": -29.3668,
+      "longitude": -49.9375,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00049",
+      "name": "Santa Vitória do Palmar - Lagoa Mirim",
+      "basin": "RS - Lagoa Mirim e do Canal São Gonçalo",
+      "latitude": -33.4979,
+      "longitude": -53.4359,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00050",
+      "name": "Arroio Grande",
+      "basin": "RS - Lagoa Mirim e do Canal São Gonçalo",
+      "latitude": -32.2387,
+      "longitude": -53.0891,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00051",
+      "name": "Piratini - Herval",
+      "basin": "RS - Lagoa Mirim e do Canal São Gonçalo",
+      "latitude": -31.8754,
+      "longitude": -53.0277,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00052",
+      "name": "Cerrito - Pedro Osório",
+      "basin": "RS - Lagoa Mirim e do Canal São Gonçalo",
+      "latitude": -31.8605,
+      "longitude": -52.8168,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00053",
+      "name": "Arambaré",
+      "basin": "RS - Rio Camaquã",
+      "latitude": -30.9064,
+      "longitude": -51.4926,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00054",
+      "name": "Barra do Ribeiro - Lago Guaíba",
+      "basin": "RS - Lago Guaíba",
+      "latitude": -30.2945,
+      "longitude": -51.2988,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00055",
+      "name": "Santa Cruz do Sul / Venâncio Aires",
+      "basin": "RS - Rio Taquari-Antas",
+      "latitude": -29.5657,
+      "longitude": -52.3248,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00056",
+      "name": "Maquiné - Rio Maquiné",
+      "basin": "RS - Rio Tramandaí",
+      "latitude": -29.5806,
+      "longitude": -50.2784,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00057",
+      "name": "Cotiporã - Dois Lajeados",
+      "basin": "RS - Rio Taquari-Antas",
+      "latitude": -28.9957,
+      "longitude": -51.7547,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00058",
+      "name": "Toropi/São Pedro do Sul",
+      "basin": "RS - Rio Ibicuí",
+      "latitude": -29.491,
+      "longitude": -54.226,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00059",
+      "name": "Santa Rosa - Pessegueiro",
+      "basin": "RS - Rios Turvo – Santa Rosa – Santo Cristo",
+      "latitude": -27.8784,
+      "longitude": -54.4913,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00060",
+      "name": "Barra do Rio Azul - Rio Palomas",
+      "basin": "RS - Rios Apuaê – Inhandava",
+      "latitude": -27.4096,
+      "longitude": -52.4145,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00061",
+      "name": "Cacique Doble",
+      "basin": "RS - Rios Apuaê – Inhandava",
+      "latitude": -27.7665,
+      "longitude": -51.6667,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00062",
+      "name": "Pelotas - Arroio Pelotas",
+      "basin": "RS - Lagoa Mirim e do Canal São Gonçalo",
+      "latitude": -31.5928,
+      "longitude": -52.4115,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00063",
+      "name": "Capão do Leão - Eclusa - Canal São Gonçalo",
+      "basin": "RS - Lagoa Mirim e do Canal São Gonçalo",
+      "latitude": -31.8109,
+      "longitude": -52.389,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00064",
+      "name": "São Gabriel",
+      "basin": "RS - Rios Vacacaí - Vacacaí Mirim",
+      "latitude": -30.3413,
+      "longitude": -54.3057,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00065",
+      "name": "Dom Pedrito",
+      "basin": "RS - Rio Santa Maria",
+      "latitude": -30.9746,
+      "longitude": -54.6887,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00066",
+      "name": "Encruzilhada do Sul",
+      "basin": "RS - Baixo Jacuí",
+      "latitude": -30.4904,
+      "longitude": -52.5879,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00067",
+      "name": "Lavras do Sul",
+      "basin": "RS - Rio Camaquã",
+      "latitude": -30.8157,
+      "longitude": -53.8998,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00068",
+      "name": "Canudos do Vale",
+      "basin": "RS - Rio Taquari-Antas",
+      "latitude": -29.3225,
+      "longitude": -52.2355,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00069",
+      "name": "Bom Princípio",
+      "basin": "RS - Rio Caí",
+      "latitude": -29.4877,
+      "longitude": -51.3491,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00070",
+      "name": "São Leopoldo",
+      "basin": "RS - Sinos",
+      "latitude": -29.7593,
+      "longitude": -51.1493,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00071",
+      "name": "Aratiba",
+      "basin": "RS - Rios Apuaê – Inhandava",
+      "latitude": -27.3934,
+      "longitude": -52.2982,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00072",
+      "name": "Torres",
+      "basin": "RS - Mampituba",
+      "latitude": -29.2994,
+      "longitude": -49.7697,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00073",
+      "name": "Iraí - Rio do Mel",
+      "basin": "RS - Rio da Várzea",
+      "latitude": -27.1991,
+      "longitude": -53.2497,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00074",
+      "name": "Barra do Rio Azul - Rio Azul",
+      "basin": "RS - Rios Apuaê – Inhandava",
+      "latitude": -27.4107,
+      "longitude": -52.4124,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00075",
+      "name": "Nova Petrópolis/Caxias do Sul",
+      "basin": "RS - Rio Caí",
+      "latitude": -29.3316,
+      "longitude": -51.1637,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00076",
+      "name": "Eldorado do Sul",
+      "basin": "RS - Lago Guaíba",
+      "latitude": -30.00975,
+      "longitude": -51.30341,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00077",
+      "name": "Alegrete",
+      "basin": "RS - Rio Ibicuí",
+      "latitude": -29.8054,
+      "longitude": -55.7831,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00078",
+      "name": "Formigueiro/Restinga Sêca",
+      "basin": "RS - Rios Vacacaí - Vacacaí Mirim",
+      "latitude": -29.9259,
+      "longitude": -53.4165,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00079",
+      "name": "São Borja",
+      "basin": "RS - Rios Butuí – Icamaquã",
+      "basinInferred": true,
+      "latitude": -28.6108,
+      "longitude": -56.0146,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00080",
+      "name": "São Pedro do Sul/Santa Maria",
+      "basin": "RS - Rio Ibicuí",
+      "latitude": -29.6649,
+      "longitude": -54.1064,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00081",
+      "name": "Palmares do Sul",
+      "basin": "RS - Litoral Médio",
+      "latitude": -30.2571,
+      "longitude": -50.4801,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00082",
+      "name": "Encantado (H)",
+      "basin": "RS - Rio Taquari-Antas",
+      "latitude": -29.1885,
+      "longitude": -51.921,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00083",
+      "name": "Três Forquilhas - Rio Três Forquilhas",
+      "basin": "RS - Rio Tramandaí",
+      "latitude": -29.51,
+      "longitude": -50.0911,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00084",
+      "name": "São Francisco de Paula/Cambará do Sul",
+      "basin": "RS - Rio Taquari-Antas",
+      "latitude": -29.2649,
+      "longitude": -50.3149,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00085",
+      "name": "Dois Irmãos",
+      "basin": "RS - Rio Caí",
+      "latitude": -29.5971,
+      "longitude": -51.0895,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00086",
+      "name": "Bom Jesus/Jaquirana",
+      "basin": "RS - Rio Taquari-Antas",
+      "latitude": -28.7988,
+      "longitude": -50.4298,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00087",
+      "name": "Antônio Prado/Flores da Cunha",
+      "basin": "RS - Rio Taquari-Antas",
+      "latitude": -28.9399,
+      "longitude": -51.1885,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00088",
+      "name": "Sertão Santana (H)",
+      "basin": "RS - Lago Guaíba",
+      "latitude": -30.4736,
+      "longitude": -51.6087,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00089",
+      "name": "Cerro Grande do Sul",
+      "basin": "RS - Rio Camaquã",
+      "latitude": -30.5908,
+      "longitude": -51.7486,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00090",
+      "name": "Dom Feliciano",
+      "basin": "RS - Rio Camaquã",
+      "latitude": -30.6962,
+      "longitude": -52.0603,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00091",
+      "name": "Muçum/Encantado",
+      "basin": "RS - Rio Taquari-Antas",
+      "latitude": -29.1682,
+      "longitude": -51.8868,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00092",
+      "name": "Encantado/Roca Sales",
+      "basin": "RS - Rio Taquari-Antas",
+      "latitude": -29.2818,
+      "longitude": -51.8819,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00093",
+      "name": "General Câmara/São Jeronimo",
+      "basin": "RS - Baixo Jacuí",
+      "latitude": -29.9555,
+      "longitude": -51.7613,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00094",
+      "name": "Tuparendi/Tucunduva",
+      "basin": "RS - Rios Turvo – Santa Rosa – Santo Cristo",
+      "latitude": -27.6771,
+      "longitude": -54.4656,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00095",
+      "name": "Santo Antônio das Missões/São Borja",
+      "basin": "RS - Rios Butuí – Icamaquã",
+      "latitude": -28.6177,
+      "longitude": -55.7381,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00096",
+      "name": "Campina das Missões",
+      "basin": "RS - Rios Turvo – Santa Rosa – Santo Cristo",
+      "latitude": -27.984,
+      "longitude": -54.8258,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00097",
+      "name": "Paulo Bento",
+      "basin": "RS - Rio Passo Fundo",
+      "latitude": -27.6988,
+      "longitude": -52.4182,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00098",
+      "name": "Porto Lucena/Porto Xavier",
+      "basin": "RS - Rios Turvo – Santa Rosa – Santo Cristo",
+      "latitude": -27.8782,
+      "longitude": -55.052,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00099",
+      "name": "Iraí - Rio Uruguai",
+      "basin": "RS - Rio da Várzea",
+      "latitude": -27.19509,
+      "longitude": -53.19548,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00100",
+      "name": "Restinga Sêca (H)",
+      "basin": "RS - Rios Vacacaí - Vacacaí Mirim",
+      "latitude": -29.8012,
+      "longitude": -53.369,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00101",
+      "name": "Rio Pardo (H)",
+      "basin": "RS - Rio Pardo",
+      "latitude": -29.9761,
+      "longitude": -52.3807,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00102",
+      "name": "Dona Francisca (H)",
+      "basin": "RS - Baixo Jacuí",
+      "latitude": -29.6311,
+      "longitude": -53.3585,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00103",
+      "name": "Manoel Viana (H)",
+      "basin": "RS - Rio Ibicuí",
+      "latitude": -29.5963,
+      "longitude": -55.4816,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00104",
+      "name": "Arroio do Meio/Lajeado (H)",
+      "basin": "RS - Rio Taquari-Antas",
+      "latitude": -29.4215,
+      "longitude": -51.9662,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00105",
+      "name": "Viamão - Reserva Estadual (H)",
+      "basin": "RS - Lago Guaíba",
+      "latitude": -30.3588,
+      "longitude": -51.0463,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00106",
+      "name": "Guarani das Missões (H)",
+      "basin": "RS - Rios Turvo – Santa Rosa – Santo Cristo",
+      "latitude": -28.1395,
+      "longitude": -54.5604,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00107",
+      "name": "Tucunduva/Horizontina (H)",
+      "basin": "RS - Rios Turvo – Santa Rosa – Santo Cristo",
+      "latitude": -27.6064,
+      "longitude": -54.3916,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00108",
+      "name": "Santa Cruz do Sul",
+      "basin": "RS - Rio Pardo",
+      "latitude": -29.646,
+      "longitude": -52.4628,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00109",
+      "name": "Bossoroca",
+      "basin": "RS - Rio Piratinim",
+      "latitude": -28.5301,
+      "longitude": -54.9632,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00110",
+      "name": "Muitos Capões/Lagoa Vermelha",
+      "basin": "RS - Rio Taquari-Antas",
+      "latitude": -28.3233,
+      "longitude": -51.3368,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00111",
+      "name": "Arroio Grande - Santa Isabel do Sul",
+      "basin": "RS - Lagoa Mirim e do Canal São Gonçalo",
+      "latitude": -32.1202,
+      "longitude": -52.6001,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00112",
+      "name": "Amaral Ferrador",
+      "basin": "RS - Rio Camaquã",
+      "latitude": -30.8668,
+      "longitude": -52.2419,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00113",
+      "name": "Cachoeira do Sul - Centro",
+      "basin": "RS - Baixo Jacuí",
+      "latitude": -30.0619,
+      "longitude": -52.8975,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00114",
+      "name": "Lagoão",
+      "basin": "RS - Rio Pardo",
+      "latitude": -29.2656,
+      "longitude": -52.6858,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00115",
+      "name": "Jaguarão",
+      "basin": "RS - Lagoa Mirim e do Canal São Gonçalo",
+      "latitude": -32.5695,
+      "longitude": -53.3762,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00116",
+      "name": "Barra Funda/Novo Barreiro",
+      "basin": "RS - Rio da Várzea",
+      "latitude": -27.9227,
+      "longitude": -53.0478,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00117",
+      "name": "Quaraí",
+      "basin": "RS - Rio Quaraí",
+      "latitude": -30.3924,
+      "longitude": -56.4558,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00118",
+      "name": "Cachoeira do Sul - Arroio Irapuá",
+      "basin": "RS - Baixo Jacuí",
+      "latitude": -30.3115,
+      "longitude": -53.18,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00119",
+      "name": "Esteio",
+      "basin": "RS - Sinos",
+      "latitude": -29.83299,
+      "longitude": -51.1813,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00120",
+      "name": "Gravataí",
+      "basin": "RS - Rio Gravataí",
+      "latitude": -29.9638,
+      "longitude": -50.9806,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00121",
+      "name": "Guaporé / Anta Gorda",
+      "basin": "RS - Rio Taquari-Antas",
+      "latitude": -28.911,
+      "longitude": -51.9525,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00122",
+      "name": "Porto Alegre - Cristal",
+      "basin": "RS - Lago Guaíba",
+      "latitude": -30.07728,
+      "longitude": -51.24522,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00123",
+      "name": "Arroio do Meio - Rio Taquari",
+      "basin": "RS - Rio Taquari-Antas",
+      "latitude": -29.4014,
+      "longitude": -51.9355,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00124",
+      "name": "Candelária",
+      "basin": "RS - Rio Pardo",
+      "latitude": -29.6733,
+      "longitude": -52.77,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00125",
+      "name": "Cristal",
+      "basin": "RS - Rio Camaquã",
+      "latitude": -31.0123,
+      "longitude": -52.0527,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00126",
+      "name": "Turuçu",
+      "basin": "RS - Rio Camaquã",
+      "latitude": -31.4112,
+      "longitude": -52.1681,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00127",
+      "name": "Nova Santa Rita/Canoas",
+      "basin": "RS - Sinos",
+      "latitude": -29.8773,
+      "longitude": -51.2428,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00128",
+      "name": "Santana da Boa Vista",
+      "basin": "RS - Rio Camaquã",
+      "latitude": -30.973,
+      "longitude": -53.046,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00129",
+      "name": "Venâncio Aires/Bom Retiro do Sul",
+      "basin": "RS - Rio Taquari-Antas",
+      "latitude": -29.60822,
+      "longitude": -51.95047,
+      "altitude": null
+    },
+    {
+      "code": "DCRS-00130",
+      "name": "Ijuí",
+      "basin": "RS - Rio Ijuí",
+      "latitude": -28.3196,
+      "longitude": -53.9819,
+      "altitude": null
+    }
+  ]
+}
