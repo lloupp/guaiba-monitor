@@ -1,27 +1,67 @@
 {
-  "name": "Guaiba Monitor",
+  "name": "Guaiba Monitor — nível dos rios do RS",
   "short_name": "Guaíba",
-  "description": "Monitor do nível do rio Guaíba e riscos de desastres naturais em Porto Alegre e região",
+  "description": "Nível dos rios e alertas de desastre no Rio Grande do Sul, com aviso quando a sua estação escala de faixa.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "orientation": "portrait-primary",
+  "orientation": "portrait",
   "background_color": "#0a0e17",
   "theme_color": "#0287ce",
   "lang": "pt-BR",
-  "categories": ["weather", "news", "utilities"],
+  "categories": [
+    "weather",
+    "news",
+    "utilities"
+  ],
   "icons": [
     {
       "src": "icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
+  "shortcuts": [
+    {
+      "name": "Modo emergência",
+      "short_name": "Emergência",
+      "description": "Nível, o que fazer agora e telefones — funciona sem internet",
+      "url": "./index.html?view=emergencia",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Minha estação",
+      "short_name": "Estação",
+      "description": "Nível da estação que você acompanha",
+      "url": "./index.html?view=estacao",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
     }
   ]
 }
