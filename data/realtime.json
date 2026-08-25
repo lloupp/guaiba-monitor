@@ -1,11 +1,11 @@
 {
-  "collectedAt": "2026-08-25T09:59:47.570Z",
+  "collectedAt": "2026-08-25T10:37:16.402Z",
   "level": {
     "levelMeters": 1.38,
     "trend": 0.0069,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-25T09:59:38.000+00:00",
+    "timestamp": "2026-08-25T10:36:58.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
@@ -13,7 +13,7 @@
         "trend": 0.0069,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-25T09:59:38.000+00:00",
+        "timestamp": "2026-08-25T10:36:58.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
@@ -21,26 +21,12 @@
         "trend": 0,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-25T09:59:41.000+00:00",
+        "timestamp": "2026-08-25T10:37:01.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
-  "dcrsAlerts": [
-    {
-      "id": "dcrs-1wrwyvs",
-      "type": "Defesa Civil",
-      "severity": "atencao",
-      "title": "O CENTRO DE MONITORAMENTO DA DEFESA CIVIL DO ESTADO ATUALIZA O PROGNÓSTICO METEOROLÓGICO PARA OS PRÓXIMOS DIAS",
-      "message": "Uma massa de ar polar atua sobre o Rio Grande do Sul e favorece o frio intenso, com geada na maioria das regiões do estado e mínimas negativas.    No sábado (22), as mínimas variam entre -2°C e 10°C, com geada na maioria das regiões, especialmente no Sul, Campanha, Centro, Serra e Nordeste. As...",
-      "regions": [
-        "Serra"
-      ],
-      "issuedAt": "2026-08-21T11:24:32Z",
-      "link": "http://defesacivil.rs.gov.br/centro-de-monitoramento-da-defesa-civil-estadual-atualiza-as-condicoes-hidrologica-para-os-proximos-dias-no-rs-6a8-6a885ef9b2730",
-      "source": "Defesa Civil RS"
-    }
-  ],
+  "dcrsAlerts": [],
   "sources": [
     "Defesa Civil RS (RSS)",
     "Defesa Civil RS (GraphQL — Rede Hidrometeorológica)"
