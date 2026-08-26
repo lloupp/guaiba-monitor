@@ -1,11 +1,11 @@
 {
-  "collectedAt": "2026-08-26T18:11:22.521Z",
+  "collectedAt": "2026-08-26T20:24:27.476Z",
   "level": {
     "levelMeters": 1.24,
     "trend": 0,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-26T18:11:19.000+00:00",
+    "timestamp": "2026-08-26T20:24:19.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
@@ -13,15 +13,15 @@
         "trend": 0,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-26T18:11:19.000+00:00",
+        "timestamp": "2026-08-26T20:24:19.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.16,
+        "levelMeters": 1.2,
         "trend": 0,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-26T18:11:19.000+00:00",
+        "timestamp": "2026-08-26T20:24:17.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
@@ -32,11 +32,11 @@
       "type": "Defesa Civil",
       "severity": "atencao",
       "title": "O Centro de Monitoramento da Defesa Civil Estadual atualiza as condições hidrológicas para os próximos dias no RS",
-      "message": "A condição hidrológica atual é de níveis entre limiares de atenção para inundação e normalidade, com as tendências de estabilidade ou declínio. Os maiores limiares se concentram no sul do estado, com destaque para o rio Jaguarão que atingiu a cota de inundação nesta quarta-feira (27/8)....",
+      "message": "A condição hidrológica atual é de níveis entre limiares de atenção para inundação e normalidade, com as tendências de estabilidade ou declínio. Os maiores limiares se concentram no sul do estado, com destaque para o rio Jaguarão que atingiu a cota de inundação nesta quarta-feira (26/8)....",
       "regions": [
         "Rio Grande do Sul"
       ],
-      "issuedAt": "2026-08-26T12:43:33Z",
+      "issuedAt": "2026-08-26T12:43:00Z",
       "link": "http://defesacivil.rs.gov.br/o-centro-de-monitoramento-da-defesa-civil-estadual-atualiza-as-condicoes-hidrologicas-para-os-proximos-dias-no-rs",
       "source": "Defesa Civil RS"
     },
