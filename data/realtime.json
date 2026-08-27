@@ -1,59 +1,32 @@
 {
-  "collectedAt": "2026-08-26T23:53:28.052Z",
+  "collectedAt": "2026-08-27T06:19:24.081Z",
   "level": {
-    "levelMeters": 1.2,
-    "trend": -0.0085,
+    "levelMeters": 1.18,
+    "trend": -0.0008,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-26T23:53:18.000+00:00",
+    "timestamp": "2026-08-27T06:19:08.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.2,
-        "trend": -0.0085,
+        "levelMeters": 1.18,
+        "trend": -0.0008,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-26T23:53:18.000+00:00",
+        "timestamp": "2026-08-27T06:19:08.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.18,
+        "levelMeters": 1.13,
         "trend": 0,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-26T23:53:18.000+00:00",
+        "timestamp": "2026-08-27T06:19:08.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
-  "dcrsAlerts": [
-    {
-      "id": "dcrs-p9sapx",
-      "type": "Defesa Civil",
-      "severity": "atencao",
-      "title": "O Centro de Monitoramento da Defesa Civil Estadual atualiza as condições hidrológicas para os próximos dias no RS",
-      "message": "A condição hidrológica atual é de níveis entre limiares de atenção para inundação e normalidade, com as tendências de estabilidade ou declínio. Os maiores limiares se concentram no sul do estado, com destaque para o rio Jaguarão que atingiu a cota de inundação nesta quarta-feira (26/8)....",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-26T12:43:00Z",
-      "link": "http://defesacivil.rs.gov.br/o-centro-de-monitoramento-da-defesa-civil-estadual-atualiza-as-condicoes-hidrologicas-para-os-proximos-dias-no-rs",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-klr8bu",
-      "type": "Defesa Civil",
-      "severity": "atencao",
-      "title": "O Centro de Monitoramento da Defesa Civil Estadual atualiza as condições meteorológicas para os próximos dias no RS",
-      "message": "Na quinta-feira (27/8), há condições para tempestades com queda de granizo (que pode ser grande), rajadas de vento (que podem superar os 90 km/h pontualmente) e chuva forte a intensa (100 mm em 6 horas e/ou 120 em 12 horas) principalmente em áreas do Sul.    Na sexta-feira (28/8), segue a...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-26T12:42:07Z",
-      "link": "http://defesacivil.rs.gov.br/o-centro-de-monitoramento-da-defesa-civil-estadual-atualiza-as-condicoes-meteorologicas-para-os-proximos-dias-no-rs",
-      "source": "Defesa Civil RS"
-    }
-  ],
+  "dcrsAlerts": [],
   "sources": [
     "Defesa Civil RS (RSS)",
     "Defesa Civil RS (GraphQL — Rede Hidrometeorológica)"
