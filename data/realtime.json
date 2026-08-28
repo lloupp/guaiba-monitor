@@ -1,85 +1,32 @@
 {
-  "collectedAt": "2026-08-28T13:45:52.139Z",
+  "collectedAt": "2026-08-28T23:19:55.733Z",
   "level": {
-    "levelMeters": 1.35,
-    "trend": -0.0185,
+    "levelMeters": 1.19,
+    "trend": 0,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-28T13:45:40.000+00:00",
+    "timestamp": "2026-08-28T23:19:41.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.35,
-        "trend": -0.0185,
+        "levelMeters": 1.19,
+        "trend": 0,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-28T13:45:40.000+00:00",
+        "timestamp": "2026-08-28T23:19:41.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.42,
+        "levelMeters": 1.15,
         "trend": 0,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-28T13:45:48.000+00:00",
+        "timestamp": "2026-08-28T23:19:40.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
-  "dcrsAlerts": [
-    {
-      "id": "dcrs-mq9b6a",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: Condição de ALERTA LARANJA para tempestade com granizo e vento",
-      "message": "Defesa Civil alerta: Condição de ALERTA LARANJA para tempestade com granizo e vento. Risco ALTO no Sul do Estado. Validade até 16h do dia 27 de agosto. Emergência ligue 190/193.    Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de Contingência municipais para saber...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-27T13:29:27Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-inundacao-para-o-rio-quarai-risco-muito-alto-em-quarai-6a90582283a9a-6a9065747b5a2",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-mq9b6a",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: Condição de ALERTA LARANJA para tempestade com granizo e vento",
-      "message": "Defesa Civil alerta: Condição de ALERTA LARANJA para tempestade com granizo e vento. Risco ALTO no Sul do Estado. Validade até 15h do dia 27 de agosto. Emergência ligue 190/193.    Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de Contingência municipais para saber...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-27T12:35:32Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-inundacao-para-o-rio-quarai-risco-muito-alto-em-quarai-6a90582283a9a",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-3ho7kj",
-      "type": "Defesa Civil",
-      "severity": "atencao",
-      "title": "O CENTRO DE MONITORAMENTO DA DEFESA CIVIL DO ESTADO ATUALIZA O PROGNÓSTICO HIDROLÓGICO PARA OS PRÓXIMOS DIAS",
-      "message": "A condição hidrológica atual é de níveis entre limiares de atenção para inundação e normalidade, com as tendências de estabilidade ou declínio.    Devido a previsão de chuvas volumosas para a metade norte do estado durante o período do aviso, é indicado risco de   INUNDAÇÃO para as regiões...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-27T11:47:57Z",
-      "link": "http://defesacivil.rs.gov.br/o-centro-de-monitoramento-da-defesa-civil-estadual-atualiza-as-condicoes-hidrologicas-para-os-proximos-dias-no-rs--6a904ddc30655",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-1wrwyvs",
-      "type": "Defesa Civil",
-      "severity": "atencao",
-      "title": "O CENTRO DE MONITORAMENTO DA DEFESA CIVIL DO ESTADO ATUALIZA O PROGNÓSTICO METEOROLÓGICO PARA OS PRÓXIMOS DIAS",
-      "message": "Na quinta-feira (27), há condições para tempestades com queda de granizo (que pode ser grande), rajadas de vento (que podem superar os 90 km/h pontualmente) e chuva forte a intensa (100 mm em 6 horas e/ou 120 em 12 horas), principalmente em áreas do Sul.    Na sexta-feira (28), segue a condição...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-27T11:46:36Z",
-      "link": "http://defesacivil.rs.gov.br/o-centro-de-monitoramento-da-defesa-civil-estadual-atualiza-as-condicoes-hidrologicas-para-os-proximos-dias-no-rs-6a904d2f31c5d",
-      "source": "Defesa Civil RS"
-    }
-  ],
+  "dcrsAlerts": [],
   "sources": [
     "Defesa Civil RS (RSS)",
     "Defesa Civil RS (GraphQL — Rede Hidrometeorológica)"
