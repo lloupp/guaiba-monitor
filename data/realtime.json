@@ -1,43 +1,95 @@
 {
-  "collectedAt": "2026-08-27T17:43:22.450Z",
+  "collectedAt": "2026-08-28T01:57:18.561Z",
   "level": {
-    "levelMeters": 1.12,
-    "trend": -0.0038,
+    "levelMeters": 1.17,
+    "trend": 0.0038,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-27T17:43:16.000+00:00",
+    "timestamp": "2026-08-28T01:57:09.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.12,
-        "trend": -0.0038,
+        "levelMeters": 1.17,
+        "trend": 0.0038,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-27T17:43:16.000+00:00",
+        "timestamp": "2026-08-28T01:57:09.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.07,
+        "levelMeters": 1.11,
         "trend": 0,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-27T17:43:18.000+00:00",
+        "timestamp": "2026-08-28T01:57:08.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
   "dcrsAlerts": [
     {
-      "id": "dcrs-1guuxuq",
+      "id": "dcrs-2ry8tm",
       "type": "Defesa Civil",
       "severity": "perigo",
-      "title": "Defesa Civil alerta: Condição de ALERTA LARANJA para tempestade com granizo e vento em áreas da Região Sul",
-      "message": "Defesa Civil alerta: Condição de ALERTA LARANJA para tempestade com granizo e vento em áreas da Região Sul. Risco ALTO de destelhamento. Validade até 17h do dia 27 de agosto. Emergência ligue 190/193.    Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de Contingência...",
+      "title": "Defesa Civil alerta: condição de ALERTA para chuva, granizo e vento que atuam em áreas próximas de Pelotas e Rio Grande",
+      "message": "Defesa Civil alerta: condição de ALERTA para chuva, granizo e vento que atuam  em áreas próximas de  Pelotas e Rio Grande  . Risco ALTO de alagamentos e destelhamento. Válido até 23h do dia 27 de agosto. Evite áreas de risco. Emergência ligue 190/193.   \n  Procure informações junto à Defesa...",
       "regions": [
         "Rio Grande do Sul"
       ],
-      "issuedAt": "2026-08-27T13:56:10Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-inundacao-para-o-rio-quarai-risco-muito-alto-em-quarai-6a90582283a9a-6a9065747b5a2-6a906b77c9495",
+      "issuedAt": "2026-08-27T22:25:48Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-chuva-granizo-e-vento-que-atuam-em-areas-proximas-de-pelotas-e-rio-grande",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-xitdxn",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para chuva, granizo e vento que atuam em áreas próximas de Pedro Osório",
+      "message": "Defesa Civil alerta: condição de ALERTA para chuva, granizo e vento que atuam  em áreas próximas de  Pedro Osório  . Risco ALTO de alagamentos e destelhamento. Válido até 23h do dia 27 de agosto. Evite áreas de risco. Emergência ligue 190/193.   \n  Procure informações junto à Defesa Civil da...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-27T21:55:54Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-chuva-granizo-e-vento-que-atuam-em-areas-proximas-de-pedro-osorio",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-uvqtxc",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para chuva, granizo e vento que atuam em áreas próximas de Aceguá e Candiota",
+      "message": "Defesa Civil alerta: condição de ALERTA para chuva, granizo e vento que atuam  em áreas próximas de  Aceguá e Candiota  . Risco ALTO de alagamentos e destelhamento. Válido até 23h do dia 27 de agosto. Evite áreas de risco. Emergência ligue 190/193.   \n  Procure informações junto à Defesa Civil...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-27T21:30:18Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-chuva-granizo-e-vento-que-atuam-em-areas-proximas-de-acegua-e-candiota",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-1xwhw19",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para chuva, granizo e vento que atuam em áreas próximas de Rio Grande",
+      "message": "Defesa Civil alerta: condição de ALERTA para chuva, granizo e vento que atuam  em áreas próximas de Rio Grande . Risco ALTO de alagamentos e destelhamento. Válido até 22h30 do dia 27 de agosto. Evite áreas de risco. Emergência ligue 190/193.   \n  Procure informações junto à Defesa Civil da sua...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-27T20:47:58Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-chuva-granizo-e-vento-que-atuam-em-areas-proximas-de-rio-grande",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-1anizl0",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para chuva, granizo e vento que atuam em áreas da região Sul",
+      "message": "Defesa Civil alerta: condição de ALERTA para chuva, granizo e vento que atuam em áreas da região Sul. Risco ALTO de alagamentos e destelhamento. Válido até 23h do dia 27 de agosto. Evite áreas de risco. Emergência ligue 190/193.   \n  Procure informações junto à Defesa Civil da sua cidade,...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-27T18:34:57Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-chuva-granizo-e-vento-que-atuam-em-areas-da-regiao-sul",
       "source": "Defesa Civil RS"
     },
     {
