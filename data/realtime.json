@@ -1,32 +1,84 @@
 {
-  "collectedAt": "2026-08-29T11:15:26.328Z",
+  "collectedAt": "2026-08-29T15:42:28.454Z",
   "level": {
     "levelMeters": 1.28,
-    "trend": -0.0138,
+    "trend": 0.0154,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-29T11:15:20.000+00:00",
+    "timestamp": "2026-08-29T15:42:25.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
         "levelMeters": 1.28,
-        "trend": -0.0138,
+        "trend": 0.0154,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-29T11:15:20.000+00:00",
+        "timestamp": "2026-08-29T15:42:25.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.25,
+        "levelMeters": 1.24,
         "trend": 0,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-29T11:15:20.000+00:00",
+        "timestamp": "2026-08-29T15:42:20.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
   "dcrsAlerts": [
+    {
+      "id": "dcrs-19dmizo",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para tempestade c/ granizo e vento atuam em áreas próximas de Sarandi",
+      "message": "Defesa Civil alerta: condição de ALERTA para tempestade c/ granizo e vento atuam em áreas próximas de Sarandi. Válido até 13h do dia 29 de agosto. Evite áreas de risco. Emergência ligue 190/193. \n Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de Contingência...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-29T11:07:04Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestade-c-granizo-e-vento-atuam-em-areas-proximas-de-sarandi",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-19ajmyk",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento atuam em áreas próximas de Santo Augusto",
+      "message": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento atuam em áreas próximas de Santo Augusto. Válido até 12h40 do dia 29 de agosto. Evite áreas de risco. Emergência ligue 190/193. \n Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de Contingência...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-29T10:54:21Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestade-com-granizo-e-vento-atuam-em-areas-proximas-de-santo-augusto",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-1h0918k",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para tempestade c/ granizo e vento atuam em áreas próximas de Constantina",
+      "message": "Defesa Civil alerta: condição de ALERTA para tempestade c/ granizo e vento atuam em áreas próximas de Constantina. Válido até 12h35 do dia 29 de agosto. Evite áreas de risco. Emergência ligue 190/193. \n Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de Contingência...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-29T10:46:03Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestade-c-granizo-e-vento-atuam-em-areas-proximas-de-constantina",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-1ev6v41",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento atuam em áreas próximas de Três de Maio",
+      "message": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento atuam em áreas próximas de Três de Maio. Válido até 11h10 do dia 29 de agosto. Evite áreas de risco. Emergência ligue 190/193. \n Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de Contingência...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-29T10:19:19Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestade-com-granizo-e-vento-atuam-em-areas-proximas-de-tres-de-maio",
+      "source": "Defesa Civil RS"
+    },
     {
       "id": "dcrs-qb2d8c",
       "type": "Defesa Civil",
@@ -103,35 +155,6 @@
       ],
       "issuedAt": "2026-08-29T06:25:00Z",
       "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestades-granizo-e-vento-que-atuam-em-areas-proximas-a-machadinho-e-barracao",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-1wrwyvs",
-      "type": "Defesa Civil",
-      "severity": "atencao",
-      "title": "O CENTRO DE MONITORAMENTO DA DEFESA CIVIL DO ESTADO ATUALIZA O PROGNÓSTICO METEOROLÓGICO PARA OS PRÓXIMOS DIAS",
-      "message": "Nesta sexta-feira (28), há condição para tempestades com queda de granizo (que pode ser grande), rajadas de vento (que podem superar os 90 km/h) no Centro, Oeste, Vales, Serra e Nordeste, além de chuva forte a intensa (110 mm em 24 h) em áreas da Costa Doce, Região Metropolitana de Porto Alegre...",
-      "regions": [
-        "Porto Alegre",
-        "Região Metropolitana",
-        "Serra",
-        "Vale"
-      ],
-      "issuedAt": "2026-08-28T12:47:06Z",
-      "link": "http://defesacivil.rs.gov.br/o-centro-de-monitoramento-da-defesa-civil-estadual-atualiza-as-condicoes-hidrologicas-para-os-proximos-dias-no-rs--6a91acfb9f6c4",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-3ho7kj",
-      "type": "Defesa Civil",
-      "severity": "atencao",
-      "title": "O CENTRO DE MONITORAMENTO DA DEFESA CIVIL DO ESTADO ATUALIZA O PROGNÓSTICO HIDROLÓGICO PARA OS PRÓXIMOS DIAS",
-      "message": "A condição hidrológica atual é de níveis entre limiares de atenção para inundação e normalidade, com tendências de elevação ou declínio, com destaque para a metade sul onde ocorreram precipitações com volumes elevados, chegando a 100 mm.    Devido a previsão de chuvas volumosas para a metade...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-28T12:44:16Z",
-      "link": "http://defesacivil.rs.gov.br/o-centro-de-monitoramento-da-defesa-civil-estadual-atualiza-as-condicoes-hidrologicas-para-os-proximos-dias-no-rs--6a91ac576ac26",
       "source": "Defesa Civil RS"
     }
   ],
