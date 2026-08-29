@@ -1,43 +1,43 @@
 {
-  "collectedAt": "2026-08-29T19:02:14.653Z",
+  "collectedAt": "2026-08-29T21:50:47.396Z",
   "level": {
-    "levelMeters": 1.29,
-    "trend": -0.0069,
+    "levelMeters": 1.26,
+    "trend": -0.0123,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-29T19:02:05.000+00:00",
+    "timestamp": "2026-08-29T21:50:45.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.29,
-        "trend": -0.0069,
+        "levelMeters": 1.26,
+        "trend": -0.0123,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-29T19:02:05.000+00:00",
+        "timestamp": "2026-08-29T21:50:45.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.26,
+        "levelMeters": 1.23,
         "trend": 0,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-29T19:02:10.000+00:00",
+        "timestamp": "2026-08-29T21:50:40.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
   "dcrsAlerts": [
     {
-      "id": "dcrs-1lfvow6",
+      "id": "dcrs-1kieiq3",
       "type": "Defesa Civil",
       "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento atua em áreas de próximas de Espumoso",
-      "message": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento atua em áreas de próximas de Espumoso. Risco ALTO de destelhamento. Válido até 16h05 do dia 29 de agosto. Evite áreas de risco. Emergência ligue 190/193.  \n Procure informações junto à Defesa Civil da sua cidade,...",
+      "title": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento atua em áreas de próximas de André da Rocha",
+      "message": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento atua em áreas de próximas de André da Rocha. Risco ALTO de destelhamento. Válido até 18h50 do dia 29 de agosto. Evite áreas de risco. Emergência ligue 190/193.  \n Procure informações junto à Defesa Civil da sua cidade,...",
       "regions": [
         "Rio Grande do Sul"
       ],
-      "issuedAt": "2026-08-29T15:07:02Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestade-com-granizo-e-vento-atua-em-areas-de-proximas-de-espumoso",
+      "issuedAt": "2026-08-29T17:59:40Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestade-com-granizo-e-vento-atua-em-areas-de-proximas-de-andre-da-rocha",
       "source": "Defesa Civil RS"
     },
     {
@@ -51,19 +51,6 @@
       ],
       "issuedAt": "2026-08-29T14:53:47Z",
       "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestade-com-granizo-e-vento-atua-em-areas-de-proximas-de-antonio-prado",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-1welw5w",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento atua em áreas de próximas de Arvorezinha",
-      "message": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento atua em áreas de próximas de Arvorezinha. Risco ALTO de destelhamento. Válido até 16h15 do dia 29 de agosto. Evite áreas de risco. Emergência ligue 190/193.  \n Procure informações junto à Defesa Civil da sua cidade,...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-29T14:22:43Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestade-com-granizo-e-vento-atua-em-areas-de-proximas-de-arvorezinha",
       "source": "Defesa Civil RS"
     },
     {
