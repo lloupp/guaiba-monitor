@@ -1,27 +1,27 @@
 {
-  "collectedAt": "2026-08-30T08:45:13.705Z",
+  "collectedAt": "2026-08-30T14:09:24.789Z",
   "level": {
-    "levelMeters": 1.22,
-    "trend": 0.0123,
+    "levelMeters": 1.2,
+    "trend": 0.0046,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-30T08:45:00.000+00:00",
+    "timestamp": "2026-08-30T14:09:13.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.22,
-        "trend": 0.0123,
+        "levelMeters": 1.2,
+        "trend": 0.0046,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-30T08:45:00.000+00:00",
+        "timestamp": "2026-08-30T14:09:13.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.19,
+        "levelMeters": 1.2,
         "trend": 0,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-30T08:44:58.000+00:00",
+        "timestamp": "2026-08-30T14:09:19.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
@@ -38,19 +38,6 @@
       ],
       "issuedAt": "2026-08-30T00:03:42Z",
       "link": "http://defesacivil.rs.gov.br/a-defesa-civil-emite-alerta-para-condicao-de-risco-moderado-para-deslizamentos-pontuais-em-caxias-do-sul-6a939d8f416c6",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-13q3okn",
-      "type": "Defesa Civil",
-      "severity": "atencao",
-      "title": "Defesa Civil alerta: Condição de ATENÇÃO para tempestade, com granizo e vento, que tende a atuar na madrugada",
-      "message": "Defesa Civil alerta: Condição de ATENÇÃO para tempestade, com granizo e vento, que tende a atuar na madrugada em áreas do Noroeste, Norte e Nordeste. Válido até 5h do dia 30 de agosto. Risco MODERADO de destelhamento. Evite áreas de risco. Emergência ligue 190/193.  \n Procure informações junto...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-29T23:08:35Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-atencao-para-tempestade-com-granizo-e-vento-que-tende-a-atuar-na-madrugada",
       "source": "Defesa Civil RS"
     },
     {
