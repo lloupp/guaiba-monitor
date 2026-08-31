@@ -1,32 +1,59 @@
 {
-  "collectedAt": "2026-08-31T17:09:10.240Z",
+  "collectedAt": "2026-08-31T21:57:40.721Z",
   "level": {
-    "levelMeters": 1.18,
-    "trend": 0.0008,
+    "levelMeters": 1.15,
+    "trend": -0.0154,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-31T17:08:53.000+00:00",
+    "timestamp": "2026-08-31T21:57:36.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.18,
-        "trend": 0.0008,
+        "levelMeters": 1.15,
+        "trend": -0.0154,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-31T17:08:53.000+00:00",
+        "timestamp": "2026-08-31T21:57:36.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.24,
+        "levelMeters": 1.21,
         "trend": 0,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-31T17:08:52.000+00:00",
+        "timestamp": "2026-08-31T21:57:36.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
-  "dcrsAlerts": [],
+  "dcrsAlerts": [
+    {
+      "id": "dcrs-3ho7kj",
+      "type": "Defesa Civil",
+      "severity": "atencao",
+      "title": "O CENTRO DE MONITORAMENTO DA DEFESA CIVIL DO ESTADO ATUALIZA O PROGNÓSTICO HIDROLÓGICO PARA OS PRÓXIMOS DIAS",
+      "message": "A condição hidrológica atual é de níveis entre limiares de atenção para inundação e normalidade, com tendências de elevação ou declínio. Destaque para a metade Sul e Leste onde ocorreram precipitações com volumes moderados a elevados chegando a 150 mm nas últimas 48 horas.    Devido a previsão...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-29T13:07:03Z",
+      "link": "http://defesacivil.rs.gov.br/o-centro-de-monitoramento-da-defesa-civil-do-estado-atualiza-o-prognostico-hidrologico-para-os-proximos-dias-6a9303a786bd2",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-1wrwyvs",
+      "type": "Defesa Civil",
+      "severity": "atencao",
+      "title": "O CENTRO DE MONITORAMENTO DA DEFESA CIVIL DO ESTADO ATUALIZA O PROGNÓSTICO METEOROLÓGICO PARA OS PRÓXIMOS DIAS",
+      "message": "Neste sábado (29), há condição para tempestades com queda de granizo (que pode ser grande) e rajadas de vento (que podem superar os 90 km/h) na metade Norte. Também há risco de chuva intensa e volumosa (100 mm em 12 horas) especialmente em áreas da Serra e Nordeste.    No domingo e segunda (30...",
+      "regions": [
+        "Serra"
+      ],
+      "issuedAt": "2026-08-29T13:04:56Z",
+      "link": "http://defesacivil.rs.gov.br/o-centro-de-monitoramento-da-defesa-civil-do-estado-atualiza-o-prognostico-meteorologico-para-os-proximos-dias-6a930328a45c0",
+      "source": "Defesa Civil RS"
+    }
+  ],
   "sources": [
     "Defesa Civil RS (RSS)",
     "Defesa Civil RS (GraphQL — Rede Hidrometeorológica)"
