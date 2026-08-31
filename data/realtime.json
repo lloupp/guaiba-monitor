@@ -1,160 +1,121 @@
 {
-  "collectedAt": "2026-08-31T02:36:59.935Z",
+  "collectedAt": "2026-08-31T09:07:37.101Z",
   "level": {
-    "levelMeters": 1.25,
-    "trend": -0.0392,
+    "levelMeters": 1.23,
+    "trend": 0.0115,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-08-31T02:36:53.000+00:00",
+    "timestamp": "2026-08-31T09:07:33.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.25,
-        "trend": -0.0392,
+        "levelMeters": 1.23,
+        "trend": 0.0115,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-08-31T02:36:53.000+00:00",
+        "timestamp": "2026-08-31T09:07:33.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.23,
+        "levelMeters": 1.2,
         "trend": 0,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-08-31T02:36:52.000+00:00",
+        "timestamp": "2026-08-31T09:07:32.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
   "dcrsAlerts": [
     {
-      "id": "dcrs-hy19ik",
-      "type": "Defesa Civil",
-      "severity": "atencao",
-      "title": "Defesa Civil alerta: Condição de ATENÇÃO para chuva, raios e granizo que atuam no decorrer da madrugada",
-      "message": "Defesa Civil alerta: Condição de ATENÇÃO para chuva, raios e granizo que atuam no decorrer da madrugada em áreas das Missões, Noroeste, Norte, Nordeste e próximo ao Centro. Válido até 5h do dia 31 deagosto. Risco MODERADO de alagamentos e destelhamento. Evite áreas de risco. Emergência ligue...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-30T23:12:16Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-atencao-para-chuva-raios-e-granizo-que-atuam-no-decorrer-da-madrugada",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-xcf68f",
+      "id": "dcrs-1d7708w",
       "type": "Defesa Civil",
       "severity": "emergencia",
-      "title": "Defesa Civil alerta: condição SEVERA para tempestades com granizo e vento que atuam em áreas próximas de Pinhal da Serra",
-      "message": "Defesa Civil alerta: condição SEVERA para tempestades com granizo e vento que atuam em áreas próximas de Pinhal da Serra. Risco MUITO ALTO de destelhamento. Válido até 22h30 do dia 30 de agosto. Evite áreas de risco. Emergência ligue 190/193.  \n  Mantenha-se abrigado durante os temporais....",
+      "title": "Defesa Civil alerta: condição SEVERA para tempestades com granizo e vento que atuam em áreas próximas de Viadutos",
+      "message": "Defesa Civil alerta: condição SEVERA para tempestades com granizo e vento que atuam em áreas próximas de Viadutos. Risco MUITO ALTO de destelhamento. Válido até 6h50 do dia 31 de agosto. Evite áreas de risco. Emergência ligue 190/193.  \n  Mantenha-se abrigado durante os temporais. Retire...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-31T05:56:40Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-severa-para-tempestades-com-granizo-e-vento-que-atuam-em-areas-proximas-de-viadutos",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-159vk2",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para tempestade, granizo e vento que atuam em áreas de próximas de Trindade do Sul",
+      "message": "Defesa Civil alerta: condição de ALERTA para tempestade, granizo e vento que atuam em áreas de próximas de Trindade do Sul. Risco ALTO de destelhamento. Válido até 6h45 do dia 31 de agosto. Evite áreas de risco. Emergência ligue 190/193.  \n Procure informações junto à Defesa Civil da sua...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-31T05:50:12Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestade-granizo-e-vento-que-atuam-em-areas-de-proximas-de-trindade-do-sul",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-159vk2",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para tempestade, granizo e vento que atuam em áreas de próximas de Trindade do Sul",
+      "message": "Defesa Civil alerta: condição de ALERTA para tempestade, granizo e vento que atuam em áreas de próximas de Trindade do Sul. Risco ALTO de destelhamento. Válido até 6h45 do dia 31 de agosto. Evite áreas de risco. Emergência ligue 190/193.  \n Procure informações junto à Defesa Civil da sua...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-31T05:50:12Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestade-granizo-e-vento-que-atuam-em-areas-de-proximas-de-trindade--6a95436a55b66",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-1raqflc",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para tempestade, granizo e vento que atuam próximo de Itatiba do Sul e Três Arroios",
+      "message": "Defesa Civil alerta: condição de ALERTA para tempestade, granizo e vento que atuam em áreas de próximas de Itatiba do Sul e Três Arroios. Risco ALTO de destelhamento. Válido até 6h35 do dia 31 de agosto. Evite áreas de risco. Emergência ligue 190/193. \n Procure informações junto à Defesa Civil...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-31T05:48:54Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestade-granizo-e-vento-que-atuam-proximo-de-itatiba-do-sul-e-tres-arroios",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-6zz4zi",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para tempestade, granizo e vento que atuam em áreas de próximas de Frederico Westphalen",
+      "message": "Defesa Civil alerta: condição de ALERTA para tempestade, granizo e vento que atuam em áreas de próximas de Frederico Westphalen, Iraí e Planalto. Risco ALTO de destelhamento. Válido até 7h05 do dia 31 de agosto. Evite áreas de risco. Emergência ligue 190/193.  \n Procure informações junto à...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-31T05:10:07Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestade-granizo-e-vento-que-atuam-em-areas-de-proximas-de-frederico-westphalen",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-3ho7kj",
+      "type": "Defesa Civil",
+      "severity": "atencao",
+      "title": "O CENTRO DE MONITORAMENTO DA DEFESA CIVIL DO ESTADO ATUALIZA O PROGNÓSTICO HIDROLÓGICO PARA OS PRÓXIMOS DIAS",
+      "message": "A condição hidrológica atual é de níveis entre limiares de atenção para inundação e normalidade, com tendências de elevação ou declínio. Destaque para a metade Sul e Leste onde ocorreram precipitações com volumes moderados a elevados chegando a 150 mm nas últimas 48 horas.    Devido a previsão...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-08-29T13:07:03Z",
+      "link": "http://defesacivil.rs.gov.br/o-centro-de-monitoramento-da-defesa-civil-do-estado-atualiza-o-prognostico-hidrologico-para-os-proximos-dias-6a9303a786bd2",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-1wrwyvs",
+      "type": "Defesa Civil",
+      "severity": "atencao",
+      "title": "O CENTRO DE MONITORAMENTO DA DEFESA CIVIL DO ESTADO ATUALIZA O PROGNÓSTICO METEOROLÓGICO PARA OS PRÓXIMOS DIAS",
+      "message": "Neste sábado (29), há condição para tempestades com queda de granizo (que pode ser grande) e rajadas de vento (que podem superar os 90 km/h) na metade Norte. Também há risco de chuva intensa e volumosa (100 mm em 12 horas) especialmente em áreas da Serra e Nordeste.    No domingo e segunda (30...",
       "regions": [
         "Serra"
       ],
-      "issuedAt": "2026-08-30T21:37:48Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-severa-para-tempestades-com-granizo-e-vento-que-atuam-em-areas-proximas-de-pinhal-da-serra",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-vx8gr2",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para tempestade, granizo e vento que atuam em áreas de próximas de Pinhal da Serra",
-      "message": "Defesa Civil alerta: condição de ALERTA para tempestade, granizo e vento que atuam em áreas de próximas de Pinhal da Serra. Risco ALTO de destelhamento. Válido até 22h05 do dia 30 de agosto. Evite áreas de risco. Emergência ligue 190/193.  \n Procure informações junto à Defesa Civil da sua...",
-      "regions": [
-        "Serra"
-      ],
-      "issuedAt": "2026-08-30T21:18:58Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestade-granizo-e-vento-que-atuam-em-areas-de-proximas-de-pinhal-da-serra",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-db6wdx",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para tempestade, granizo e vento que atuam em áreas de próximas de Arvorezinha e Guaporé",
-      "message": "Defesa Civil alerta: condição de ALERTA para tempestade, granizo e vento que atuam em áreas de próximas de Arvorezinha e Guaporé. Risco ALTO de destelhamento. Válido até 22h15 do dia 30 de agosto. Evite áreas de risco. Emergência ligue 190/193.  \n Procure informações junto à Defesa Civil da sua...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-30T20:18:33Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestade-granizo-e-vento-que-atuam-em-areas-de-proximas-de-arvorezinha-e-guapore",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-1xtn0bc",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para tempestade, granizo e vento que atuam em áreas de próximas de Venâncio Aires",
-      "message": "Defesa Civil alerta: condição de ALERTA para tempestade, granizo e vento que atuam em áreas de próximas de Venâncio Aires. Risco ALTO de destelhamento. Válido até 22h10 do dia 30 de agosto. Evite áreas de risco. Emergência ligue 190/193.  \n Procure informações junto à Defesa Civil da sua...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-30T20:17:34Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestade-granizo-e-vento-que-atuam-em-areas-de-proximas-de-venancio-aires",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-blb82p",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento atua em áreas de próximas de Marau",
-      "message": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento atua em áreas de próximas de Marau. Risco ALTO de destelhamento. Válido até 20h45 do dia 30 de agosto. Evite áreas de risco. Emergência ligue 190/193.  \n Procure informações junto à Defesa Civil da sua cidade, conheça...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-30T19:55:18Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestade-com-granizo-e-vento-atua-em-areas-de-proximas-de-marau",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-km7cdp",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento atua em áreas de próximas de Passo Fundo",
-      "message": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento atua em áreas de próximas de Passo Fundo. Risco ALTO de destelhamento. Válido até 20h35 do dia 30 de agosto. Evite áreas de risco. Emergência ligue 190/193.  \n Procure informações junto à Defesa Civil da sua cidade,...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-30T19:40:00Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestade-com-granizo-e-vento-atua-em-areas-de-proximas-de-santa-cruz-6a94b442a7909",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-k701m5",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento atua em áreas de próximas de Santa Cruz do Sul",
-      "message": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento atua em áreas de próximas de Santa Cruz do Sul. Risco ALTO de destelhamento. Válido até 21h25 do dia 30 de agosto. Evite áreas de risco. Emergência ligue 190/193.  \n Procure informações junto à Defesa Civil da sua...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-30T19:32:00Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestade-com-granizo-e-vento-atua-em-areas-de-proximas-de-santa-cruz-do-sul",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-19fxqxl",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento atua em áreas de próximas de Esmeralda",
-      "message": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento atua em áreas de próximas de Esmeralda. Risco ALTO de destelhamento. Válido até 20h20 do dia 30 de agosto. Evite áreas de risco. Emergência ligue 190/193.  \n Procure informações junto à Defesa Civil da sua cidade,...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-30T19:25:00Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestade-com-granizo-e-vento-atua-em-areas-de-proximas-de-esmeralda",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-18vy7ut",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento atua em áreas de próximas de Arroio do Tigre",
-      "message": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento atua em áreas de próximas de Arroio do Tigre. Risco ALTO de destelhamento. Válido até 20h10 do dia 30 de agosto. Evite áreas de risco. Emergência ligue 190/193.  \n Procure informações junto à Defesa Civil da sua cidade,...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-08-30T19:20:00Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestade-com-granizo-e-vento-atua-em-areas-de-proximas-de-arroio-do-tigre",
+      "issuedAt": "2026-08-29T13:04:56Z",
+      "link": "http://defesacivil.rs.gov.br/o-centro-de-monitoramento-da-defesa-civil-do-estado-atualiza-o-prognostico-meteorologico-para-os-proximos-dias-6a930328a45c0",
       "source": "Defesa Civil RS"
     }
   ],
