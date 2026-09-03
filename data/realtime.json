@@ -1,32 +1,46 @@
 {
-  "collectedAt": "2026-09-03T19:59:11.259Z",
+  "collectedAt": "2026-09-03T22:23:17.653Z",
   "level": {
-    "levelMeters": 1.16,
-    "trend": 0.0092,
+    "levelMeters": 1.27,
+    "trend": 0.0423,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-09-03T19:58:54.000+00:00",
+    "timestamp": "2026-09-03T22:23:14.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.16,
-        "trend": 0.0092,
+        "levelMeters": 1.27,
+        "trend": 0.0423,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-09-03T19:58:54.000+00:00",
+        "timestamp": "2026-09-03T22:23:14.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.1,
+        "levelMeters": 1.24,
         "trend": 0,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-09-03T19:58:54.000+00:00",
+        "timestamp": "2026-09-03T22:23:14.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
-  "dcrsAlerts": [],
+  "dcrsAlerts": [
+    {
+      "id": "dcrs-16h4dl4",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "SIMULADO - Defesa Civil alerta",
+      "message": "SIMULADO Defesa Civil alerta: condição SEVERA para Chuva volumosa atua em Cruzeiro do Sul, com risco de INUNDAÇÃO (cota 19 m) e movimento de massa. Risco MUITO ALTO. Válido até 18h30 do dia 3 de setembro. Evite áreas de risco. Emergência ligue 190/193. \n Mantenha-se abrigado durante os...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-09-03T17:23:53Z",
+      "link": "http://defesacivil.rs.gov.br/simulado-defesa-civil-alerta",
+      "source": "Defesa Civil RS"
+    }
+  ],
   "sources": [
     "Defesa Civil RS (RSS)",
     "Defesa Civil RS (GraphQL — Rede Hidrometeorológica)"
