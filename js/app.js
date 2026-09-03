@@ -25,6 +25,7 @@ import {
   showToast,
   checkLevelThreshold,
   getLevelStatusInfo,
+  getLevelScale,
   requestNotificationPermission,
   disableNotifications,
   notificationsEnabled,
@@ -219,6 +220,42 @@ function renderLevelIndicator() {
 
   const trendEl = document.getElementById('level-trend');
   trendEl.innerHTML = `<span class="trend-icon">${trend.icon}</span><span>${trend.text} ${relativeTime(level.recordedAt)}</span>`;
+}
+
+/**
+ * Renderiza a legenda de cotas a partir dos thresholds (fonte única:
+ * config.js ← data/ref-levels.json). Evita faixas hardcoded no HTML
+ * divergindo dos limiares usados para classificar o nível.
+ */
+function renderCotaLegend() {
+  const container = document.getElementById('cota-legend');
+  if (!container) return;
+  container.innerHTML = '';
+
+  getLevelScale(THRESHOLDS).forEach(seg => {
+    const range = seg.max == null
+      ? `${seg.min.toFixed(2)} m ou mais`
+      : `${seg.min.toFixed(2)} — ${seg.max.toFixed(2)} m`;
+
+    const item = document.createElement('div');
+    item.className = 'cota-segment';
+
+    const bar = document.createElement('div');
+    bar.className = `segment-bar badge-${seg.css}`;
+
+    const label = document.createElement('div');
+    label.className = 'segment-label';
+    const rangeSpan = document.createElement('span');
+    rangeSpan.textContent = range;
+    const statusSpan = document.createElement('span');
+    statusSpan.textContent = seg.label;
+    label.appendChild(rangeSpan);
+    label.appendChild(statusSpan);
+
+    item.appendChild(bar);
+    item.appendChild(label);
+    container.appendChild(item);
+  });
 }
 
 /**
@@ -826,6 +863,7 @@ async function checkStaleData() {
 
 function renderAll() {
   renderLevelIndicator();
+  renderCotaLegend();
   populateStationSelector();
   renderChart();
   renderRegions();

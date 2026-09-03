@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {
   getLevelStatus,
   getLevelStatusInfo,
+  getLevelScale,
   severityRank,
   sortAlertsBySeverity,
   formatAlertForDisplay,
@@ -75,4 +76,20 @@ test('escapeHtml escapa caracteres perigosos', () => {
 
 test('formatMeters formata com unidade', () => {
   assert.equal(formatMeters(2), '2.00 m');
+});
+
+test('getLevelScale deriva as faixas dos thresholds', () => {
+  const scale = getLevelScale({ atencao: 1.56, inundacao: 2.60, severa: 3.50, critica: 4.50 });
+  assert.equal(scale.length, 5);
+  assert.deepEqual(scale.map(s => s.status), ['normal', 'atencao', 'inundacao', 'severa', 'critica']);
+  assert.deepEqual(scale.map(s => s.min), [0, 1.56, 2.60, 3.50, 4.50]);
+  assert.deepEqual(scale.map(s => s.max), [1.56, 2.60, 3.50, 4.50, null]);
+});
+
+test('a escala padrão é coerente com a classificação do nível', () => {
+  // Legenda e badge do nível precisam concordar: o início de cada faixa
+  // tem de ser classificado exatamente com o status daquela faixa.
+  for (const seg of getLevelScale()) {
+    assert.equal(getLevelStatus(seg.min), seg.status, `min ${seg.min} → ${seg.status}`);
+  }
 });

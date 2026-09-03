@@ -63,29 +63,8 @@
         </div>
       </section>
 
-      <!-- Segmentos de cota (legenda de cores) -->
-      <section class="cota-legend">
-        <div class="cota-segment">
-          <div class="segment-bar badge-normal"></div>
-          <div class="segment-label"><span>0 — 1.50 m</span><span>Normal</span></div>
-        </div>
-        <div class="cota-segment">
-          <div class="segment-bar badge-atencao"></div>
-          <div class="segment-label"><span>1.50 — 2.00 m</span><span>Atenção</span></div>
-        </div>
-        <div class="cota-segment">
-          <div class="segment-bar badge-inundacao"></div>
-          <div class="segment-label"><span>2.00 — 2.50 m</span><span>Inundação</span></div>
-        </div>
-        <div class="cota-segment">
-          <div class="segment-bar badge-severa"></div>
-          <div class="segment-label"><span>2.50 — 3.00 m</span><span>Severa</span></div>
-        </div>
-        <div class="cota-segment">
-          <div class="segment-bar badge-critica"></div>
-          <div class="segment-label"><span>3.00 m+</span><span>Crítica</span></div>
-        </div>
-      </section>
+      <!-- Segmentos de cota (legenda de cores) — preenchido por app.js a partir de THRESHOLDS -->
+      <section class="cota-legend" id="cota-legend"></section>
 
       <!-- Gráfico de histórico do nível (Fase 4 + B) -->
       <section class="level-graph card" id="level-graph">

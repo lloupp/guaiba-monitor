@@ -2,18 +2,23 @@
 // PWA: instalável + funcional offline com últimos dados coletados.
 //
 // Estratégias de cache:
-//   - Assets estáticos (HTML, CSS, JS, ícones): cache-first, fallback network
+//   - Navegação (HTML): network-first, fallback cache → um deploy novo chega
+//     ao usuário já no carregamento seguinte, sem depender de bump de versão.
+//   - Assets estáticos (CSS, JS, ícones): stale-while-revalidate → resposta
+//     instantânea offline/rede ruim, atualizando em background.
 //   - Dados dinâmicos (JSONs em data/): network-first, fallback cache
-//   - Leaflet (CDN): cache-first (stale-while-revalidate)
+//   - Leaflet (CDN): stale-while-revalidate
 //
-// Versionamento: bump CACHE_VERSION para forçar limpeza de cache antigo.
+// Versionamento: bump CACHE_VERSION para descartar caches antigos de uma vez
+// (troca de estratégia, asset removido). Não é necessário a cada deploy.
 
-const CACHE_VERSION = 'guaiba-v1';
+const CACHE_VERSION = 'guaiba-v2';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const DATA_CACHE = `${CACHE_VERSION}-data`;
 
-// Assets estáticos para pré-cache (app shell)
-const STATIC_ASSETS = [
+// App shell — pré-cache obrigatório (mesma origem). Se qualquer um falhar,
+// a instalação falha: sem eles não há app offline.
+const CORE_ASSETS = [
   './',
   './index.html',
   './css/style.css',
@@ -29,7 +34,11 @@ const STATIC_ASSETS = [
   './icons/icon-192.png',
   './icons/icon-512.png',
   './data/ref-levels.json',
-  // Leaflet via CDN
+];
+
+// Pré-cache best-effort: CDN de terceiros. Só alimenta a seção El Niño, então
+// uma falha aqui NÃO pode impedir a instalação do app (addAll é atômico).
+const OPTIONAL_ASSETS = [
   'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css',
   'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js',
 ];
@@ -45,7 +54,14 @@ const DATA_FILES = [
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(STATIC_CACHE)
-      .then(cache => cache.addAll(STATIC_ASSETS))
+      .then(async (cache) => {
+        await cache.addAll(CORE_ASSETS);
+        // Terceiros: cada um por si, falha não aborta a instalação.
+        await Promise.all(OPTIONAL_ASSETS.map(url =>
+          cache.add(url).catch(err =>
+            console.warn('[sw] pré-cache opcional falhou:', url, err.message))
+        ));
+      })
       .then(() => self.skipWaiting())
   );
 });
@@ -78,9 +94,16 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Mesma origem ou assets estáticos pré-cacheados → cache-first
-  if (url.origin === self.location.origin || STATIC_ASSETS.includes(url.href)) {
-    event.respondWith(cacheFirst(req, STATIC_CACHE));
+  // Navegação (HTML) → network-first: garante que o app não fique preso a
+  // uma versão antiga em cache. Offline, cai para o index.html cacheado.
+  if (req.mode === 'navigate') {
+    event.respondWith(networkFirst(req, STATIC_CACHE, './index.html'));
+    return;
+  }
+
+  // Assets estáticos de mesma origem → stale-while-revalidate
+  if (url.origin === self.location.origin) {
+    event.respondWith(staleWhileRevalidate(req, STATIC_CACHE));
     return;
   }
 
@@ -103,27 +126,14 @@ self.addEventListener('fetch', (event) => {
 
 // === Estratégias ===
 
-/** Cache-first: tenta cache, se não tiver busca na rede e cacheia. */
-async function cacheFirst(req, cacheName) {
-  const cache = await caches.open(cacheName);
-  const cached = await cache.match(req);
-  if (cached) return cached;
-  try {
-    const res = await fetch(req);
-    if (res.ok) cache.put(req, res.clone());
-    return res;
-  } catch {
-    // Offline e sem cache — retorna página de fallback para navigation
-    if (req.mode === 'navigate') {
-      const fallback = await cache.match('./index.html');
-      if (fallback) return fallback;
-    }
-    return new Response('Offline — recurso não disponível', { status: 503 });
-  }
-}
-
-/** Network-first: tenta rede, se falhar usa cache. Ideal para dados. */
-async function networkFirst(req, cacheName) {
+/**
+ * Network-first: tenta rede, se falhar usa cache. Ideal para dados e HTML.
+ * @param {Request} req
+ * @param {string} cacheName
+ * @param {string} [offlineFallback] — recurso a servir quando nem rede nem
+ *   cache da própria request respondem (ex.: './index.html' na navegação).
+ */
+async function networkFirst(req, cacheName, offlineFallback) {
   const cache = await caches.open(cacheName);
   try {
     const res = await fetch(req);
@@ -132,6 +142,11 @@ async function networkFirst(req, cacheName) {
   } catch {
     const cached = await cache.match(req);
     if (cached) return cached;
+    if (offlineFallback) {
+      const fallback = await cache.match(offlineFallback);
+      if (fallback) return fallback;
+      return new Response('Offline — recurso não disponível', { status: 503 });
+    }
     return new Response('{"error":"offline"}', {
       status: 503,
       headers: { 'Content-Type': 'application/json' }
@@ -139,13 +154,21 @@ async function networkFirst(req, cacheName) {
   }
 }
 
-/** Stale-while-revalidate: retorna cache imediatamente, atualiza em background. */
+/**
+ * Stale-while-revalidate: retorna o cache imediatamente e atualiza em
+ * background. Sem cache, espera a rede. Nunca resolve para undefined —
+ * offline e sem cache, responde 503.
+ */
 async function staleWhileRevalidate(req, cacheName) {
   const cache = await caches.open(cacheName);
   const cached = await cache.match(req);
   const networkPromise = fetch(req).then(res => {
     if (res.ok) cache.put(req, res.clone());
     return res;
-  }).catch(() => cached);
-  return cached || networkPromise;
+  }).catch(() => cached || new Response('Offline — recurso não disponível', { status: 503 }));
+  if (cached) {
+    networkPromise.catch(() => {});  // revalida sem rejeitar sozinho
+    return cached;
+  }
+  return networkPromise;
 }

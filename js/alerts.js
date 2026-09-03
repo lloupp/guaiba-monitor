@@ -50,6 +50,23 @@ const LEVEL_STATUS_CSS = {
 };
 
 /**
+ * Faixas da escala de nível (legenda de cotas), derivadas dos thresholds.
+ * A faixa mais grave é aberta (max === null).
+ * @param {object} [thresholds] — padrão: THRESHOLDS de config.js
+ * @returns {{status: string, label: string, css: string, min: number, max: number|null}[]}
+ */
+function getLevelScale(thresholds = LEVEL_THRESHOLDS) {
+  const bounds = [0, thresholds.atencao, thresholds.inundacao, thresholds.severa, thresholds.critica];
+  return LEVEL_RANK_ORDER.map((status, i) => ({
+    status,
+    label: LEVEL_STATUS_LABELS[status],
+    css: LEVEL_STATUS_CSS[status],
+    min: bounds[i],
+    max: i + 1 < bounds.length ? bounds[i + 1] : null,
+  }));
+}
+
+/**
  * Classifica o nível do rio em uma categoria de risco.
  * @param {number} levelMeters — nível em metros
  * @returns {'normal'|'atencao'|'inundacao'|'severa'|'critica'}
@@ -372,6 +389,7 @@ export {
   LEVEL_STATUS_CSS,
   getLevelStatus,
   getLevelStatusInfo,
+  getLevelScale,
   formatAlertSeverity,
   severityRank,
   sortAlertsBySeverity,
