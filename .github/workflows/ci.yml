@@ -1,0 +1,41 @@
+# CI — lint e testes em cada push/PR de código.
+#
+# Ignora mudanças em data/**: esses commits são gerados pelo workflow de
+# coleta (a cada 30 min) e não alteram o código, então não precisam de CI.
+
+name: ci
+
+on:
+  push:
+    paths-ignore:
+      - 'data/**'
+  pull_request:
+    paths-ignore:
+      - 'data/**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Lint (js/ e scripts/)
+        run: npm run lint
+
+      - name: Testes
+        run: npm test
+
+      - name: Sintaxe do sw.js
+        # sw.js roda em contexto de Service Worker e fica fora do escopo do
+        # eslint (js/ e scripts/); ao menos garante que parseia.
+        run: node --check sw.js
