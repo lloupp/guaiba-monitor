@@ -5,7 +5,7 @@
   "type": "module",
   "description": "Monitor do nível do rio Guaíba e riscos de desastres naturais — Porto Alegre, Canoas e Guaíba",
   "scripts": {
-    "test": "node --test 'test/*.test.js'",
+    "test": "node --test",
     "lint": "eslint js/ scripts/",
     "collect": "node scripts/collect.js",
     "serve": "npx serve ."
