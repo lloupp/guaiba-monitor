@@ -1,32 +1,59 @@
 {
-  "collectedAt": "2026-09-09T15:39:15.840Z",
+  "collectedAt": "2026-09-09T18:57:26.422Z",
   "level": {
-    "levelMeters": 1.2,
-    "trend": -0.0046,
+    "levelMeters": 1.17,
+    "trend": -0.0108,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-09-09T15:38:55.000+00:00",
+    "timestamp": "2026-09-09T18:57:15.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.2,
-        "trend": -0.0046,
+        "levelMeters": 1.17,
+        "trend": -0.0108,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-09-09T15:38:55.000+00:00",
+        "timestamp": "2026-09-09T18:57:15.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.19,
+        "levelMeters": 1.18,
         "trend": 0,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-09-09T15:38:55.000+00:00",
+        "timestamp": "2026-09-09T18:57:19.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
-  "dcrsAlerts": [],
+  "dcrsAlerts": [
+    {
+      "id": "dcrs-3ho7kj",
+      "type": "Defesa Civil",
+      "severity": "atencao",
+      "title": "O CENTRO DE MONITORAMENTO DA DEFESA CIVIL DO ESTADO ATUALIZA O PROGNÓSTICO HIDROLÓGICO PARA OS PRÓXIMOS DIAS",
+      "message": "A condição hidrológica atual é de níveis em limiar de normalidade, com tendências de estabilidade ou declínio.    Devido a previsão de chuvas entre quarta-feira (9/9) e quinta-feira (10/9), com maiores volumes para a região de divisa com Santa Catarina, há risco de alagamentos e cheias de...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-09-09T11:47:15Z",
+      "link": "http://defesacivil.rs.gov.br/o-centro-de-monitoramento-da-defesa-civil-do-estado-atualiza-o-prognostico-meteorologico-para-os-proximos-dias-6a9-6aa171329d651",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-1wrwyvs",
+      "type": "Defesa Civil",
+      "severity": "atencao",
+      "title": "O CENTRO DE MONITORAMENTO DA DEFESA CIVIL DO ESTADO ATUALIZA O PROGNÓSTICO METEOROLÓGICO PARA OS PRÓXIMOS DIAS",
+      "message": "Entre quarta-feira (9/9) e quinta-feira (10/9), há condição para tempestades com possibilidade de queda de granizo, rajadas intensas de vento e chuva forte a localmente intensa, principalmente no dia 10/9, na metade Norte do Estado.    No dia 11/9, as tempestades atuam com queda de granizo (que...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-09-09T11:46:02Z",
+      "link": "http://defesacivil.rs.gov.br/o-centro-de-monitoramento-da-defesa-civil-do-estado-atualiza-o-prognostico-meteorologico-para-os-proximos-dias-6a9-6aa17040bca8b",
+      "source": "Defesa Civil RS"
+    }
+  ],
   "sources": [
     "Defesa Civil RS (RSS)",
     "Defesa Civil RS (GraphQL — Rede Hidrometeorológica)"
