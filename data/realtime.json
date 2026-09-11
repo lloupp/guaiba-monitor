@@ -1,32 +1,123 @@
 {
-  "collectedAt": "2026-09-11T11:38:01.591Z",
+  "collectedAt": "2026-09-11T15:36:28.345Z",
   "level": {
     "levelMeters": 1.1,
-    "trend": -0.0015,
+    "trend": -0.0262,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-09-11T11:37:49.000+00:00",
+    "timestamp": "2026-09-11T15:36:19.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
         "levelMeters": 1.1,
-        "trend": -0.0015,
+        "trend": -0.0262,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-09-11T11:37:49.000+00:00",
+        "timestamp": "2026-09-11T15:36:19.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.1,
-        "trend": 0.0162,
+        "levelMeters": 1.08,
+        "trend": -0.0115,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-09-11T11:37:54.000+00:00",
+        "timestamp": "2026-09-11T15:36:24.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
   "dcrsAlerts": [
+    {
+      "id": "dcrs-lw0xx2",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para tempestade, vento e granizo que atuam em áreas do Noroeste e Norte",
+      "message": "Defesa Civil alerta: condição de ALERTA para tempestade, granizo e vento que atuam atuam em áreas do Norte próximas de Três Palmeiras e Progresso. Risco ALTO de destelhamento. Válido até 12h do dia 11 de setembro. Evite áreas de risco. Emergência ligue 190/193. \n Procure informações junto à...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-09-11T10:56:05Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestade-vento-e-granizo-que-atuam-em-areas-do-noroeste-e-norte-6aa409021deb2",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-lw0xx2",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para tempestade, vento e granizo que atuam em áreas do Noroeste e Norte",
+      "message": "Defesa Civil alerta: condição de ALERTA para tempestade, granizo e vento que atuam atuam em áreas do Norte próximas de Três Palmeiras e Progresso. Risco ALTO de destelhamento. Válido até 12h do dia 11 de setembro. Evite áreas de risco. Emergência ligue 190/193. \n Procure informações junto à...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-09-11T10:56:05Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestade-vento-e-granizo-que-atuam-em-areas-do-noroeste-e-norte",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-stcjqd",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "A Defesa Civil emite alerta para condição de risco MODERADO para deslizamentos pontuais em Três Coroas",
+      "message": "A Defesa Civil Estadual recebeu informações do Centro Nacional de Monitoramento e Alertas de Desastres Naturais (Cemaden) sobre riscos de eventos geológicos. \n A Defesa Civil emite alerta para condição de risco MODERADO para deslizamentos pontuais em Três Coroas. Evite áreas de risco. Em caso de...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-09-11T10:23:08Z",
+      "link": "http://defesacivil.rs.gov.br/a-defesa-civil-emite-alerta-para-condicao-de-risco-moderado-para-deslizamentos-pontuais-em-tres-coroas-6aa400bc783a9",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-w4ia0m",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "A Defesa Civil emite alerta para condição de risco MODERADO para deslizamentos pontuais em Gramado",
+      "message": "A Defesa Civil Estadual recebeu informações do Centro Nacional de Monitoramento e Alertas de Desastres Naturais (Cemaden) sobre riscos de eventos geológicos. \n A Defesa Civil emite alerta para condição de risco MODERADO para deslizamentos pontuais em Gramado. Evite áreas de risco. Em caso de...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-09-11T10:19:36Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestade-vento-e-granizo-que-atuam-em-areas-do-noroeste-e-norte-6aa3ffe836272",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-13tdsps",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para tempestade c/ vento e granizo atuam próximas a  Nonoai",
+      "message": "Defesa Civil alerta: condição de ALERTA para tempestade, granizo e vento que atuam em áreas de próximas de Nonoai . Risco ALTO de destelhamento. Válido até 10h35 do dia 11 de setembro. Evite áreas de risco. Emergência ligue 190/193. \n Procure informações junto à Defesa Civil da sua cidade,...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-09-11T09:51:40Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestade-c-vento-e-granizo-atuam-proximas-a-nonoai",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-9c4fya",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento próximas de São Francisco de Assis",
+      "message": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento que atuam em áreas próximas de São Francisco de Assis. Risco ALTO de destelhamento. Válido até 9h40 do dia 11 de setembro. Evite áreas de risco. Emergência ligue 190/193. \n Procure informações junto à Defesa Civil da sua...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-09-11T08:56:18Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestade-com-granizo-e-vento-proximas-de-sao-francisco-de-assis",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-towa6k",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento que atuam em áreas próximas de Riozinho",
+      "message": "Defesa Civil alerta: condição de ALERTA para tempestade com granizo e vento que atuam em áreas próximas de Riozinho. Risco ALTO de destelhamento. Válido até 9h30 do dia 11 de setembro. Evite áreas de risco. Emergência ligue 190/193. \n Procure informações junto à Defesa Civil da sua cidade,...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-09-11T08:40:15Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestade-com-granizo-e-vento-que-atuam-em-areas-proximas-de-riozinho",
+      "source": "Defesa Civil RS"
+    },
     {
       "id": "dcrs-zksncm",
       "type": "Defesa Civil",
@@ -64,98 +155,6 @@
       ],
       "issuedAt": "2026-09-11T07:11:25Z",
       "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestades-com-granizo-e-vento-que-atuam-em-areas-dos-vales",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-1lmszxr",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para tempestades com granizo e vento que atuam em áreas do Noroeste",
-      "message": "Defesa Civil alerta: condição de ALERTA para tempestades com granizo e vento que atuam em áreas do Noroeste nas proximidades de Três de Maio. Risco ALTO de destelhamento. Válido até 8h30 do dia 11 de setembro. Evite áreas de risco. Emergência ligue 190/193.  \n Procure informações junto à Defesa...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-09-11T06:56:01Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestades-com-granizo-e-vento-que-atuam-em-areas-do-noroeste",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-1b7jzqv",
-      "type": "Defesa Civil",
-      "severity": "emergencia",
-      "title": "Defesa Civil alerta: condição SEVERA para tempestades com granizo e vento nas proximidades de Pontão",
-      "message": "Defesa Civil alerta: condição SEVERA para tempestade com vento e granizo que atuam em áreas do Norte nas proximidades de Pontão. Risco MUITO ALTO de destelhamento. Válido até 1h30 do dia 11 de setembro. Evite áreas de risco. Emergência ligue 190/193. \n Mantenha-se abrigado durante os temporais....",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-09-10T23:38:31Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-severa-para-tempestades-com-granizo-e-vento-nas-proximidades-de-pontao",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-yqnime",
-      "type": "Defesa Civil",
-      "severity": "emergencia",
-      "title": "Defesa Civil alerta: condição SEVERA para tempestades com granizo e vento nas proximidades de Constantina",
-      "message": "Defesa Civil alerta: condição SEVERA para tempestades com granizo grande e vento que atuam em áreas do Norte nas proximidades de Constantina. Risco MUITO ALTO de destelhamento. Válido até 1h do dia 11 de setembro. Evite áreas de risco. Emergência ligue 190/193. \n Mantenha-se abrigado durante os...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-09-10T23:26:56Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-severa-para-tempestades-com-granizo-e-vento-nas-proximidades-de-constantina",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-19nnys5",
-      "type": "Defesa Civil",
-      "severity": "atencao",
-      "title": "Defesa Civil alerta: condição de ATENÇÃO para tempestades com granizo, rajadas de vento e chuva forte em diversas regiões do RS",
-      "message": "Defesa Civil alerta: condição de ATENÇÃO para tempestades com granizo, rajadas de vento e chuva forte que devem atuar no decorrer da madrugada em áreas do Noroeste, Norte, Centro, Oeste, Missões, Serra, Vales e Nordeste. Válido até 6h do dia 11 de setembro. Evite áreas de risco. Emergência ligue...",
-      "regions": [
-        "Serra",
-        "Vale"
-      ],
-      "issuedAt": "2026-09-10T23:12:00Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-atencao-para-tempestades-com-granizo-rajadas-de-vento-e-chuva-forte-em-diversas-regioes-do-rs",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-1p2stgf",
-      "type": "Defesa Civil",
-      "severity": "emergencia",
-      "title": "Defesa Civil alerta: condição SEVERA para tempestades com granizo e vento nas proximidades de Espumoso",
-      "message": "Defesa Civil alerta: condição SEVERA para tempestade c/ granizo grande e vento atuam em áreas do Norte nas proximidades de Espumoso. Risco MUITO ALTO de destelhamento. Válido até 00h30 do dia 11 de setembro. Evite áreas de risco. Emergência ligue 190/193. \n Mantenha-se abrigado durante os...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-09-10T22:59:52Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-severa-para-tempestades-com-granizo-e-vento-nas-proximidades-de-espumoso",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-zckohe",
-      "type": "Defesa Civil",
-      "severity": "emergencia",
-      "title": "Defesa Civil alerta: condição SEVERA para tempestades com granizo e vento nas proximidades de Frederico Westphalen",
-      "message": "Defesa Civil alerta: condição SEVERA para tempestades com granizo grande e vento que atuam em áreas do Norte nas proximidades de Frederico Westphalen. Risco MUITO ALTO de destelhamento. Válido até 00h30 do dia 11 de setembro. Evite áreas de risco. Emergência ligue 190/193. \n Mantenha-se abrigado...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-09-10T22:57:54Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-severa-para-tempestades-com-granizo-e-vento-nas-proximidades-de-frederico-westphalen",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-15faw59",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para tempestade c/ vento e granizo atuam em áreas do Norte",
-      "message": "Defesa Civil alerta: condição de ALERTA para tempestade c/ vento e granizo atuam em áreas do Norte nas proximidades de Frederico Westphalen. Válido até 23h do dia 10 de setembro. Evite áreas de risco. Emergência ligue 190/193. \n Procure informações junto à Defesa Civil da sua cidade, conheça os...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-09-10T21:56:46Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestade-c-vento-e-granizo-atuam-em-areas-do-norte",
       "source": "Defesa Civil RS"
     }
   ],
