@@ -1,32 +1,98 @@
 {
-  "collectedAt": "2026-09-11T01:16:36.343Z",
+  "collectedAt": "2026-09-11T06:16:26.617Z",
   "level": {
-    "levelMeters": 1.09,
-    "trend": -0.0169,
+    "levelMeters": 1.07,
+    "trend": -0.0008,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-09-11T01:16:29.000+00:00",
+    "timestamp": "2026-09-11T06:16:19.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.09,
-        "trend": -0.0169,
+        "levelMeters": 1.07,
+        "trend": -0.0008,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-09-11T01:16:29.000+00:00",
+        "timestamp": "2026-09-11T06:16:19.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.06,
-        "trend": -0.0138,
+        "levelMeters": 1.03,
+        "trend": -0.0031,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-09-11T01:16:24.000+00:00",
+        "timestamp": "2026-09-11T06:16:14.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
   "dcrsAlerts": [
+    {
+      "id": "dcrs-1b7jzqv",
+      "type": "Defesa Civil",
+      "severity": "emergencia",
+      "title": "Defesa Civil alerta: condição SEVERA para tempestades com granizo e vento nas proximidades de Pontão",
+      "message": "Defesa Civil alerta: condição SEVERA para tempestade com vento e granizo que atuam em áreas do Norte nas proximidades de Pontão. Risco MUITO ALTO de destelhamento. Válido até 1h30 do dia 11 de setembro. Evite áreas de risco. Emergência ligue 190/193. \n Mantenha-se abrigado durante os temporais....",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-09-10T23:38:31Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-severa-para-tempestades-com-granizo-e-vento-nas-proximidades-de-pontao",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-yqnime",
+      "type": "Defesa Civil",
+      "severity": "emergencia",
+      "title": "Defesa Civil alerta: condição SEVERA para tempestades com granizo e vento nas proximidades de Constantina",
+      "message": "Defesa Civil alerta: condição SEVERA para tempestades com granizo grande e vento que atuam em áreas do Norte nas proximidades de Constantina. Risco MUITO ALTO de destelhamento. Válido até 1h do dia 11 de setembro. Evite áreas de risco. Emergência ligue 190/193. \n Mantenha-se abrigado durante os...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-09-10T23:26:56Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-severa-para-tempestades-com-granizo-e-vento-nas-proximidades-de-constantina",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-19nnys5",
+      "type": "Defesa Civil",
+      "severity": "atencao",
+      "title": "Defesa Civil alerta: condição de ATENÇÃO para tempestades com granizo, rajadas de vento e chuva forte em diversas regiões do RS",
+      "message": "Defesa Civil alerta: condição de ATENÇÃO para tempestades com granizo, rajadas de vento e chuva forte que devem atuar no decorrer da madrugada em áreas do Noroeste, Norte, Centro, Oeste, Missões, Serra, Vales e Nordeste. Válido até 6h do dia 11 de setembro. Evite áreas de risco. Emergência ligue...",
+      "regions": [
+        "Serra",
+        "Vale"
+      ],
+      "issuedAt": "2026-09-10T23:12:00Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-atencao-para-tempestades-com-granizo-rajadas-de-vento-e-chuva-forte-em-diversas-regioes-do-rs",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-1p2stgf",
+      "type": "Defesa Civil",
+      "severity": "emergencia",
+      "title": "Defesa Civil alerta: condição SEVERA para tempestades com granizo e vento nas proximidades de Espumoso",
+      "message": "Defesa Civil alerta: condição SEVERA para tempestade c/ granizo grande e vento atuam em áreas do Norte nas proximidades de Espumoso. Risco MUITO ALTO de destelhamento. Válido até 00h30 do dia 11 de setembro. Evite áreas de risco. Emergência ligue 190/193. \n Mantenha-se abrigado durante os...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-09-10T22:59:52Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-severa-para-tempestades-com-granizo-e-vento-nas-proximidades-de-espumoso",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-zckohe",
+      "type": "Defesa Civil",
+      "severity": "emergencia",
+      "title": "Defesa Civil alerta: condição SEVERA para tempestades com granizo e vento nas proximidades de Frederico Westphalen",
+      "message": "Defesa Civil alerta: condição SEVERA para tempestades com granizo grande e vento que atuam em áreas do Norte nas proximidades de Frederico Westphalen. Risco MUITO ALTO de destelhamento. Válido até 00h30 do dia 11 de setembro. Evite áreas de risco. Emergência ligue 190/193. \n Mantenha-se abrigado...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-09-10T22:57:54Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-severa-para-tempestades-com-granizo-e-vento-nas-proximidades-de-frederico-westphalen",
+      "source": "Defesa Civil RS"
+    },
     {
       "id": "dcrs-15faw59",
       "type": "Defesa Civil",
@@ -90,32 +156,6 @@
       ],
       "issuedAt": "2026-09-10T21:03:42Z",
       "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestade-com-vento-e-granizo-atuam-em-areas-do-noroeste-6aa3455ecae36",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-3ho7kj",
-      "type": "Defesa Civil",
-      "severity": "atencao",
-      "title": "O CENTRO DE MONITORAMENTO DA DEFESA CIVIL DO ESTADO ATUALIZA O PROGNÓSTICO HIDROLÓGICO PARA OS PRÓXIMOS DIAS",
-      "message": "A condição hidrológica atual é de níveis em limiar de normalidade, com tendências de estabilidade ou declínio.    Devido a previsão de chuvas para a quinta-feira (10/9), com maiores volumes para a região de divisa com Santa Catarina, há risco de alagamentos e cheias de arroios e rios. Sendo...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-09-10T11:46:00Z",
-      "link": "http://defesacivil.rs.gov.br/o-centro-de-monitoramento-da-defesa-civil-do-estado-atualiza-o-prognostico-meteorologico-para-os-proximos-dias-6a9-6aa2c26b76640",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-1wrwyvs",
-      "type": "Defesa Civil",
-      "severity": "atencao",
-      "title": "O CENTRO DE MONITORAMENTO DA DEFESA CIVIL DO ESTADO ATUALIZA O PROGNÓSTICO METEOROLÓGICO PARA OS PRÓXIMOS DIAS",
-      "message": "Nesta quinta-feira (10/9), há condição para tempestades com possibilidade de queda de granizo, rajadas intensas de vento e chuva forte na metade Norte do Estado.    Na madrugada e manhã de sexta-feira (11/9), as tempestades atuam com queda de granizo (que pode ser grande), rajadas de vento (que...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-09-10T11:41:00Z",
-      "link": "http://defesacivil.rs.gov.br/o-centro-de-monitoramento-da-defesa-civil-do-estado-atualiza-o-prognostico-meteorologico-para-os-proximos-dias-6a9-6aa2c0d71f334",
       "source": "Defesa Civil RS"
     }
   ],
