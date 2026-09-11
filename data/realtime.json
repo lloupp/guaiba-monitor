@@ -1,32 +1,84 @@
 {
-  "collectedAt": "2026-09-11T06:16:26.617Z",
+  "collectedAt": "2026-09-11T11:38:01.591Z",
   "level": {
-    "levelMeters": 1.07,
-    "trend": -0.0008,
+    "levelMeters": 1.1,
+    "trend": -0.0015,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-09-11T06:16:19.000+00:00",
+    "timestamp": "2026-09-11T11:37:49.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.07,
-        "trend": -0.0008,
+        "levelMeters": 1.1,
+        "trend": -0.0015,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-09-11T06:16:19.000+00:00",
+        "timestamp": "2026-09-11T11:37:49.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.03,
-        "trend": -0.0031,
+        "levelMeters": 1.1,
+        "trend": 0.0162,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-09-11T06:16:14.000+00:00",
+        "timestamp": "2026-09-11T11:37:54.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
   "dcrsAlerts": [
+    {
+      "id": "dcrs-zksncm",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para chuva e raios que atuam em áreas de próximas de Taquara",
+      "message": "Defesa Civil alerta: condição de ALERTA para chuva e raios que atuam em áreas de próximas de Taquara. Risco ALTO de alagamentos. Válido até 9h10 do dia 11 de setembro. Evite áreas de risco. Emergência ligue 190/193. \n Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-09-11T08:20:10Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-chuva-e-raios-que-atuam-em-areas-de-proximas-de-taquara",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-1yvjry8",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para tempestade com vento e granizo nas proximidades de São Borja",
+      "message": "Defesa Civil alerta: condição de ALERTA para tempestade com vento e granizo que atuam em áreas dos Vales nas proximidades de São Borja. Risco ALTO de destelhamento. Válido até 9h do dia 11 de setembro. Evite áreas de risco. Emergência ligue 190/193. \n Procure informações junto à Defesa Civil da...",
+      "regions": [
+        "Vale"
+      ],
+      "issuedAt": "2026-09-11T07:43:37Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestade-com-vento-e-granizo-nas-proximidades-de-sao-borja",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-wg308e",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para tempestades com granizo e vento que atuam em áreas dos Vales",
+      "message": "Defesa Civil alerta: condição de ALERTA para tempestades com granizo e vento que atuam em áreas dos Vales, nas proximidades de Progresso e Lajeado. Risco ALTO de destelhamento. Válido até 8h30 do dia 11 de setembro. Evite áreas de risco. Emergência ligue 190/193.  \n Procure informações junto à...",
+      "regions": [
+        "Vale"
+      ],
+      "issuedAt": "2026-09-11T07:11:25Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestades-com-granizo-e-vento-que-atuam-em-areas-dos-vales",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-1lmszxr",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: condição de ALERTA para tempestades com granizo e vento que atuam em áreas do Noroeste",
+      "message": "Defesa Civil alerta: condição de ALERTA para tempestades com granizo e vento que atuam em áreas do Noroeste nas proximidades de Três de Maio. Risco ALTO de destelhamento. Válido até 8h30 do dia 11 de setembro. Evite áreas de risco. Emergência ligue 190/193.  \n Procure informações junto à Defesa...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-09-11T06:56:01Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestades-com-granizo-e-vento-que-atuam-em-areas-do-noroeste",
+      "source": "Defesa Civil RS"
+    },
     {
       "id": "dcrs-1b7jzqv",
       "type": "Defesa Civil",
@@ -104,58 +156,6 @@
       ],
       "issuedAt": "2026-09-10T21:56:46Z",
       "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestade-c-vento-e-granizo-atuam-em-areas-do-norte",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-n9b9kp",
-      "type": "Defesa Civil",
-      "severity": "emergencia",
-      "title": "Defesa Civil alerta: condição SEVERA para tempestade c/ granizo grande e vento atuam em áreas do Noroeste",
-      "message": "Defesa Civil alerta: condição SEVERA para tempestade c/ granizo grande e vento atuam em áreas do Noroeste nas proximidades de Santo Augusto. Risco MUITO ALTO de destelhamento. Válido até 22h30 do dia 10 de setembro. Evite áreas de risco. Emergência ligue 190/193. \n Mantenha-se abrigado durante...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-09-10T21:46:26Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-severa-para-tempestade-c-granizo-grande-e-vento-atuam-em-areas-do-noroeste",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-1rxz5qq",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para tempestade c/ vento e granizo atuam em áreas do Norte nas proximidades de Sananduva",
-      "message": "Defesa Civil alerta: condição de ALERTA para tempestade c/ vento e granizo atuam em áreas do Norte nas proximidades de Sananduva. Válido até 22h30 do dia 10 de setembro. Evite áreas de risco. Emergência ligue 190/193. \n Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-09-10T21:32:21Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestade-c-vento-e-granizo-atuam-em-areas-do-norte-nas-proximidades-de-sananduva",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-1o1wrr8",
-      "type": "Defesa Civil",
-      "severity": "emergencia",
-      "title": "Defesa Civil alerta: condição SEVERA para tempestade com granizo grande e vento atuam nas proximidades de Três Passos.",
-      "message": "Defesa Civil alerta: condição SEVERA para tempestade com granizo grande e vento atuam nas proximidades de Três Passos. Risco MUITO ALTO de destelhamento. Válido até 22h do dia 10 de setembro. Evite áreas de risco. Emergência ligue 190/193. \n Mantenha-se abrigado durante os temporais. Retire...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-09-10T21:17:24Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-severa-para-tempestade-com-granizo-grande-e-vento-atuam-nas-proximidades-de-tres-passos",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-wlv9ox",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: condição de ALERTA para tempestade com vento e granizo atuam em áreas do Noroeste",
-      "message": "Defesa Civil alerta: condição de ALERTA para tempestade com vento e granizo atuam em áreas do Noroeste nas proximidades de Três Passos. Válido até 22h do dia 10 de setembro. Evite áreas de risco. Emergência ligue 190/193. \n Procure informações junto à Defesa Civil da sua cidade, conheça os...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-09-10T21:03:42Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-condicao-de-alerta-para-tempestade-com-vento-e-granizo-atuam-em-areas-do-noroeste-6aa3455ecae36",
       "source": "Defesa Civil RS"
     }
   ],
