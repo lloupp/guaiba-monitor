@@ -1,454 +1,69 @@
 {
-  "collectedAt": "2026-08-23T16:58:35.700Z",
-  "windowHours": 72,
-  "stations": {
-    "DCRS-00044": [
-      {
-        "timestamp": "2026-08-21T23:01:07.000+00:00",
-        "levelMeters": 1.5,
-        "trend": 0.0208,
-        "alarmStatus": 0,
-        "rain24h": 0.800000011920929
-      },
-      {
-        "timestamp": "2026-08-21T23:01:37.000+00:00",
-        "levelMeters": 1.5,
-        "trend": 0.0208,
-        "alarmStatus": 0,
-        "rain24h": 0.800000011920929
-      },
-      {
-        "timestamp": "2026-08-21T23:01:57.000+00:00",
-        "levelMeters": 1.5,
-        "trend": 0.0208,
-        "alarmStatus": 0,
-        "rain24h": 0.800000011920929
-      },
-      {
-        "timestamp": "2026-08-21T23:02:07.000+00:00",
-        "levelMeters": 1.5,
-        "trend": 0.0208,
-        "alarmStatus": 0,
-        "rain24h": 0.8
-      },
-      {
-        "timestamp": "2026-08-21T23:04:37.000+00:00",
-        "levelMeters": 1.48,
-        "trend": 0.0208,
-        "alarmStatus": 0,
-        "rain24h": 0.8
-      },
-      {
-        "timestamp": "2026-08-21T23:04:47.000+00:00",
-        "levelMeters": 1.48,
-        "trend": 0.0208,
-        "alarmStatus": 0,
-        "rain24h": 0.8
-      },
-      {
-        "timestamp": "2026-08-21T23:05:17.000+00:00",
-        "levelMeters": 1.48,
-        "trend": 0.0208,
-        "alarmStatus": 0,
-        "rain24h": 0.8
-      },
-      {
-        "timestamp": "2026-08-21T23:11:17.000+00:00",
-        "levelMeters": 1.48,
-        "trend": 0.0208,
-        "alarmStatus": 0,
-        "rain24h": 0.8
-      },
-      {
-        "timestamp": "2026-08-22T10:35:27.000+00:00",
-        "levelMeters": 1.39,
-        "trend": -0.0069,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-22T19:06:07.000+00:00",
-        "levelMeters": 1.32,
-        "trend": 0,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-22T19:07:17.000+00:00",
-        "levelMeters": 1.32,
-        "trend": 0,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-23T16:58:29.000+00:00",
-        "levelMeters": 1.34,
-        "trend": -0.0008,
-        "alarmStatus": 0,
-        "rain24h": 0
-      }
-    ],
-    "DCRS-00033": [
-      {
-        "timestamp": "2026-08-21T23:01:06.000+00:00",
-        "levelMeters": 1.51,
-        "trend": 0,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-21T23:01:36.000+00:00",
-        "levelMeters": 1.51,
-        "trend": 0,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-21T23:01:56.000+00:00",
-        "levelMeters": 1.51,
-        "trend": 0,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-21T23:02:06.000+00:00",
-        "levelMeters": 1.54,
-        "trend": 0,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-21T23:04:36.000+00:00",
-        "levelMeters": 1.53,
-        "trend": 0,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-21T23:04:46.000+00:00",
-        "levelMeters": 1.49,
-        "trend": 0,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-21T23:05:16.000+00:00",
-        "levelMeters": 1.53,
-        "trend": 0,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-21T23:11:16.000+00:00",
-        "levelMeters": 1.53,
-        "trend": 0,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-22T10:35:26.000+00:00",
-        "levelMeters": 1.42,
-        "trend": 0,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-22T19:06:06.000+00:00",
-        "levelMeters": 1.31,
-        "trend": 0,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-22T19:07:16.000+00:00",
-        "levelMeters": 1.31,
-        "trend": 0,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-23T16:58:26.000+00:00",
-        "levelMeters": 1.38,
-        "trend": 0,
-        "alarmStatus": 0,
-        "rain24h": 0
-      }
-    ],
-    "DCRS-00054": [
-      {
-        "timestamp": "2026-08-21T23:01:09.000+00:00",
-        "levelMeters": 1.53,
-        "trend": 0.0108,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-21T23:01:39.000+00:00",
-        "levelMeters": 1.55,
-        "trend": 0.0108,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-21T23:01:49.000+00:00",
-        "levelMeters": 1.55,
-        "trend": 0.0108,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-21T23:02:09.000+00:00",
-        "levelMeters": 1.55,
-        "trend": 0.0108,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-21T23:04:29.000+00:00",
-        "levelMeters": 1.53,
-        "trend": 0.0108,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-21T23:04:49.000+00:00",
-        "levelMeters": 1.55,
-        "trend": 0.0108,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-21T23:05:19.000+00:00",
-        "levelMeters": 1.55,
-        "trend": 0.0108,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-21T23:11:19.000+00:00",
-        "levelMeters": 1.55,
-        "trend": 0.0108,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-22T10:35:29.000+00:00",
-        "levelMeters": 1.46,
-        "trend": -0.0154,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-22T19:05:59.000+00:00",
-        "levelMeters": 1.38,
-        "trend": -0.0008,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-22T19:07:19.000+00:00",
-        "levelMeters": 1.4,
-        "trend": -0.0008,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-23T09:55:22.000+00:00",
-        "levelMeters": 1.46,
-        "trend": -0.0085,
-        "alarmStatus": 0,
-        "rain24h": 0
-      }
-    ],
-    "DCRS-00076": [
-      {
-        "timestamp": "2026-08-21T23:01:11.000+00:00",
-        "levelMeters": 1.6,
-        "trend": 0.01,
-        "alarmStatus": 0,
-        "rain24h": 2.799999952316284
-      },
-      {
-        "timestamp": "2026-08-21T23:01:41.000+00:00",
-        "levelMeters": 1.6,
-        "trend": 0.01,
-        "alarmStatus": 0,
-        "rain24h": 2.799999952316284
-      },
-      {
-        "timestamp": "2026-08-21T23:01:51.000+00:00",
-        "levelMeters": 1.6,
-        "trend": 0.01,
-        "alarmStatus": 0,
-        "rain24h": 2.799999952316284
-      },
-      {
-        "timestamp": "2026-08-21T23:02:11.000+00:00",
-        "levelMeters": 1.62,
-        "trend": 0.01,
-        "alarmStatus": 0,
-        "rain24h": 2.8
-      },
-      {
-        "timestamp": "2026-08-21T23:04:31.000+00:00",
-        "levelMeters": 1.62,
-        "trend": 0.01,
-        "alarmStatus": 0,
-        "rain24h": 2.8
-      },
-      {
-        "timestamp": "2026-08-21T23:04:51.000+00:00",
-        "levelMeters": 1.62,
-        "trend": 0.01,
-        "alarmStatus": 0,
-        "rain24h": 2.8
-      },
-      {
-        "timestamp": "2026-08-21T23:05:21.000+00:00",
-        "levelMeters": 1.6,
-        "trend": 0.01,
-        "alarmStatus": 0,
-        "rain24h": 2.8
-      },
-      {
-        "timestamp": "2026-08-21T23:11:21.000+00:00",
-        "levelMeters": 1.62,
-        "trend": 0.01,
-        "alarmStatus": 0,
-        "rain24h": 2.8
-      },
-      {
-        "timestamp": "2026-08-22T10:35:31.000+00:00",
-        "levelMeters": 1.49,
-        "trend": -0.0092,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-22T19:06:01.000+00:00",
-        "levelMeters": 1.38,
-        "trend": 0.0054,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-22T19:07:21.000+00:00",
-        "levelMeters": 1.38,
-        "trend": 0.0054,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-23T16:58:31.000+00:00",
-        "levelMeters": 1.41,
-        "trend": 0.0015,
-        "alarmStatus": 0,
-        "rain24h": 0
-      }
-    ],
-    "DCRS-00122": [
-      {
-        "timestamp": "2026-08-21T23:01:10.000+00:00",
-        "levelMeters": 1.29,
-        "trend": 0.0215,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-21T23:01:40.000+00:00",
-        "levelMeters": 1.29,
-        "trend": 0.0215,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-21T23:01:50.000+00:00",
-        "levelMeters": 1.29,
-        "trend": 0.0215,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-21T23:02:10.000+00:00",
-        "levelMeters": 1.29,
-        "trend": 0.0215,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-21T23:04:30.000+00:00",
-        "levelMeters": 1.29,
-        "trend": 0.0215,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-21T23:04:50.000+00:00",
-        "levelMeters": 1.29,
-        "trend": 0.0215,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-21T23:05:20.000+00:00",
-        "levelMeters": 1.29,
-        "trend": 0.0215,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-21T23:11:20.000+00:00",
-        "levelMeters": 1.29,
-        "trend": 0.0054,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-22T10:35:24.000+00:00",
-        "levelMeters": 1.2,
-        "trend": -0.0131,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-22T19:06:04.000+00:00",
-        "levelMeters": 1.14,
-        "trend": -0.0069,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-22T19:07:14.000+00:00",
-        "levelMeters": 1.1,
-        "trend": -0.0069,
-        "alarmStatus": 0,
-        "rain24h": 0
-      },
-      {
-        "timestamp": "2026-08-23T16:58:35.000+00:00",
-        "levelMeters": 1.08,
-        "trend": 0.0085,
-        "alarmStatus": 0,
-        "rain24h": 0
-      }
-    ],
-    "DCRS-00088": [
-      {
-        "timestamp": "2026-08-23T10:00:20.000+00:00",
-        "levelMeters": 63.77,
-        "trend": 0.0008,
-        "alarmStatus": 0,
-        "rain24h": 0
-      }
-    ],
-    "DCRS-00105": [
-      {
-        "timestamp": "2026-08-22T20:59:52.000+00:00",
-        "levelMeters": 1.29,
-        "trend": null,
-        "alarmStatus": 0,
-        "rain24h": 0
-      }
-    ]
-  }
+  "collectedAt": "2026-09-12T19:31:37.774Z",
+  "readings": [
+    {
+      "timestamp": "2026-09-11T21:27:50.000+00:00",
+      "levelMeters": 1.18,
+      "trend": -0.0015,
+      "stationCode": "DCRS-00054",
+      "stationName": "Barra do Ribeiro - Lago Guaíba",
+      "source": "Defesa Civil RS (Rede Hidrometeorológica)"
+    },
+    {
+      "timestamp": "2026-09-11T23:28:30.000+00:00",
+      "levelMeters": 1.14,
+      "trend": -0.0085,
+      "stationCode": "DCRS-00054",
+      "stationName": "Barra do Ribeiro - Lago Guaíba",
+      "source": "Defesa Civil RS (Rede Hidrometeorológica)"
+    },
+    {
+      "timestamp": "2026-09-12T01:22:20.000+00:00",
+      "levelMeters": 1.12,
+      "trend": 0.0077,
+      "stationCode": "DCRS-00054",
+      "stationName": "Barra do Ribeiro - Lago Guaíba",
+      "source": "Defesa Civil RS (Rede Hidrometeorológica)"
+    },
+    {
+      "timestamp": "2026-09-12T06:02:50.000+00:00",
+      "levelMeters": 1.28,
+      "trend": 0.0231,
+      "stationCode": "DCRS-00054",
+      "stationName": "Barra do Ribeiro - Lago Guaíba",
+      "source": "Defesa Civil RS (Rede Hidrometeorológica)"
+    },
+    {
+      "timestamp": "2026-09-12T11:01:30.000+00:00",
+      "levelMeters": 1.27,
+      "trend": -0.0046,
+      "stationCode": "DCRS-00054",
+      "stationName": "Barra do Ribeiro - Lago Guaíba",
+      "source": "Defesa Civil RS (Rede Hidrometeorológica)"
+    },
+    {
+      "timestamp": "2026-09-12T14:15:20.000+00:00",
+      "levelMeters": 1.22,
+      "trend": -0.0023,
+      "stationCode": "DCRS-00054",
+      "stationName": "Barra do Ribeiro - Lago Guaíba",
+      "source": "Defesa Civil RS (Rede Hidrometeorológica)"
+    },
+    {
+      "timestamp": "2026-09-12T17:19:48.000+00:00",
+      "levelMeters": 1.23,
+      "trend": 0.0138,
+      "stationCode": "DCRS-00054",
+      "stationName": "Barra do Ribeiro - Lago Guaíba",
+      "source": "Defesa Civil RS (Rede Hidrometeorológica)"
+    },
+    {
+      "timestamp": "2026-09-12T19:31:28.000+00:00",
+      "levelMeters": 1.25,
+      "trend": 0.0177,
+      "stationCode": "DCRS-00054",
+      "stationName": "Barra do Ribeiro - Lago Guaíba",
+      "source": "Defesa Civil RS (Rede Hidrometeorológica)"
+    }
+  ]
 }
