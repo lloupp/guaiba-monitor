@@ -1,32 +1,45 @@
 {
-  "collectedAt": "2026-09-12T01:22:29.351Z",
+  "collectedAt": "2026-09-12T06:02:51.918Z",
   "level": {
-    "levelMeters": 1.12,
-    "trend": 0.0077,
+    "levelMeters": 1.28,
+    "trend": 0.0231,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-09-12T01:22:20.000+00:00",
+    "timestamp": "2026-09-12T06:02:50.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.12,
-        "trend": 0.0077,
+        "levelMeters": 1.28,
+        "trend": 0.0231,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-09-12T01:22:20.000+00:00",
+        "timestamp": "2026-09-12T06:02:50.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.07,
-        "trend": -0.0085,
+        "levelMeters": 1.22,
+        "trend": 0.0269,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-09-12T01:22:25.000+00:00",
+        "timestamp": "2026-09-12T06:02:45.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
   "dcrsAlerts": [
+    {
+      "id": "dcrs-1lezefd",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: INUNDAÇÃO no rio Uruguai. Risco MUITO ALTO a partir de Iraí",
+      "message": "Defesa Civil alerta: INUNDAÇÃO no rio Uruguai. Risco MUITO ALTO a partir de Iraí. Validade até 17h do dia 12 de setembro. Evite áreas inundáveis. Emergência 190/193.  \n Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de Contingência municipais para saber quais os...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-09-11T23:09:21Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-inundacao-no-rio-uruguai-risco-muito-alto-a-partir-de-irai",
+      "source": "Defesa Civil RS"
+    },
     {
       "id": "dcrs-1m9fah4",
       "type": "Defesa Civil",
