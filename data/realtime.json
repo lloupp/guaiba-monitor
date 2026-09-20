@@ -1,85 +1,32 @@
 {
-  "collectedAt": "2026-09-20T08:08:35.103Z",
+  "collectedAt": "2026-09-20T13:07:52.072Z",
   "level": {
-    "levelMeters": 0.73,
-    "trend": 0.0069,
+    "levelMeters": 0.85,
+    "trend": 0.0138,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-09-20T08:08:25.000+00:00",
+    "timestamp": "2026-09-20T13:07:35.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 0.73,
-        "trend": 0.0069,
+        "levelMeters": 0.85,
+        "trend": 0.0138,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-09-20T08:08:25.000+00:00",
+        "timestamp": "2026-09-20T13:07:35.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 0.69,
-        "trend": 0.0215,
+        "levelMeters": 0.8,
+        "trend": 0.0262,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-09-20T08:08:24.000+00:00",
+        "timestamp": "2026-09-20T13:07:34.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
-  "dcrsAlerts": [
-    {
-      "id": "dcrs-klr8bu",
-      "type": "Defesa Civil",
-      "severity": "atencao",
-      "title": "O Centro de Monitoramento da Defesa Civil Estadual atualiza as condições meteorológicas para os próximos dias no RS",
-      "message": "O Centro de Monitoramento da Defesa Civil Estadual atualiza as condições meteorológicas para os próximos dias no RS: \n No sábado (19/09), há condição para chuva moderada a pontualmente forte em áreas das Missões, Noroeste, Norte e Centro. Na noite do domingo (20/09), há risco de tempestades...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-09-19T12:55:40Z",
-      "link": "http://defesacivil.rs.gov.br/o-centro-de-monitoramento-da-defesa-civil-estadual-atualiza-as-condicoes-meteorologicas-para-os-proximos-dias-no-r-6aaeb074cac8f",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-p9sapx",
-      "type": "Defesa Civil",
-      "severity": "atencao",
-      "title": "O Centro de Monitoramento da Defesa Civil Estadual atualiza as condições hidrológicas para os próximos dias no RS",
-      "message": "O Centro de Monitoramento da Defesa Civil Estadual atualiza as condições hidrológicas para os próximos dias no RS: \n A condição hidrológica atual é de níveis entre limiares de alerta para inundação e normalidade, com tendências de estabilidade ou declínio. \n Devido a previsão de chuvas entre o...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-09-19T12:50:42Z",
-      "link": "http://defesacivil.rs.gov.br/o-centro-de-monitoramento-da-defesa-civil-estadual-atualiza-as-condicoes-hidrologicas-para-os-proximos-dias-no-rs-6aaeaf525afd0",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-p9sapx",
-      "type": "Defesa Civil",
-      "severity": "atencao",
-      "title": "O Centro de Monitoramento da Defesa Civil Estadual atualiza as condições hidrológicas para os próximos dias no RS",
-      "message": "A condição hidrológica atual é de níveis entre limiares de alerta para inundação e normalidade, com tendências de estabilidade ou declínio.    Devido a previsão de chuvas entre o sábado e domingo, com maiores volumes pontualmente na metade norte do estado, há risco de alagamentos e cheias de...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-09-18T13:20:00Z",
-      "link": "http://defesacivil.rs.gov.br/o-centro-de-monitoramento-da-defesa-civil-estadual-atualiza-as-condicoes-hidrologicas-para-os-proximos-dias-no-rs-6aad64d4cad23",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-klr8bu",
-      "type": "Defesa Civil",
-      "severity": "atencao",
-      "title": "O Centro de Monitoramento da Defesa Civil Estadual atualiza as condições meteorológicas para os próximos dias no RS",
-      "message": "No sábado (19), há condição para chuva moderada a pontualmente forte em áreas das Missões, Noroeste e Norte. Na noite do domingo (20), há risco de tempestades com queda de granizo e rajadas de vento intensas (que podem superar os 90 km/h) em áreas das Missões, Noroeste e Centro.    Na madrugada...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-09-18T13:17:00Z",
-      "link": "http://defesacivil.rs.gov.br/o-centro-de-monitoramento-da-defesa-civil-estadual-atualiza-as-condicoes-meteorologicas-para-os-proximos-dias-no-r-6aad6414d872c",
-      "source": "Defesa Civil RS"
-    }
-  ],
+  "dcrsAlerts": [],
   "sources": [
     "Defesa Civil RS (RSS)",
     "Defesa Civil RS (GraphQL — Rede Hidrometeorológica)"
