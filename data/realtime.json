@@ -1,32 +1,97 @@
 {
-  "collectedAt": "2026-09-21T08:24:34.601Z",
+  "collectedAt": "2026-09-21T15:13:35.588Z",
   "level": {
-    "levelMeters": 0.82,
-    "trend": -0.0862,
+    "levelMeters": 0.81,
+    "trend": -0.0138,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-09-21T08:24:26.000+00:00",
+    "timestamp": "2026-09-21T15:13:25.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 0.82,
-        "trend": -0.0862,
+        "levelMeters": 0.81,
+        "trend": -0.0138,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-09-21T08:24:26.000+00:00",
+        "timestamp": "2026-09-21T15:13:25.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 0.91,
-        "trend": 0.1269,
+        "levelMeters": 0.73,
+        "trend": -0.0077,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-09-21T08:24:32.000+00:00",
+        "timestamp": "2026-09-21T15:13:32.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
   "dcrsAlerts": [
+    {
+      "id": "dcrs-1y0waei",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "A Defesa Civil emite alerta para condição de risco MODERADO para deslizamentos pontuais em Santa Maria.",
+      "message": "A Defesa Civil emite alerta para condição de risco MODERADO para deslizamentos pontuais em Santa Maria. Evite áreas de risco. Em caso de emergência, acione a Brigada Militar pelo 190 ou os Bombeiros pelo 193. \n Saiba identificar os sinais de que deslizamentos de terra estão prestes a acontecer:...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-09-21T12:03:20Z",
+      "link": "http://defesacivil.rs.gov.br/a-defesa-civil-emite-alerta-para-condicao-de-risco-moderado-para-deslizamentos-pontuais-em-santa-maria-6ab1473882469",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-13dpi6x",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "A Defesa Civil emite alerta para condição de risco MODERADO para deslizamentos pontuais em Estrela.",
+      "message": "A Defesa Civil emite alerta para condição de risco MODERADO para deslizamentos pontuais em Estrela. Evite áreas de risco. Em caso de emergência, acione a Brigada Militar pelo 190 ou os Bombeiros pelo 193. \n Saiba identificar os sinais de que deslizamentos de terra estão prestes a acontecer:...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-09-21T11:14:46Z",
+      "link": "http://defesacivil.rs.gov.br/a-defesa-civil-emite-alerta-para-condicao-de-risco-moderado-para-deslizamentos-pontuais-em-estrela",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-101cod5",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "A Defesa Civil emite alerta para condição de risco MODERADO para deslizamentos pontuais em Lajeado.",
+      "message": "A Defesa Civil emite alerta para condição de risco MODERADO para deslizamentos pontuais em Lajeado. Evite áreas de risco. Em caso de emergência, acione a Brigada Militar pelo 190 ou os Bombeiros pelo 193. \n Saiba identificar os sinais de que deslizamentos de terra estão prestes a acontecer:...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-09-21T10:51:39Z",
+      "link": "http://defesacivil.rs.gov.br/a-defesa-civil-emite-alerta-para-condicao-de-risco-moderado-para-deslizamentos-pontuais-em-lajeado-6ab1366b7bc43",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-jafaqm",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "A Defesa Civil emite alerta para condição de risco MODERADO para deslizamentos pontuais em Rolante.",
+      "message": "A Defesa Civil emite alerta para condição de risco MODERADO para deslizamentos pontuais em Rolante. Evite áreas de risco. Em caso de emergência, acione a Brigada Militar pelo 190 ou os Bombeiros pelo 193. \n Saiba identificar os sinais de que deslizamentos de terra estão prestes a acontecer:...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-09-21T10:25:16Z",
+      "link": "http://defesacivil.rs.gov.br/a-defesa-civil-emite-alerta-para-condicao-de-risco-moderado-para-deslizamentos-pontuais-em-rolante-6ab1303c30208",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-1seqp76",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "A Defesa Civil emite alerta para condição de risco MODERADO para deslizamentos pontuais em Arroio do Meio.",
+      "message": "A Defesa Civil emite alerta para condição de risco MODERADO para deslizamentos pontuais em Arroio do Meio. Evite áreas de risco. Em caso de emergência, acione a Brigada Militar pelo 190 ou os Bombeiros pelo 193. \n Saiba identificar os sinais de que deslizamentos de terra estão prestes a...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-09-21T10:12:01Z",
+      "link": "http://defesacivil.rs.gov.br/a-defesa-civil-emite-alerta-para-condicao-de-risco-moderado-para-deslizamentos-pontuais-em-arroio-do-meio",
+      "source": "Defesa Civil RS"
+    },
     {
       "id": "dcrs-p9sapx",
       "type": "Defesa Civil",
@@ -90,19 +155,6 @@
       ],
       "issuedAt": "2026-09-18T13:20:00Z",
       "link": "http://defesacivil.rs.gov.br/o-centro-de-monitoramento-da-defesa-civil-estadual-atualiza-as-condicoes-hidrologicas-para-os-proximos-dias-no-rs-6aad64d4cad23",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-klr8bu",
-      "type": "Defesa Civil",
-      "severity": "atencao",
-      "title": "O Centro de Monitoramento da Defesa Civil Estadual atualiza as condições meteorológicas para os próximos dias no RS",
-      "message": "No sábado (19), há condição para chuva moderada a pontualmente forte em áreas das Missões, Noroeste e Norte. Na noite do domingo (20), há risco de tempestades com queda de granizo e rajadas de vento intensas (que podem superar os 90 km/h) em áreas das Missões, Noroeste e Centro.    Na madrugada...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-09-18T13:17:00Z",
-      "link": "http://defesacivil.rs.gov.br/o-centro-de-monitoramento-da-defesa-civil-estadual-atualiza-as-condicoes-meteorologicas-para-os-proximos-dias-no-r-6aad6414d872c",
       "source": "Defesa Civil RS"
     }
   ],
