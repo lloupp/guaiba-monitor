@@ -1,32 +1,164 @@
 {
-  "collectedAt": "2026-09-22T01:42:17.904Z",
+  "collectedAt": "2026-09-22T07:05:55.307Z",
   "level": {
-    "levelMeters": 0.92,
-    "trend": -0.0146,
+    "levelMeters": 1.17,
+    "trend": 0.0631,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-09-22T01:42:03.000+00:00",
+    "timestamp": "2026-09-22T07:05:53.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 0.92,
-        "trend": -0.0146,
+        "levelMeters": 1.17,
+        "trend": 0.0631,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-09-22T01:42:03.000+00:00",
+        "timestamp": "2026-09-22T07:05:53.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 0.85,
-        "trend": -0.0892,
+        "levelMeters": 1.06,
+        "trend": 0.0238,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-09-22T01:42:03.000+00:00",
+        "timestamp": "2026-09-22T07:05:53.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
-  "dcrsAlerts": [],
+  "dcrsAlerts": [
+    {
+      "id": "dcrs-p9sapx",
+      "type": "Defesa Civil",
+      "severity": "atencao",
+      "title": "O Centro de Monitoramento da Defesa Civil Estadual atualiza as condições hidrológicas para os próximos dias no RS",
+      "message": "A condição hidrológica atual é de níveis entre limiares de inundação e normalidade, com tendências de elevação ou estabilidade, com destaque para a região hidrográfica do Guaíba.    Devido as chuva das últimas 12 horas estão ocorrendo elevações significativas de arroios e rios na região...",
+      "regions": [
+        "Guaíba"
+      ],
+      "issuedAt": "2026-09-21T13:44:55Z",
+      "link": "http://defesacivil.rs.gov.br/o-centro-de-monitoramento-da-defesa-civil-estadual-atualiza-as-condicoes-hidrologicas-para-os-proximos-dias-no-rs-6ab15f07240be",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-klr8bu",
+      "type": "Defesa Civil",
+      "severity": "atencao",
+      "title": "O Centro de Monitoramento da Defesa Civil Estadual atualiza as condições meteorológicas para os próximos dias no RS",
+      "message": "Ao longo da tarde de segunda-feira (21/9), segue a condição para chuva intensa e volumosa em curto espaço de tempo em áreas do Norte, Vales e Serra, com acumulados oscilando entre 50 e 80 mm em 12 horas, adicionais aos 100 - 150 mm que já foram registrados até o momento. Com isso, os acumulados...",
+      "regions": [
+        "Serra",
+        "Vale"
+      ],
+      "issuedAt": "2026-09-21T13:41:00Z",
+      "link": "http://defesacivil.rs.gov.br/o-centro-de-monitoramento-da-defesa-civil-estadual-atualiza-as-condicoes-meteorologicas-para-os-proximos-dias-no-r-6ab15e3ec1915",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-1y0waei",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "A Defesa Civil emite alerta para condição de risco MODERADO para deslizamentos pontuais em Santa Maria.",
+      "message": "A Defesa Civil emite alerta para condição de risco MODERADO para deslizamentos pontuais em Santa Maria. Evite áreas de risco. Em caso de emergência, acione a Brigada Militar pelo 190 ou os Bombeiros pelo 193. \n Saiba identificar os sinais de que deslizamentos de terra estão prestes a acontecer:...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-09-21T12:03:20Z",
+      "link": "http://defesacivil.rs.gov.br/a-defesa-civil-emite-alerta-para-condicao-de-risco-moderado-para-deslizamentos-pontuais-em-santa-maria-6ab1473882469",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-13dpi6x",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "A Defesa Civil emite alerta para condição de risco MODERADO para deslizamentos pontuais em Estrela.",
+      "message": "A Defesa Civil emite alerta para condição de risco MODERADO para deslizamentos pontuais em Estrela. Evite áreas de risco. Em caso de emergência, acione a Brigada Militar pelo 190 ou os Bombeiros pelo 193. \n Saiba identificar os sinais de que deslizamentos de terra estão prestes a acontecer:...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-09-21T11:14:46Z",
+      "link": "http://defesacivil.rs.gov.br/a-defesa-civil-emite-alerta-para-condicao-de-risco-moderado-para-deslizamentos-pontuais-em-estrela",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-101cod5",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "A Defesa Civil emite alerta para condição de risco MODERADO para deslizamentos pontuais em Lajeado.",
+      "message": "A Defesa Civil emite alerta para condição de risco MODERADO para deslizamentos pontuais em Lajeado. Evite áreas de risco. Em caso de emergência, acione a Brigada Militar pelo 190 ou os Bombeiros pelo 193. \n Saiba identificar os sinais de que deslizamentos de terra estão prestes a acontecer:...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-09-21T10:51:39Z",
+      "link": "http://defesacivil.rs.gov.br/a-defesa-civil-emite-alerta-para-condicao-de-risco-moderado-para-deslizamentos-pontuais-em-lajeado-6ab1366b7bc43",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-jafaqm",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "A Defesa Civil emite alerta para condição de risco MODERADO para deslizamentos pontuais em Rolante.",
+      "message": "A Defesa Civil emite alerta para condição de risco MODERADO para deslizamentos pontuais em Rolante. Evite áreas de risco. Em caso de emergência, acione a Brigada Militar pelo 190 ou os Bombeiros pelo 193. \n Saiba identificar os sinais de que deslizamentos de terra estão prestes a acontecer:...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-09-21T10:25:16Z",
+      "link": "http://defesacivil.rs.gov.br/a-defesa-civil-emite-alerta-para-condicao-de-risco-moderado-para-deslizamentos-pontuais-em-rolante-6ab1303c30208",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-1seqp76",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "A Defesa Civil emite alerta para condição de risco MODERADO para deslizamentos pontuais em Arroio do Meio.",
+      "message": "A Defesa Civil emite alerta para condição de risco MODERADO para deslizamentos pontuais em Arroio do Meio. Evite áreas de risco. Em caso de emergência, acione a Brigada Militar pelo 190 ou os Bombeiros pelo 193. \n Saiba identificar os sinais de que deslizamentos de terra estão prestes a...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-09-21T10:12:01Z",
+      "link": "http://defesacivil.rs.gov.br/a-defesa-civil-emite-alerta-para-condicao-de-risco-moderado-para-deslizamentos-pontuais-em-arroio-do-meio",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-p9sapx",
+      "type": "Defesa Civil",
+      "severity": "atencao",
+      "title": "O Centro de Monitoramento da Defesa Civil Estadual atualiza as condições hidrológicas para os próximos dias no RS",
+      "message": "O Centro de Monitoramento da Defesa Civil Estadual atualiza as condições hidrológicas para os próximos dias no RS: \n  A condição hidrológica atual é de níveis entre limiares de atenção para inundação e normalidade, com tendências de elevação ou estabilidade, com destaque para a região de divisa...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-09-20T13:00:00Z",
+      "link": "http://defesacivil.rs.gov.br/o-centro-de-monitoramento-da-defesa-civil-estadual-atualiza-as-condicoes-hidrologicas-para-os-proximos-dias-no-rs--6ab002f497131",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-klr8bu",
+      "type": "Defesa Civil",
+      "severity": "atencao",
+      "title": "O Centro de Monitoramento da Defesa Civil Estadual atualiza as condições meteorológicas para os próximos dias no RS",
+      "message": "O Centro de Monitoramento da Defesa Civil Estadual atualiza as condições meteorológicas para os próximos dias no RS: \n  Entre a tarde e a noite de domingo (20), há condição para temporais isolados com queda de granizo em áreas da Serra e Nordeste. Na noite do domingo, há risco de tempestades...",
+      "regions": [
+        "Serra"
+      ],
+      "issuedAt": "2026-09-20T12:56:00Z",
+      "link": "http://defesacivil.rs.gov.br/o-centro-de-monitoramento-da-defesa-civil-estadual-atualiza-as-condicoes-meteorologicas-para-os-proximos-dias-no-r-6ab000b7803c4",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-klr8bu",
+      "type": "Defesa Civil",
+      "severity": "atencao",
+      "title": "O Centro de Monitoramento da Defesa Civil Estadual atualiza as condições meteorológicas para os próximos dias no RS",
+      "message": "O Centro de Monitoramento da Defesa Civil Estadual atualiza as condições meteorológicas para os próximos dias no RS: \n No sábado (19/09), há condição para chuva moderada a pontualmente forte em áreas das Missões, Noroeste, Norte e Centro. Na noite do domingo (20/09), há risco de tempestades...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-09-19T12:55:40Z",
+      "link": "http://defesacivil.rs.gov.br/o-centro-de-monitoramento-da-defesa-civil-estadual-atualiza-as-condicoes-meteorologicas-para-os-proximos-dias-no-r-6aaeb074cac8f",
+      "source": "Defesa Civil RS"
+    }
+  ],
   "sources": [
     "Defesa Civil RS (RSS)",
     "Defesa Civil RS (GraphQL — Rede Hidrometeorológica)"
