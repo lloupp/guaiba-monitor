@@ -1,72 +1,32 @@
 {
-  "collectedAt": "2026-09-23T17:36:51.873Z",
+  "collectedAt": "2026-09-23T20:54:19.100Z",
   "level": {
-    "levelMeters": 1.28,
-    "trend": 0.0031,
+    "levelMeters": 1.29,
+    "trend": 0,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-09-23T17:36:45.000+00:00",
+    "timestamp": "2026-09-23T20:54:05.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.28,
-        "trend": 0.0031,
+        "levelMeters": 1.29,
+        "trend": 0,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-09-23T17:36:45.000+00:00",
+        "timestamp": "2026-09-23T20:54:05.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
         "levelMeters": 1.3,
-        "trend": 0.9169,
+        "trend": 0.4362,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-09-23T17:36:43.000+00:00",
+        "timestamp": "2026-09-23T20:54:03.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
-  "dcrsAlerts": [
-    {
-      "id": "dcrs-p9sapx",
-      "type": "Defesa Civil",
-      "severity": "atencao",
-      "title": "O Centro de Monitoramento da Defesa Civil Estadual atualiza as condições hidrológicas para os próximos dias no RS",
-      "message": "A condição hidrológica atual é de níveis entre limiares de inundação e normalidade, com tendências de elevação ou declínio, com destaque na região hidrográfica do Guaíba para os rios Sinos, Gravataí e a região entre a foz do Taquari e o Delta do Jacuí.  \n   Devido às chuvas ocorridas entre o...",
-      "regions": [
-        "Guaíba"
-      ],
-      "issuedAt": "2026-09-23T12:53:00Z",
-      "link": "http://defesacivil.rs.gov.br/o-centro-de-monitoramento-da-defesa-civil-estadual-atualiza-as-condicoes-hidrologicas-para-os-proximos-dias-no-rs-6ab3f60672415",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-cuv7w1",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "Defesa Civil alerta: INUNDAÇÃO no rio Caí. Risco MUITO ALTO em Montenegro.",
-      "message": "Defesa Civil alerta: INUNDAÇÃO no rio Caí. Risco MUITO ALTO em Montenegro. Válido até às 14h30 do dia 23 de setembro. Evite áreas inundáveis. Emergência ligue 190/193. \n Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de Contingência municipais para saber quais os...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-09-22T14:58:06Z",
-      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-inundacao-no-rio-cai-risco-muito-alto-em-montenegro",
-      "source": "Defesa Civil RS"
-    },
-    {
-      "id": "dcrs-1seqp76",
-      "type": "Defesa Civil",
-      "severity": "perigo",
-      "title": "A Defesa Civil emite alerta para condição de risco MODERADO para deslizamentos pontuais em Arroio do Meio.",
-      "message": "A Defesa Civil emite alerta para condição de risco MODERADO para deslizamentos pontuais em Arroio do Meio. Evite áreas de risco. Em caso de emergência, acione a Brigada Militar pelo 190 ou os Bombeiros pelo 193. \n Saiba identificar os sinais de que deslizamentos de terra estão prestes a...",
-      "regions": [
-        "Rio Grande do Sul"
-      ],
-      "issuedAt": "2026-09-21T10:12:00Z",
-      "link": "http://defesacivil.rs.gov.br/a-defesa-civil-emite-alerta-para-condicao-de-risco-moderado-para-deslizamentos-pontuais-em-arroio-do-meio",
-      "source": "Defesa Civil RS"
-    }
-  ],
+  "dcrsAlerts": [],
   "sources": [
     "Defesa Civil RS (RSS)",
     "Defesa Civil RS (GraphQL — Rede Hidrometeorológica)"
