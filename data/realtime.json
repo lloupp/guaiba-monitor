@@ -1,32 +1,125 @@
 {
-  "collectedAt": "2026-09-24T20:58:36.068Z",
+  "collectedAt": "2026-09-24T23:46:37.867Z",
   "level": {
     "levelMeters": 1.24,
-    "trend": -0.0085,
+    "trend": -0.002,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-09-24T20:58:15.000+00:00",
+    "timestamp": "2026-09-24T23:46:33.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
         "levelMeters": 1.24,
-        "trend": -0.0085,
+        "trend": -0.002,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-09-24T20:58:15.000+00:00",
+        "timestamp": "2026-09-24T23:46:33.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.26,
-        "trend": -0.8415,
+        "levelMeters": 1.25,
+        "trend": -0.5792,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-09-24T20:58:20.000+00:00",
+        "timestamp": "2026-09-24T23:46:36.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
-  "dcrsAlerts": [],
+  "dcrsAlerts": [
+    {
+      "id": "dcrs-1ju353n",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: INUNDAÇÃO no Guaíba. Risco MUITO ALTO nas Ilhas de Porto Alegre.",
+      "message": "Defesa Civil alerta: INUNDAÇÃO no Guaíba. Risco MUITO ALTO nas Ilhas de Porto Alegre. Válido até às 17h15 do dia 24 de setembro. Evite áreas inundáveis. Emergência ligue 190/193. \n Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de Contingência municipais para saber...",
+      "regions": [
+        "Porto Alegre",
+        "Guaíba"
+      ],
+      "issuedAt": "2026-09-23T20:00:29Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-inundacao-no-guaiba-risco-muito-alto-nas-ilhas-de-porto-alegre",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-1t0mez9",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: INUNDAÇÃO no rio Jacuí. Risco MUITO ALTO em Eldorado do Sul",
+      "message": "Defesa Civil alerta: INUNDAÇÃO no rio Jacuí. Risco MUITO ALTO em Eldorado do Sul. Válido até às 17h15 do dia 24 de setembro. Evite áreas inundáveis. Emergência ligue 190/193. \n Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de Contingência municipais para saber quais...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-09-23T17:37:05Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-inundacao-no-rio-jacui-risco-muito-alto-em-eldorado-do-sul",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-1s2cdt0",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: elevação no rio dos Sinos. Risco ALTO de inundação em Campo Bom até São Leopoldo.",
+      "message": "Defesa Civil alerta: elevação no rio dos Sinos. Risco ALTO de inundação em Campo Bom até São Leopoldo. Válido até 17h do dia 24 de setembro. Evite áreas inundáveis. Emergência ligue 190/193. \n Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de Contingência municipais...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-09-23T17:00:48Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-elevacao-no-rio-dos-sinos-risco-alto-de-inundacao-em-campo-bom-ate-sao-leopoldo",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-c9wwi3",
+      "type": "Defesa Civil",
+      "severity": "emergencia",
+      "title": "Defesa Civil alerta: alerta SEVERO/CELL BROADCAST para colapso iminente da Barragem Arroio São Luiz em São Marcos",
+      "message": "Defesa Civil alerta: alerta SEVERO/CELL BROADCAST para colapso iminente da Barragem Arroio São Luiz em São Marcos. Moradores dos arredores: PREPAREM-SE PARA EVACUAR. Evite áreas de risco. Emergência ligue 190/193. \n Estejam atentos às orientações dos órgãos de emergência e preparados para...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-09-23T16:47:35Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-alerta-severo-cell-broadcast-para-colapso-iminente-da-barragem-arroio-sao-luiz-em-sao-marcos",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-p9sapx",
+      "type": "Defesa Civil",
+      "severity": "atencao",
+      "title": "O Centro de Monitoramento da Defesa Civil Estadual atualiza as condições hidrológicas para os próximos dias no RS",
+      "message": "A condição hidrológica atual é de níveis entre limiares de inundação e normalidade, com tendências de elevação ou declínio, com destaque na região hidrográfica do Guaíba para os rios Sinos, Gravataí e a região entre a foz do Taquari e o Delta do Jacuí.  \n   Devido às chuvas ocorridas entre o...",
+      "regions": [
+        "Guaíba"
+      ],
+      "issuedAt": "2026-09-23T12:53:00Z",
+      "link": "http://defesacivil.rs.gov.br/o-centro-de-monitoramento-da-defesa-civil-estadual-atualiza-as-condicoes-hidrologicas-para-os-proximos-dias-no-rs-6ab3f60672415",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-cuv7w1",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "Defesa Civil alerta: INUNDAÇÃO no rio Caí. Risco MUITO ALTO em Montenegro.",
+      "message": "Defesa Civil alerta: INUNDAÇÃO no rio Caí. Risco MUITO ALTO em Montenegro. Válido até às 14h30 do dia 23 de setembro. Evite áreas inundáveis. Emergência ligue 190/193. \n Procure informações junto à Defesa Civil da sua cidade, conheça os Planos de Contingência municipais para saber quais os...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-09-22T14:58:06Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-inundacao-no-rio-cai-risco-muito-alto-em-montenegro",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-1seqp76",
+      "type": "Defesa Civil",
+      "severity": "perigo",
+      "title": "A Defesa Civil emite alerta para condição de risco MODERADO para deslizamentos pontuais em Arroio do Meio.",
+      "message": "A Defesa Civil emite alerta para condição de risco MODERADO para deslizamentos pontuais em Arroio do Meio. Evite áreas de risco. Em caso de emergência, acione a Brigada Militar pelo 190 ou os Bombeiros pelo 193. \n Saiba identificar os sinais de que deslizamentos de terra estão prestes a...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-09-21T10:12:00Z",
+      "link": "http://defesacivil.rs.gov.br/a-defesa-civil-emite-alerta-para-condicao-de-risco-moderado-para-deslizamentos-pontuais-em-arroio-do-meio",
+      "source": "Defesa Civil RS"
+    }
+  ],
   "sources": [
     "Defesa Civil RS (RSS)",
     "Defesa Civil RS (GraphQL — Rede Hidrometeorológica)"
