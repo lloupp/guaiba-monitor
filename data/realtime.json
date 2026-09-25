@@ -1,32 +1,85 @@
 {
-  "collectedAt": "2026-09-25T14:00:29.797Z",
+  "collectedAt": "2026-09-25T18:46:07.583Z",
   "level": {
-    "levelMeters": 1.19,
-    "trend": 0.0046,
+    "levelMeters": 1.17,
+    "trend": -0.0015,
     "stationCode": "DCRS-00054",
     "stationName": "Barra do Ribeiro - Lago Guaíba",
-    "timestamp": "2026-09-25T14:00:13.000+00:00",
+    "timestamp": "2026-09-25T18:46:03.000+00:00",
     "source": "Defesa Civil RS (Rede Hidrometeorológica)",
     "allStations": [
       {
-        "levelMeters": 1.19,
-        "trend": 0.0046,
+        "levelMeters": 1.17,
+        "trend": -0.0015,
         "stationCode": "DCRS-00054",
         "stationName": "Barra do Ribeiro - Lago Guaíba",
-        "timestamp": "2026-09-25T14:00:13.000+00:00",
+        "timestamp": "2026-09-25T18:46:03.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       },
       {
-        "levelMeters": 1.15,
-        "trend": 0.0085,
+        "levelMeters": 1.14,
+        "trend": -0.41,
         "stationCode": "DCRS-00033",
         "stationName": "Porto Alegre - Ipanema",
-        "timestamp": "2026-09-25T14:00:16.000+00:00",
+        "timestamp": "2026-09-25T18:45:56.000+00:00",
         "source": "Defesa Civil RS (Rede Hidrometeorológica)"
       }
     ]
   },
-  "dcrsAlerts": [],
+  "dcrsAlerts": [
+    {
+      "id": "dcrs-ukk7rf",
+      "type": "Defesa Civil",
+      "severity": "atencao",
+      "title": "O Centro de Monitoramento da Defesa Civil Estadual traz as condições hidrológicas para os próximos dias no RS",
+      "message": "O Centro de Monitoramento da Defesa Civil Estadual traz as condições hidrológicas para os próximos dias no RS: \n A condição hidrológica atual é de níveis entre limiares de inundação e normalidade, com tendências de estabilidade ou declínio, com destaque na região hidrográfica do Guaíba para os...",
+      "regions": [
+        "Guaíba"
+      ],
+      "issuedAt": "2026-09-25T13:35:51Z",
+      "link": "http://defesacivil.rs.gov.br/o-centro-de-monitoramento-da-defesa-civil-estadual-traz-as-condicoes-hidrologicas-para-os-proximos-dias-no-rs",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-1225apc",
+      "type": "Defesa Civil",
+      "severity": "atencao",
+      "title": "O Centro de Monitoramento da Defesa Civil Estadual traz as condições meteorológicas para os próximos dias no RS",
+      "message": "O Centro de Monitoramento da Defesa Civil Estadual traz as condições meteorológicas para os próximos dias no RS: \n Na noite da sexta-feira (25) e madrugada do sábado (26), há condição para temporais isolados com queda de granizo em áreas do Sul e Litoral Médio. Na tarde e noite do sábado (26),...",
+      "regions": [
+        "Litoral"
+      ],
+      "issuedAt": "2026-09-25T13:25:08Z",
+      "link": "http://defesacivil.rs.gov.br/o-centro-de-monitoramento-da-defesa-civil-estadual-traz-as-condicoes-meteorologicas-para-os-proximos-dias-no-rs",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-c9wwi3",
+      "type": "Defesa Civil",
+      "severity": "emergencia",
+      "title": "Defesa Civil alerta: alerta SEVERO/CELL BROADCAST para colapso iminente da Barragem Arroio São Luiz em São Marcos",
+      "message": "Defesa Civil alerta: alerta SEVERO/CELL BROADCAST para colapso iminente da Barragem Arroio São Luiz em São Marcos. Moradores dos arredores: PREPAREM-SE PARA EVACUAR. Evite áreas de risco. Emergência ligue 190/193. \n Estejam atentos às orientações dos órgãos de emergência e preparados para...",
+      "regions": [
+        "Rio Grande do Sul"
+      ],
+      "issuedAt": "2026-09-23T16:47:35Z",
+      "link": "http://defesacivil.rs.gov.br/defesa-civil-alerta-alerta-severo-cell-broadcast-para-colapso-iminente-da-barragem-arroio-sao-luiz-em-sao-marcos",
+      "source": "Defesa Civil RS"
+    },
+    {
+      "id": "dcrs-p9sapx",
+      "type": "Defesa Civil",
+      "severity": "atencao",
+      "title": "O Centro de Monitoramento da Defesa Civil Estadual atualiza as condições hidrológicas para os próximos dias no RS",
+      "message": "A condição hidrológica atual é de níveis entre limiares de inundação e normalidade, com tendências de elevação ou declínio, com destaque na região hidrográfica do Guaíba para os rios Sinos, Gravataí e a região entre a foz do Taquari e o Delta do Jacuí.  \n   Devido às chuvas ocorridas entre o...",
+      "regions": [
+        "Guaíba"
+      ],
+      "issuedAt": "2026-09-23T12:53:00Z",
+      "link": "http://defesacivil.rs.gov.br/o-centro-de-monitoramento-da-defesa-civil-estadual-atualiza-as-condicoes-hidrologicas-para-os-proximos-dias-no-rs-6ab3f60672415",
+      "source": "Defesa Civil RS"
+    }
+  ],
   "sources": [
     "Defesa Civil RS (RSS)",
     "Defesa Civil RS (GraphQL — Rede Hidrometeorológica)"
