@@ -567,11 +567,6 @@ function populateLevelTable(readings) {
   });
 }
 
-/**
- * Retorna o rótulo de tendência traduzido.
- * @param {string} trend
- * @returns {string}
- */
 export {
   MAX_HISTORY_PER_STATION,
   HISTORY_STORAGE_KEY,
