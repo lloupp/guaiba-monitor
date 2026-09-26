@@ -164,6 +164,7 @@ async function loadData() {
     saveToStorage('alerts', state.alerts);
     saveToStorage('weather', state.weather);
     saveToStorage('data_sources', state.dataSources);
+    renderOfflineBanner();
 
   } catch (err) {
     console.error('[app] Erro ao carregar dados — usando fallback:', err.message);
@@ -179,6 +180,7 @@ async function loadData() {
     // === Fase 5: Matriz de riscos (simulação/offline) ===
     state.riskMatrix = sampleRegionRisks();
     state.dataSources.risks = 'simulação/offline';
+    renderOfflineBanner();
   } finally {
     state.loading = false;
     state.lastFetch = new Date();
@@ -416,6 +418,31 @@ function updateDataSource() {
     .filter(([_, v]) => v && !v.includes('erro'))
     .map(([k, v]) => `${k}: ${v}`);
   document.getElementById('data-source').textContent = sources.join(' | ') || 'dados simulados (simulação/offline) para MVP';
+}
+
+
+/**
+ * Renderiza o banner persistente de modo simulação/offline.
+ * Mostra um aviso vermelho fixo no topo quando state.dataSources.level
+ * é 'simulação/offline'. Remove o banner quando não está nesse modo.
+ */
+function renderOfflineBanner() {
+  const isOffline = state.dataSources.level === 'simulação/offline';
+  let banner = document.getElementById('offline-banner');
+
+  if (isOffline) {
+    if (!banner) {
+      banner = document.createElement('div');
+      banner.id = 'offline-banner';
+      banner.className = 'offline-banner';
+      banner.textContent = '⚠️ MODO SIMULAÇÃO — Dados de exemplo. Fonte real indisponível.';
+      document.body.prepend(banner);
+    }
+  } else {
+    if (banner) {
+      banner.remove();
+    }
+  }
 }
 
 /**
@@ -862,6 +889,7 @@ async function checkStaleData() {
 }
 
 function renderAll() {
+  renderOfflineBanner();
   renderLevelIndicator();
   renderCotaLegend();
   populateStationSelector();

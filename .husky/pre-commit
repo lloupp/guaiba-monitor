@@ -1,0 +1,20 @@
+#!/bin/bash
+set -e
+
+echo "=== Pre-commit checks ==="
+
+# Lint
+echo "Running ESLint..."
+npm run lint -- js/ scripts/ 2>&1 || echo "Lint warnings (non-blocking)"
+
+# Syntax check all JS files
+echo "Checking JS syntax..."
+for f in js/*.js; do
+  node --check "$f" || exit 1
+done
+
+# Run tests
+echo "Running tests..."
+bash tests/run.sh || exit 1
+
+echo "✓ All pre-commit checks passed!"

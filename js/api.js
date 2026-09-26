@@ -2,6 +2,7 @@
 // Fase 3: Coleta de dados (API)
 //
 import { generateId } from './utils.js';
+import { validateRealtimeData, validateElninoData } from './validation.js';
 // Endpoints validados (ver docs/fase1-fontes-e-endpoints.md):
 //   ✓ INMET  /avisos/ativos        — JSON, CORS aberto, sem auth
 //   ✓ INMET  /previsao/{geocode}   — JSON, CORS aberto, sem auth (ex: 4314902=POA)
@@ -21,6 +22,12 @@ const ENDPOINTS = {
   dcrsAlertas: 'https://www.defesacivil.rs.gov.br/avisos-e-alertas',
   dcrsProxy: 'https://api.allorigins.win/raw?url=',
 };
+
+const PROXIES = [
+  'https://api.allorigins.win/raw?url=',
+  'https://corsproxy.io/?',
+  'https://api.codetabs.com/v1/proxy?quest='
+];
 
 // Geocodes IBGE
 const GEOCODES = {
@@ -80,6 +87,25 @@ async function fetchWithRetry(url, options = {}) {
       await new Promise(r => setTimeout(r, delay));
     }
   }
+  return null;
+}
+
+/**
+ * Busca URL através de múltiplos proxies CORS, tentando cada um
+ * sequencialmente até obter sucesso.
+ * @param {string} targetUrl - URL alvo a ser fetchada via proxy
+ * @returns {Promise<any|null>} resposta parseada ou null
+ */
+async function fetchViaProxy(targetUrl) {
+  for (const proxy of PROXIES) {
+    const url = proxy + encodeURIComponent(targetUrl);
+    const result = await fetchWithRetry(url);
+    if (result !== null) {
+      return result;
+    }
+    console.warn(`[api] Proxy falhou: ${proxy}`);
+  }
+  console.warn('[api] Todos os proxies falharam para DCRS.');
   return null;
 }
 
@@ -289,6 +315,17 @@ async function fetchINMETPrevisao(geocode = GEOCODES.portoAlegre) {
  * @returns {Promise<{alerts: Alert[], source: string}>}
  */
 async function fetchDCRSAlertas() {
+  // Tenta buscar via proxy primeiro
+  const proxyData = await fetchViaProxy(ENDPOINTS.dcrsAlertas);
+  if (proxyData && Array.isArray(proxyData)) {
+    return { alerts: proxyData.map(a => ({
+      ...a,
+      id: a.id || generateId(),
+      source: 'Defesa Civil RS (proxy)'
+    })), source: 'Defesa Civil RS (proxy)' };
+  }
+
+  // Fallback: dados coletados pelo GitHub Actions (realtime.json)
   const rt = await fetchRealtime();
   const alerts = (rt && Array.isArray(rt.dcrsAlerts) && isFresh(rt.collectedAt))
     ? rt.dcrsAlerts
@@ -322,7 +359,15 @@ function isFresh(iso) {
  */
 async function fetchRealtime(force = false) {
   if (realtimeCache && !force) return realtimeCache;
-  realtimeCache = await fetchWithRetry('data/realtime.json');
+  const data = await fetchWithRetry('data/realtime.json');
+  // Validação de schema dos dados coletados
+  if (data) {
+    const validation = validateRealtimeData(data);
+    if (!validation.valid) {
+      console.warn('[api] realtime.json falhou na validação de schema:', validation.errors);
+    }
+  }
+  realtimeCache = data;
   return realtimeCache;
 }
 
@@ -332,7 +377,15 @@ async function fetchRealtime(force = false) {
  */
 async function fetchElnino(force = false) {
   if (elninoCache && !force) return elninoCache;
-  elninoCache = await fetchWithRetry('data/elnino.json');
+  const data = await fetchWithRetry('data/elnino.json');
+  // Validação de schema dos dados de El Niño
+  if (data) {
+    const validation = validateElninoData(data);
+    if (!validation.valid) {
+      console.warn('[api] elnino.json falhou na validação de schema:', validation.errors);
+    }
+  }
+  elninoCache = data;
   return elninoCache;
 }
 
