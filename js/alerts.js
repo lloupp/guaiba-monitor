@@ -12,7 +12,7 @@
 // funções de toast chamam DOM APIs, e elas são invocadas por app.js
 // (entry point no browser). O módulo não executa código no import.
 
-import { saveToStorage, loadFromStorage, formatMeters, escapeHtml } from './utils.js';
+import { saveToStorage, loadFromStorage, formatMeters, escapeHtml } from './utils.ts';
 import { THRESHOLDS } from './config.js';
 
 // === Severidade de alertas (esquema do projeto) ===

@@ -28,7 +28,7 @@ const CORE_ASSETS = [
   './css/style.css',
   './js/app.js',
   './js/api.js',
-  './js/utils.js',
+  './js/utils.ts',
   './js/config.js',
   './js/levels.js',
   './js/risks.js',

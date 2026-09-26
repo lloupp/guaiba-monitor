@@ -12,7 +12,7 @@
 //    * Tooltips ao passar o mouse
 //    * Zoom horizontal (scroll) e pan (arrastar)
 
-import { saveToStorage, loadFromStorage, formatMeters, escapeHtml, formatDate } from './utils.js';
+import { saveToStorage, loadFromStorage, formatMeters, formatDate } from './utils.ts';
 
 // Número máximo de leituras por estação no histórico
 const MAX_HISTORY_PER_STATION = 50;

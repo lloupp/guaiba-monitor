@@ -4,7 +4,7 @@
 //
 // app.js é o entry point único (index.html carrega apenas este módulo).
 // Importa utils.js, api.js, levels.js, risks.js e alerts.js via import.
-import { formatMeters, formatDate, saveToStorage, loadFromStorage, escapeHtml } from './utils.js';
+import { formatMeters, formatDate, saveToStorage, loadFromStorage, escapeHtml } from './utils.ts';
 import { fetchAll, fetchRealtime, sampleLevels, sampleAlerts } from './api.js';
 import { appendLevelReading, getLevelHistory, renderLevelChart, attachChartInteractivity, MAIO_2024_LEVEL, populateLevelTable } from './levels.js';
 import { THRESHOLDS, loadConfig } from './config.js';

@@ -10,7 +10,7 @@
 // As funções de render só acessam DOM/Leaflet quando invocadas — o módulo não
 // executa nada no import (seguro para testes via node).
 
-import { escapeHtml } from './utils.js';
+import { escapeHtml } from './utils.ts';
 
 // Limiar para estado ENSO (anomalia Nino3.4, °C)
 const ENSO_THRESHOLD = 0.5;
