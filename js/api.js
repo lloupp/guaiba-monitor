@@ -1,3 +1,4 @@
+// @ts-check
 // api.js — Coleta de dados (IPH/CPRM/INMET/Defesa Civil)
 // Fase 3: Coleta de dados (API)
 //

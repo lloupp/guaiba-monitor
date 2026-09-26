@@ -1,3 +1,4 @@
+// @ts-check
 // validation.js — Funções de validação de dados
 
 /**

@@ -1,3 +1,4 @@
+// @ts-check
 // risks.js — Riscos por região e tipo de desastre
 // Fase 5: Riscos por região e tipo
 //

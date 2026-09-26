@@ -1,3 +1,4 @@
+// @ts-check
 // elnino.js — El Niño / La Niña: dados NOAA, estado ENSO e mapa
 //
 // Duas responsabilidades:
@@ -8,6 +9,8 @@
 //
 // As funções de render só acessam DOM/Leaflet quando invocadas — o módulo não
 // executa nada no import (seguro para testes via node).
+
+import { escapeHtml } from './utils.js';
 
 // Limiar para estado ENSO (anomalia Nino3.4, °C)
 const ENSO_THRESHOLD = 0.5;
@@ -201,10 +204,10 @@ function renderElNinoRegions(container, elnino) {
     return `
       <div class="nino-card">
         <div class="nino-card-header">
-          <span class="nino-card-label">${meta.label}</span>
-          <span class="nino-card-ssta ${isWarm ? 'warm' : 'cool'}">${sstaStr}°C</span>
+          <span class="nino-card-label">${escapeHtml(meta.label)}</span>
+          <span class="nino-card-ssta ${isWarm ? 'warm' : 'cool'}">${escapeHtml(sstaStr)}°C</span>
         </div>
-        <div class="nino-card-sst">SST: ${sstStr}°C</div>
+        <div class="nino-card-sst">SST: ${escapeHtml(sstStr)}°C</div>
         <div class="nino-card-bar">
           <div class="nino-card-bar-fill" style="width:${barWidth}%;background:${barColor}"></div>
         </div>
@@ -213,11 +216,12 @@ function renderElNinoRegions(container, elnino) {
 
   el.innerHTML = `
     <div class="nino-regions-header">
-      <span>Semana: <strong>${week}</strong></span>
+      <span>Semana: <strong>${escapeHtml(week)}</strong></span>
       <span class="nino-regions-legend">Frio 🔵 ───── 🔴 Quente</span>
     </div>
     <div class="nino-regions-grid">${cards}</div>
-  `;
+  `;  // XSS-safe: escapeHtml applied
+
 }
 
 /**
@@ -240,11 +244,12 @@ function renderElNinoStatus(container, elnino) {
 
   el.innerHTML = `
     <div class="elnino-status badge-${css}">
-      <span class="elnino-state">🌡️ ${state}</span>
-      <span class="elnino-ssta">Nino3.4: ${ssta != null ? ssta.toFixed(2) : '—'}°C</span>
+      <span class="elnino-state">🌡️ ${escapeHtml(state)}</span>
+      <span class="elnino-ssta">Nino3.4: ${escapeHtml(ssta != null ? ssta.toFixed(2) : "—")}°C</span>
     </div>
-    <p class="elnino-impact">${impact}</p>
-  `;
+    <p class="elnino-impact">${escapeHtml(impact)}</p>
+  `;  // XSS-safe: escapeHtml applied
+
 }
 
 export {

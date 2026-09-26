@@ -1,3 +1,4 @@
+// @ts-check
 // levels.js — Leituras de nível, histórico e gráfico interativo (Canvas)
 // Fase 4: Nível e Gráfico
 // Fase B: Gráfico interativo — tooltips, zoom, pan, linha maio/2024

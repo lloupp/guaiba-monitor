@@ -1,3 +1,4 @@
+// @ts-check
 // config.js — Configuração única do projeto (fonte de verdade)
 //
 // Centraliza thresholds e estações de referência, carregados do

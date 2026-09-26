@@ -8,9 +8,12 @@
     "test": "node --test",
     "lint": "eslint js/ scripts/",
     "collect": "node scripts/collect.js",
-    "serve": "npx serve ."
+    "serve": "npx serve .",
+    "build": "tsc --noEmit",
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "eslint": "^8.57.0"
+    "eslint": "^8.57.0",
+    "typescript": "^7.0.2"
   }
 }

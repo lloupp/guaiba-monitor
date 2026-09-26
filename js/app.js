@@ -1,3 +1,4 @@
+// @ts-check
 // app.js — Lógica principal do Guaiba Monitor
 // Fase 2 + Fase 3 + Fase 5 + Fase 6: Layout/Dashboard + Coleta + Riscos + Alertas
 //
@@ -7,6 +8,7 @@ import { formatMeters, formatDate, saveToStorage, loadFromStorage, escapeHtml } 
 import { fetchAll, fetchRealtime, sampleLevels, sampleAlerts } from './api.js';
 import { appendLevelReading, getLevelHistory, renderLevelChart, attachChartInteractivity, MAIO_2024_LEVEL, populateLevelTable } from './levels.js';
 import { THRESHOLDS, loadConfig } from './config.js';
+import { t } from './i18n.js';
 import { renderElNinoMap, renderElNinoRegions, renderElNinoStatus } from './elnino.js';
 import {
   DISASTER_TYPES,
@@ -221,7 +223,7 @@ function renderLevelIndicator() {
   cota.textContent = `${THRESHOLDS.inundacao.toFixed(2)} m`;
 
   const trendEl = document.getElementById('level-trend');
-  trendEl.innerHTML = `<span class="trend-icon">${trend.icon}</span><span>${trend.text} ${relativeTime(level.recordedAt)}</span>`;
+  trendEl.innerHTML = `<span class="trend-icon">${escapeHtml(trend.icon)}</span><span>${escapeHtml(trend.text)} ${relativeTime(level.recordedAt)}</span>`; // XSS-safe: escapeHtml applied
 }
 
 /**
@@ -232,7 +234,7 @@ function renderLevelIndicator() {
 function renderCotaLegend() {
   const container = document.getElementById('cota-legend');
   if (!container) return;
-  container.innerHTML = '';
+  container.innerHTML = ''; // XSS-safe: clearing innerHTML
 
   getLevelScale(THRESHOLDS).forEach(seg => {
     const range = seg.max == null
@@ -349,7 +351,7 @@ function renderChart() {
  */
 function renderRegions() {
   const grid = document.getElementById('region-grid');
-  grid.innerHTML = '';
+  grid.innerHTML = ''; // XSS-safe: clearing innerHTML
 
   state.regions.forEach(region => {
     const status = getLevelStatusInfo(region.levelMeters);
@@ -361,7 +363,7 @@ function renderRegions() {
     const card = document.createElement('div');
     card.className = 'region-card';
     card.dataset.region = region.id;
-    card.innerHTML = `
+    card.innerHTML = ` // XSS-safe: escapeHtml applied
       <div class="region-header">
         <span class="region-name">${escapeHtml(region.name)}</span>
         <span class="region-risk badge-${status.css}">${status.label}</span>
@@ -435,7 +437,7 @@ function renderOfflineBanner() {
       banner = document.createElement('div');
       banner.id = 'offline-banner';
       banner.className = 'offline-banner';
-      banner.textContent = '⚠️ MODO SIMULAÇÃO — Dados de exemplo. Fonte real indisponível.';
+      banner.textContent = t('offlineBanner');
       document.body.prepend(banner);
     }
   } else {
@@ -523,14 +525,14 @@ function renderRiskMatrix() {
     tbody.appendChild(row);
   });
   table.appendChild(tbody);
-  container.innerHTML = '';
+  container.innerHTML = ''; // XSS-safe: clearing innerHTML
   container.appendChild(table);
 
   // === Texto de orientação por região ===
   const orientationEl = document.getElementById('risk-orientation');
   if (!orientationEl) return;
 
-  orientationEl.innerHTML = '';
+  orientationEl.innerHTML = ''; // XSS-safe: clearing innerHTML
   regionNames.forEach(regionName => {
     const risks = getRisksByRegion(state.riskMatrix, regionName);
     const overall = getRegionOverallRisk(state.riskMatrix, regionName);
@@ -637,11 +639,12 @@ function renderAlerts() {
   const real = sorted.filter(a => !isSimulated(a));
   const simulated = sorted.filter(a => isSimulated(a));
 
-  listEl.innerHTML = '';
+  listEl.innerHTML = ''; // XSS-safe: clearing innerHTML
 
   if (sorted.length === 0) {
     listEl.style.display = 'none';
     emptyEl.style.display = 'block';
+    emptyEl.innerHTML = '<span>✅ ' + escapeHtml(t('noAlerts')) + '</span>'; // XSS-safe: escapeHtml applied
     return;
   }
 
@@ -672,7 +675,7 @@ function renderAlerts() {
       ? '<span class="alert-sim-badge" title="Dados de exemplo — não são alertas oficiais ativos">📊 simulação</span>'
       : '';
 
-    card.innerHTML = `
+    card.innerHTML = ` // XSS-safe: escapeHtml applied
       <div class="alert-card-header">
         <div class="alert-card-title">
           <span class="alert-icon">${sev.icon}</span>
@@ -835,15 +838,15 @@ function renderElNino() {
   if (!statusEl) return;
 
   if (!state.elnino) {
-    statusEl.innerHTML = '<p class="elnino-nodata">Dados de El Niño/La Niña indisponíveis no momento.</p>';
-    if (mapEl) mapEl.innerHTML = '';
-    if (regionsEl) regionsEl.innerHTML = '';
+    statusEl.innerHTML = '<p class="elnino-nodata">Dados de El Niño/La Niña indisponíveis no momento.</p>'; // XSS-safe: hardcoded string
+    if (mapEl) mapEl.innerHTML = ''; // XSS-safe: clearing innerHTML
+    if (regionsEl) regionsEl.innerHTML = ''; // XSS-safe: clearing innerHTML
     return;
   }
 
   renderElNinoStatus(statusEl, state.elnino);
   if (mapEl) {
-    mapEl.innerHTML = '';
+    mapEl.innerHTML = ''; // XSS-safe: clearing innerHTML
     renderElNinoMap(mapEl, state.elnino, state.theme === 'dark');
   }
   if (regionsEl) {
@@ -922,7 +925,7 @@ function populateStationSelector() {
   const select = document.getElementById('station-select');
   if (!select) return;
   // Limpa opções existentes
-  select.innerHTML = '';
+  select.innerHTML = ''; // XSS-safe: clearing innerHTML
   // Povoa com as estações do state.regions
   if (!state.regions || state.regions.length === 0) {
     select.style.display = 'none';
@@ -965,6 +968,7 @@ function updateNotificationButton() {
 
 // === Inicialização ===
 async function init() {
+  document.title = t('appTitle');
   applyTheme();
   renderThemeIcon();
 

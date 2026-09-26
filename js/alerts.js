@@ -1,3 +1,4 @@
+// @ts-check
 // alerts.js — Alertas INMET/Defesa Civil + notificações toast
 // Fase 6: Alertas e notificações
 //
