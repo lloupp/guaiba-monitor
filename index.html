@@ -79,6 +79,11 @@
         <div class="graph-canvas-wrap">
           <canvas id="level-canvas" width="800" height="300" aria-label="Gráfico de histórico do nível do rio Guaíba — eixo Y em metros, eixo X no tempo"></canvas>
         </div>
+        <table id="level-data-table" class="sr-only" aria-label="Dados históricos do nível do rio Guaíba">
+          <caption>Histórico de leituras do nível do rio Guaíba</caption>
+          <thead><tr><th>Data</th><th>Nível (m)</th><th>Tendência</th></tr></thead>
+          <tbody id="level-table-body"></tbody>
+        </table>
         <div class="graph-meta">
           <span class="graph-count" id="graph-count">—</span>
           <span class="graph-source" id="graph-source">—</span>

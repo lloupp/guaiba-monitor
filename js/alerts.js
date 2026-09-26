@@ -11,7 +11,7 @@
 // funções de toast chamam DOM APIs, e elas são invocadas por app.js
 // (entry point no browser). O módulo não executa código no import.
 
-import { saveToStorage, loadFromStorage, formatMeters } from './utils.js';
+import { saveToStorage, loadFromStorage, formatMeters, escapeHtml } from './utils.js';
 import { THRESHOLDS } from './config.js';
 
 // === Severidade de alertas (esquema do projeto) ===
@@ -208,7 +208,7 @@ function showToast(message, options = {}) {
 
   toast.innerHTML = `
     <span class="toast-icon">${type.icon}</span>
-    <span class="toast-message">${message}</span>
+    <span class="toast-message">${escapeHtml(message)}</span>
     <button class="toast-close" type="button" aria-label="Fechar notificação">&times;</button>
   `;
 

@@ -20,6 +20,11 @@
   --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   --transition: all 0.3s ease;
 }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+
+
+
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
 
 /* Light theme overrides */
 [data-theme="light"] {

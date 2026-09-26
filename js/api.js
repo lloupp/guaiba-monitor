@@ -39,6 +39,9 @@ const GEOCODES = {
 // Estados monitorados (para filtrar alertas INMET)
 const ESTADOS_MONITORADOS = ['Rio Grande do Sul'];
 
+// === Cache ETag ===
+const cache = new Map();
+
 // === Política de retry e timeout ===
 const RETRY_ATTEMPTS = 3;
 const RETRY_BASE_DELAY = 800; // ms (exponencial: 800, 1600, 3200)
@@ -57,6 +60,12 @@ async function fetchWithRetry(url, options = {}) {
     ...options,
   };
 
+  // Check cache for ETag
+  const cached = cache.get(url);
+  if (cached && cached.etag) {
+    opts.headers['If-None-Match'] = cached.etag;
+  }
+
   for (let attempt = 1; attempt <= RETRY_ATTEMPTS; attempt++) {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT);
@@ -66,15 +75,28 @@ async function fetchWithRetry(url, options = {}) {
       const response = await fetch(url, signalOpts);
       clearTimeout(timeoutId);
 
+      // Handle 304 Not Modified — return cached data
+      if (response.status === 304 && cached && cached.data !== undefined) {
+        return cached.data;
+      }
+
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`);
       }
 
+      // Save ETag and data to cache on successful response
+      const etag = response.headers.get('ETag');
       const contentType = response.headers?.get('content-type') || '';
+      let data;
       if (contentType.includes('application/json')) {
-        return await response.json();
+        data = await response.json();
+      } else {
+        data = await response.text();
       }
-      return await response.text();
+      if (etag) {
+        cache.set(url, { etag, data, timestamp: Date.now() });
+      }
+      return data;
     } catch (err) {
       clearTimeout(timeoutId);
       // Última tentativa: loga e retorna null

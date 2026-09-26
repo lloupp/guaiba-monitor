@@ -11,7 +11,7 @@
 //    * Tooltips ao passar o mouse
 //    * Zoom horizontal (scroll) e pan (arrastar)
 
-import { saveToStorage, loadFromStorage, formatMeters } from './utils.js';
+import { saveToStorage, loadFromStorage, formatMeters, escapeHtml, formatDate } from './utils.js';
 
 // Número máximo de leituras por estação no histórico
 const MAX_HISTORY_PER_STATION = 50;
@@ -537,6 +537,41 @@ function attachChartInteractivity(canvas, onRerender, getReadings) {
   });
 }
 
+function getTrendLabel(trend) {
+  const map = { subindo: 'Subindo', descendo: 'Descendo', estavel: 'Estável' };
+  return map[trend] || 'Estável';
+}
+
+/**
+ * Popula a tabela de dados do gráfico (sr-only, para leitores de tela).
+ * @param {LevelReading[]} readings
+ */
+function populateLevelTable(readings) {
+  const tbody = document.getElementById('level-table-body');
+  if (!tbody) return;
+  tbody.innerHTML = '';
+
+  const sorted = [...readings].sort((a, b) => new Date(a.recordedAt) - new Date(b.recordedAt));
+  sorted.forEach(r => {
+    const tr = document.createElement('tr');
+    const dateTd = document.createElement('td');
+    dateTd.textContent = formatDate(r.recordedAt);
+    const levelTd = document.createElement('td');
+    levelTd.textContent = formatMeters(r.levelMeters);
+    const trendTd = document.createElement('td');
+    trendTd.textContent = getTrendLabel(r.trend);
+    tr.appendChild(dateTd);
+    tr.appendChild(levelTd);
+    tr.appendChild(trendTd);
+    tbody.appendChild(tr);
+  });
+}
+
+/**
+ * Retorna o rótulo de tendência traduzido.
+ * @param {string} trend
+ * @returns {string}
+ */
 export {
   MAX_HISTORY_PER_STATION,
   HISTORY_STORAGE_KEY,
@@ -548,4 +583,6 @@ export {
   renderLevelChart,
   attachChartInteractivity,
   resetChartZoom,
+  populateLevelTable,
+  getTrendLabel,
 };

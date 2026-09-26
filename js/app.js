@@ -5,7 +5,7 @@
 // Importa utils.js, api.js, levels.js, risks.js e alerts.js via import.
 import { formatMeters, formatDate, saveToStorage, loadFromStorage, escapeHtml } from './utils.js';
 import { fetchAll, fetchRealtime, sampleLevels, sampleAlerts } from './api.js';
-import { appendLevelReading, getLevelHistory, renderLevelChart, attachChartInteractivity, MAIO_2024_LEVEL } from './levels.js';
+import { appendLevelReading, getLevelHistory, renderLevelChart, attachChartInteractivity, MAIO_2024_LEVEL, populateLevelTable } from './levels.js';
 import { THRESHOLDS, loadConfig } from './config.js';
 import { renderElNinoMap, renderElNinoRegions, renderElNinoStatus } from './elnino.js';
 import {
@@ -887,20 +887,31 @@ async function checkStaleData() {
     banner.style.display = 'none';
   }
 }
+/**
+ * Renderiza uma função com tratamento de erro seguro.
+ * @param {Function} fn
+ * @param {string} [fallback]
+ * @returns {string|undefined}
+ */
+function safeRender(fn, fallback = '⚠️ Erro ao carregar este componente') {
+  try { return fn(); }
+  catch (err) { console.error('[app] Render error:', err); return fallback; }
+}
 
 function renderAll() {
-  renderOfflineBanner();
-  renderLevelIndicator();
-  renderCotaLegend();
-  populateStationSelector();
-  renderChart();
-  renderRegions();
-  renderRiskMatrix();
-  renderAlerts();
-  renderElNino();
-  renderPreparationChecklist();
-  updateTimestamp();
-  updateDataSource();
+  safeRender(renderOfflineBanner);
+  safeRender(renderLevelIndicator);
+  safeRender(renderCotaLegend);
+  safeRender(populateStationSelector);
+  safeRender(renderChart);
+  safeRender(renderRegions);
+  safeRender(renderRiskMatrix);
+  safeRender(renderAlerts);
+  safeRender(renderElNino);
+  safeRender(renderPreparationChecklist);
+  safeRender(() => populateLevelTable(state.chartReadings));
+  safeRender(updateTimestamp);
+  safeRender(updateDataSource);
 }
 
 /**
