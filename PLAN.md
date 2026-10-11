@@ -18,7 +18,13 @@
 
 - [x] 1. Atualizar `master` local para espelhar `origin/master` → verifica: `git rev-list --count master..origin/master` = 0
    ✅ Feito: `git reset --hard origin/master`, HEAD em caf62f7
-- [ ] 2. Reunir `feat/fase0-dados-honestos` sobre o `master` atualizado → verifica: `git merge-base --is-ancestor master feat/fase0-dados-honestos`
-- [ ] 3. Resolver conflitos de merge do ramal feature → verifica: `git diff --name-only --diff-filter=U` retorna vazio
-- [ ] 4. Verificar status final do repositório → verifica: `git status --short --branch` limpo, sem conflitos
-- [ ] 5. Verificar se feat branch está sincronizada com remoto → verifica: `git rev-list --count HEAD..origin/feat/fase0-dados-honestos` = 0 (ou informar se existe)
+- [x] 2. Reunir `feat/fase0-dados-honestos` sobre o `master` atualizado → verifica: `git merge-base --is-ancestor master feat/fase0-dados-honestos`
+   ✅ Feito: `git merge master` → merge commit 273c06f
+- [x] 3. Resolver conflitos de merge do ramal feature → verifica: `git diff --name-only --diff-filter=U` retorna vazio
+   ✅ Feito: Resolvidos 9 arquivos (ci.yml, package.json, index.html, js/alerts.js, js/app.js, sw.js, data/elnino.json, data/history.json, data/realtime.json)
+  - ci.yml, package.json, index.html, js/alerts.js, js/app.js, sw.js → mantidos do feature (mais completos)
+  - data/elnino.json, data/history.json, data/realtime.json → atualizados do remoto (dados mais novos)
+- [x] 4. Verificar status final do repositório → verifica: `git status --short --branch` limpo, sem conflitos
+   ✅ Feito: working tree clean, sem conflitos
+- [x] 5. Verificar se feat branch está sincronizada com remoto → verifica: `git rev-list --count HEAD..origin/feat/fase0-dados-honestos` = 0 (ou informar se existe)
+   ℹ️ `origin/feat/fase0-dados-honestos` não existe no remoto. O ramal não existe remotamente — não foi feito push.
